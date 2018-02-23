@@ -1,0 +1,113 @@
+/*
+	Faction by Pixelarity
+	pixelarity.com | hello@pixelarity.com
+	License: pixelarity.com/license
+*/
+
+/* Features */
+
+	.features > article {
+		float: left;
+	}
+
+	.features:after {
+		content: '';
+		display: block;
+		clear: both;
+	}
+
+/* Spotlights */
+
+	.spotlights > article {
+		float: left;
+		width: 49.5%;
+	}
+
+	.spotlights:after {
+		content: '';
+		display: block;
+		clear: both;
+	}
+
+/* Wrapper */
+
+	.wrapper .main {
+		float: left;
+		width: 67%;
+	}
+
+	.wrapper .sidebar {
+		float: left;
+		width: 33%;
+	}
+
+	.wrapper .main:last-child {
+		width: 100%;
+		float: none;
+	}
+
+	.wrapper:after {
+		content: '';
+		display: block;
+		clear: both;
+	}
+
+/* Header */
+
+	#header > nav {
+		position: absolute;
+		top: 0;
+		right: 0;
+	}
+
+		#header > nav > ul > li {
+			display: inline-block;
+		}
+
+/* Banner */
+
+	#banner > article {
+		padding-top: 6em;
+	}
+
+/* Footer */
+
+	#footer > .inner:after {
+		content: '';
+		display: block;
+		clear: both;
+	}
+
+	#footer .info {
+		float: left;
+		width: 67%;
+	}
+
+		#footer .info .about {
+			float: left;
+		}
+
+		#footer .info .team {
+			float: left;
+		}
+
+			#footer .info .team article .image {
+				float: left;
+			}
+
+			#footer .info .team article:after {
+				content: '';
+				display: block;
+				clear: both;
+			}
+
+		#footer .info:after {
+			content: '';
+			display: block;
+			clear: both;
+		}
+
+	#footer .contact {
+		float: left;
+		width: 33%;
+	}
