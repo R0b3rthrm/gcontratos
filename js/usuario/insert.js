@@ -32,7 +32,8 @@ $(document).ready(function () {
            4:nuPerfil+"|#cmbPerfil",
            5:nuEstado+"|#cmbEstado"}
     
-       var blValido = isEmptyFields(arrayInfo);   
+      // var blValido = isEmptyFields(arrayInfo);   
+      var blValido = true;   
 
 		alert("entre botton");
 
@@ -74,15 +75,17 @@ function insert(){
     var formData = $("#frmUsuario").serialize();
     var sbAction = $("#frmUsuario").attr("action");
     
+    alert("entre antes del ajax");
     $.ajax({
 	   url: "controller/usuario_c.php",  
 	   type: 'POST',
 	   data: formData,
 	   success: function(data){
             alert(data);
+            $("#error").text(data);
             if(data){	
                 alert ("USUARIO REGISTRADO CORRECTAMENTE");
-                location.href = "usuario";
+                //location.href = "usuario";
             }else{
                 alert ("ERROR AL REGISTRAR ");
             }     					

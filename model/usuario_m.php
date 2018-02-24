@@ -2,6 +2,7 @@
 
 require_once("conexion.php");
 require_once("../utils/SessionPhp.php");
+require_once("../utils/utils.php");
 
 class usuario extends conexion {
 
@@ -14,6 +15,7 @@ class usuario extends conexion {
     private $sbEmail;
     private $sbLogin;
     private $nuPerfil;
+    private $nuEstado;
 
     function getNuId() {
         return $this->nuId;
@@ -49,6 +51,10 @@ class usuario extends conexion {
 
     function getNuPerfil() {
         return $this->nuPerfil;
+    }
+
+    function getNuEstado() {
+        return $this->nuEstado;
     }
 
     function setNuId($nuId) {
@@ -87,8 +93,36 @@ class usuario extends conexion {
         $this->nuPerfil = $nuPerfil;
     }
 
-    public function setId($aitem) {
-        $this->item = $aitem;
+    function setNuEstado($nuEstado) {
+        $this->nuEstado = $nuEstado;
+    }
+
+        public function saveUsuario(){
+        
+        $pass = md5("*12345678*");
+        $user = getSession('ID');
+        $dtfecha = getFechaHoraActual();
+        $sql="";
+        
+        $sql="INSERT INTO usuario VALUES("
+                .$this->getNuId().","
+                ."'".$this->getSbNombre()."',"
+                ."'".$this->getSbApellido1()."',"
+                ."'".$this->getSbApellido2()."',"
+                ."'".$this->getSbTelefono()."',"
+                ."'".$this->getSbCelular()."',"
+                ."'".$this->getSbEmail()."',"
+                ."'".$this->getSbLogin()."','$pass',"
+                .$this->getNuPerfil().","
+                .$this->getNuEstado().","
+                . "'$dtfecha','$dtfecha', $user)";
+        
+        conexion::conectar();
+        $result = conexion::query($sql);
+        conexion::desconectar();
+        
+        return $sql;
+        
     }
 
     ///  cada funcion  con sus  parametros
