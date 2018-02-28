@@ -167,6 +167,40 @@ class usuario extends conexion {
 
         return $sbValido;
     }
+    
+    public function getUsers(){
+        
+        $arrInfo = array();
+        conexion::conectar();
+        $sql="select * from usuario";
+        $result = conexion::query($sql);
+
+        while ($row = mysqli_fetch_assoc($result)) {
+            $arrInfo[] = $row;
+        }
+
+        mysqli_free_result($result);
+        conexion::desconectar();
+        return $arrInfo;
+        
+    }
+    
+    public function getUserList($select){
+        
+        $arrInfo = array();
+        conexion::conectar();
+        $sql="select ".$select." from v_usuario";
+        $result = conexion::query($sql);
+
+        while ($row = mysqli_fetch_assoc($result)) {
+            $arrInfo[] = $row;
+        }
+
+        mysqli_free_result($result);
+        conexion::desconectar();
+        return $arrInfo;
+        
+    }
 
 }
 

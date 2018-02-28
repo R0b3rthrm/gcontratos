@@ -2,8 +2,8 @@
 <br/>
 <rigth>
 &nbsp;&nbsp; 
-<a href="#" class="button special icon fa-download">NUEVO REGISTRO</a>
-<a href="#" class="button special icon fa-search">LISTADO</a>
+<a href="usuario" class="button special icon fa-download">NUEVO REGISTRO</a>
+<a href="usuarioList" class="button special icon fa-search">LISTADO</a>
 </rigth>
 <CENTER>   
   
