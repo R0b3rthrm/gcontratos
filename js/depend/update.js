@@ -26,7 +26,6 @@ $(document).ready(function () {
         }
     });
 
-
     $("#btnIngresar").click(function () {
 
         var nuId = $("#txtId").val();
@@ -69,6 +68,4 @@ function update() {
         }
     });
 }
-;
-
 

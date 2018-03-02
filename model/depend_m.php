@@ -58,7 +58,6 @@ class depend extends conexion {
 
         return $result;
     }
-
    
     public function getListId() {
 

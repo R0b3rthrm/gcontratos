@@ -6,7 +6,7 @@
 <a href="usuarioList" class="button special icon fa-search">LISTADO</a>
 </rigth>
 <CENTER>   
-  
+    
     <h1>ACTUALIZAR EL USUARIO <h2 id='lblId'></h2></h1>
 
     <form action="controller/usuario_c.php" method="post"  id="frmUsuario" name = "frmUsuario">

@@ -1,5 +1,4 @@
 <?php
-
 require_once("../model/depend_c.php");
 $resultInfo;
 $sbmsj = "";

@@ -19,8 +19,7 @@
         
         <div class='6u$ 12u$(xsmall)'>         
             
-                        
-            
+                    
                   
             <div class="input-group input-group-sm">
                 <span class="input-group-addon" >NOMBRE :</span>

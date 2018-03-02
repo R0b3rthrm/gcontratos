@@ -5,8 +5,6 @@ $(document).ready(function () {
     //llenar combox
     comboBox(sqlEstado, "cmbEstado", '', '#divEstado');
 
-
-
     //validar formulario 
     $("#btnIngresar").click(function () {
 

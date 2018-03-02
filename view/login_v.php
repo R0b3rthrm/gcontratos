@@ -2,7 +2,7 @@
 <CENTER>   
 
     <h1>INICIAR SESION</h1>
-
+    
     <form method="post"  id="frmLogin" name = "frmLogin">
     
                
