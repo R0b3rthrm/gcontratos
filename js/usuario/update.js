@@ -1,116 +1,88 @@
 $(document).ready(function () {
-	
-	var sqlPerfil = "select id, nombre from  perfil where estado_id = 1";
+
+    var sqlPerfil = "select id, nombre from  perfil where estado_id = 1";
     var sqlEstado = "select id, nombre from  estado  ";
-    var sqlEmpresa = "select id, nombre from  empresa  where estado_id = 1";
-	
-	var usuario_id = returnIdUrl(window.location.href);
-	var array = {id: usuario_id[0]};
-	$("#txtId").val(usuario_id[0]);
 
-     $.post("../../src/usuario/edit.php",array,function(data){
+    var usuario_id = returnIdUrl(window.location.href);
+    $("#lblId").text(usuario_id[0]);
+    $("#txtIdUsuario").val(usuario_id[0]);
 
-		//llenar combox
-		comboBox(sqlEmpresa,"cmbEmpresa", data[6],'#divEmpresa');
-		comboBox(sqlPerfil,"cmbPerfil", data[8],'#divPerfil');
-		comboBox(sqlEstado,"cmbEstado", data[9],'#divEstado');
-			 
-		
-		$("#txtNombre").val(data[0]);
-		$("#txtApellido1").val(data[1]);
-		$("#txtApellido2").val(data[2]);
-		$("#txtTel").val(data[3]);
-		$("#txtCel").val(data[4]);
-		$("#txtEmail").val(data[5]);
-		$("#txtUsuario").val(data[7]);
-		
-				
-     },"json");
-	
-	
-    //validar formulario 
+    var array = {txtIdUsuario: usuario_id[0]};
+
+    $.ajax({
+        url: "controller/usuario_c.php",
+        type: 'POST',
+        data: array,
+        success: function (data) {
+
+            var result = JSON.parse(data);
+
+            $("#txtIdUsuario").attr("id", "txtId");
+            $("#txtId").attr("name", "txtId");
+
+            $("#txtNombre").val(result['nombre']);
+            $("#txtApellido1").val(result['apellido1']);
+            $("#txtApellido2").val(result['apellido2']);
+            $("#txtTel").val(result['telefono']);
+            $("#txtCel").val(result['celular']);
+            $("#txtEmail").val(result['email']);
+            $("#txtLogin").val(result['login']);
+
+            comboBox(sqlPerfil, "cmbPerfil", result['perfil_id'], '#divPerfil');
+            comboBox(sqlEstado, "cmbEstado", result['estado_id'], '#divEstado');
+
+        }
+    });
+
+
     $("#btnIngresar").click(function () {
-		
-		
-		if($("#txtId").val() == ""){
-			alert("ID Campo Vacio ");
-			$("#txtId").focus();
-			return false;
-		}
-	
-		if($("#txtNombre").val() == ""){
-			alert("Nombre Campo Vacio ");
-			$("#txtNombre").focus();
-			return false;
-		}
-		if($("#txtApellido1").val() == ""){
-			alert("Apellido Campo Vacio ");
-			$("#txtApellido1").focus();
-			return false;
-		}
-	
-		if(validateNoChar($("#txtTel").val(),7) == false){
-			alert("Cantidad de Numeros del Telefono no es correcta");
-			$("#txtTel").focus();
-			return false;
-		}
-	
-		if (validateNoChar($("#txtCel").val(),10) == false){
-			alert("Cantidad de Numeros del Celular no es correcta");
-			$("#txtCel").focus();
-			return false;
-		}
-	
-		if (validateEmail($("#txtEmail").val()) == false){
-			alert("Ingrese un correo válido");
-			$("#txtEmail").focus();
-			return false;
-		}
-	
 
-        var nuPerfil = $("#cmbPerfil").val();
-        var nuEstado = $("#cmbEstado").val();
-        var nuEmpresa = $("#cmbEmpresa").val();
-
-        var nuIdentificacion = $("#txtId").val();
+    var nuIdentificacion = $("#txtId").val();
         var sbNombre = $("#txtNombre").val();
         var sbApellido1 = $("#txtApellido1").val();
-        var sbEmail = $("#txtEmail").val()
-        var sbTel = $("#txtTel").val()
-        var sbCel = $("#txtCel").val()
-        var sbUsuario = $("#txtUsuario").val();
-        var sbClave = $("#txtClave").val();
+        var sbUsuario = $("#txtLogin").val();
+        var nuPerfil = $("#cmbPerfil").val();
+        var nuEstado = $("#cmbEstado").val();
 
-       
-		alert("entre botton");
+        var arrayInfo = {0: nuIdentificacion + "|#txtId",
+            1: sbNombre + "|#txtNombre",
+            2: sbApellido1 + "|#txtApellido1",
+            3: sbUsuario + "|#txtLogin",
+            4: nuPerfil + "|#cmbPerfil",
+            5: nuEstado + "|#cmbEstado"}
+
+        var blValido = isEmptyFields(arrayInfo);
 
         //Validar Campos Vacios
-        if (sbTel == "" || sbCel == "" || nuPerfil == "" || nuEstado == "" || nuIdentificacion == "" || 
-                sbNombre == "" || sbApellido1 == "" || sbEmail == "" || sbUsuario == "" || nuEmpresa == "")
+        if (blValido)
         {
-           alert("SE DEBE INGRESAR TODA LA INFORMACION");
-        }//fin del if
-
-        else {
-
-            var sbAction = $("#frmUsuario").attr("action");
-			
-            $.post(sbAction, $("#frmUsuario").serialize(), function (data) {
-				             
-                if(data){
-                    
-                    alert("SE ACTUALIZO CORRECTAMENTE");
-                    location.href = "lista.php";
-
-                }else {
-                    alert("Error al Registrar la Informacion");
-                }
-            }, "json");
-
-            return false;
+            update();
         }
+
 
     });
 
 });
+
+
+function update() {
+
+    var formData = $("#frmUsuario").serialize();
+    var sbAction = $("#frmUsuario").attr("action");
+
+    $.ajax({
+        url: "controller/usuario_c.php",
+        type: 'POST',
+        data: formData,
+        success: function (data) {
+            if (data) {
+              location.href = "usuarioList";
+            } else {
+                alert("ERROR AL REGISTRAR ");
+            }
+        }
+    });
+}
+;
+
 

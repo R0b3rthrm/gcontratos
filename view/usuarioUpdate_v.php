@@ -1,4 +1,4 @@
-<script src="js/usuario/insert.js"></script>
+<script src="js/usuario/update.js"></script>
 <br/>
 <rigth>
 &nbsp;&nbsp; 
@@ -7,22 +7,19 @@
 </rigth>
 <CENTER>   
   
-   <h1>REGISTRO DE USUARIO</h1>
+    <h1>ACTUALIZAR EL USUARIO <h2 id='lblId'></h2></h1>
 
     <form action="controller/usuario_c.php" method="post"  id="frmUsuario" name = "frmUsuario">
     
         
-        <input id="txtProcess" name="txtProcess" value="1" hidden>
+        <input id="txtProcess" name="txtProcess" value="3" hidden>
 
         <label id="error">
         </label>
         
         <div class='6u$ 12u$(xsmall)'>         
             
-            <div class="input-group input-group-sm">
-                <span class="input-group-addon" >IDENTIFICACION :</span>
-                <input name="txtId" id="txtId" type="text"  placeholder=" - Identificacion -"/>
-            </div>                
+                <input name="txtIdUsuario" id="txtIdUsuario" type="text" />
             
          <br/>
                   

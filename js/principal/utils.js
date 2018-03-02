@@ -8,7 +8,7 @@ function isEmptyFields(array){
     var x;
     for (x in array) {
         arrInfo = array[x].split("|");
-        alert("ESTE ES VAL COLOR =>"+arrInfo[0] );
+        //alert("ESTE ES VAL  =>"+arrInfo[0] );
 		if(arrInfo[0] != "undefined"){
 			if(arrInfo[0]==""){
 				  event.preventDefault();

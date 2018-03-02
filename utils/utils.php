@@ -16,6 +16,7 @@ function cambiarTipoDocumento ($sbTipo){
 } 
 
 function getFechaHoraActual (){
+        date_default_timezone_set("America/Bogota");
 	$dtFecha=date('Y-m-d H:i:s');
 	return $dtFecha;
 }

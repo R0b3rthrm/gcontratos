@@ -97,37 +97,64 @@ class usuario extends conexion {
         $this->nuEstado = $nuEstado;
     }
 
-        public function saveUsuario(){
-        
+    public function saveUsuario() {
+
         $pass = md5("*12345678*");
         $user = getSession('ID');
         $dtfecha = getFechaHoraActual();
-        $sql="";
-        
-        $sql="INSERT INTO usuario VALUES("
-                .$this->getNuId().","
-                ."'".$this->getSbNombre()."',"
-                ."'".$this->getSbApellido1()."',"
-                ."'".$this->getSbApellido2()."',"
-                ."'".$this->getSbTelefono()."',"
-                ."'".$this->getSbCelular()."',"
-                ."'".$this->getSbEmail()."',"
-                ."'".$this->getSbLogin()."','$pass',"
-                .$this->getNuPerfil().","
-                .$this->getNuEstado().","
+        $sql = "";
+
+        $sql = "INSERT INTO usuario VALUES("
+                . $this->getNuId() . ","
+                . "'" . $this->getSbNombre() . "',"
+                . "'" . $this->getSbApellido1() . "',"
+                . "'" . $this->getSbApellido2() . "',"
+                . "'" . $this->getSbTelefono() . "',"
+                . "'" . $this->getSbCelular() . "',"
+                . "'" . $this->getSbEmail() . "',"
+                . "'" . $this->getSbLogin() . "','$pass',"
+                . $this->getNuPerfil() . ","
+                . $this->getNuEstado() . ","
                 . "'$dtfecha','$dtfecha', $user)";
-        
+
         conexion::conectar();
         $result = conexion::query($sql);
         conexion::desconectar();
-        
-        return $sql;
-        
+
+        return $result;
     }
 
-    ///  cada funcion  con sus  parametros
+    public function updateUsuario() {
+
+        $pass = md5("*12345678*");
+        $user = getSession('ID');
+        $dtfecha = getFechaHoraActual();
+        $sql = "";
+
+        $sql = "UPDATE usuario SET "
+                . "nombre='" . $this->getSbNombre() . "',"
+                . "apellido1='" . $this->getSbApellido1() . "',"
+                . "apellido2='" . $this->getSbApellido2() . "',"
+                . "telefono='" . $this->getSbTelefono() . "',"
+                . "celular='" . $this->getSbCelular() . "',"
+                . "email='" . $this->getSbEmail() . "',"
+                . "login='" . $this->getSbLogin() . "',"
+                . "password ='".$pass."',"
+                . "perfil_id=" . $this->getNuPerfil() . ","
+                . "estado_id=" . $this->getNuEstado() . ","
+                . "fecha_mod='".$dtfecha."',"
+                . "user_id=". $user
+                ." where id =".$this->getNuId();
+
+        conexion::conectar();
+        $result = conexion::query($sql);
+        conexion::desconectar();
+
+        return $result;
+    }
+
     public function validarLogin() {
-        
+
         $sbValido = false;
 
         //Recuperación de variables
@@ -143,8 +170,7 @@ class usuario extends conexion {
         $row = mysqli_fetch_array($result);
 
         if ($row[0] == '') {
-
-           
+            
         } else {
             $sessionName = $login;
             $sessionType = "Login";
@@ -167,29 +193,31 @@ class usuario extends conexion {
 
         return $sbValido;
     }
-    
-    public function getUsers(){
-        
+
+    public function getUsersId($id) {
+
         $arrInfo = array();
         conexion::conectar();
-        $sql="select * from usuario";
+        $sql = "select * from usuario where id = " . $id;
         $result = conexion::query($sql);
 
         while ($row = mysqli_fetch_assoc($result)) {
-            $arrInfo[] = $row;
+            foreach ($row as $key => $value) {
+                $arrInfo[$key] = $value;
+            }
         }
+
 
         mysqli_free_result($result);
         conexion::desconectar();
         return $arrInfo;
-        
     }
-    
-    public function getUserList($select){
-        
+
+    public function getUserList($select) {
+
         $arrInfo = array();
         conexion::conectar();
-        $sql="select ".$select." from v_usuario";
+        $sql = "select " . $select . " from v_usuario";
         $result = conexion::query($sql);
 
         while ($row = mysqli_fetch_assoc($result)) {
@@ -199,7 +227,16 @@ class usuario extends conexion {
         mysqli_free_result($result);
         conexion::desconectar();
         return $arrInfo;
-        
+    }
+
+    public function resetPass() {
+ 
+        conexion::conectar();
+        $pass = md5('*12345678*');
+        $sql = "UPDATE usuario SET password = '".$pass."' where id =".$this->getNuId();
+        $result = conexion::query($sql);
+        conexion::desconectar();
+        return $result;
     }
 
 }

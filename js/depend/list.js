@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
-    var formData = $("#frmUsuarioList").serialize();
-    var sbAction = $("#frmUsuarioList").attr("action");
+    var formData = $("#frmDepend").serialize();
+    var sbAction = $("#frmDepend").attr("action");
 
     $.ajax({
         url: sbAction,
@@ -29,28 +29,3 @@ $(document).ready(function () {
     });
 
 });
-
-function resetPass(id) {
-
-    if (confirm('ESTA SEGURO HACER RESET PASS AL USUARIO '+id)) {
-        
-        var array = {txtId: id, txtProcess: 4};
-        var sbAction = $("#frmUsuarioList").attr("action");
-
-        $.ajax({
-            url: sbAction,
-            type: 'POST',
-            data: array,
-            success: function (data) {
-                if(data){
-                    alert('SE ACTUALIZO CORRECTAMENTE EL PASS');
-                }else{
-                    alert('ERROR AL HACER RESET PASS');
-                    
-                }
-                
-            }
-        });
-    }
-}
-

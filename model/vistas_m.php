@@ -4,7 +4,7 @@
 		
         public function getViews_m($views){
               
-            $listWhite= array("login","inicio","usuario","usuarioList");
+            $listWhite= array("login","inicio","usuario","usuarioList","usuarioUpdate");
           
              if(in_array($views, $listWhite)){
             
