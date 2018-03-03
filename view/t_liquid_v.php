@@ -1,15 +1,15 @@
-<script src="js/depend/insert.js"></script>
+<script src="js/t_liquid/insert.js"></script>
 <br/>
 <rigth>
 &nbsp;&nbsp; 
-<a href="depend" class="button special icon fa-download">NUEVO REGISTRO</a>
-<a href="dependList" class="button special icon fa-search">LISTADO</a>
+<a href="t_liquid" class="button special icon fa-download">NUEVO REGISTRO</a>
+<a href="t_liquidList" class="button special icon fa-search">LISTADO</a>
 </rigth>
 <CENTER>   
   
    <h1>REGISTRO DE DEPENDENCIAS</h1>
 
-    <form action="controller/depend_c.php" method="post"  id="frmDepend" name = "frmDepend">
+    <form action="controller/t_liquid_c.php" method="post"  id="frmTLiquid" name = "frmTLiquid">
     
         
         <input id="txtProcess" name="txtProcess" value="1" hidden>

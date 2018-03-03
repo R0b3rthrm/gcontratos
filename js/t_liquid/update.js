@@ -4,18 +4,18 @@ $(document).ready(function () {
 
     var id = returnIdUrl(window.location.href);
     $("#lblId").text(id[0]);
-    $("#txtIdDepend").val(id[0]);
+    $("#txtIdT").val(id[0]);
 
     var array = {txtIdDepend: id[0]};
 
     $.ajax({
-        url: "controller/depend_c.php",
+        url: "controller/t_liquid_c.php",
         type: 'POST',
         data: array,
         success: function (data) {
             var result = JSON.parse(data);
 
-            $("#txtIdDepend").attr("id", "txtId");
+            $("#txtIdT").attr("id", "txtId");
             $("#txtId").attr("name", "txtId");
 
             $("#txtNombre").val(result['nombre']);
@@ -51,8 +51,8 @@ $(document).ready(function () {
 
 function update() {
 
-    var formData = $("#frmDepend").serialize();
-    var sbAction = $("#frmDepend").attr("action");
+    var formData = $("#frmTLiquid").serialize();
+    var sbAction = $("#frmTLiquid").attr("action");
 
     $.ajax({
         url: sbAction,
@@ -60,7 +60,7 @@ function update() {
         data: formData,
         success: function (data) {
             if (data) {
-                location.href = "dependList";
+                location.href = "t_liquidList";
             } else {
                 alert("ERROR AL REGISTRAR ");
             }

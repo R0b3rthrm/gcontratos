@@ -1,4 +1,4 @@
-<script src="js/depend/insert.js"></script>
+<script src="js/depend/update.js"></script>
 <br/>
 <rigth>
 &nbsp;&nbsp; 
@@ -6,29 +6,34 @@
 <a href="dependList" class="button special icon fa-search">LISTADO</a>
 </rigth>
 <CENTER>   
-  
-   <h1>REGISTRO DE DEPENDENCIAS</h1>
+    
+    <h1>ACTUALIZAR LA DEPENDENCIA <h2 id='lblId'></h2></h1>
 
     <form action="controller/depend_c.php" method="post"  id="frmDepend" name = "frmDepend">
     
         
-        <input id="txtProcess" name="txtProcess" value="1" hidden>
+        <input id="txtProcess" name="txtProcess" value="3" hidden>
 
         <label id="error">
         </label>
         
         <div class='6u$ 12u$(xsmall)'>         
             
-                    
+                <input name="txtIdDepend" id="txtIdDepend" type="text" hidden/>
+            
+         <br/>
                   
             <div class="input-group input-group-sm">
                 <span class="input-group-addon" >NOMBRE :</span>
                 <input type="text" name="txtNombre" id="txtNombre" class="form-control" placeholder=" - Nombre -"/>        
-              </div>                
-       
+            </div>                
+            
          <br/>
+                  
            
-        <div class="input-group input-group-sm">
+            <div class="input-group input-group-sm">
+            
+            
              <span class="input-group-addon" >ESTADO :</span>
              <div class="6u$ 12u$(xsmall)" name="divEstado"  id="divEstado"> </div>
  

@@ -2,7 +2,7 @@
 <br/>
 <rigth>
     &nbsp;&nbsp; 
-    <a href="usuario?id=HOL" class="button special icon fa-download">NUEVO REGISTRO</a>
+    <a href="usuario" class="button special icon fa-download">NUEVO REGISTRO</a>
     <a href="usuarioList" class="button special icon fa-search">LISTADO</a>
 </rigth>
 <div class="container ">

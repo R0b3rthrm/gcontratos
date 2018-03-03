@@ -76,6 +76,7 @@ function update() {
         data: formData,
         success: function (data) {
             if (data) {
+              alert("SE ACTUALIZO CORRECTAMENTE")
               location.href = "usuarioList";
             } else {
                 alert("ERROR AL REGISTRAR ");

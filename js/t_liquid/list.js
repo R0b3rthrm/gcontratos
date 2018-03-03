@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
-    var formData = $("#frmDepend").serialize();
-    var sbAction = $("#frmDepend").attr("action");
+    var formData = $("#frmTLiquid").serialize();
+    var sbAction = $("#frmTLiquid").attr("action");
 
     $.ajax({
         url: sbAction,

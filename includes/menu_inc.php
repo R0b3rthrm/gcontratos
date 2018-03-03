@@ -14,7 +14,7 @@
             <li>
                 <a href="#" class="icon fa-angle-down">Maestros</a>
                 <ul>
-                    <li><a href="<?php echo SERVERURL; ?>">Option One</a></li>
+                    <li><a href="<?php echo SERVERURL;?>depend">Dependencia One</a></li>
                     <li><a href="<?php echo SERVERURL; ?>">Option Two</a></li>
                     <li><a href="#">Option Three</a></li>
                    <!-- <li>

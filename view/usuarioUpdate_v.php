@@ -18,11 +18,8 @@
         </label>
         
         <div class='6u$ 12u$(xsmall)'>         
-            
-                <input name="txtIdUsuario" id="txtIdUsuario" type="text" />
-            
+                <input name="txtIdUsuario" id="txtIdUsuario" type="text" hidden/>
          <br/>
-                  
             <div class="input-group input-group-sm">
                 <span class="input-group-addon" >NOMBRE :</span>
                 <input type="text" name="txtNombre" id="txtNombre" class="form-control" placeholder=" - Nombre -"/>        
@@ -79,4 +76,3 @@
     </form>
     							
 </CENTER>
-

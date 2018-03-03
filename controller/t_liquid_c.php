@@ -1,13 +1,13 @@
 <?php
-require_once("../model/depend_m.php");
+require_once("../model/t_liquid_m.php");
 $resultInfo;
 $sbmsj = "";
-$objDepend = new depend();
+$objTLiquid = new depend();
 
-if (isset($_POST['txtIdDepend'])) {
+if (isset($_POST['txtIdT'])) {
     $resultInfo=array();
-    $objDepend->setNuId($_POST['txtIdDepend']);
-    $resultInfo = $objDepend->getListId();
+    $objTLiquid->setNuId($_POST['txtIdT']);
+    $resultInfo = $objTLiquid->getListId();
     echo json_encode($resultInfo);exit;
 }else{
 
@@ -17,12 +17,13 @@ if (isset($_POST['txtIdDepend'])) {
 
         if ($nuProcess == 1) {
 
-            $objDepend->setSbNombre(trim($_POST['txtNombre']));
-            $objDepend->setNuEstado(trim($_POST['cmbEstado']));
-            $resultInfo = $objDepend->save();
+            $objTLiquid->setNuId(trim($_POST['txtId']));
+            $objTLiquid->setSbNombre(trim($_POST['txtNombre']));
+            $objTLiquid->setNuEstado(trim($_POST['cmbEstado']));
+            $resultInfo = $objTLiquid->save();
         } elseif ($nuProcess == 2) {
 
-            $arrList = $objDepend->getList("d.id,d.nombre,e.nombre as estado_nom");
+            $arrList = $objTLiquid->getList("d.id,d.nombre,e.nombre as estado_nom");
 
             $resultInfo="";
             $i = 1;
@@ -35,10 +36,10 @@ if (isset($_POST['txtIdDepend'])) {
                 $i++;
             }
         }elseif($nuProcess == 3){
-            $objDepend->setNuId(trim($_POST['txtId']));
-            $objDepend->setSbNombre(trim($_POST['txtNombre']));
-            $objDepend->setNuEstado(trim($_POST['cmbEstado']));
-            $resultInfo = $objDepend->update();
+            $objTLiquid->setNuId(trim($_POST['txtId']));
+            $objTLiquid->setSbNombre(trim($_POST['txtNombre']));
+            $objTLiquid->setNuEstado(trim($_POST['cmbEstado']));
+            $resultInfo = $objTLiquid->update();
             
         }
     } catch (Exception $e) {
