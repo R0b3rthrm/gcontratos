@@ -4,14 +4,19 @@ require_once("conexion.php");
 require_once("../utils/SessionPhp.php");
 require_once("../utils/utils.php");
 
-class depend extends conexion {
+class funcion extends conexion {
     
     private $nuId;
+    private $sbCod;
     private $sbNombre;
     private $nuEstado;
-            
+
     function getNuId() {
         return $this->nuId;
+    }
+
+    function getSbCod() {
+        return $this->sbCod;
     }
 
     function getSbNombre() {
@@ -26,6 +31,10 @@ class depend extends conexion {
         $this->nuId = $nuId;
     }
 
+    function setSbCod($sbCod) {
+        $this->sbCod = $sbCod;
+    }
+
     function setSbNombre($sbNombre) {
         $this->sbNombre = $sbNombre;
     }
@@ -33,11 +42,12 @@ class depend extends conexion {
     function setNuEstado($nuEstado) {
         $this->nuEstado = $nuEstado;
     }
-    
 
+            
     public function save() {
 
-        $sql = "INSERT INTO depend VALUES(0,"
+        $sql = "INSERT INTO funcion  VALUES(0,"
+                . "'" . $this->getSbCod() . "',"
                 . "'" . $this->getSbNombre() . "',"
                 . $this->getNuEstado() . ")";
 
@@ -50,10 +60,11 @@ class depend extends conexion {
 
     public function update() {
 
-        $sql = "UPDATE depend SET "
+        $sql = "UPDATE funcion  SET "
+                . "cod='" . $this->getSbCod(). "',"
                 . "nombre='" . $this->getSbNombre() . "',"
-                . "estado_id=" . $this->getNuEstado() 
-                ." where id =".$this->getNuId();
+                . "estado_id=" . $this->getNuEstado()
+                . " where id =" . $this->getNuId();
 
         conexion::conectar();
         $result = conexion::query($sql);
@@ -61,12 +72,12 @@ class depend extends conexion {
 
         return $result;
     }
-   
+
     public function getListId() {
 
         $arrInfo = array();
         conexion::conectar();
-        $sql = "select * from depend where id = " .$this->getNuId();
+        $sql = "select * from funcion  where id = " . $this->getNuId();
         $result = conexion::query($sql);
 
         while ($row = mysqli_fetch_assoc($result)) {
@@ -83,7 +94,7 @@ class depend extends conexion {
 
         $arrInfo = array();
         conexion::conectar();
-        $sql = "select " . $select . " from depend d inner join estado e on d.estado_id = e.id";
+        $sql = "select " . $select . " from funcion f inner join estado e on f.estado_id = e.id";
         $result = conexion::query($sql);
 
         while ($row = mysqli_fetch_assoc($result)) {
@@ -94,7 +105,7 @@ class depend extends conexion {
         conexion::desconectar();
         return $arrInfo;
     }
-    
+
 }
 
 ?>

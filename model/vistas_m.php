@@ -4,12 +4,15 @@ class vistas_m {
 
     public function getViews_m($views) {
 
-        $listWhite = array("login", "inicio", "usuario", "usuarioList", "usuarioUpdate",
-            "depend", "dependList", "dependUpdate","t_liquid", "t_liquidList", "t_liquidUpdate"
+        $listWhite = array("login", "inicio", "usuario", "usuarioList", "usuarioUpdate","depend", "dependList", "dependUpdate","tLiquid", "tLiquidList", "tLiquidUpdate",            
+            "tRecurs", "tRecursList", "tRecursUpdate","tClasific","tClasificList","tClasificUpdate","tNoved","tNovedList","tNovedUpdate","tAvance","tAvanceList","tAvanceUpdate",
+            "tTermin", "tTerminList", "tTerminUpdate","tContratist", "tContratistList", "tContratistUpdate","tIntervt", "tIntervtList", "tIntervtUpdate",
+            "tPoliza", "tPolizaList", "tPolizaUpdate","tGasto", "tGastoList", "tGastoUpdate","tContract", "tContractList", "tContractUpdate","funcion", "funcionList", "funcionUpdate",
+            "causal", "causalList", "causalUpdate",
+            "mSelecc", "mSeleccList", "mSeleccUpdate"
             );
 
         if (in_array($views, $listWhite)) {
-
 
             if (is_file("view/" . $views . "_v.php")) {
 
