@@ -38,13 +38,13 @@ function reset(frm) {
     });
 }
 
-function noCopyPaste() {
-
-    $('body').bind("cut copy paste", function (e) {
-        e.preventDefault();
-        alert('Formulario Contracto No Permite Copiar-Pegar-Cortar');
-    });
-
+function noCopyPaste(arr = []) {
+    for (x in arr) {
+        $(arr[x]).bind("cut copy paste", function (e) {
+            e.preventDefault();
+            alert('EN ESTE CAMPO NO SE PERMITE COPIAR-PEGAR-CORTAR');
+        });
+    }
 
 }
 
@@ -115,7 +115,7 @@ function alfNumPE(arr = []) {
             if (!((tecla.charCode > 47 && tecla.charCode < 58) ||
                     (tecla.charCode > 64 && tecla.charCode < 91) ||
                     (tecla.charCode > 96 && tecla.charCode < 123) ||
-                    tecla.charCode == 46 || tecla.charCode == 32 
+                    tecla.charCode == 46 || tecla.charCode == 32
                     ))
                 return false;
         });
@@ -134,74 +134,64 @@ function alfNum(arr = []) {
                     ))
                 return false;
         });
-    }
+}
+}
+
+function isNumber(arr = []) {
+
+    for (x in arr) {
+        $(arr[x]).keypress(function (tecla) {
+            if (!((tecla.charCode > 47 && tecla.charCode < 58) ||
+                    tecla.charCode == 46
+
+                    ))
+                return false;
+        });
+}
+}
+
+function difDate(dtIni, dtFin) {
+    d = 0;
+    dtIni = moment($('#dtInicio').val());
+    dtFin = moment($('#dtTerminacion').val());
+    d = dtFin.diff(dtIni, 'days');
+    return d
+}
+
+function noChar(arr = []) {
+
+    for (x in arr) {
+        $(arr[x]).keypress(function (tecla) {
+            return false;
+        });
+}
 }
 
 function minChar(arr = [], num = 0) {
 
-     blValidate = true;
-     
+    blValidate = true;
+
     for (x in arr) {
         //Almacenamos los valores
         nombre = $(arr[x]).val();
 
         //Comprobamos la longitud de caracteres
         if (!nombre.length > num) {
-            alert("SON MINIMO "+num+" CARACTERES EN ESTE CAMPO");
+            alert("SON MINIMO " + num + " CARACTERES EN ESTE CAMPO");
             $(arr[x]).focus();
-             blValidate = false;
+            blValidate = false;
             break;
         }
     }
-    
+
     return blValidate;
 }
 
-function maxChar(arr = [],n = 999999999) {
+function maxChar(arr = [], n = 999999999) {
     for (x in arr) {
-            $(arr[x]).attr("maxlength", n );
-    }
+        $(arr[x]).attr("maxlength", n);
 }
-
-function isNumber(id) {
-    $(id).keydown(function (event) {
-        if (event.shiftKey)
-        {
-            event.preventDefault();
-        }
-
-
-
-        if (event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9) {
-
-        } else {
-
-            if (event.keyCode < 95) {
-
-                if (event.keyCode < 48 || event.keyCode > 57) {
-
-                    event.preventDefault();
-
-                }
-
-            } else {
-
-                if (event.keyCode < 96 || event.keyCode > 105) {
-
-                    event.preventDefault();
-
-                }
-            }
-
-        }
-
-    });
-
 }
-
-
-
-
 
 
 function validFiletype(info) {

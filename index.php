@@ -30,6 +30,7 @@
         <script type="text/javascript" src="js/principal/utils.js"></script>
         <script src="js/principal/datepicker.js"></script>
         <script src="js/principal/datatables.min.js"></script>
+        <script src="js/principal/moment.min.js"></script>
 
     </head>
 
