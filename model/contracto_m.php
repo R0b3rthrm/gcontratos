@@ -405,14 +405,14 @@ class contracto extends conexion {
                 . "est='" . $this->getSbEst() . "',"
                 . "prog='" . $this->getSbProg() . "',"
                 . "fec_mod='" . $dtfecha . "',"
-                . "user_id=" . $user . ","
-                ." where id = '".$this->getSbIdId()."'";
+                . "user_id=" . $user 
+                ." where id = '".$this->getSbId()."'";
 
         conexion::conectar();
         $result = conexion::query($sql);
         conexion::desconectar();
 
-        return $result;
+        return $sql;
     }
 
     public function getListId() {

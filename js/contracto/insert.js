@@ -1,5 +1,13 @@
 $(document).ready(function () {
 
+    //Restricciones
+    noCopyPaste();
+    alfNumPG(['#txtId, #txtResAdjudicacion']);
+    alfNum(['#txtObject','#txtSegment','#txtObserv','#txtSeccion']);
+    alfNumPE(['#txtEje','#txtEst','#txtProg']);
+    maxChar(['#txtObject','#txtSegment','#txtObserv'],256);
+    maxChar(['#txtId','#txtResAdjudicacion','#txtSeccion','#txtEje','#txtEst','#txtProg'],50);
+   
     var sqlDepend = "select id, nombre from depend where estado_id = 1";
     var sqlMSelecc = "select id, cod, nombre from  m_selecc where estado_id = 1";
     var sqlCausal = "select id, cod, nombre from  causal where estado_id = 1";
@@ -11,7 +19,7 @@ $(document).ready(function () {
      
     //llenar combox
     comboBox(sqlDepend, "cmbDepend", '', '#divDepend');
-    comboBox(sqlMSelecc, "divMSelecc", '', '#divMSelecc');
+    comboBox(sqlMSelecc, "cmbMSelecc", '', '#divMSelecc');
     comboBox(sqlCausal, "cmbCausal", '', '#divCausal');
     comboBox(sqlTContract, "cmbTContract", '', '#divTContract');
     comboBox(sqlTGasto, "cmbTGasto", '', '#divGasto');
@@ -26,28 +34,41 @@ $(document).ready(function () {
     $('#dtActSecop').datepicker({format:'yyyy-mm-dd',autoclose:true});
     $('#dtPublicSecop').datepicker({format:'yyyy-mm-dd',autoclose:true});
     $('#dtLiquid').datepicker({format:'yyyy-mm-dd',autoclose:true});
-   
+    
+    
 
 
     //validar formulario 
     $("#btnIngresar").click(function () {
 
-        var nuIdentificacion = $("#txtId").val();
-        var sbNombre = $("#txtNombre").val();
-        var sbApellido1 = $("#txtApellido1").val();
-        var sbUsuario = $("#txtLogin").val();
-        var nuPerfil = $("#cmbPerfil").val();
-        var nuEstado = $("#cmbEstado").val();
+        var sbId = $("#txtId").val();
+        var nuDepend = $("#cmbDepend").val();
+        var sbSeccion = $("#txtSeccion").val();
+        var nuMSelecc = $("#cmbMSelecc").val();
+        var nuCausal = $("#cmbCausal").val();
+        var nuTGasto = $("#cmbTGasto").val();
+        var dtSuscripcion = $("#dtSuscripcion").val();
+        var dtInicion = $("#dtInicio").val();
+        var dtTerminacion = $("#dtTerminacion").val();
+        var sbPlazo = $("#txtPlazoEj").val();
+        var sbOject = $("#txtObject").val();
 
-        var arrayInfo = {0: nuIdentificacion + "|#txtId",
-            1: sbNombre + "|#txtNombre",
-            2: sbApellido1 + "|#txtApellido1",
-            3: sbUsuario + "|#txtLogin",
-            4: nuPerfil + "|#cmbPerfil",
-            5: nuEstado + "|#cmbEstado"}
+        var arrayInfo = {0: sbId + "|#txtId",
+            1: nuDepend + "|#cmbDepend",
+            2: sbSeccion + "|#txtSeccion",
+            3: nuMSelecc + "|#cmbMSelecc",
+            4: nuCausal + "|#cmbCausal",
+            5: nuTGasto + "|#cmbTGasto",
+            6: dtSuscripcion + "|#dtSuscripcion",
+            7: dtInicion + "|#dtInicio",
+            8: dtTerminacion + "|#dtTerminacion",
+            9: sbPlazo + "|#txtPlazoEj",
+            10: sbOject + "|#txtObject"}
 
         var blValido = isEmptyFields(arrayInfo);
+            blValido=minChar(['#txtId, #txtResAdjudicacion'],5);
 
+     
         //Validar Campos Vacios
         if (blValido)
         {

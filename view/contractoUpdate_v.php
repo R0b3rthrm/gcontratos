@@ -1,4 +1,4 @@
-<script src="js/contracto/insert.js"></script>
+<script src="js/contracto/update.js"></script>
 
 <br/>
 <rigth>
@@ -8,22 +8,21 @@
 </rigth>
 <CENTER>   
 
-    <h1>ACTUALIZAR CONTRACTO</h1>
+    <h1>ACTUALIZAR CONTRACTO</h1><h2 id='lblId'></h2>
+
 
     <form action="controller/contracto_c.php" method="post"  id="frmContracto" name = "frmContracto">
 
 
-        <input id="txtProcess" name="txtProcess" value="1" hidden>
+        <input id="txtProcess" name="txtProcess" value="3" hidden>
 
         <label id="error">
         </label>
 
         <div class='6u$ 12u$(xsmall)'> 
 
-            <div class="input-group input-group-sm">
-                <span class="input-group-addon" >No Contracto :</span>
-                <input name="txtId" id="txtId" type="text"  />
-            </div>                
+            <input name="txtIdC" id="txtIdC" type="text" hidden/>
+              
             <br/>
             <div class="input-group input-group-sm">
 
