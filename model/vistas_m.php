@@ -9,7 +9,8 @@ class vistas_m {
             "tTermin", "tTerminList", "tTerminUpdate","tContratist", "tContratistList", "tContratistUpdate","tIntervt", "tIntervtList", "tIntervtUpdate",
             "tPoliza", "tPolizaList", "tPolizaUpdate","tGasto", "tGastoList", "tGastoUpdate","tContract", "tContractList", "tContractUpdate","funcion", "funcionList", "funcionUpdate",
             "causal", "causalList", "causalUpdate","mSelecc", "mSeleccList", "mSeleccUpdate",
-            "contracto", "contractoList", "contractoUpdate"
+            "contracto", "contractoList", "contractoUpdate",
+            "tercero", "terceroList", "terceroUpdate"
             );
 
         if (in_array($views, $listWhite)) {
