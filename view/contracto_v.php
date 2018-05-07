@@ -69,6 +69,13 @@
             </div>                
             <br/>
             <div class="input-group input-group-sm">
+                <span class="input-group-addon" >CONTRATISTA:</span>
+                <div class="6u$ 12u$(xsmall)" name="divContratista"  id="divContratista"> </div>
+                <span class="input-group-addon" >VAOLOR INICIAL:</span>
+                <input name="txtValorIni" id="txtValorIni" type="text"  placeholder=""/>
+            </div>                
+            <br/>
+            <div class="input-group input-group-sm">
                 <span class="input-group-addon" >OBJETO:</span>
                 <textarea id="txtObject" name="txtObject" class="form-control" placeholder=" - Max 256 Caracteres -" ></textarea>
             </div>                
@@ -78,11 +85,6 @@
                 <input type="text" name="txtResAdjudicacion" id="txtResAdjudicacion" class="form-control" placeholder=" - Resolucion Adjudicacion -"/>          
                 <span class="input-group-addon" >F. ADJUDICACION:</span>
                 <input name="dtAdjudicacion" id="dtAdjudicacion" type="text" class="form-control" placeholder=" 0000-00-00 "/>
-            </div>  
-            <br/>
-            <div class="input-group input-group-sm">
-                <span class="input-group-addon" >VAOLOR INICIAL:</span>
-                <input name="txtValorIni" id="txtValorIni" type="text" class="form-control" placeholder=""/>
             </div>    
             <br/>
             <div class="input-group input-group-sm">

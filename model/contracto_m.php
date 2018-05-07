@@ -17,6 +17,7 @@ class contracto extends conexion {
     private $dtInicio;
     private $dtTermn;
     private $nuPlazoEjec;
+    private $nuContratista;
     private $sbObjeto;
     private $sbResAdjudic;
     private $dtAdjudicacion;
@@ -41,6 +42,16 @@ class contracto extends conexion {
     private $sbEst;
     private $sbProg;
     
+    
+    function getNuContratista() {
+        return $this->nuContratista;
+    }
+
+    function setNuContratista($nuContratista) {
+        $this->nuContratista = $nuContratista;
+    }
+
+        
     function getSbId() {
         return $this->sbId;
     }
@@ -335,6 +346,7 @@ class contracto extends conexion {
                 . "'" . $this->getDtInicio() . "',"
                 . "'" . $this->getDtTermn() . "',"
                 . $this->getNuPlazoEjec() . ","
+                . $this->getNuContratista() . ","
                 . "'" . $this->getSbObjeto() . "',"
                 . "'" . $this->getSbResAdjudic() . "',"
                 . "'" . $this->getDtAdjudicacion() . "',"
@@ -381,6 +393,7 @@ class contracto extends conexion {
                 . "fec_ini='" . $this->getDtInicio() . "',"
                 . "fec_termn='" . $this->getDtTermn() . "',"
                 . "plazo_ejecuc=" . $this->getNuPlazoEjec() . ","
+                . "contratista_id=" . $this->getNuContratista() . ","
                 . "objeto='" . $this->getSbObjeto() . "',"
                 . "res_adjud='" . $this->getSbResAdjudic() . "',"
                 . "fec_adjud='" . $this->getDtAdjudicacion() . "',"
@@ -438,7 +451,7 @@ class contracto extends conexion {
 
         $arrInfo = array();
         conexion::conectar();
-        $sql = "select " . $select . " from v_contracto";
+        $sql = "select " . $select . " from v_contracto order by fec_reg desc";
         $result = conexion::query($sql);
 
         while ($row = mysqli_fetch_assoc($result)) {

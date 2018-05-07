@@ -109,89 +109,52 @@ function calcularFechas($dFecIni, $dFecFin){
 	return round(($date2 - $date1) / (60 * 60 * 24));
 }
 
+//FUNCION PARA QUITAR CARACTERES ESPECIALES
 
-//funcion que apartir de la cedula devuelte informacion de puesto de votacion
-function obtenerDatosPuesto($sbCedula){
+function daleteSymbol($string) {
 
-	
-	$url = 'https://wsp.registraduria.gov.co/censo/_censoResultado.php?nCedula='.$sbCedula.'&nCedulaH=&x=39&y=16';
-	      //  $url = 'https://wsp.registraduria.gov.co/censo/_censoResultado.php?nCedula=14837625';
-	
-	$html = file_get_contents($url);
-	
-	$doc = new DOMDocument();
-	@$doc->loadHTML($html);
+    $string = trim($string);
 
-	$trs = $doc->getElementsByTagName('tr');
-	
-	$nuCounter = 1;
-	
-	$arrayData = array(
-		"Departamento"=>"",
-		"Municipio"=>"",
-		"Puesto"=>"",
-		"Direccion"=>"",
-		"Inscripcion"=>"",
-		"Mesa"=>""
-	);
-	
-	foreach ($trs as $tr) {	
-		
-		
-		switch($nuCounter){
-			case 1: 				
-				$strTmp = str_replace("Departamento:", "", $tr->nodeValue);
-				$arrayData["Departamento"] = $strTmp;
-				break;	
-			case 2:			
-				$strTmp = str_replace("Municipio:", "", $tr->nodeValue);
-				$arrayData["Municipio"] = $strTmp;
-				break;			
-			case 3:			
-				$strTmp = str_replace("Puesto:", "", $tr->nodeValue);
-				$arrayData["Puesto"] = $strTmp;
-			break;			
-			case 4:			
-				$strTmp = str_replace("Dirección Puesto:", "", $tr->nodeValue);
-				$arrayData["Direccion"] = $strTmp;
-			break;			
-			case 5:
-				$strTmp = str_replace("Fecha de inscripción:", "", $tr->nodeValue);
-				$arrayData["Inscripcion"] = $strTmp;
-			break;
-			case 6:
-				$strTmp = str_replace("Mesa", "", $tr->nodeValue);
-				$arrayData["Mesa"] = $strTmp;
-			break;
-		
-		}
-		
-		$nuCounter++;
-	}
-	
-	
- 
-	 
-	//**********************************************************************************************
-	//inserta en la base de datos la informacion de los puestos de acuerdo a cada cedula
-	 
-	 $i=0;
-	 foreach ($arrayData as $clave =>$valor) {
-		
-		if( $i == 0 ){
-			 $sbDepartamento	= trim($arrayData["Departamento"]);
-			 $sbMunicipio		= trim($arrayData["Municipio"]);
-			 $sbPuesto 			= trim($arrayData["Puesto"]);
-			 $sbDireccion 		= trim($arrayData["Direccion"]);
-			 $sbInscripcion		= trim($arrayData["Inscripcion"]);
-			 $sbMesa 			= trim($arrayData["Mesa"]);
-			 //echo "<br>";
-			 //echo "dpto: ".$sbDepartamento." Muni: ".$sbMunicipio." Puesto: ".$sbPuesto." Dir: ".$sbDireccion." Inscri: ".$sbInscripcion." Mesa: ".$sbMesa; 
-			 $i++;
-		}
-	 }
-	
-}//fin de funcion obtenerDatosPuesto
+    $string = str_replace(
+            array('á', 'à', 'ä', 'â', 'ª', 'Á', 'À', 'Â', 'Ä'), 
+            array('a', 'a', 'a', 'a', 'a', 'A', 'A', 'A', 'A'), $string
+    );
 
+    $string = str_replace(
+            array('é', 'è', 'ë', 'ê', 'É', 'È', 'Ê', 'Ë'), 
+            array('e', 'e', 'e', 'e', 'E', 'E', 'E', 'E'), $string
+    );
+
+    $string = str_replace(
+            array('í', 'ì', 'ï', 'î', 'Í', 'Ì', 'Ï', 'Î'), 
+            array('i', 'i', 'i', 'i', 'I', 'I', 'I', 'I'), $string
+    );
+
+    $string = str_replace(
+            array('ó', 'ò', 'ö', 'ô', 'Ó', 'Ò', 'Ö', 'Ô'),
+            array('o', 'o', 'o', 'o', 'O', 'O', 'O', 'O'), $string
+    );
+
+    $string = str_replace(
+            array('ú', 'ù', 'ü', 'û', 'Ú', 'Ù', 'Û', 'Ü'), 
+            array('u', 'u', 'u', 'u', 'U', 'U', 'U', 'U'), $string
+    );
+
+    $string = str_replace(
+            array('ñ', 'Ñ', 'ç', 'Ç'), 
+            array('n', 'N', 'c', 'C',), $string
+    );
+
+    $string = str_replace(
+            array("\\", "¨", "º", "-", "~",
+        "#", "@", "|", "!", "\"",
+        "·", "$", "%", "&", "/",
+        "(", ")", "?", "'", "¡",
+        "¿", "[", "^", "<code>", "]",
+        "+", "}", "{", "¨", "´",
+        ">", "< ", " "), ' ', $string
+    );
+    return $string;
+}
 
 ?>

@@ -2,8 +2,8 @@
 <br/>
 <rigth>
      &nbsp;&nbsp; 
-    <a href="contracto" class="button special icon fa-download">NUEVO REGISTRO</a>
-    <a href="contractoList" class="button special icon fa-search">LISTADO</a>
+    <a href="pcontracto" class="button special icon fa-download">NUEVO REGISTRO</a>
+    <a href="pcontractoList" class="button special icon fa-search">LISTADO</a>
 </rigth>
 <div class="container ">
     <center>

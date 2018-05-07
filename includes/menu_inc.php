@@ -12,6 +12,7 @@
             <li>
                 <a href="#" class="icon fa-angle-down">Gestion Contractos</a>
                 <ul>
+                    <li><a href="<?php echo SERVERURL; ?>pcontracto">Proceso Contracto</a></li>
                     <li><a href="<?php echo SERVERURL; ?>contracto">Contracto</a></li>
                     <li><a href="<?php echo SERVERURL; ?>tercero">Tercero</a></li>
                 </ul>

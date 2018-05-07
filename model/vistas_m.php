@@ -8,9 +8,8 @@ class vistas_m {
             "tRecurs", "tRecursList", "tRecursUpdate","tClasific","tClasificList","tClasificUpdate","tNoved","tNovedList","tNovedUpdate","tAvance","tAvanceList","tAvanceUpdate",
             "tTermin", "tTerminList", "tTerminUpdate","tContratist", "tContratistList", "tContratistUpdate","tIntervt", "tIntervtList", "tIntervtUpdate",
             "tPoliza", "tPolizaList", "tPolizaUpdate","tGasto", "tGastoList", "tGastoUpdate","tContract", "tContractList", "tContractUpdate","funcion", "funcionList", "funcionUpdate",
-            "causal", "causalList", "causalUpdate","mSelecc", "mSeleccList", "mSeleccUpdate",
-            "contracto", "contractoList", "contractoUpdate",
-            "tercero", "terceroList", "terceroUpdate"
+            "causal", "causalList", "causalUpdate","mSelecc", "mSeleccList", "mSeleccUpdate", "contracto", "contractoList", "contractoUpdate", "tercero", "terceroList", "terceroUpdate",
+            "pcontracto", "pcontractoList", "pcontractoUpdate"
             );
 
         if (in_array($views, $listWhite)) {
