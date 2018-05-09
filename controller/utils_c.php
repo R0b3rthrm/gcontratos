@@ -29,10 +29,16 @@ function comboBox($objUtils_m) {
 
     //consulta BD
     $arrInfo = $objUtils_m->getComboBox($sql);
-
     //obtiene respuesta
-    $sbHtml = "<select name='$id' id='$id'>
-				<option value=''>- Seleccionar -</option>";
+    $sbHtml = "<select name='$id' id='$id' ";
+    if ($_POST['event'] != '' && $_POST['func'] != '') {
+        $sbHtml .= $_POST['event'] . "='" . $_POST['func'] . "' ";
+    }
+    if ($_POST['classs'] != '') {
+        $sbHtml .= " class = '" . $_POST['classs'] . "' ";
+    }
+    $sbHtml .= ">
+	<option value=''>- Seleccionar -</option>";
 
 
     foreach ($arrInfo as $row) {
@@ -67,7 +73,5 @@ function comboBox($objUtils_m) {
 
     return $sbHtml;
 }
-
-
 
 ?>

@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     //Restricciones
-    noCopyPaste([ '#txtSegment', '#txtObserv']);
+    /*noCopyPaste([ '#txtSegment', '#txtObserv']);
     alfNumPG(['#txtId, #txtResAdjudicacion']);
     alfNum(['#txtObject', '#txtSegment', '#txtObserv', '#txtSeccion']);
     alfNumPE(['#txtEje', '#txtEst', '#txtProg']);
@@ -18,104 +18,46 @@ $(document).ready(function () {
     var sqlTLiquid = "select id, cod, nombre from  t_liquid where estado_id = 1";
     var sqlFuncion = "select id, cod, nombre from  funcion where estado_id = 1";
     var sqlContratista = "select id, nombre, apellido1 from contratista where estado_id = 1";
-    
+    */
+    var sqlContract = "select id,id, depend_nom from v_contracto where estado_id !=0";
     //llenar combox
-    comboBox(sqlDepend, "cmbDepend", '', '#divDepend');
-    comboBox(sqlMSelecc, "cmbMSelecc", '', '#divMSelecc');
-    comboBox(sqlCausal, "cmbCausal", '', '#divCausal');
-    comboBox(sqlTContract, "cmbTContract", '', '#divTContract');
-    comboBox(sqlTGasto, "cmbTGasto", '', '#divGasto');
-    comboBox(sqlTRecurs, "cmbTRecurs", '', '#divTRecurs');
-    comboBox(sqlTLiquid, "cmbTLiquid", '', '#divTLiquid');
-    comboBox(sqlFuncion, "cmbFuncion", '', '#divFuncion');
-    comboBox(sqlContratista, "cmbContratista", '', '#divContratista');
-
-    $('#dtSuscripcion').datepicker({format: 'yyyy-mm-dd', autoclose: true});
-    $('#dtInicio').datepicker({format: 'yyyy-mm-dd', autoclose: true});
-    $('#dtTerminacion').datepicker({format: 'yyyy-mm-dd', autoclose: true});
-    $('#dtAdjudicacion').datepicker({format: 'yyyy-mm-dd', autoclose: true});
-    $('#dtActSecop').datepicker({format: 'yyyy-mm-dd', autoclose: true});
-    $('#dtPublicSecop').datepicker({format: 'yyyy-mm-dd', autoclose: true});
-    $('#dtLiquid').datepicker({format: 'yyyy-mm-dd', autoclose: true});
-
-
-    $('#txtPlazoEj').click(function () {
-
-        dtIni = $('#dtInicio').val();
-        dtFin = $('#dtTerminacion').val();
-
-        if (dtIni != '' && dtFin != '') {
-            if (dtIni > dtFin) {
-                alert('ERROR, FECHA DE TERMINACION DEBE SER MAYOR A LA INCIAL');
-                 $('#dtTerminacion').focus();
-            } else {
-                $('#txtPlazoEj').val(difDate(dtIni,dtFin));
-            }
-        } else {
-            alert('ERROR SE DEBE ESCRIBIR FECHA INCIAL Y DE TERMINACION');
-            if(dtIni!=''){$('#dtInicio').focus();}else{$('#dtTerminacion').focus();}
-        }
-
-
-    });
-
-
-
-
-
-    //validar formulario 
-    $("#btnIngresar").click(function () {
-
-        var sbId = $("#txtId").val();
-        var nuDepend = $("#cmbDepend").val();
-        var sbSeccion = $("#txtSeccion").val();
-        var nuMSelecc = $("#cmbMSelecc").val();
-        var nuCausal = $("#cmbCausal").val();
-        var nuTGasto = $("#cmbTGasto").val();
-        var dtSuscripcion = $("#dtSuscripcion").val();
-        var dtInicio = $("#dtInicio").val();
-        var dtTerminacion = $("#dtTerminacion").val();
-        var sbPlazo = $("#txtPlazoEj").val();
-        var sbObject = $("#txtObject").val();
-        var nuValor = $("#txtValorIni").val();
-        var nuPublicSecop = $("#cmbPublicSecop").val();
-        var dtPublicSecop = $("#dtPublicSecop").val();
-        var nuActSecop = $("#cmbActSecop").val();
-        var sbLinkSecop = $("#txtLinkSecop").val();
-        var nuFiducia = $("#cmbFiducia").val();
-        var nuAfecPresupt = $("#cmbAfecTaPresupt").val();
-        var nuFuncion = $("#cmbFuncion").val(); 
-        var nuContratista = $("#cmbContratista").val(); 
-         
-        var arrayInfo = {0: sbId + "|#txtId",
-            1: nuDepend + "|#cmbDepend",
-            2: sbSeccion + "|#txtSeccion",
-            3: nuMSelecc + "|#cmbMSelecc",
-            4: nuCausal + "|#cmbCausal",
-            5: nuTGasto + "|#cmbTGasto",
-            6: dtSuscripcion + "|#dtSuscripcion",
-            7: dtInicio + "|#dtInicio",
-            8: dtTerminacion + "|#dtTerminacion",
-            9: sbPlazo + "|#txtPlazoEj",
-            10: nuContratista + "|#cmbContratista",
-            11: nuValor + "|#txtValorIni",
-            12: sbObject + "|#txtObject"
-        }
-
-        var blValido = isEmptyFields(arrayInfo);
-        blValido = minChar(['#txtId, #txtResAdjudicacion'], 5);
-
-
-        //Validar Campos Vacios
-        if (blValido)
-        {
-            insert();
-        }
-
-    });
+    comboBox(sqlContract, "cmbContract", '', '#divContract', 'onchange','setContracto()','select-wrapper');
+    
+    $("#divContract").click(function(){  $("#cmbContract").chosen({
+            max_selected_options:30,
+            max_shown_results:30	
+    });});   
+    
+   $("#cmbContract").chosen();
+    
+      
+    //$('#dtLiquid').datepicker({format: 'yyyy-mm-dd', autoclose: true});
 
 });
 
+
+function setContracto(){
+    
+    var formData = {txtProcess:4, cmbContract:$("#cmbContract").val()};
+    var sbAction = "controller/contracto_c.php";
+    
+    $.ajax({
+        url: sbAction,
+        type: 'POST',
+        data: formData,
+        success: function (data) {
+            if (data) {
+                alert(data);
+                $("#infoContract").html('');
+                $("#infoContract").append(data);
+
+            } else {
+                alert("ERROR AL REGISTRAR ");
+            }
+        }
+    });
+    
+}
 
 function insert() {
 
@@ -136,4 +78,3 @@ function insert() {
         }
     });
 }
-;

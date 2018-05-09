@@ -48,10 +48,10 @@ function noCopyPaste(arr = []) {
 
 }
 
-function comboBox(x, y, z, div) {
+function comboBox(x, y, z, div, event='', func='', clas = '') {
 
 
-    var array = {proceso: 1, sql: x, id: y, valor: z, };
+    var array = {proceso: 1, sql: x, id: y, valor: z, event:event, func:func,classs: clas};
 
     $.ajax({
         url: "controller/utils_c.php",

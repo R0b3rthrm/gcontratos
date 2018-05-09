@@ -11,8 +11,16 @@
 
             <input id="txtProcess" name="txtProcess" value="2" hidden>
             <h1>PROCESOS DE CONTRACTOS</h1>
+            
+            
+            <div class="input-group input-group-sm">
 
-           
+                <span class="input-group-addon" >SELECCIONAR CONTRACTO :</span>
+                <div  name="divContract"  id="divContract"> </div>
+            </div>
+            
+            <div id="infoContract">
+            <div>
 
         </form>
     </center>

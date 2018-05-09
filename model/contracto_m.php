@@ -428,11 +428,17 @@ class contracto extends conexion {
         return $sql;
     }
 
-    public function getListId() {
+    public function getListId($table ="") {
         
         $arrInfo = array();
         conexion::conectar();
-        $sql = "select * from contracto where id = '" . $this->getSbId()."'";
+        $sql = "select * from ";
+        if($table !=""){
+            $sql.=$table;
+        }else{
+            $sql.=" contracto ";
+        }
+        $sql.= " where id = '" . $this->getSbId()."'";
         $result = conexion::query($sql);
 
         while ($row = mysqli_fetch_assoc($result)) {
