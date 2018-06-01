@@ -36,7 +36,7 @@
 
     </head>
 
-    <script src="js/principal/bootstrap.min.js.js"></script>	
+    <script src="js/principal/bootstrap.min.js"></script>	
 
 
     <?php

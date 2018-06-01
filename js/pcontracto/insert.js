@@ -38,9 +38,9 @@ $(document).ready(function () {
 
 function setContracto(){
     
-    var formData = {txtProcess:4, cmbContract:$("#cmbContract").val()};
-    var sbAction = "controller/contracto_c.php";
-    
+    var formData = {txtProcess:1, cmbContract:$("#cmbContract").val()};
+    var sbAction = $("#frmPContracto").attr("action");
+
     $.ajax({
         url: sbAction,
         type: 'POST',
