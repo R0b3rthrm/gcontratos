@@ -157,4 +157,55 @@ function daleteSymbol($string) {
     return $string;
 }
 
+    //////////Proceso 1 ==> Equivale al comboBox Sencillo ///////////////////
+function comboBox($objUtils_m,$select,$id, $class = '', $valor ='', $event='', $func = '') {
+
+    $arrInfo = $objUtils_m->getList($select,1);
+    //obtiene respuesta
+    $sbHtml = "<select name='$id' id='$id' ";
+    if ($event != '' && $func != '') {
+        $sbHtml .= $event . "='" . $func . "' ";
+    }
+    if ($class != '') {
+        $sbHtml .= " class = '" . $class . "' ";
+    }
+    $sbHtml .= ">
+	<option value=''>- Seleccionar -</option>";
+
+
+    foreach ($arrInfo as $row) {
+
+        $sbHtml .= "<option ";
+
+        if ($row[0] == $valor) {
+            $sbHtml .= "selected";
+        }
+
+        $sbHtml .= " value=$row[0]>";
+        $sbHtml .= $row[1];
+        if (isset($row[2])) {
+            $sbHtml .= " - " . $row[2];
+        }
+        if (isset($row[3])) {
+            $sbHtml .= " - " . $row[3];
+        }
+        if (isset($row[4])) {
+            $sbHtml .= " - " . $row[4];
+        }
+        if (isset($row[5])) {
+            $sbHtml .= " - " . $row[5];
+        }
+        if (isset($row[6])) {
+            $sbHtml .= " - " . $row[6];
+        }
+        $sbHtml .= "</option>";
+    }
+
+    $sbHtml .= '</select>';
+
+    return $sbHtml;
+}
+
+    
+
 ?>

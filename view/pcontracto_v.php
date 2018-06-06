@@ -19,10 +19,9 @@
             <div  name="divContract"  id="divContract"> </div>
         </div>
 
-        <div id="infoContract">
-        </div>
     </form>
-    
 
+     <div id="infoContract">
+     </div>
 
 </div>

@@ -1,10 +1,16 @@
 <?php
 
 require_once("../model/contracto_m.php");
+require_once("../model/tAvance_m.php");
+require_once("../model/acta_m.php");
+require_once("../model/novedad_m.php");
 require_once("../utils/utils.php");
 $resultInfo;
 $sbmsj = "";
-$objContract = new contracto;
+$objContract = new contracto();
+$objActa = new acta();
+$objNovedad = new novedad();
+    
 
 if (isset($_POST['txtIdC'])) {
     $resultInfo = array();
@@ -39,16 +45,17 @@ if (isset($_POST['txtIdC'])) {
             <div class="card-header" >
                 <h5 class="mb-0">
                     <span  class="text-mutedfont-weight-bold" data-toggle="collapse" data-target="#collapseOne" >
-                        Collapsible Group Item #1
+                        ACTAS
                     </span>
                 </h5>
             </div>
 
             <div id="collapseOne" class="collapse" >
                 <div class="card-body">
-                <div class="container2 ">
-                INFORMACION 1
-                </div>
+                <br/>
+                    <div class="container2">
+                        '.htmlActa().'
+                    </div>
                 </div>
             </div>
         </div>
@@ -56,13 +63,15 @@ if (isset($_POST['txtIdC'])) {
             <div class="card-header" id="headingTwo">
                 <h5 class="mb-0">
                     <span class="text-mutedfont-weight-bold" data-toggle="collapse" data-target="#collapseTwo">
-                        Collapsible Group Item #2
+                        NOVEDADES
                     </span>
                 </h5>
             </div>
             <div id="collapseTwo" class="collapse">
                 <div class="card-body">
-                   INFORMACION 2
+                  <div class="container2">
+                      INFORMACION 2
+                   </div>
                  </div>
             </div>
         </div>
@@ -76,8 +85,10 @@ if (isset($_POST['txtIdC'])) {
             </div>
             <div id="collapseThree" class="collapse" >
                 <div class="card-body">
-    INFORMACION 3
-</div>
+                    <div class="container2">
+                        INFORMACION 3
+                    </div">
+                </div>
             </div>
         </div>
     </div>';
@@ -88,4 +99,35 @@ if (isset($_POST['txtIdC'])) {
     }
 }
 echo $resultInfo;
+
+function htmlActa (){
+   
+    $objTAvance = new tAvance();
+    //function comboBox($objUtils_m,$select,$id, $class = '', $valor ='', $event='', $func = '') {
+
+    $sbAvancesComb = comboBox($objTAvance,'t.id,t.nombre','cmbTAvance');
+   
+    $html="  
+                <form action='controller/pcontracto_c.php' method='post'  id='frmActas' name = 'frmActas'>
+
+                    <div class='input-group input-group-sm'>
+                        <span class='input-group-addon'>T. AVANCE: </span>
+                        <div class='6u$ 12u$(xsmall)'>".$sbAvancesComb."</div> 
+
+                        <span class='input-group-addon'>FECHA:</span>
+                        <input type='text' name='dtFecha' id='dtFecha'  placeholder=' 0000-00-00 '/>            
+
+                        <span class='input-group-addon'>PORCENTAJE:</span>
+                        <input type='text' name='txtPorcentaj' id='txtPorcentaj' placeholder=' % '/>         
+
+                    </div>                
+
+
+                </form>
+            ";
+
+    
+    return $html;
+    
+}
 ?>
