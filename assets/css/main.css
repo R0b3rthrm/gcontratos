@@ -1,11 +1,6 @@
 @import url(font-awesome.min.css);
 @import "https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600|Oswald:700";
 
-/*
-	Faction by Pixelarity
-	pixelarity.com | hello@pixelarity.com
-	License: pixelarity.com/license
-*/
 
 /* Reset */
 
@@ -2160,7 +2155,7 @@
 	input[type="search"],
 	input[type="url"],
 	select {
-		height: 2.75em;
+		height: 1.90em;
 	}
 
 	textarea {
@@ -2775,13 +2770,13 @@
 		}
 
 		table td {
-			padding: 0.75em 0.75em;
+			padding: 0.2em 0.5em;
 		}
 
 		table th {
 			font-size: 0.9em;
 			font-weight: 600;
-			padding: 0 0.75em 0.75em 0.75em;
+			padding: 0 0.5em 0.5em 0.5em;
 			text-align: left;
 		}
 

@@ -1,10 +1,4 @@
 <!DOCTYPE HTML>
-<!--
-        Faction by Pixelarity
-        pixelarity.com | hello@pixelarity.com
-        License: pixelarity.com/license
--->
-
 <html>
     <?PHP require_once("core/configGeneral.php"); ?>
     <head>

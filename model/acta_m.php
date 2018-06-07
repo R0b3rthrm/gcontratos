@@ -5,14 +5,14 @@ require_once("../utils/SessionPhp.php");
 require_once("../utils/utils.php");
 
 class acta extends conexion {
-    
+
     private $nuId;
     private $sbContracto;
     private $nuTAvance;
     private $dtFecha;
     private $nuPorcentaje;
     private $nuEstado;
-    
+
     function getNuId() {
         return $this->nuId;
     }
@@ -61,17 +61,16 @@ class acta extends conexion {
         $this->nuEstado = $nuEstado;
     }
 
-                    
     public function save() {
-        $estadoId=1;
+        $estadoId = 1;
         $user = getSession('ID');
         $dtfecha = getFechaHoraActual();
-        
+
         $sql = "INSERT INTO acta  VALUES(0,"
                 . "'" . $this->getSbContracto() . "',"
-                .  $this->getNuTAvance(). ","
-                .  "'" . $this->getDtFecha(). "',"
-                .  $this->getNuPorcentaje(). ","
+                . $this->getNuTAvance() . ","
+                . "'" . $this->getDtFecha() . "',"
+                . $this->getNuPorcentaje() . ","
                 . "$estadoId,'$dtfecha','$dtfecha', $user)";
 
         conexion::conectar();
@@ -83,16 +82,16 @@ class acta extends conexion {
 
     public function update() {
 
-        $estadoId=1;
+        $estadoId = 1;
         $user = getSession('ID');
         $dtfecha = getFechaHoraActual();
-        
+
         $sql = "UPDATE acta  SET "
-                . "contracto_id='" . $this->getSbContracto(). "',"
+                . "contracto_id='" . $this->getSbContracto() . "',"
                 . "t_avance_id=" . $this->getNuTAvance() . ","
                 . "fecha='" . $this->getDtFecha() . "',"
                 . "porcentaje=" . $this->getNuPorcentaje() . ","
-                . "fec_mod='" . $dtfecha. "',"
+                . "fec_mod='" . $dtfecha . "',"
                 . "user_id=" . $user
                 . " where id =" . $this->getNuId();
 
@@ -120,11 +119,18 @@ class acta extends conexion {
         return $arrInfo;
     }
 
-    public function getList($select) {
+    public function getList($select, $where = '', $order = '') {
 
         $arrInfo = array();
         conexion::conectar();
         $sql = "SELECT " . $select . " FROM acta a INNER JOIN contracto c ON a.contracto_id = c.id  INNER JOIN t_avance ta ON a.t_avance_id = ta.id INNER JOIN estado e on a.estado_id = e.id";
+        if (!empty($where)) {
+            $sql .= " WHERE " . $where;
+        }
+        if (!empty($order)){
+            $sql .= " ORDER BY ".$order;
+        }
+
         $result = conexion::query($sql);
 
         while ($row = mysqli_fetch_assoc($result)) {
