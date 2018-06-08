@@ -27,6 +27,7 @@
         <script src="js/principal/datatables.min.js"></script>
         <script src="js/principal/moment.min.js"></script>
         <script src="js/principal/chosen.min.js"></script>
+        
 
     </head>
 

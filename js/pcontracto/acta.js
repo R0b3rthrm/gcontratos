@@ -4,19 +4,19 @@ $(document).ready(function () {
     isNumber(['#txtPorcentajActa']);
     maxChar(['#txtPorcentajActa'], 3);
     $('#dtFechaActa').datepicker({format: 'yyyy-mm-dd', autoclose: true});
-    
-     $("#tableListActa").DataTable({"language": {
-                        "lengthMenu": "Mostrar _MENU_ registros por pagina",
-                        "info": "Mostrando pagina _PAGE_ de _PAGES_",
-                        "infoEmpty": "No hay registros disponibles",
-                        "infoFiltered": "(filtrada de _MAX_ registros)",
-                        "loadingRecords": "Cargando...",
-                        "processing": "Procesando...",
-                        "search": "Buscar:",
-                        "zeroRecords": "No se encontraron registros coincidentes",
 
-     }});
-    
+    $("#tableListActa").DataTable({"language": {
+            "lengthMenu": "Mostrar _MENU_ registros por pagina",
+            "info": "Mostrando pagina _PAGE_ de _PAGES_",
+            "infoEmpty": "No hay registros disponibles",
+            "infoFiltered": "(filtrada de _MAX_ registros)",
+            "loadingRecords": "Cargando...",
+            "processing": "Procesando...",
+            "search": "Buscar:",
+            "zeroRecords": "No se encontraron registros coincidentes",
+
+        }});
+
     $("#btnIngresarActa").click(function () {
 
         var nuTAvance = $("#cmbTAvance").val();
@@ -29,7 +29,7 @@ $(document).ready(function () {
         }
 
         var blValido = isEmptyFields(arrayInfo);
-      
+
         //Validar Campos Vacios
         if (blValido)
         {
@@ -44,9 +44,9 @@ $(document).ready(function () {
 });
 
 
-function insertActa(){
-        
-    var formData = $("#frmActa").serialize(); 
+function insertActa() {
+
+    var formData = $("#frmActa").serialize();
     var sbAction = $("#frmActa").attr("action");
 
     $.ajax({
@@ -54,9 +54,12 @@ function insertActa(){
         type: 'POST',
         data: formData,
         success: function (data) {
-                 alert(data);
+            alert(data);
             if (data) {
-                //$("#frmActa").reset();
+                $("#btnIngresarActa").attr("value", "REGISTRAR")
+                //$("txtProcess").val('71');   
+                $("#frmActa")[0].reset();
+                $("#txtId").val('');
                 $("#tableActa").html('');
                 $("#tableActa").append(data);
 
@@ -65,6 +68,29 @@ function insertActa(){
             }
         }
     });
+}
+
+function updateActa($id) {
+
+    var formData = {txtProcess: 72, txtId: $id}
+    var sbAction = $("#frmActa").attr("action");
+
+    $.ajax({
+        url: sbAction,
+        type: 'POST',
+        data: formData,
+        success: function (data) {
+
+            var result = JSON.parse(data);
+            $("#txtId").val($id);
+            $("#cmbTAvance").val(result['t_avance_id']);
+            $("#dtFechaActa").val(result['fecha']);
+            $("#txtPorcentajActa").val(result['porcentaje']);
+
+
+        }
+    });
+
 }
 /*
  function setContracto(){
