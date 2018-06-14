@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="css/datepicker.css" />
         <link rel="stylesheet" href="css/bootstrap.min.css" />
         <link rel="stylesheet" href="css/chosen.min.css" />
+        <link rel="stylesheet" href="css/jquery-confirm.css" />
         <link rel="stylesheet" href="assets/css/main.css" />
         <link rel="stylesheet" href="style.css" />
         <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
@@ -27,8 +28,8 @@
         <script src="js/principal/datatables.min.js"></script>
         <script src="js/principal/moment.min.js"></script>
         <script src="js/principal/chosen.min.js"></script>
-        
-
+        <script src="js/principal/jquery-confirm.js"></script>
+                                  
     </head>
 
     <script src="js/principal/bootstrap.min.js"></script>	

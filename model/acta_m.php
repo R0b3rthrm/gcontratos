@@ -141,6 +141,14 @@ class acta extends conexion {
         conexion::desconectar();
         return $arrInfo;
     }
+    
+    public function delete (){
+        
+        conexion::conectar();
+        $sql="DELETE FROM acta WHERE id = ".$this->getNuId();
+        $result = conexion::query($sql);
+        return $result;
+    }
 
 }
 

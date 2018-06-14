@@ -94,7 +94,7 @@ if (isset($_POST['txtIdC'])) {
         } elseif ($nuProcess == 71) {
 
             $objActa = new acta();
-            $contracto =$_POST['txtContracto'];
+            $contracto = $_POST['txtContracto'];
             $objActa->setNuTAvance(trim($_POST['cmbTAvance']));
             $objActa->setSbContracto(trim($contracto));
             $objActa->setDtFecha(trim($_POST['dtFechaActa']));
@@ -106,7 +106,7 @@ if (isset($_POST['txtIdC'])) {
                 $objActa->setNuId(trim($_POST['txtId']));
                 $result = $objActa->update();
             }
-            
+
             if ($result) {
                 $resultInfo = getTableActa($contracto);
             } else {
@@ -118,6 +118,21 @@ if (isset($_POST['txtIdC'])) {
             $objActa->setNuId($_POST['txtId']);
             $resultInfo = $objActa->getListId();
             echo json_encode($resultInfo);
+            exit;
+        } elseif ($nuProcess == 73) {
+
+            $contracto = $_POST['txtContracto'];
+            $objActa = new acta();
+            $objActa->setNuId($_POST['txtId']);
+            $result = $objActa->delete();
+
+            if ($result) {
+                $resultInfo = getTableActa($contracto);
+            } else {
+                $resultInfo = false;
+            }
+
+            echo ($resultInfo);
             exit;
         }
     } catch (Exception $e) {
@@ -159,24 +174,24 @@ function htmlActa($contracto) {
                     <input type='reset' value='LIMPIAR' class='button small' />
                     
                 </form>
-                <div id='tableActa'>".getTableActa($contracto)."</div>
+                <div id='tableActa'>" . getTableActa($contracto) . "</div>
             ";
 
 
     return $html;
 }
 
-function getTableActa($contracto) {
+function getTableActa($contracto, $jsDataTable = 0) {
 
     $objActa = new acta();
 
-    $arrList = $objActa->getList("a.id as a_id, ta.id as ta_id,ta.nombre as ta_nom, a.fecha as a_fec,a.porcentaje as a_porc", 'a.contracto_id="'.$contracto.'"', 'a.id DESC');
+    $arrList = $objActa->getList("a.id as a_id, ta.id as ta_id,ta.nombre as ta_nom, a.fecha as a_fec,a.porcentaje as a_porc", 'a.contracto_id="' . $contracto . '"', 'a.id DESC');
 
     $tableInfo = "";
 
-    if(count($arrList)>0){
-        
-       $tableInfo = "  <table id='tableListActa' name='tableListActa' align='center'>
+    if (count($arrList) > 0) {
+
+        $tableInfo = "  <table id='tableListActa' name='tableListActa' align='center'>
                         <thead>
                             <tr>	
                                 <TH> <label>#</label></TH>
@@ -189,38 +204,34 @@ function getTableActa($contracto) {
 
                             </tr>             
                         </thead>
-                        <tbody id='tableActa'>"; 
-               
+                        <tbody id='tableActa'>";
+
         $i = 1;
         foreach ($arrList as $value) {
-            $tableInfo .= '<tr><td>' . $i . '</td>'
-                    . '<td>' . $value['ta_id'] . '</td>'
-                    . '<td>' . $value['ta_nom'] . '</td>'
-                    . '<td>' . $value['a_fec'] . '</td>'
-                    . '<td>' . $value['a_porc'] . '%</td>'
-                    . '<td><a href="javascript:updateActa(' . $value['a_id'] . ')" > <IMG id="imgList" src="img/editar.png"/></a></td>'
-                    . '<td><a href="javascript:deleteActa(' . $value['a_id'] . ')"  > <IMG id="imgList" src="img/editar.png"/></a></td></tr>';
+            $tableInfo .= "<tr><td>" . $i . "</td>"
+                    . "<td>" . $value["ta_id"] . "</td>"
+                    . "<td>" . $value["ta_nom"] . "</td>"
+                    . "<td>" . $value["a_fec"] . "</td>"
+                    . "<td>" . $value["a_porc"] . "%</td>"
+                    . "<td><a href='javascript:updateActa( " . $value["a_id"] . ")' > <IMG id='imgList' src='img/editar.png'/></a></td>"
+                    . "<td><a href='javascript:deleteActa(" . $value["a_id"] . "," . '"' . $contracto . '"' . ")'  > <IMG id='imgList' src='img/editar.png'/></a></td></tr>";
             $i++;
         }
-        $tableInfo .= '
+
+        if ($jsDataTable) {
+            $tableInfo .= '
                         </tbody>
                     </table>	
               <script>
-              
                 $(document).ready(function () {
-          
-                    $("#tableListActa").DataTable({"language": {
-                        "lengthMenu": "Mostrar _MENU_ registros por pagina",
-                        "info": "Mostrando pagina _PAGE_ de _PAGES_",
-                        "infoEmpty": "No hay registros disponibles",
-                        "infoFiltered": "(filtrada de _MAX_ registros)",
-                        "loadingRecords": "Cargando...",
-                        "processing": "Procesando...",
-                        "search": "Buscar:",
-                        "zeroRecords": "No se encontraron registros coincidentes",
-                    }});
+                    tableActa.ajax.reload();                   
                 });
-              </script>';     
+              </script>';
+        } else {
+            $tableInfo .= '
+                        </tbody>
+                    </table>';
+        }
     }
 
     return $tableInfo;

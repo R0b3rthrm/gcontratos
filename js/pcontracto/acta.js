@@ -5,7 +5,7 @@ $(document).ready(function () {
     maxChar(['#txtPorcentajActa'], 3);
     $('#dtFechaActa').datepicker({format: 'yyyy-mm-dd', autoclose: true});
 
-    $("#tableListActa").DataTable({"language": {
+    var tableActa =$("#tableListActa").DataTable({"language": {
             "lengthMenu": "Mostrar _MENU_ registros por pagina",
             "info": "Mostrando pagina _PAGE_ de _PAGES_",
             "infoEmpty": "No hay registros disponibles",
@@ -70,9 +70,9 @@ function insertActa() {
     });
 }
 
-function updateActa($id) {
+function updateActa(id) {
 
-    var formData = {txtProcess: 72, txtId: $id}
+    var formData = {txtProcess: 72, txtId: id}
     var sbAction = $("#frmActa").attr("action");
 
     $.ajax({
@@ -82,7 +82,7 @@ function updateActa($id) {
         success: function (data) {
 
             var result = JSON.parse(data);
-            $("#txtId").val($id);
+            $("#txtId").val(id);
             $("#cmbTAvance").val(result['t_avance_id']);
             $("#dtFechaActa").val(result['fecha']);
             $("#txtPorcentajActa").val(result['porcentaje']);
@@ -91,6 +91,49 @@ function updateActa($id) {
         }
     });
 
+}
+
+function deleteActa (id,contracto){
+    
+    
+    $.confirm({
+        title: 'CONFIRMACION!',
+        content: 'Desea Eliminar el Acta?',
+        buttons: {
+            SI: function () {
+            
+                var formData = {txtProcess: 73, txtId: id, txtContracto: contracto}
+                var sbAction = $("#frmActa").attr("action");
+                        
+                $.ajax({
+                    url: sbAction,
+                    type: 'POST',
+                    data: formData,
+                    success: function (data) {
+                        
+                        alert(data);
+                        
+                        if(data){
+                             $.alert('Se Elminino Correctamente el Acta');
+                             $("#tableActa").html('');
+                             $("#tableActa").append(data);
+                             
+                        }else{
+                             $.alert('Error, No se pudo Eliminar');
+                        }
+                        
+
+                    }
+                });
+                
+            },
+            NO: function () {
+               
+            }
+            
+        }
+    });
+    
 }
 /*
  function setContracto(){
