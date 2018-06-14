@@ -22,7 +22,7 @@ function isEmptyFields(array) {
 
         arrInfo = array[x].split("|");
         if (arrInfo[0] == "") {
-            alert("ESTE CAMPO ES OBLIGATORIO");
+            msjModal("Este Campo Es Obligatorio",'AT',arrInfo[1]);
             $(arrInfo[1]).focus();
             blValidate = false;
             break;
@@ -193,6 +193,21 @@ function maxChar(arr = [], n = 999999999) {
 }
 }
 
+
+function msjModal(_text,_title = '',_focus=''){
+    
+    if(_title=='OK'){_title='¡EXITOSO!';_type='blue';
+    }else if(_title=='ER'){_title='¡ERROR!';_type='red';
+    }else if(_title=='AT'){_title='¡ATENCIÓN!';_type='orange';
+    }else {_title='';_type=''; }
+    
+    if(_focus!=''){
+        var options={title: _title,content: _text, type:_type,  buttons:{OK: function () {$(_focus).focus();}}}
+    }else{
+        var options={title: _title,content: _text, type:_type}
+    }
+     $.alert(options);
+}
 
 function validFiletype(info) {
 

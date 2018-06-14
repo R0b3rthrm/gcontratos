@@ -24,6 +24,7 @@
 [if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
         <script src="assets/js/main.js"></script>
         <script type="text/javascript" src="js/principal/utils.js"></script>
+    <script src="js/principal/bootstrap.min.js"></script>	
         <script src="js/principal/datepicker.js"></script>
         <script src="js/principal/datatables.min.js"></script>
         <script src="js/principal/moment.min.js"></script>
@@ -32,7 +33,6 @@
                                   
     </head>
 
-    <script src="js/principal/bootstrap.min.js"></script>	
 
 
     <?php

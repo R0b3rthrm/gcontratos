@@ -34,7 +34,7 @@ $(document).ready(function () {
         if (blValido)
         {
             if ($('#txtPorcentajActa').val() > 100) {
-                alert("ERROR, El Porcentaje debe se menor a 100");
+                msjModal('El Porcentaje debe se menor a 1000','AT');
             } else {
                 insertActa();
             }
@@ -97,8 +97,9 @@ function deleteActa (id,contracto){
     
     
     $.confirm({
-        title: 'CONFIRMACION!',
+        title: '¡CONFIRMACION!',
         content: 'Desea Eliminar el Acta?',
+        type:   'orange',  
         buttons: {
             SI: function () {
             
@@ -114,12 +115,12 @@ function deleteActa (id,contracto){
                         alert(data);
                         
                         if(data){
-                             $.alert('Se Elminino Correctamente el Acta');
+                             msjModal('Se Elminino Correctamente el Acta','OK');
                              $("#tableActa").html('');
                              $("#tableActa").append(data);
                              
                         }else{
-                             $.alert('Error, No se pudo Eliminar');
+                             msjModal('No se pudo Eliminar','ER');
                         }
                         
 

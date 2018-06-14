@@ -92,7 +92,8 @@ if (isset($_POST['txtIdC'])) {
                 </div>
             </div>';
         } elseif ($nuProcess == 71) {
-
+            
+            $jsTable=0;
             $objActa = new acta();
             $contracto = $_POST['txtContracto'];
             $objActa->setNuTAvance(trim($_POST['cmbTAvance']));
@@ -105,6 +106,7 @@ if (isset($_POST['txtIdC'])) {
             } else {
                 $objActa->setNuId(trim($_POST['txtId']));
                 $result = $objActa->update();
+                $jsTable=1;
             }
 
             if ($result) {
@@ -145,7 +147,7 @@ echo $resultInfo;
 function htmlActa($contracto) {
 
     $objTAvance = new tAvance();
-    $tableInfo = getTableActa($contracto);
+   
     //function comboBox($objUtils_m,$select,$id, $class = '', $valor ='', $event='', $func = '') {
 
     $sbAvancesComb = comboBox($objTAvance, 't.id,t.nombre', 'cmbTAvance');
@@ -181,7 +183,7 @@ function htmlActa($contracto) {
     return $html;
 }
 
-function getTableActa($contracto, $jsDataTable = 0) {
+function getTableActa($contracto) {
 
     $objActa = new acta();
 
@@ -218,20 +220,15 @@ function getTableActa($contracto, $jsDataTable = 0) {
             $i++;
         }
 
-        if ($jsDataTable) {
             $tableInfo .= '
                         </tbody>
                     </table>	
               <script>
                 $(document).ready(function () {
-                    tableActa.ajax.reload();                   
+                    $("#tableListActa").DataTable();
                 });
               </script>';
-        } else {
-            $tableInfo .= '
-                        </tbody>
-                    </table>';
-        }
+       
     }
 
     return $tableInfo;
