@@ -1,11 +1,11 @@
 $(document).ready(function () {
 
-    alert("entreeeeeee actas");
-    isNumber(['#txtPorcentajActa']);
-    maxChar(['#txtPorcentajActa'], 3);
-    $('#dtFechaActa').datepicker({format: 'yyyy-mm-dd', autoclose: true});
+   
+    isNumber(['#txtValor','#txtPlazo']);
+    maxChar(['#txtPlazo'], 4);
+    $('#dtFecha').datepicker({format: 'yyyy-mm-dd', autoclose: true});
 
-    var tableActa =$("#tableListActa").DataTable({"language": {
+    $("#tableListNovedad").DataTable({"language": {
             "lengthMenu": "Mostrar _MENU_ registros por pagina",
             "info": "Mostrando pagina _PAGE_ de _PAGES_",
             "infoEmpty": "No hay registros disponibles",
@@ -17,15 +17,16 @@ $(document).ready(function () {
 
         }});
 
-    $("#btnIngresarActa").click(function () {
+    $("#btnIngresar").click(function () {
 
-        var nuTAvance = $("#cmbTAvance").val();
-        var dtFecha = $("#dtFechaActa").val();
-        var nuPorcentaje = $("#txtPorcentajActa").val();
-
-        var arrayInfo = {0: nuTAvance + "|#cmbTAvance",
-            1: dtFecha + "|#dtFechaActa",
-            2: nuPorcentaje + "|#txtPorcentajActa"
+        var nuTNovedad = $("#cmbTNovedad").val();
+        var nuValor = $("#txtValor").val();
+        var nuPlazo = $("#txtPlazo").val();
+        var dtFecha = $("#dtFecha").val();
+        var arrayInfo = {0: nuTNovedad + "|#cmbTNovedad",
+            1: nuValor + "|#txtValor",
+            2: nuPlazo + "|#txtPlazo",
+            3: dtFecha + "|#dtFecha"
         }
 
         var blValido = isEmptyFields(arrayInfo);
@@ -33,21 +34,17 @@ $(document).ready(function () {
         //Validar Campos Vacios
         if (blValido)
         {
-            if ($('#txtPorcentajActa').val() > 100) {
-                msjModal('El Porcentaje debe se menor a 1000','AT');
-            } else {
-                insertActa();
-            }
+            insertNovedad();            
         }
     });
 
 });
 
 
-function insertActa() {
+function insertNovedad() {
 
-    var formData = $("#frmActa").serialize();
-    var sbAction = $("#frmActa").attr("action");
+    var formData = $("#frmNovedad").serialize();
+    var sbAction = $("#frmNovedad").attr("action");
 
     $.ajax({
         url: sbAction,
@@ -56,12 +53,12 @@ function insertActa() {
         success: function (data) {
            
             if (data) {
-                $("#btnIngresarActa").attr("value", "REGISTRAR")
+                $("#btnIngresar").attr("value", "REGISTRAR")
                 //$("txtProcess").val('71');   
-                $("#frmActa")[0].reset();
+                $("#frmNovedad")[0].reset();
                 $("#txtId").val('');
-                $("#tableActa").html('');
-                $("#tableActa").append(data);
+                $("#tableNovedad").html('');
+                $("#tableNovedad").append(data);
 
             } else {
                 alert("ERROR AL REGISTRAR ");
@@ -70,41 +67,37 @@ function insertActa() {
     });
 }
 
-function updateActa(id) {
+function updateNovedad(id) {
 
-    var formData = {txtProcess: 72, txtId: id}
-    var sbAction = $("#frmActa").attr("action");
+    var formData = {txtProcess: 82, txtId: id}
+    var sbAction = $("#frmNovedad").attr("action");
 
     $.ajax({
         url: sbAction,
         type: 'POST',
         data: formData,
         success: function (data) {
-
             var result = JSON.parse(data);
             $("#txtId").val(id);
-            $("#cmbTAvance").val(result['t_avance_id']);
-            $("#dtFechaActa").val(result['fecha']);
-            $("#txtPorcentajActa").val(result['porcentaje']);
-
-
+            $("#cmbTNovedad").val(result['t_novedad_id']);
+            $("#txtValor").val(result['valor']);
+            $("#txtPlazo").val(result['plazo']);
+            $("#dtFecha").val(result['fecha']);
         }
     });
 
 }
 
-function deleteActa (id,contracto){
-    
-    
+function deleteActa (id,contracto){    
     $.confirm({
         title: '¡CONFIRMACION!',
-        content: 'Desea Eliminar el Acta?',
+        content: 'Desea Eliminar la Novedad?',
         type:   'orange',  
         buttons: {
             SI: function () {
             
-                var formData = {txtProcess: 73, txtId: id, txtContracto: contracto}
-                var sbAction = $("#frmActa").attr("action");
+                var formData = {txtProcess: 83, txtId: id, txtContracto: contracto}
+                var sbAction = $("#frmNovedad").attr("action");
                         
                 $.ajax({
                     url: sbAction,
@@ -115,7 +108,7 @@ function deleteActa (id,contracto){
                         alert(data);
                         
                         if(data){
-                             msjModal('Se Elminino Correctamente el Acta','OK');
+                             msjModal('Se Elminino Correctamente la Novedad','OK');
                              $("#tableActa").html('');
                              $("#tableActa").append(data);
                              

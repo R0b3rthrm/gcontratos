@@ -5,7 +5,7 @@ require_once("../utils/SessionPhp.php");
 require_once("../utils/utils.php");
 
 class tNoved extends conexion {
-    
+
     private $nuId;
     private $sbCod;
     private $sbNombre;
@@ -43,7 +43,6 @@ class tNoved extends conexion {
         $this->nuEstado = $nuEstado;
     }
 
-            
     public function save() {
 
         $sql = "INSERT INTO t_noved  VALUES(0,"
@@ -61,7 +60,7 @@ class tNoved extends conexion {
     public function update() {
 
         $sql = "UPDATE t_noved  SET "
-                . "cod='" . $this->getSbCod(). "',"
+                . "cod='" . $this->getSbCod() . "',"
                 . "nombre='" . $this->getSbNombre() . "',"
                 . "estado_id=" . $this->getNuEstado()
                 . " where id =" . $this->getNuId();
@@ -90,15 +89,20 @@ class tNoved extends conexion {
         return $arrInfo;
     }
 
-    public function getList($select) {
+    public function getList($select, $tipoSelect = '') {
 
         $arrInfo = array();
         conexion::conectar();
         $sql = "select " . $select . " from t_noved t inner join estado e on t.estado_id = e.id";
         $result = conexion::query($sql);
-
-        while ($row = mysqli_fetch_assoc($result)) {
-            $arrInfo[] = $row;
+        if (empty($tipoSelect)) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                $arrInfo[] = $row;
+            }
+        } else {
+            while ($row = mysqli_fetch_array($result)) {
+                $arrInfo[] = $row;
+            }
         }
 
         mysqli_free_result($result);

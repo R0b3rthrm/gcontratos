@@ -131,11 +131,19 @@ class novedad extends conexion {
         return $arrInfo;
     }
 
-    public function getList($select) {
+    public function getList($select, $where = '', $order = '') {
 
         $arrInfo = array();
         conexion::conectar();
-        $sql = "SELECT " . $select . " FROM novead n INNER JOIN contracto c ON n.contracto_id = c.id  INNER JOIN t_noved tn ON n.t_noved_id = tn.id INNER JOIN estado e on n.estado_id = e.id";
+        $sql = "SELECT " . $select . " FROM novedad n INNER JOIN contracto c ON n.contracto_id = c.id  INNER JOIN t_noved tn ON n.t_noved_id = tn.id INNER JOIN estado e on n.estado_id = e.id";
+         if (!empty($where)) {
+            $sql .= " WHERE " . $where;
+        }
+        if (!empty($order)){
+            $sql .= " ORDER BY ".$order;
+        }
+
+        
         $result = conexion::query($sql);
 
         while ($row = mysqli_fetch_assoc($result)) {
@@ -145,6 +153,14 @@ class novedad extends conexion {
         mysqli_free_result($result);
         conexion::desconectar();
         return $arrInfo;
+    }
+    
+     public function delete (){
+        
+        conexion::conectar();
+        $sql="DELETE FROM novedad WHERE id = ".$this->getNuId();
+        $result = conexion::query($sql);
+        return $result;
     }
 
 }

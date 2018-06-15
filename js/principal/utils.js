@@ -211,11 +211,7 @@ function msjModal(_text,_title = '',_focus=''){
 
 function validFiletype(info) {
 
-
-
     var blFileType = false;
-
-
 
     //obtenemos un array con los datos del archivo
 
