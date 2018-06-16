@@ -99,13 +99,13 @@ if (isset($_POST['txtIdC'])) {
             $contracto = $_POST['txtContracto'];
             $objActa->setNuTAvance(trim($_POST['cmbTAvance']));
             $objActa->setSbContracto(trim($contracto));
-            $objActa->setDtFecha(trim($_POST['dtFechaActa']));
+            $objActa->setDtFecha(trim($_POST['dtFecAct']));
             $objActa->setNuPorcentaje(trim($_POST['txtPorcentajActa']));
 
-            if (empty($_POST['txtId'])) {
+            if (empty($_POST['txtIdAct'])) {
                 $result = $objActa->save();
             } else {
-                $objActa->setNuId(trim($_POST['txtId']));
+                $objActa->setNuId(trim($_POST['txtIdAct']));
                 $result = $objActa->update();
             }
 
@@ -117,7 +117,7 @@ if (isset($_POST['txtIdC'])) {
         } elseif ($nuProcess == 72) {
 
             $objActa = new acta();
-            $objActa->setNuId($_POST['txtId']);
+            $objActa->setNuId($_POST['txtIdAct']);
             $resultInfo = $objActa->getListId();
             echo json_encode($resultInfo);
             exit;
@@ -125,7 +125,7 @@ if (isset($_POST['txtIdC'])) {
 
             $contracto = $_POST['txtContracto'];
             $objActa = new acta();
-            $objActa->setNuId($_POST['txtId']);
+            $objActa->setNuId($_POST['txtIdAct']);
             $result = $objActa->delete();
 
             if ($result) {
@@ -144,12 +144,12 @@ if (isset($_POST['txtIdC'])) {
             $objNovedad->setSbContracto(trim($contracto));
             $objNovedad->setNuValor(trim($_POST['txtValor']));
             $objNovedad->setNuPlazo(trim($_POST['txtPlazo']));
-            $objNovedad->setDtFecha(trim($_POST['dtFecha']));
+            $objNovedad->setDtFecha(trim($_POST['dtFecNov']));
 
-            if (empty($_POST['txtId'])) {
-                $result = $objActa->save();
+            if (empty($_POST['txtIdNov'])) {
+                $result = $objNovedad->save();
             } else {
-                $objNovedad->setNuId(trim($_POST['txtId']));
+                $objNovedad->setNuId(trim($_POST['txtIdNov']));
                 $result = $objNovedad->update();
             }
 
@@ -161,7 +161,7 @@ if (isset($_POST['txtIdC'])) {
         } elseif ($nuProcess == 82) {
 
             $objNovedad = new novedad();
-            $objNovedad->setNuId($_POST['txtId']);
+            $objNovedad->setNuId($_POST['txtIdNov']);
             $resultInfo = $objNovedad->getListId();
             echo json_encode($resultInfo);
             exit;
@@ -170,7 +170,7 @@ if (isset($_POST['txtIdC'])) {
 
             $contracto = $_POST['txtContracto'];
             $objNovedad = new novedad();
-            $objNovedad->setNuId($_POST['txtId']);
+            $objNovedad->setNuId($_POST['txtIdNov']);
             $result = $objNovedad->delete();
 
             if ($result) {
@@ -203,13 +203,15 @@ function htmlActa($contracto) {
                     
                     <input id='txtProcess' name='txtProcess' value='71' hidden>
                     <input id='txtContracto' name='txtContracto' value='" . $contracto . "' hidden>
-                    <input id='txtId' name='txtId' value='' hidden>
+                    <input id='txtIdAct' name='txtIdAct' value='' hidden>
+                    
                     <div class='input-group input-group-sm'>
+                    
                         <span class='input-group-addon'>T. AVANCE: </span>
                         <div class='6u$ 12u$(xsmall)'>" . $sbAvancesComb . "</div> 
 
                         <span class='input-group-addon'>FECHA:</span>
-                        <input type='text' name='dtFechaActa' id='dtFechaActa'  placeholder=' 0000-00-00 '/>            
+                        <input type='text' name='dtFecAct' id='dtFecAct'  placeholder=' 0000-00-00 '/>            
 
                         <span class='input-group-addon'>PORCENTAJE:</span>
                         <input type='text' name='txtPorcentajActa' id='txtPorcentajActa' placeholder=' % '/>         
@@ -240,9 +242,11 @@ function htmlNovedad($contracto) {
                 <form action='controller/pcontracto_c.php' method='post'  id='frmNovedad' name = 'frmNovedad'>
                     
                     <input id='txtProcess' name='txtProcess' value='81' hidden>
-                    <input id='txtContracto' name='txtContracto' value='" . $contracto . "' hidden>
-                    <input id='txtId' name='txtId' value='' hidden>
+                    <input id='txtContracto' name='txtContracto' value='4" . $contracto . "' hidden>
+                    <input id='txtIdNov' name='txtIdNov' value='' hidden
+                    
                     <div class='input-group input-group-sm'>
+                    
                         <span class='input-group-addon'>T. NOVEDAD: </span>
                         <div class='6u$ 12u$(xsmall)'>" . $sbnNovedComb . "</div> 
 
@@ -253,8 +257,7 @@ function htmlNovedad($contracto) {
                         <input type='text' name='txtPlazo' id='txtPlazo'  placeholder=' '/>            
 
                         <span class='input-group-addon'>FECHA:</span>
-                        <input type='text' name='dtFecha' id='dtFecha'  placeholder=' 0000-00-00 '/>            
-    
+                        <input type='text' name='dtFecNov' id='dtFecNov'  placeholder=' 0000-00-00 '/>         
 
                     </div>                
                     <br/>
@@ -274,7 +277,7 @@ function getTableActa($contracto) {
 
     $objActa = new acta();
 
-    $arrList = $objActa->getList("a.id as a_id, ta.id as ta_id,ta.nombre as ta_nom, a.fecha as a_fec,a.porcentaje as a_porc", 'a.contracto_id="' . $contracto . '"', 'a.id DESC');
+    $arrList = $objActa->getList("a.id as a_id, ta.cod as ta_cod,ta.nombre as ta_nom, a.fecha as a_fec,a.porcentaje as a_porc", 'a.contracto_id="' . $contracto . '"', 'a.id DESC');
 
     $tableInfo = "";
 
@@ -298,7 +301,7 @@ function getTableActa($contracto) {
         $i = 1;
         foreach ($arrList as $value) {
             $tableInfo .= "<tr><td>" . $i . "</td>"
-                    . "<td>" . $value["ta_id"] . "</td>"
+                    . "<td>" . $value["ta_cod"] . "</td>"
                     . "<td>" . $value["ta_nom"] . "</td>"
                     . "<td>" . $value["a_fec"] . "</td>"
                     . "<td>" . $value["a_porc"] . "%</td>"
@@ -325,7 +328,7 @@ function getTableNovedad($contracto) {
 
     $objNovedad = new novedad();
 
-    $arrList = $objNovedad->getList("n.id as n_id, tn.id as tn_id, tn.nombre as tn_nom, n.valor as n_val, n.plazo as n_pla, n.fecha as n_fec ", 'n.contracto_id="' . $contracto . '"', 'n.id DESC');
+    $arrList = $objNovedad->getList("n.id as n_id, tn.cod as tn_cod, tn.nombre as tn_nom, n.valor as n_val, n.plazo as n_pla, n.fecha as n_fec ", 'n.contracto_id="' . $contracto . '"', 'n.id DESC');
 
     $tableInfo = "";
 
@@ -350,13 +353,13 @@ function getTableNovedad($contracto) {
         $i = 1;
         foreach ($arrList as $value) {
             $tableInfo .= "<tr><td>" . $i . "</td>"
-                    . "<td>" . $value["tn_id"] . "</td>"
+                    . "<td>" . $value["tn_cod"] . "</td>"
                     . "<td>" . $value["tn_nom"] . "</td>"
                     . "<td>" . $value["n_val"] . "</td>"
                     . "<td>" . $value["n_pla"] . "</td>"
                     . "<td>" . $value["n_fec"] . "</td>"
-                    . "<td><a href='javascript:updateNovedad( " . $value["a_id"] . ")' > <IMG id='imgList' src='img/editar.png'/></a></td>"
-                    . "<td><a href='javascript:deleteNovedad(" . $value["a_id"] . "," . '"' . $contracto . '"' . ")'  > <IMG id='imgList' src='img/eliminar.png'/></a></td></tr>";
+                    . "<td><a href='javascript:updateNovedad( " . $value["n_id"] . ")' > <IMG id='imgList' src='img/editar.png'/></a></td>"
+                    . "<td><a href='javascript:deleteNovedad(" . $value["n_id"] . "," . '"' . $contracto . '"' . ")'  > <IMG id='imgList' src='img/eliminar.png'/></a></td></tr>";
             $i++;
         }
 

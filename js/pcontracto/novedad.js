@@ -3,7 +3,7 @@ $(document).ready(function () {
    
     isNumber(['#txtValor','#txtPlazo']);
     maxChar(['#txtPlazo'], 4);
-    $('#dtFecha').datepicker({format: 'yyyy-mm-dd', autoclose: true});
+    $('#dtFecNov').datepicker({format: 'yyyy-mm-dd', autoclose: true});
 
     $("#tableListNovedad").DataTable({"language": {
             "lengthMenu": "Mostrar _MENU_ registros por pagina",
@@ -22,7 +22,7 @@ $(document).ready(function () {
         var nuTNovedad = $("#cmbTNovedad").val();
         var nuValor = $("#txtValor").val();
         var nuPlazo = $("#txtPlazo").val();
-        var dtFecha = $("#dtFecha").val();
+        var dtFecha = $("#dtFecNov").val();
         var arrayInfo = {0: nuTNovedad + "|#cmbTNovedad",
             1: nuValor + "|#txtValor",
             2: nuPlazo + "|#txtPlazo",
@@ -56,7 +56,7 @@ function insertNovedad() {
                 $("#btnIngresar").attr("value", "REGISTRAR")
                 //$("txtProcess").val('71');   
                 $("#frmNovedad")[0].reset();
-                $("#txtId").val('');
+                $("#txtIdNov").val('');
                 $("#tableNovedad").html('');
                 $("#tableNovedad").append(data);
 
@@ -69,7 +69,7 @@ function insertNovedad() {
 
 function updateNovedad(id) {
 
-    var formData = {txtProcess: 82, txtId: id}
+    var formData = {txtProcess: 82, txtIdNov: id}
     var sbAction = $("#frmNovedad").attr("action");
 
     $.ajax({
@@ -78,17 +78,17 @@ function updateNovedad(id) {
         data: formData,
         success: function (data) {
             var result = JSON.parse(data);
-            $("#txtId").val(id);
-            $("#cmbTNovedad").val(result['t_novedad_id']);
+            $("#txtIdNov").val(id);
+            $("#cmbTNovedad").val(result['t_noved_id']);
             $("#txtValor").val(result['valor']);
             $("#txtPlazo").val(result['plazo']);
-            $("#dtFecha").val(result['fecha']);
+            $("#dtFecNov").val(result['fecha']);
         }
     });
 
 }
 
-function deleteActa (id,contracto){    
+function deleteNovedad (id,contracto){    
     $.confirm({
         title: '¡CONFIRMACION!',
         content: 'Desea Eliminar la Novedad?',
@@ -96,7 +96,7 @@ function deleteActa (id,contracto){
         buttons: {
             SI: function () {
             
-                var formData = {txtProcess: 83, txtId: id, txtContracto: contracto}
+                var formData = {txtProcess: 83, txtIdNov: id, txtContracto: contracto}
                 var sbAction = $("#frmNovedad").attr("action");
                         
                 $.ajax({
@@ -109,8 +109,8 @@ function deleteActa (id,contracto){
                         
                         if(data){
                              msjModal('Se Elminino Correctamente la Novedad','OK');
-                             $("#tableActa").html('');
-                             $("#tableActa").append(data);
+                             $("#tableNovedad").html('');
+                             $("#tableNovedad").append(data);
                              
                         }else{
                              msjModal('No se pudo Eliminar','ER');
