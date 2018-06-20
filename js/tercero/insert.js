@@ -1,5 +1,37 @@
 $(document).ready(function () {
 
+    
+    $("#cmbProcess").change(function (){
+        
+        var cmbProcess =$("#cmbProcess").val();
+        
+        if(cmbProcess == ""){
+            msjModal("Se debe Ingresar Tipo de Terecero","AT");
+            
+        }else{
+            
+            var dataForm = {txtProcess:cmbProcess};
+            var action = "controller/tercero_c.php"
+            
+            $.ajax({
+                url: action,
+                type: 'POST',
+                data: dataForm,
+                success: function (data){
+                    
+                    $("#divFrmTercero").html("");
+                    $("#divFrmTercero").append(data);
+                }
+                        
+                
+            });
+        }
+        
+    });
+    
+ });    
+ 
+/*
     var sqlEstado = "select id, nombre from  estado  ";
     var sqlTDoc = "select id, cod, nombre from t_document where estado_id = 1";
     var sqlClasific = "select id, cod, nombre from t_clasific where estado_id = 1";
@@ -95,3 +127,4 @@ function insert() {
     });
 }
 ;
+*/

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 21-03-2018 a las 22:33:14
+-- Tiempo de generación: 20-06-2018 a las 00:07:40
 -- Versión del servidor: 5.7.19
 -- Versión de PHP: 5.6.31
 
@@ -25,6 +25,42 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `acta`
+--
+
+DROP TABLE IF EXISTS `acta`;
+CREATE TABLE IF NOT EXISTS `acta` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `contracto_id` varchar(50) DEFAULT NULL,
+  `t_avance_id` bigint(20) DEFAULT NULL,
+  `fecha` date DEFAULT NULL,
+  `porcentaje` int(3) DEFAULT NULL,
+  `estado_id` int(2) NOT NULL,
+  `fec_reg` timestamp NULL DEFAULT NULL,
+  `fec_mod` timestamp NULL DEFAULT NULL,
+  `user_id` bigint(15) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=44 DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `acta`
+--
+
+INSERT INTO `acta` (`id`, `contracto_id`, `t_avance_id`, `fecha`, `porcentaje`, `estado_id`, `fec_reg`, `fec_mod`, `user_id`) VALUES
+(31, '150000', 2, '2018-06-15', 12, 1, '2018-06-14 21:08:06', '2018-06-14 21:08:06', 1144131603),
+(34, 'CONTRATO', 2, '2018-06-22', 88, 1, '2018-06-14 21:39:25', '2018-06-14 21:39:25', 1144131603),
+(43, 'no100', 1, '2018-06-15', 10, 1, '2018-06-16 15:47:58', '2018-06-16 15:47:58', 1144131603),
+(38, 'CONTRATO', 2, '2018-06-08', 77, 1, '2018-06-14 21:56:21', '2018-06-14 21:56:21', 1144131603),
+(33, 'CONTRATO', 1, '2018-06-22', 12, 1, '2018-06-14 21:39:17', '2018-06-14 21:39:31', 1144131603),
+(13, '150000', 2, '2018-06-07', 100, 1, '2018-06-07 21:59:56', '2018-06-07 21:59:56', 1144131603),
+(14, '150000', 2, '2018-06-14', 70, 1, '2018-06-07 22:00:05', '2018-06-14 21:07:44', 1144131603),
+(15, '150000', 2, '2018-06-08', 98, 1, '2018-06-07 22:00:15', '2018-06-08 15:24:50', 1144131603),
+(32, 'no100', 1, '2018-06-16', 80, 1, '2018-06-14 21:09:10', '2018-06-16 15:47:49', 1144131603),
+(19, 'no200', 1, '2018-06-14', 80, 1, '2018-06-08 15:16:56', '2018-06-14 21:43:08', 1144131603);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `causal`
 --
 
@@ -36,15 +72,16 @@ CREATE TABLE IF NOT EXISTS `causal` (
   `estado_id` int(2) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `causal`
 --
 
 INSERT INTO `causal` (`id`, `cod`, `nombre`, `estado_id`) VALUES
-(1, 'C10', 'CAUSAL 32', 1),
-(2, 'A100', 'CAUSAL 10', 1);
+(1, '16_1183', 'Estatuto de Contratacion', 1),
+(2, '17_1184', 'Estatuto de Contratacion', 1),
+(3, '18_1185', 'Estatuto de Contratacion', 1);
 
 -- --------------------------------------------------------
 
@@ -65,6 +102,7 @@ CREATE TABLE IF NOT EXISTS `contracto` (
   `fec_ini` date DEFAULT NULL,
   `fec_termn` date DEFAULT NULL,
   `plazo_ejecuc` int(4) DEFAULT NULL,
+  `contratista_id` bigint(20) NOT NULL,
   `objeto` varchar(256) DEFAULT NULL,
   `res_adjud` varchar(50) DEFAULT NULL,
   `fec_adjud` date DEFAULT NULL,
@@ -99,9 +137,36 @@ CREATE TABLE IF NOT EXISTS `contracto` (
 -- Volcado de datos para la tabla `contracto`
 --
 
-INSERT INTO `contracto` (`id`, `depend_id`, `seccion`, `m_selecc_id`, `causal_id`, `t_contract_id`, `t_gasto_id`, `fec_suscripc`, `fec_ini`, `fec_termn`, `plazo_ejecuc`, `objeto`, `res_adjud`, `fec_adjud`, `valor_ini`, `anticipo`, `valor_anticp`, `public_secop`, `fpublic_secop`, `actulz_secop`, `factulz_secop`, `link_secop`, `fiducia`, `observ`, `afect_presupt`, `t_recurs_id`, `t_liquid_id`, `doc_liquid`, `fec_liquid`, `funcion_id`, `segmento`, `eje`, `est`, `prog`, `estado_id`, `fec_reg`, `fec_mod`, `user_id`) VALUES
-('no100', 1, 'seccion222', 2, 2, 2, 2, '2018-03-01', '2018-03-02', '2018-03-03', 3, 'objeto', 'resolucion', '2018-03-04', 1000.23, 1, 2000, 1, '2018-03-05', 1, '2018-03-06', 'www.secop.gov.co', 1, 'observaciones', 0, 1, 1, 'doc liquid', '2018-03-07', 1, 'segmento del servicioffff', 'eje', 'est', 'prog', 1, '2018-03-15 18:22:09', '2018-03-16 10:32:50', 1144131603),
-('no200', 1, 'seccion', 1, 1, 1, 1, '2018-03-01', '2018-03-02', '2018-03-03', 3, 'objeto', 'resolucion', '2018-03-04', 10.12, 1, 200, 1, '2018-03-05', 1, '2018-03-06', 'www.secop.gov.co', 1, 'observaciones', 0, 1, 1, 'doc liquid', '2018-03-07', 1, 'segmento del servicio', 'eje', 'est', 'prog', 1, '2018-03-15 18:25:39', '2018-03-15 18:25:39', 1144131603);
+INSERT INTO `contracto` (`id`, `depend_id`, `seccion`, `m_selecc_id`, `causal_id`, `t_contract_id`, `t_gasto_id`, `fec_suscripc`, `fec_ini`, `fec_termn`, `plazo_ejecuc`, `contratista_id`, `objeto`, `res_adjud`, `fec_adjud`, `valor_ini`, `anticipo`, `valor_anticp`, `public_secop`, `fpublic_secop`, `actulz_secop`, `factulz_secop`, `link_secop`, `fiducia`, `observ`, `afect_presupt`, `t_recurs_id`, `t_liquid_id`, `doc_liquid`, `fec_liquid`, `funcion_id`, `segmento`, `eje`, `est`, `prog`, `estado_id`, `fec_reg`, `fec_mod`, `user_id`) VALUES
+('no100', 1, 'seccion222', 2, 2, 2, 2, '2018-03-01', '2018-03-02', '2018-03-03', 3, 1, 'objeto', 'resolucion', '2018-03-04', 1000.23, 1, 2000, 1, '2018-03-05', 1, '2018-03-06', 'www.secop.gov.co', 1, 'observaciones', 0, 1, 1, 'doc liquid', '2018-03-07', 1, 'segmento del servicioffff', 'eje', 'est', 'prog', 1, '2018-03-15 18:22:09', '2018-03-16 10:32:50', 1144131603),
+('no200', 1, 'seccion', 1, 1, 1, 1, '2018-03-01', '2018-03-02', '2018-03-03', 3, 2, 'objeto', 'resolucion', '2018-03-04', 10.12, 1, 200, 1, '2018-03-05', 1, '2018-03-06', 'www.secop.gov.co', 1, 'observaciones', 0, 1, 1, 'doc liquid', '2018-03-07', 1, 'segmento del servicio', 'eje', 'est', 'prog', 1, '2018-03-15 18:25:39', '2018-03-15 18:25:39', 1144131603),
+('CONTRATO', 7, 'AAAAAA', 1, 1, 1, 2, '2018-05-01', '2018-05-02', '2018-05-11', 9, 1, 'AAAAAAAAAAA', '', '1000-10-10', 500000000000, 0, 0, 0, '1000-10-10', 0, '1000-10-10', '', 0, '', 0, 0, 0, '', '1000-10-10', 0, '', '', '', '', 1, '2018-05-03 11:37:51', '2018-05-03 11:37:51', 1144131603),
+('150000', 1, '111', 1, 1, 1, 1, '2018-05-07', '2018-05-08', '2018-05-14', 6, 1, '', '', '1000-10-10', 1500000, 0, 0, 0, '1000-10-10', 0, '1000-10-10', '', 0, '', 0, 0, 0, '', '1000-10-10', 0, '', '', '', '', 1, '2018-05-07 14:41:12', '2018-05-07 14:41:12', 1144131603),
+('contratoprueba5', 6, 'hola', 1, 1, 1, 1, '2018-05-07', '2018-05-07', '2018-05-07', 6, 1, 'sdfa asdfasdfasdfa sdfasd fa a e     i o u A E I O U =  =  ', '', '1000-10-10', 1500000, 0, 0, 0, '1000-10-10', 0, '1000-10-10', '', 0, '', 0, 0, 0, '', '1000-10-10', 0, '', '', '', '', 1, '2018-05-07 14:47:37', '2018-05-07 15:33:15', 1144131603),
+('CONTRACT150', 1, 'SUBRECTOR', 1, 1, 1, 1, '2018-05-07', '2018-05-14', '2018-05-21', 7, 2, 'a e     i o u A E I O U =  =   AAAAAAAAAAA', '', '1000-10-10', 5000, 0, 0, 0, '1000-10-10', 0, '1000-10-10', '', 0, '', 0, 0, 0, '', '1000-10-10', 0, '', '', '', '', 1, '2018-05-07 15:34:18', '2018-05-07 15:34:18', 1144131603);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `contratista`
+--
+
+DROP TABLE IF EXISTS `contratista`;
+CREATE TABLE IF NOT EXISTS `contratista` (
+  `id` bigint(20) NOT NULL,
+  `nombre` varchar(30) DEFAULT NULL,
+  `apellido1` varchar(30) DEFAULT NULL,
+  `estado_id` int(2) NOT NULL,
+  PRIMARY KEY (`id`,`estado_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `contratista`
+--
+
+INSERT INTO `contratista` (`id`, `nombre`, `apellido1`, `estado_id`) VALUES
+(1, 'CONSTRUCTURA ', 'BOLIVAR', 1),
+(2, 'ROBERTH ', 'ROJAS', 1);
 
 -- --------------------------------------------------------
 
@@ -115,22 +180,51 @@ CREATE TABLE IF NOT EXISTS `depend` (
   `nombre` varchar(60) DEFAULT NULL,
   `estado_id` int(2) DEFAULT NULL,
   UNIQUE KEY `id` (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `depend`
 --
 
 INSERT INTO `depend` (`id`, `nombre`, `estado_id`) VALUES
-(1, 'Rectoria', 1),
-(2, 'bbbbbbbbbbbbbbbb', 1),
-(3, 'cccccccccccccccccc', 1),
-(4, 'ddddddd', 0),
-(5, 'hacienda', 1),
-(6, 'REGISTRO ACADEMICO', 1),
-(7, 'protocolo', 1),
-(8, 'fiducia', 1),
-(9, 'financiero', 1);
+(1, 'Vicerrectoria Academica - Plan Talentos', 1),
+(2, 'Vicerrectoria de Bienestar', 1),
+(3, 'Facultad de Ciencias Sociales y Economicas', 1),
+(4, 'Seccion de Seguridad y Vigilancia', 1),
+(5, 'Instituto de Educacion y Pedagogia', 1),
+(6, 'Facultad de Artes Integradas', 1),
+(7, 'Sede Buga', 1),
+(8, 'Division Financiera', 1),
+(9, 'Regalias', 1),
+(10, 'Despacho Vicerrector Administrativo', 1),
+(11, 'Instituto CISALVA', 1),
+(12, 'Facultad de Ciencias de la Administracion', 1),
+(13, 'Vicerrectoria de Investigaciones', 1),
+(14, 'Facultad de Salud', 1),
+(15, 'Facultad de Humanidades', 1),
+(16, 'Seccion Mantenimiento', 1),
+(17, 'Direccion de Infraestructura Universitaria', 1),
+(18, 'Instituto de Prospectiva', 1),
+(19, 'Rectoria', 1),
+(20, 'Division de Biblioteca', 1),
+(21, 'Facultad de Ingenieria', 1),
+(22, 'Servicios Varios', 1),
+(23, 'Vicerrectoria Academica', 1),
+(24, 'DINTEV', 1),
+(25, 'Direccion de Extension', 1),
+(26, 'Seccion de Compras', 1),
+(27, 'Oficina de Planeacion', 1),
+(28, 'Sede Yumbo', 1),
+(29, 'Direccion de Regionalizacion ', 1),
+(30, 'Instituto CINARA', 1),
+(31, 'Instituto de Psicologia', 1),
+(32, 'Facultad de Ciencias Naturales', 1),
+(33, 'Sede Tulua', 1),
+(34, 'Sede Norte del Cauca', 1),
+(35, 'Sede Caicedonia', 1),
+(36, 'Instituto de Inv. Psicologia', 1),
+(37, 'Sede Pac', 1),
+(38, 'Recursos Humanos', 1);
 
 -- --------------------------------------------------------
 
@@ -174,8 +268,8 @@ CREATE TABLE IF NOT EXISTS `funcion` (
 --
 
 INSERT INTO `funcion` (`id`, `cod`, `nombre`, `estado_id`) VALUES
-(1, 'AA', 'FUNCION 1', 1),
-(2, 'BB', 'FUNCION 2', 1);
+(1, '1', 'Misional', 1),
+(2, '2', 'De Apoyo', 1);
 
 -- --------------------------------------------------------
 
@@ -242,15 +336,48 @@ CREATE TABLE IF NOT EXISTS `m_selecc` (
   `estado_id` int(2) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `m_selecc`
 --
 
 INSERT INTO `m_selecc` (`id`, `cod`, `nombre`, `estado_id`) VALUES
-(1, 'MS10', 'MODALIDAD SELECCION 1', 1),
-(2, 'MS-2', 'MODALIDAD SELECCION 2', 1);
+(1, '2_16', 'Invitacion Directa', 1),
+(2, '2_17', 'Invitacion Publica', 1),
+(3, '2_18', 'Invitacion Cerrada', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `novedad`
+--
+
+DROP TABLE IF EXISTS `novedad`;
+CREATE TABLE IF NOT EXISTS `novedad` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `contracto_id` varchar(50) DEFAULT NULL,
+  `t_noved_id` bigint(20) DEFAULT NULL,
+  `valor` bigint(20) DEFAULT NULL,
+  `plazo` int(5) DEFAULT NULL,
+  `fecha` date DEFAULT NULL,
+  `estado_id` int(2) NOT NULL,
+  `fec_reg` timestamp NULL DEFAULT NULL,
+  `fec_mod` timestamp NULL DEFAULT NULL,
+  `user_id` bigint(15) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `novedad`
+--
+
+INSERT INTO `novedad` (`id`, `contracto_id`, `t_noved_id`, `valor`, `plazo`, `fecha`, `estado_id`, `fec_reg`, `fec_mod`, `user_id`) VALUES
+(6, 'no200', 1, 555, 25, '2018-06-16', 1, '2018-06-16 14:49:04', '2018-06-16 14:49:04', 1144131603),
+(2, 'no200', 1, 555, 20, '2018-06-13', 1, '2018-06-16 14:28:38', '2018-06-16 14:28:38', 1144131603),
+(10, 'no100', 1, 90000, 20, '2018-06-16', 1, '2018-06-16 15:56:40', '2018-06-16 15:57:06', 1144131603),
+(7, 'no200', 1, 555, 30, '2018-06-16', 1, '2018-06-16 14:49:15', '2018-06-16 14:49:15', 1144131603),
+(9, 'no100', 2, 5000, 80, '2018-06-16', 1, '2018-06-16 15:50:16', '2018-06-16 15:56:08', 1144131603);
 
 -- --------------------------------------------------------
 
@@ -289,15 +416,17 @@ CREATE TABLE IF NOT EXISTS `t_avance` (
   `estado_id` int(2) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `t_avance`
 --
 
 INSERT INTO `t_avance` (`id`, `cod`, `nombre`, `estado_id`) VALUES
-(1, 'cod1', 'AVANCE 1', 1),
-(2, '122', 'AVANCE 2', 1);
+(1, '1', 'Acta Parcial y/o de Avance', 1),
+(2, '2', 'Acta de Modificacion de Obra', 1),
+(3, '3', 'Acta de Terminacion del Contracto', 1),
+(4, '5', 'Acta de Cumplimiento', 1);
 
 -- --------------------------------------------------------
 
@@ -313,16 +442,38 @@ CREATE TABLE IF NOT EXISTS `t_clasific` (
   `estado_id` int(2) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `t_clasific`
 --
 
 INSERT INTO `t_clasific` (`id`, `cod`, `nombre`, `estado_id`) VALUES
-(1, '100', 'CLASIFIC 1', 1),
-(2, 'ASF12', 'CLASIFIC 2', 1),
-(3, '50000', 'HOLAS', 0);
+(1, '1', 'Uniones Temporales', 1),
+(2, '2', 'Consorcios', 1),
+(3, '3', 'Privadas', 1),
+(4, '4', 'Persona Natural', 1),
+(5, '5', 'EPS', 1),
+(6, '6', 'ESP', 1),
+(7, '7', 'Departamentos y Municipios', 1),
+(8, '8', 'ESE Hospitales', 1),
+(9, '9', 'Publicos', 1),
+(10, '10', 'Bomberos', 1),
+(11, '11', 'Contralorias', 1),
+(12, '12', 'Cajas de Compensacion', 1),
+(13, '13', 'Fundaciones', 1),
+(14, '14', 'Universidades', 1),
+(15, '15', 'Religiosas', 1),
+(16, '16', 'Institutos', 1),
+(17, '17', 'Sindicatos', 1),
+(18, '18', 'Corporaciones', 1),
+(19, '19', 'Clubes', 1),
+(20, '20', 'Cooperativas', 1),
+(21, '21', 'Asociaciones', 1),
+(22, '22', 'Federaciones', 1),
+(23, '23', 'Juntas de Accion', 1),
+(24, '24', 'Colegios/Instituciones Educativas', 1),
+(25, '25', 'Cabildos', 1);
 
 -- --------------------------------------------------------
 
@@ -338,15 +489,24 @@ CREATE TABLE IF NOT EXISTS `t_contract` (
   `estado_id` int(2) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `t_contract`
 --
 
 INSERT INTO `t_contract` (`id`, `cod`, `nombre`, `estado_id`) VALUES
-(1, 'CC10', 'CONTRACTO 1', 1),
-(2, '100', 'CONTRACTO 2', 1);
+(1, '1', 'Contrato de Obra', 1),
+(2, '2', 'Contrato de Consultoria', 1),
+(3, '3', 'Contrato de Prestacion de Servicios', 1),
+(4, '4', 'Contrato de Concesion', 1),
+(5, '5', 'Encargos Fiduciarios', 1),
+(6, '6', 'Fiducia Publica', 1),
+(7, '7', 'Suministros', 1),
+(8, '8', 'Compraventa', 1),
+(10, '10', 'Atipicos', 1),
+(11, '11', 'Tipicos', 1),
+(13, '13', 'Convenios', 1);
 
 -- --------------------------------------------------------
 
@@ -362,15 +522,18 @@ CREATE TABLE IF NOT EXISTS `t_contratist` (
   `estado_id` int(2) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `t_contratist`
 --
 
 INSERT INTO `t_contratist` (`id`, `cod`, `nombre`, `estado_id`) VALUES
-(1, 'CC99', 'CONTRATISTA 1', 1),
-(2, '22AA', 'CONTRATISTA 2', 1);
+(1, '1', 'Contratista', 1),
+(2, '2', 'Consorcio', 1),
+(3, '3', 'Union Temporal', 1),
+(4, '4', 'Promesa de Sociedad Futura', 1),
+(5, '5', 'Sociedad con Objeto Unico', 1);
 
 -- --------------------------------------------------------
 
@@ -411,15 +574,17 @@ CREATE TABLE IF NOT EXISTS `t_gasto` (
   `estado_id` int(2) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `t_gasto`
 --
 
 INSERT INTO `t_gasto` (`id`, `cod`, `nombre`, `estado_id`) VALUES
-(1, '10', 'Tipo Gastof 1', 1),
-(2, 'BB20', 'TIPO GASTO 2', 1);
+(1, '1', 'Inversion', 1),
+(2, '2', 'Funcionamiento', 1),
+(3, '3', 'Servicios de la Deuda', 1),
+(4, '5', 'Operacion', 1);
 
 -- --------------------------------------------------------
 
@@ -435,15 +600,16 @@ CREATE TABLE IF NOT EXISTS `t_intervt` (
   `estado_id` int(2) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `t_intervt`
 --
 
 INSERT INTO `t_intervt` (`id`, `cod`, `nombre`, `estado_id`) VALUES
-(1, 'AA10', 'INTERVENTOR 1', 1),
-(2, 'BB100', 'INTERVENTOR 2', 1);
+(1, '0', 'Supervisor', 1),
+(2, '1', 'Interventor', 1),
+(3, '2', 'Interventor Externo', 1);
 
 -- --------------------------------------------------------
 
@@ -459,16 +625,17 @@ CREATE TABLE IF NOT EXISTS `t_liquid` (
   `estado_id` int(2) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `t_liquid`
 --
 
 INSERT INTO `t_liquid` (`id`, `cod`, `nombre`, `estado_id`) VALUES
-(1, '100', 'EEEEEEEEEEEE', 1),
-(2, '2512', 'hipotecario', 1),
-(3, '100', 'financiero', 1);
+(1, '0', 'Continua en Ejecucion', 1),
+(2, '1', 'Unilateralmente', 1),
+(3, '2', 'Por Mutuo Acuerdo', 1),
+(4, '3', 'En Controversia', 1);
 
 -- --------------------------------------------------------
 
@@ -484,15 +651,18 @@ CREATE TABLE IF NOT EXISTS `t_noved` (
   `estado_id` int(2) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `t_noved`
 --
 
 INSERT INTO `t_noved` (`id`, `cod`, `nombre`, `estado_id`) VALUES
-(1, 'as12', 'NOVEDAD1', 1),
-(2, 'AA200', 'NOVEADAD', 1);
+(1, '0', 'Adicion', 1),
+(2, '1', 'Prorroga', 1),
+(3, '2', 'Adicion y Prorroga', 1),
+(4, '3', 'Suspension', 1),
+(5, '4', 'Reinicio', 1);
 
 -- --------------------------------------------------------
 
@@ -508,15 +678,20 @@ CREATE TABLE IF NOT EXISTS `t_poliza` (
   `estado_id` int(2) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `t_poliza`
 --
 
 INSERT INTO `t_poliza` (`id`, `cod`, `nombre`, `estado_id`) VALUES
-(1, 'BB11', 'POLIZA 1', 1),
-(2, 'CC22', 'POLIZA 2', 1);
+(1, '0', 'Unica', 1),
+(2, '1', 'Buen Manejo Anticipo', 1),
+(3, '2', 'Cumplimiento de Contrato', 1),
+(4, '3', 'Salarios y Prestaciones', 1),
+(5, '4', 'Responsabilidad Civil y Extracontractual', 1),
+(6, '5', 'Estabilidad y Calidad', 1),
+(7, '6', 'Otra', 1);
 
 -- --------------------------------------------------------
 
@@ -532,18 +707,16 @@ CREATE TABLE IF NOT EXISTS `t_recurs` (
   `estado_id` int(2) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `t_recurs`
 --
 
 INSERT INTO `t_recurs` (`id`, `cod`, `nombre`, `estado_id`) VALUES
-(1, '15020', 'prueba 1', 1),
-(2, '1213', 'que tal', 0),
-(3, '00', 'fff', 1),
-(4, '100', 'aaaaaaa', 0),
-(5, '2000', 'bbbbbb', 1);
+(1, '0', 'No Definido', 1),
+(2, '1', 'Regalias', 1),
+(3, '2', 'Otros Recursos', 1);
 
 -- --------------------------------------------------------
 
@@ -574,15 +747,17 @@ CREATE TABLE IF NOT EXISTS `t_termin` (
   `estado_id` int(2) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `t_termin`
 --
 
 INSERT INTO `t_termin` (`id`, `cod`, `nombre`, `estado_id`) VALUES
-(1, 'a121', 'TERMINACION 1', 1),
-(2, 'AA22', 'TERMINACION 2', 1);
+(1, '0', 'Continua en Ejecucion', 1),
+(2, '1', 'Unilateralmente', 1),
+(3, '2', 'Por Mutuo Acuerdo', 1),
+(4, '3', 'En Controversia', 1);
 
 -- --------------------------------------------------------
 
@@ -645,6 +820,9 @@ CREATE TABLE IF NOT EXISTS `v_contracto` (
 ,`fec_ini` date
 ,`fec_termn` date
 ,`plazo_ejecuc` int(4)
+,`contratista_id` bigint(20)
+,`contratista_nom` varchar(30)
+,`contratista_ape` varchar(30)
 ,`objeto` varchar(256)
 ,`res_adjud` varchar(50)
 ,`fec_adjud` date
@@ -711,7 +889,7 @@ CREATE TABLE IF NOT EXISTS `v_usuario` (
 --
 DROP TABLE IF EXISTS `v_contracto`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_contracto`  AS  select `c`.`id` AS `id`,`c`.`depend_id` AS `depend_id`,`d`.`nombre` AS `depend_nom`,`c`.`seccion` AS `seccion`,`c`.`m_selecc_id` AS `m_selecc_id`,`ms`.`nombre` AS `selecc_nom`,`c`.`causal_id` AS `causal_id`,`ca`.`nombre` AS `causal_nom`,`c`.`t_contract_id` AS `t_contract_id`,`tc`.`nombre` AS `tcontract_nom`,`c`.`t_gasto_id` AS `t_gasto_id`,`tg`.`nombre` AS `tgasto_nom`,`c`.`fec_suscripc` AS `fec_suscripc`,`c`.`fec_ini` AS `fec_ini`,`c`.`fec_termn` AS `fec_termn`,`c`.`plazo_ejecuc` AS `plazo_ejecuc`,`c`.`objeto` AS `objeto`,`c`.`res_adjud` AS `res_adjud`,`c`.`fec_adjud` AS `fec_adjud`,`c`.`valor_ini` AS `valor_ini`,`c`.`anticipo` AS `anticipo`,`c`.`valor_anticp` AS `valor_anticp`,`c`.`public_secop` AS `public_secop`,`c`.`fpublic_secop` AS `fpublic_secop`,`c`.`actulz_secop` AS `actulz_secop`,`c`.`factulz_secop` AS `factulz_secop`,`c`.`link_secop` AS `link_secop`,`c`.`fiducia` AS `fiducia`,`c`.`observ` AS `observ`,`c`.`afect_presupt` AS `afect_presupt`,`c`.`t_recurs_id` AS `t_recurs_id`,`tr`.`nombre` AS `trecurs_nom`,`c`.`t_liquid_id` AS `t_liquid_id`,`tl`.`nombre` AS `tliquid_nom`,`c`.`doc_liquid` AS `doc_liquid`,`c`.`fec_liquid` AS `fec_liquid`,`c`.`funcion_id` AS `funcion_id`,`f`.`nombre` AS `funcion_nom`,`c`.`segmento` AS `segmento`,`c`.`eje` AS `eje`,`c`.`est` AS `est`,`c`.`prog` AS `prog`,`c`.`estado_id` AS `estado_id`,`e`.`nombre` AS `estado_nom`,`c`.`fec_reg` AS `fec_reg`,`c`.`fec_mod` AS `fec_mod`,`c`.`user_id` AS `user_id` from (((((((((`contracto` `c` join `depend` `d` on((`c`.`depend_id` = `d`.`id`))) join `m_selecc` `ms` on((`c`.`m_selecc_id` = `ms`.`id`))) join `causal` `ca` on((`c`.`causal_id` = `ca`.`id`))) join `t_contract` `tc` on((`c`.`t_contract_id` = `tc`.`id`))) join `t_gasto` `tg` on((`c`.`t_gasto_id` = `tg`.`id`))) join `t_recurs` `tr` on((`c`.`t_recurs_id` = `tr`.`id`))) join `t_liquid` `tl` on((`c`.`t_liquid_id` = `tl`.`id`))) join `funcion` `f` on((`c`.`funcion_id` = `f`.`id`))) join `estado` `e` on((`c`.`estado_id` = `e`.`id`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_contracto`  AS  select `c`.`id` AS `id`,`c`.`depend_id` AS `depend_id`,`d`.`nombre` AS `depend_nom`,`c`.`seccion` AS `seccion`,`c`.`m_selecc_id` AS `m_selecc_id`,`ms`.`nombre` AS `selecc_nom`,`c`.`causal_id` AS `causal_id`,`ca`.`nombre` AS `causal_nom`,`c`.`t_contract_id` AS `t_contract_id`,`tc`.`nombre` AS `tcontract_nom`,`c`.`t_gasto_id` AS `t_gasto_id`,`tg`.`nombre` AS `tgasto_nom`,`c`.`fec_suscripc` AS `fec_suscripc`,`c`.`fec_ini` AS `fec_ini`,`c`.`fec_termn` AS `fec_termn`,`c`.`plazo_ejecuc` AS `plazo_ejecuc`,`co`.`id` AS `contratista_id`,`co`.`nombre` AS `contratista_nom`,`co`.`apellido1` AS `contratista_ape`,`c`.`objeto` AS `objeto`,`c`.`res_adjud` AS `res_adjud`,`c`.`fec_adjud` AS `fec_adjud`,`c`.`valor_ini` AS `valor_ini`,`c`.`anticipo` AS `anticipo`,`c`.`valor_anticp` AS `valor_anticp`,`c`.`public_secop` AS `public_secop`,`c`.`fpublic_secop` AS `fpublic_secop`,`c`.`actulz_secop` AS `actulz_secop`,`c`.`factulz_secop` AS `factulz_secop`,`c`.`link_secop` AS `link_secop`,`c`.`fiducia` AS `fiducia`,`c`.`observ` AS `observ`,`c`.`afect_presupt` AS `afect_presupt`,`c`.`t_recurs_id` AS `t_recurs_id`,`tr`.`nombre` AS `trecurs_nom`,`c`.`t_liquid_id` AS `t_liquid_id`,`tl`.`nombre` AS `tliquid_nom`,`c`.`doc_liquid` AS `doc_liquid`,`c`.`fec_liquid` AS `fec_liquid`,`c`.`funcion_id` AS `funcion_id`,`f`.`nombre` AS `funcion_nom`,`c`.`segmento` AS `segmento`,`c`.`eje` AS `eje`,`c`.`est` AS `est`,`c`.`prog` AS `prog`,`c`.`estado_id` AS `estado_id`,`e`.`nombre` AS `estado_nom`,`c`.`fec_reg` AS `fec_reg`,`c`.`fec_mod` AS `fec_mod`,`c`.`user_id` AS `user_id` from ((((((((((`contracto` `c` join `depend` `d` on((`c`.`depend_id` = `d`.`id`))) join `m_selecc` `ms` on((`c`.`m_selecc_id` = `ms`.`id`))) join `causal` `ca` on((`c`.`causal_id` = `ca`.`id`))) join `t_contract` `tc` on((`c`.`t_contract_id` = `tc`.`id`))) join `t_gasto` `tg` on((`c`.`t_gasto_id` = `tg`.`id`))) join `t_recurs` `tr` on((`c`.`t_recurs_id` = `tr`.`id`))) join `t_liquid` `tl` on((`c`.`t_liquid_id` = `tl`.`id`))) join `funcion` `f` on((`c`.`funcion_id` = `f`.`id`))) join `estado` `e` on((`c`.`estado_id` = `e`.`id`))) join `contratista` `co` on((`c`.`contratista_id` = `co`.`id`))) ;
 
 -- --------------------------------------------------------
 

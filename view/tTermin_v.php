@@ -9,7 +9,7 @@
     <center>
         <form action="controller/tTermin_c.php" method="post"  id="frmTTermin" name = "frmTTermin">
 
-            <h1>REGISTRO TIPO DE </h1>
+            <h1>REGISTRO TIPO DE TERMINACION</h1>
 
             <input id="txtProcess" name="txtProcess" value="1" hidden>
 
