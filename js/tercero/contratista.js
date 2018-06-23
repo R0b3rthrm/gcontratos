@@ -1,35 +1,20 @@
 $(document).ready(function () {
-
     
-    $("#cmbProcess").change(function (){
+    $('#txtDV').hide();
+    isNumber(['#txtId','#txtTel','#txtCel']);
+    alfNum(['#txtNombre', '#txtApellido1', '#txtApellido2', '#txtSeccion']);
+    
+    $('#cmbTDocument').change(function (){
         
-        var cmbProcess =$("#cmbProcess").val();
-        
-        if(cmbProcess == ""){
-            
-            msjModal("Se debe Ingresar Tipo de Terecero","AT");
-            $("#divFrmTercero").html("");
-            
+        if($('#cmbTDocument').val()==1){ 
+            $("#spNom").text('RAZON SOCIAL:');
+            $("#txtDV").show();    
         }else{
-            
-            var dataForm = {txtProcess:cmbProcess};
-            var action = "controller/tercero_c.php"
-            
-            $.ajax({
-                url: action,
-                type: 'POST',
-                data: dataForm,
-                success: function (data){
-                    
-                    $("#divFrmTercero").html("");
-                    $("#divFrmTercero").append(data);
-                }
-                        
-                
-            });
-        }
-        
+            $("#spNom").text('NOMBRE:');
+            $("#txtDV").hide();
+        }    
     });
+
     
  });    
  
@@ -55,18 +40,7 @@ $(document).ready(function () {
         }
         
         
-        $('#cmbTDoc').change(function (){
-        
-        if($('#cmbTDoc').val()==1){ 
-            $("#spNom").text('RAZON SOCIAL:');
-            $("#txtDV").show();
-            
-        }else{
-            $("#spNom").text('NOMBRE:');
-            $("#txtDV").hide();
-        }
-        
-        });
+       
         
     });
 

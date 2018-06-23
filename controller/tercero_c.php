@@ -1,6 +1,7 @@
 <?php
 
 require_once("../model/tercero_m.php");
+require_once("../model/tDocument_m.php");
 require_once("../utils/utils.php");
 
 
@@ -11,6 +12,7 @@ if (isset($_POST['txtIdC'])) {
     $resultInfo = $objContract->getListId();
     echo json_encode($resultInfo);
     exit;
+    
 } else {
 
     $nuProcess = trim($_POST['txtProcess']);
@@ -40,7 +42,8 @@ echo $resultInfo;
 function htmlContratista() {
     
     //function comboBox($objUtils_m,$select,$id, $class = '', $valor ='', $event='', $func = '') {
-   // $sbAvancesComb = comboBox($objTAvance, 't.id,t.nombre', 'cmbTAvance');
+    $objTDocument = new tDocument();
+    $cmbTipoDocument = comboBox($objTDocument, 't.id,t.nombre', 'cmbTDocument');
 
     $html = "  
         <center>
@@ -58,20 +61,9 @@ function htmlContratista() {
     <div class='col-8'>         
 
         <div class='input-group input-group-sm'>
-                       
-            <span class='input-group-addon' >TIPO PERSONA:</span>
-            <select id='cmbTPersona' name='cmbTPersona'>
-                <option value=''>- Seleccionar -</option>
-                <option value='1'>Juridica</option>
-                <option value='2'>Natural</option>
-            </select>         </div>  
-
-        <br/>
-
-        <div class='input-group input-group-sm'>
             <span class='input-group-addon' >TIPO DOCUMENTO:</span>
-            <div class='6u$ 12u$(xsmall)' name='divTDoc'  id='divTDoc'> </div>
-            <span class='input-group-addon' >NUMERO DEL DOCUMENTO  :</span>
+            <div class='6u$ 12u$(xsmall)' name='divTDoc'  id='divTDoc'>".$cmbTipoDocument."</div>
+            <span class='input-group-addon' >NUMERO DOCUMENTO  :</span>
             <input name='txtId' id='txtId' type='text'  />
             <input name='txtDV' id='txtDV' type='text' placeholder='D. Verificacion'/>
         </div>                
