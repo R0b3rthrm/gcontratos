@@ -2,8 +2,9 @@
 
 require_once("../model/tercero_m.php");
 require_once("../model/tDocument_m.php");
+require_once("../model/tContratist_m.php");
+require_once("../model/tClasific_m.php");
 require_once("../utils/utils.php");
-
 
 
 if (isset($_POST['txtIdC'])) {
@@ -23,11 +24,15 @@ if (isset($_POST['txtIdC'])) {
 
                 $resultInfo = htmlContratista();
                         
-        } else if ($nuProcess == 20) {
+        }else if ($nuProcess == 5) {
+                
+                 $resultInfo = setIntegrates();
+                    
+        }else if ($nuProcess == 20) {
                 
                 $resultInfo = htmlAseguradora();
                 
-        } else if ($nuProcess == 30) {
+        }else if ($nuProcess == 30) {
 
                 $resultInfo = htmlInterventor();
      
@@ -43,7 +48,11 @@ function htmlContratista() {
     
     //function comboBox($objUtils_m,$select,$id, $class = '', $valor ='', $event='', $func = '') {
     $objTDocument = new tDocument();
+    $objTContratist = new tContratist();
+    $objClasific = new tClasific();
     $cmbTipoDocument = comboBox($objTDocument, 't.id,t.nombre', 'cmbTDocument');
+    $cmbTContratist = comboBox($objTContratist, 't.id,t.nombre', 'cmbTContratista');
+    $cmbClasific = comboBox($objClasific, 't.id,t.nombre', 'cmbTClasific');
 
     $html = "  
         <center>
@@ -89,23 +98,30 @@ function htmlContratista() {
 
         <div class='input-group input-group-sm'>
 
-            <span id='spDiv1' class='input-group-addon' >NATURALEZA:</span>
-            <div class='6u$ 12u$(xsmall)' name='divNaturaleza'  id='divNaturaleza'> </div>
-            <span id='spDiv2' class='input-group-addon' >CLASIFICACION:</span>
-            <div class='6u$ 12u$(xsmall)' name='divClasific'  id='divClasific'> </div>
-        </div>  
-
-        <br/>
-
-        <div class='input-group input-group-sm'>
-
             <span class='input-group-addon' >CELULAR :</span>
             <input name='txtCel' id='txtCel' type='text' class='form-control' placeholder=' - Celular -'/>
             <span class='input-group-addon' >EMAIL :</span>
             <input name='txtEmail' id='txtEmail' type='text' class='form-control' placeholder=' - Email -'/>
+        </div> 
+        
+        <br/>
+        
+       <div class='input-group input-group-sm'>
+            <span class='input-group-addon' >TIPO CONTRATISTA:</span>
+            <div class='6u$ 12u$(xsmall)' name='divTContratist'  id='divTContratist'>".$cmbTContratist."</div>
+            <span class='input-group-addon' >CLASIFICACION CONTRATISTA:</span>
+             <div class='6u$ 12u$(xsmall)' name='divClasific'  id='divClasific'>".$cmbClasific."</div>
         </div>                
 
+        <br/>
 
+        <div class='col-6'>             
+            <div class='input-group input-group-sm'>
+                <span class='input-group-addon' >NUMERO INTEGRANTES:</span>
+                <input type='text' name='txtCanInteg' id='txtCanInteg' class='form-control' placeholder=' '/>
+            </div>
+        </div>
+        
         <br/>
 
         <input type='button' id='btnIngresar' name='btnIngresar' value='REGISTRAR' class='button ' />
@@ -120,6 +136,37 @@ function htmlContratista() {
 
     return $html;
 }
+
+function setIntegrates() {
+    
+    $nuInteg = $_POST['txtNuInteg'];
+    $html = "";
+    for($i=1; $i<=count($nuInteg); $i++){
+        
+       $html=" 
+        <div class='input-group input-group-sm'>
+
+            <span class='input-group-addon' >Contratista ".$i.":</span>
+            <input name='txtCel' id='txtCel' type='text' class='form-control' placeholder=' - Celular -'/>
+            <span class='input-group-addon' >EMAIL :</span>
+            <input name='txtEmail' id='txtEmail' type='text' class='form-control' placeholder=' - Email -'/>
+        </div>
+        
+        <br/>
+        
+        ";
+    }
+    
+    $html = "
+                <h2>ASEGURADORA</h2>
+            ";
+
+
+    return $html;
+    
+    
+}
+
 
 function htmlAseguradora() {
     
@@ -140,5 +187,7 @@ function htmlInterventor (){
 
     return $html;
 }
+
+
 
 ?>

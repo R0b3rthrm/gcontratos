@@ -1,9 +1,10 @@
 $(document).ready(function () {
     
     $('#txtDV').hide();
-    isNumber(['#txtId','#txtTel','#txtCel']);
+    isNumber(['#txtId','#txtTel','#txtCel','#txtCanInteg']);
     alfNum(['#txtNombre', '#txtApellido1', '#txtApellido2', '#txtSeccion']);
-    
+    maxChar(['#txtCanInteg'], 2);
+     
     $('#cmbTDocument').change(function (){
         
         if($('#cmbTDocument').val()==1){ 
@@ -15,9 +16,39 @@ $(document).ready(function () {
         }    
     });
 
+    $('#txtCanInteg').keypress(function (){
+        
+        var nuInteg = ("#txtCanInteg").val();
+        
+        if(nuInteg>10){
+            msjModal('No puede haber mas de 10 integrantes','AT');
+        }else{
+            setIntegrants(nuInteg);  
+        }
+        
+    
     
  });    
  
+ function setIntegrants (nuInteg){
+     
+    var formData = {txtProcess:5,txtNuInteg:nuInteg};
+    var sbAction = $("#frmTerceros").attr("action");
+     
+    $.ajax({
+        url: sbAction,
+        type: 'POST',
+        data: formData,
+        success: function (data) {
+            if (data) {
+                alert("SE REGISTRO CORRECTAMENTE");
+                location.href = "usuario";
+            } else {
+                alert("ERROR AL REGISTRAR ");
+            }
+        }
+    });
+ }
 /*
     var sqlEstado = "select id, nombre from  estado  ";
     var sqlTDoc = "select id, cod, nombre from t_document where estado_id = 1";
