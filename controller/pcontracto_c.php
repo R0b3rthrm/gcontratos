@@ -195,7 +195,7 @@ function htmlActa($contracto) {
    
     //function comboBox($objUtils_m,$select,$id, $class = '', $valor ='', $event='', $func = '') {
 
-    $sbAvancesComb = comboBox($objTAvance, 't.id,t.nombre', 'cmbTAvance');
+    $sbAvancesComb = comboBox($objTAvance, 't.id,t.nombre', '','','cmbTAvance');
 
     $html = "  
             <script src='js/pcontracto/acta.js'></script>
@@ -235,7 +235,7 @@ function htmlNovedad($contracto) {
     $objTNovedad = new tNoved();   
     //function comboBox($objUtils_m,$select,$id, $class = '', $valor ='', $event='', $func = '') {
 
-    $sbnNovedComb = comboBox($objTNovedad, 't.id,t.nombre', 'cmbTNovedad');
+    $sbnNovedComb = comboBox($objTNovedad, 't.id,t.nombre','','', 'cmbTNovedad');
     
     $html = "  
             <script src='js/pcontracto/novedad.js'></script>

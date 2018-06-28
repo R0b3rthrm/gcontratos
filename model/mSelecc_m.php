@@ -90,15 +90,29 @@ class mSelecc extends conexion {
         return $arrInfo;
     }
 
-    public function getList($select) {
+    public function getList($select, $where = '', $order = '', $tipoSelect = '') {
 
         $arrInfo = array();
         conexion::conectar();
         $sql = "select " . $select . " from m_selecc m inner join estado e on m.estado_id = e.id";
+        
+        if (!empty($where)) {
+            $sql .= " WHERE " . $where;
+        }
+        if (!empty($order)){
+            $sql .= " ORDER BY ".$order;
+        }
+
         $result = conexion::query($sql);
 
-        while ($row = mysqli_fetch_assoc($result)) {
-            $arrInfo[] = $row;
+        if (empty($tipoSelect)) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                $arrInfo[] = $row;
+            }
+        }else {
+            while ($row = mysqli_fetch_array($result)) {
+                $arrInfo[] = $row;
+            }
         }
 
         mysqli_free_result($result);

@@ -119,11 +119,12 @@ class acta extends conexion {
         return $arrInfo;
     }
 
-    public function getList($select, $where = '', $order = '') {
+    public function getList($select, $where = '', $order = '', $tipoSelect = '') {
 
         $arrInfo = array();
         conexion::conectar();
         $sql = "SELECT " . $select . " FROM acta a INNER JOIN contracto c ON a.contracto_id = c.id  INNER JOIN t_avance ta ON a.t_avance_id = ta.id INNER JOIN estado e on a.estado_id = e.id";
+        
         if (!empty($where)) {
             $sql .= " WHERE " . $where;
         }
@@ -133,8 +134,14 @@ class acta extends conexion {
 
         $result = conexion::query($sql);
 
-        while ($row = mysqli_fetch_assoc($result)) {
-            $arrInfo[] = $row;
+        if (empty($tipoSelect)) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                $arrInfo[] = $row;
+            }
+        }else {
+            while ($row = mysqli_fetch_array($result)) {
+                $arrInfo[] = $row;
+            }
         }
 
         mysqli_free_result($result);

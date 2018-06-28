@@ -2,7 +2,7 @@ $(document).ready(function () {
     
     $('#txtDV').hide();
     isNumber(['#txtId','#txtTel','#txtCel','#txtCanInteg']);
-    alfNum(['#txtNombre', '#txtApellido1', '#txtApellido2', '#txtSeccion']);
+    alfNum(['#txtNombre', '#txtApellido1', '#txtApellido2']);
     maxChar(['#txtCanInteg'], 2);
      
     $('#cmbTDocument').change(function (){
@@ -16,122 +16,111 @@ $(document).ready(function () {
         }    
     });
 
-    $('#txtCanInteg').keypress(function (){
+    $('#txtCanInteg').keyup(function (){
         
-        var nuInteg = ("#txtCanInteg").val();
+        var nuInteg = $("#txtCanInteg").val();
         
         if(nuInteg>10){
             msjModal('No puede haber mas de 10 integrantes','AT');
         }else{
             setIntegrants(nuInteg);  
         }
+    });
+    
+     //validar formulario 
+    $("#btnIngresar").click(function () {
         
+        var blValidoInteg = true;
+        var nuTDocument = $("#cmbTDocument").val();
+        var nuIdentificacion = $("#txtId").val();
+        var nuDv= $("#txtDV").val();
+        var sbNombre = $("#txtNombre").val();
+        var nuContratista = $("#cmbTContratista").val();
+        var nuClasific = $("#cmbTClasific").val();
+        var nuCantInteg = $("#txtCanInteg").val();
+        var nuEstado = $("#cmbEstado").val();
+        
+        var arrayInfo = {0: nuIdentificacion + "|#txtId",
+            1: nuTDocument + "|#cmbTDocument",
+            2: sbNombre + "|#txtNombre",
+            3: nuContratista + "|#cmbTContratista",
+            4: nuClasific + "|#cmbTClasific",
+            5: nuCantInteg + "|#txtCanInteg",
+            6: nuEstado + "|#cmbEstado"}
+
+        var blValido = isEmptyFields(arrayInfo);
+        
+        if(nuDv!=''){
+            $('#txtIdFinal').val(nuIdentificacion+"-"+nuDv);
+        }else{
+            $('#txtIdFinal').val(nuIdentificacion);
+        }
+        if(nuCantInteg>0){
+            for(var i=1; i<=nuCantInteg; i++){
+                if($("#cmbInteg"+i).val()==''){
+                    blValidoInteg = false;
+                }
+            }
+        }
+        //Validar Campos Vacios
+        if (blValidoInteg){
+            if (blValido){
+                insert();
+            }
+        }else{msjModal('Se Debe Ingresar Toda La Informacion','AT');}
+
+    });
     
     
  });    
  
- function setIntegrants (nuInteg){
+ function setIntegrants(nuInteg){
      
-    var formData = {txtProcess:5,txtNuInteg:nuInteg};
-    var sbAction = $("#frmTerceros").attr("action");
+    var formData = {txtProcess:2,txtNuInteg:nuInteg};
+    var sbAction = $("#frmContratista").attr("action");
      
     $.ajax({
         url: sbAction,
         type: 'POST',
         data: formData,
         success: function (data) {
-            if (data) {
-                alert("SE REGISTRO CORRECTAMENTE");
-                location.href = "usuario";
-            } else {
-                alert("ERROR AL REGISTRAR ");
-            }
+          
+          $("#divInteg").html("");
+          $("#divInteg").append(data);
+          
+          if(nuInteg>0){
+                for(var i=1; i<=nuInteg; i++){
+                    $("#cmbInteg"+i).chosen({
+                             max_selected_options: 30,
+                             max_shown_results: 30
+                    });    
+//    alert("#cmbInteg"+i);
+                  //  setTimeout(function(){},400);
+                }
+          }
         }
     });
  }
-/*
-    var sqlEstado = "select id, nombre from  estado  ";
-    var sqlTDoc = "select id, cod, nombre from t_document where estado_id = 1";
-    var sqlClasific = "select id, cod, nombre from t_clasific where estado_id = 1";
-    var sqlNaturaleza = "select id, cod, nombre from t_contratist where estado_id = 1";
+ 
+ function insert() {
 
-    //llenar combox
-    $('#txtDV').hide();
-    comboBox(sqlNaturaleza, "cmbNaturaleza", '', '#divNaturaleza');
-    comboBox(sqlClasific, "cmbClasific", '', '#divClasific');
-    comboBox(sqlTDoc, "cmbTDoc", '', '#divTDoc');
-   // comboBox(sqlEstado, "cmbEstado", '', '#divEstado');
-
-    $('#cmbTTercero').change(function (){
-        
-        if($('#cmbTTercero').val()==1){ 
-            $("#spDiv1").text('TIPO CONTRATISTA:');
-        }else{
-            $("#spDiv1").text('NATURALEZA:');
-        }
-        
-        
-       
-        
-    });
-
-    
-    
-    isNumber('#txtId');
-    isNumber('#txtTel');
-    isNumber('#txtCel');
-
-   
-    
-
-    //validar formulario 
-    $("#btnIngresar").click(function () {
-
-        var nuIdentificacion = $("#txtId").val();
-        var sbNombre = $("#txtNombre").val();
-        var sbApellido1 = $("#txtApellido1").val();
-        var sbUsuario = $("#txtLogin").val();
-        var nuPerfil = $("#cmbPerfil").val();
-        var nuEstado = $("#cmbEstado").val();
-
-        var arrayInfo = {0: nuIdentificacion + "|#txtId",
-            1: sbNombre + "|#txtNombre",
-            2: sbApellido1 + "|#txtApellido1",
-            3: sbUsuario + "|#txtLogin",
-            4: nuPerfil + "|#cmbPerfil",
-            5: nuEstado + "|#cmbEstado"}
-
-        var blValido = isEmptyFields(arrayInfo);
-
-        //Validar Campos Vacios
-        if (blValido)
-        {
-            insert();
-        }
-
-    });
-
-});
-
-
-function insert() {
-
-    var formData = $("#frmUsuario").serialize();
-    var sbAction = $("#frmUsuario").attr("action");
+    var formData = $("#frmContratista").serialize();
+    var sbAction = $("#frmContratista").attr("action");
 
     $.ajax({
-        url: "controller/usuario_c.php",
+        url: "controller/tercero_c.php",
         type: 'POST',
         data: formData,
         success: function (data) {
             if (data) {
-                alert("SE REGISTRO CORRECTAMENTE");
-                location.href = "usuario";
+                msjModal('Se Creo Correctamente El Contratista','OK');
+                $("#frmContratista")[0].reset();
+                $("#txtDV").hide();
+                $("#divInteg").html("");
             } else {
-                alert("ERROR AL REGISTRAR ");
+                msjModal("Error Al Crear El Contratista",'ER');
             }
         }
     });
 }
-;
-*/
+

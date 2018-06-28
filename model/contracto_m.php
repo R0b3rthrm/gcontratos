@@ -453,15 +453,29 @@ class contracto extends conexion {
         return $arrInfo;
     }
 
-    public function getList($select) {
+    public function getList($select, $where = '', $order = '', $tipoSelect = '') {
 
         $arrInfo = array();
         conexion::conectar();
         $sql = "select " . $select . " from v_contracto order by fec_reg desc";
+        
+        if (!empty($where)) {
+            $sql .= " WHERE " . $where;
+        }
+        if (!empty($order)){
+            $sql .= " ORDER BY ".$order;
+        }
+        
         $result = conexion::query($sql);
 
-        while ($row = mysqli_fetch_assoc($result)) {
-            $arrInfo[] = $row;
+        if (empty($tipoSelect)) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                $arrInfo[] = $row;
+            }
+        }else {
+            while ($row = mysqli_fetch_array($result)) {
+                $arrInfo[] = $row;
+            }
         }
 
         mysqli_free_result($result);

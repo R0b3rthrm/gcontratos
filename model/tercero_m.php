@@ -4,33 +4,118 @@ require_once("conexion.php");
 require_once("../utils/SessionPhp.php");
 require_once("../utils/utils.php");
 
-class acta extends conexion {
+class tercero extends conexion {
 
     private $nuId;
-    private $sbContracto;
-    private $nuTAvance;
-    private $dtFecha;
-    private $nuPorcentaje;
+    private $nuTDocument;
+    private $sbIdTer;
+    private $sbNombre;
+    private $sbApellido1;
+    private $sbApellido2;
+    private $sbTel;
+    private $sbCel;
+    private $sbEmail;
+    private $nuTContratist;
+    private $nuTClasific;
+    private $nuCantTerc;
+    private $sbInteg1;
+    private $sbInteg2;
+    private $sbInteg3;
+    private $sbInteg4;
+    private $sbInteg5;
+    private $sbInteg6;
+    private $sbInteg7;
+    private $sbInteg8;
+    private $sbInteg9;
+    private $sbInteg10;
     private $nuEstado;
-
+    
     function getNuId() {
         return $this->nuId;
     }
 
-    function getSbContracto() {
-        return $this->sbContracto;
+    function getNuTDocument() {
+        return $this->nuTDocument;
     }
 
-    function getNuTAvance() {
-        return $this->nuTAvance;
+    function getSbIdTer() {
+        return $this->sbIdTer;
     }
 
-    function getDtFecha() {
-        return $this->dtFecha;
+    function getSbNombre() {
+        return $this->sbNombre;
     }
 
-    function getNuPorcentaje() {
-        return $this->nuPorcentaje;
+    function getSbApellido1() {
+        return $this->sbApellido1;
+    }
+
+    function getSbApellido2() {
+        return $this->sbApellido2;
+    }
+
+    function getSbTel() {
+        return $this->sbTel;
+    }
+
+    function getSbCel() {
+        return $this->sbCel;
+    }
+
+    function getSbEmail() {
+        return $this->sbEmail;
+    }
+
+    function getNuTContratist() {
+        return $this->nuTContratist;
+    }
+
+    function getNuTClasific() {
+        return $this->nuTClasific;
+    }
+
+    function getNuCantTerc() {
+        return $this->nuCantTerc;
+    }
+
+    function getSbInteg1() {
+        return $this->sbInteg1;
+    }
+
+    function getSbInteg2() {
+        return $this->sbInteg2;
+    }
+
+    function getSbInteg3() {
+        return $this->sbInteg3;
+    }
+
+    function getSbInteg4() {
+        return $this->sbInteg4;
+    }
+
+    function getSbInteg5() {
+        return $this->sbInteg5;
+    }
+
+    function getSbInteg6() {
+        return $this->sbInteg6;
+    }
+
+    function getSbInteg7() {
+        return $this->sbInteg7;
+    }
+
+    function getSbInteg8() {
+        return $this->sbInteg8;
+    }
+
+    function getSbInteg9() {
+        return $this->sbInteg9;
+    }
+
+    function getSbInteg10() {
+        return $this->sbInteg10;
     }
 
     function getNuEstado() {
@@ -41,56 +126,161 @@ class acta extends conexion {
         $this->nuId = $nuId;
     }
 
-    function setSbContracto($sbContracto) {
-        $this->sbContracto = $sbContracto;
+    function setNuTDocument($nuTDocument) {
+        $this->nuTDocument = $nuTDocument;
     }
 
-    function setNuTAvance($nuTAvance) {
-        $this->nuTAvance = $nuTAvance;
+    function setSbIdTer($sbIdTer) {
+        $this->sbIdTer = $sbIdTer;
     }
 
-    function setDtFecha($dtFecha) {
-        $this->dtFecha = $dtFecha;
+    function setSbNombre($sbNombre) {
+        $this->sbNombre = $sbNombre;
     }
 
-    function setNuPorcentaje($nuPorcentaje) {
-        $this->nuPorcentaje = $nuPorcentaje;
+    function setSbApellido1($sbApellido1) {
+        $this->sbApellido1 = $sbApellido1;
+    }
+
+    function setSbApellido2($sbApellido2) {
+        $this->sbApellido2 = $sbApellido2;
+    }
+
+    function setSbTel($sbTel) {
+        $this->sbTel = $sbTel;
+    }
+
+    function setSbCel($sbCel) {
+        $this->sbCel = $sbCel;
+    }
+
+    function setSbEmail($sbEmail) {
+        $this->sbEmail = $sbEmail;
+    }
+
+    function setNuTContratist($nuTContratist) {
+        $this->nuTContratist = $nuTContratist;
+    }
+
+    function setNuTClasific($nuTClasific) {
+        $this->nuTClasific = $nuTClasific;
+    }
+
+    function setNuCantTerc($nuCantTerc) {
+        $this->nuCantTerc = $nuCantTerc;
+    }
+
+    function setSbInteg1($sbInteg1) {
+        $this->sbInteg1 = $sbInteg1;
+    }
+
+    function setSbInteg2($sbInteg2) {
+        $this->sbInteg2 = $sbInteg2;
+    }
+
+    function setSbInteg3($sbInteg3) {
+        $this->sbInteg3 = $sbInteg3;
+    }
+
+    function setSbInteg4($sbInteg4) {
+        $this->sbInteg4 = $sbInteg4;
+    }
+
+    function setSbInteg5($sbInteg5) {
+        $this->sbInteg5 = $sbInteg5;
+    }
+
+    function setSbInteg6($sbInteg6) {
+        $this->sbInteg6 = $sbInteg6;
+    }
+
+    function setSbInteg7($sbInteg7) {
+        $this->sbInteg7 = $sbInteg7;
+    }
+
+    function setSbInteg8($sbInteg8) {
+        $this->sbInteg8 = $sbInteg8;
+    }
+
+    function setSbInteg9($sbInteg9) {
+        $this->sbInteg9 = $sbInteg9;
+    }
+
+    function setSbInteg10($sbInteg10) {
+        $this->sbInteg10 = $sbInteg10;
     }
 
     function setNuEstado($nuEstado) {
         $this->nuEstado = $nuEstado;
     }
 
-    public function save() {
-        $estadoId = 1;
+            
+    public function saveContratista() {
+        
+       
         $user = getSession('ID');
         $dtfecha = getFechaHoraActual();
 
-        $sql = "INSERT INTO acta  VALUES(0,"
-                . "'" . $this->getSbContracto() . "',"
-                . $this->getNuTAvance() . ","
-                . "'" . $this->getDtFecha() . "',"
-                . $this->getNuPorcentaje() . ","
-                . "$estadoId,'$dtfecha','$dtfecha', $user)";
-
+        $sql = "INSERT INTO tercero  VALUES(0,1,"
+                . $this->getNuTDocument() . ","
+                . "'" . $this->getSbIdTer() . "',"
+                . "'" . $this->getSbNombre() . "',"
+                . "'" . $this->getSbApellido1() . "',"
+                . "'" . $this->getSbApellido2() . "',"
+                . "'" . $this->getSbTel() . "',"
+                . "'" . $this->getSbCel(). "',"
+                . "'" . $this->getSbEmail(). "',"
+                . $this->getNuTContratist() . ","
+                . $this->getNuTClasific() . ","
+                . $this->getNuCantTerc(). ","
+                . "'" . $this->getSbInteg1(). "',"
+                . "'" . $this->getSbInteg2(). "',"
+                . "'" . $this->getSbInteg3(). "',"
+                . "'" . $this->getSbInteg4(). "',"
+                . "'" . $this->getSbInteg5(). "',"
+                . "'" . $this->getSbInteg6(). "',"
+                . "'" . $this->getSbInteg7(). "',"
+                . "'" . $this->getSbInteg8(). "',"
+                . "'" . $this->getSbInteg9(). "',"
+                . "'" . $this->getSbInteg10(). "',"
+                . $this->getNuEstado() . ","
+                . "'$dtfecha','$dtfecha', $user)";
+        
         conexion::conectar();
         $result = conexion::query($sql);
         conexion::desconectar();
 
         return $result;
+        
     }
 
-    public function update() {
+    public function updateContratista() {
 
-        $estadoId = 1;
         $user = getSession('ID');
         $dtfecha = getFechaHoraActual();
 
-        $sql = "UPDATE acta  SET "
-                . "contracto_id='" . $this->getSbContracto() . "',"
-                . "t_avance_id=" . $this->getNuTAvance() . ","
-                . "fecha='" . $this->getDtFecha() . "',"
-                . "porcentaje=" . $this->getNuPorcentaje() . ","
+        $sql = "UPDATE tercero  SET "
+                . "t_document='" . $this->getSbContracto() . "',"
+                . "id_ter='" . $this->getSbIdTer() . "',"
+                . "nombre='" . $this->getSbNombre() . "',"
+                . "apellido1='" . $this->getSbApellido1() . "',"
+                . "apellido2='" . $this->getSbApellido2() . "',"
+                . "tel='" . $this->getSbTel() . "',"
+                . "cel='" . $this->getSbCel() . "',"
+                . "email='" . $this->getSbEmail() . "',"
+                . "t_clasific_id=" . $this->getNuTContratist() . ","
+                . "cant_terc=" . $this->getNuCantTerc(). ","
+                . "tercero1_id='" . $this->getSbInteg1() . "',"
+                . "tercero2_id='" . $this->getSbInteg2() . "',"
+                . "tercero3_id='" . $this->getSbInteg3() . "',"
+                . "tercero4_id='" . $this->getSbInteg4() . "',"
+                . "tercero5_id='" . $this->getSbInteg5() . "',"
+                . "tercero6_id='" . $this->getSbInteg6() . "',"
+                . "tercero7_id='" . $this->getSbInteg7() . "',"
+                . "tercero8_id='" . $this->getSbInteg8() . "',"
+                . "tercero9_id='" . $this->getSbInteg9() . "',"
+                . "tercero10_id='" . $this->getSbInteg10() . "',"
+                . "estado_id='" . $this->getNuEstado() . "',"
                 . "fec_mod='" . $dtfecha . "',"
                 . "user_id=" . $user
                 . " where id =" . $this->getNuId();
@@ -119,11 +309,12 @@ class acta extends conexion {
         return $arrInfo;
     }
 
-    public function getList($select, $where = '', $order = '') {
+    public function getList($select,  $where = '', $order = '', $tipoSelect = '') {
 
         $arrInfo = array();
         conexion::conectar();
-        $sql = "SELECT " . $select . " FROM acta a INNER JOIN contracto c ON a.contracto_id = c.id  INNER JOIN t_avance ta ON a.t_avance_id = ta.id INNER JOIN estado e on a.estado_id = e.id";
+        $sql = "SELECT " . $select . " FROM tercero t INNER JOIN t_contratist tc ON t.t_contratist_id = tc.id  INNER JOIN t_clasific tcl ON t.t_clasific_id = tcl.id INNER JOIN estado e on t.estado_id = e.id";
+       
         if (!empty($where)) {
             $sql .= " WHERE " . $where;
         }
@@ -133,8 +324,14 @@ class acta extends conexion {
 
         $result = conexion::query($sql);
 
-        while ($row = mysqli_fetch_assoc($result)) {
-            $arrInfo[] = $row;
+        if (empty($tipoSelect)) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                $arrInfo[] = $row;
+            }
+        }else {
+            while ($row = mysqli_fetch_array($result)) {
+                $arrInfo[] = $row;
+            }
         }
 
         mysqli_free_result($result);
