@@ -253,6 +253,57 @@ class tercero extends conexion {
         return $result;
         
     }
+    public function saveAseguradora() {
+        
+       
+        $user = getSession('ID');
+        $dtfecha = getFechaHoraActual();
+
+        $sql = "INSERT INTO tercero (id, t_tercero, t_document_id, id_ter, nombre, apellido1, apellido2, tel, cel, email, estado_id, fec_reg, fec_mod, user_id)  VALUES(0,2,"
+                . $this->getNuTDocument() . ","
+                . "'" . $this->getSbIdTer() . "',"
+                . "'" . $this->getSbNombre() . "',"
+                . "'" . $this->getSbApellido1() . "',"
+                . "'" . $this->getSbApellido2() . "',"
+                . "'" . $this->getSbTel() . "',"
+                . "'" . $this->getSbCel(). "',"
+                . "'" . $this->getSbEmail(). "',"
+                . $this->getNuEstado() . ","
+                . "'$dtfecha','$dtfecha', $user)";
+        
+        conexion::conectar();
+        $result = conexion::query($sql);
+        conexion::desconectar();
+
+        return $result;
+        
+    }
+    
+    public function saveInterventor() {
+        
+       
+        $user = getSession('ID');
+        $dtfecha = getFechaHoraActual();
+
+        $sql = "INSERT INTO tercero (id, t_tercero, t_document_id, id_ter, nombre, apellido1, apellido2, tel, cel, email, estado_id, fec_reg, fec_mod, user_id)  VALUES(0,3,"
+                . $this->getNuTDocument() . ","
+                . "'" . $this->getSbIdTer() . "',"
+                . "'" . $this->getSbNombre() . "',"
+                . "'" . $this->getSbApellido1() . "',"
+                . "'" . $this->getSbApellido2() . "',"
+                . "'" . $this->getSbTel() . "',"
+                . "'" . $this->getSbCel(). "',"
+                . "'" . $this->getSbEmail(). "',"
+                . $this->getNuEstado() . ","
+                . "'$dtfecha','$dtfecha', $user)";
+        
+        conexion::conectar();
+        $result = conexion::query($sql);
+        conexion::desconectar();
+
+        return $result;
+        
+    }
 
     public function updateContratista() {
 
@@ -260,7 +311,7 @@ class tercero extends conexion {
         $dtfecha = getFechaHoraActual();
 
         $sql = "UPDATE tercero  SET "
-                . "t_document='" . $this->getSbContracto() . "',"
+                . "t_document_id='" . $this->getSbContracto() . "',"
                 . "id_ter='" . $this->getSbIdTer() . "',"
                 . "nombre='" . $this->getSbNombre() . "',"
                 . "apellido1='" . $this->getSbApellido1() . "',"
@@ -281,6 +332,56 @@ class tercero extends conexion {
                 . "tercero9_id='" . $this->getSbInteg9() . "',"
                 . "tercero10_id='" . $this->getSbInteg10() . "',"
                 . "estado_id='" . $this->getNuEstado() . "',"
+                . "fec_mod='" . $dtfecha . "',"
+                . "user_id=" . $user
+                . " where id =" . $this->getNuId();
+
+        conexion::conectar();
+        $result = conexion::query($sql);
+        conexion::desconectar();
+
+        return $result;
+    }
+    
+    public function updateAseguradora() {
+
+        $user = getSession('ID');
+        $dtfecha = getFechaHoraActual();
+
+        $sql = "UPDATE tercero  SET "
+                . "t_document_id='" . $this->getSbContracto() . "',"
+                . "id_ter='" . $this->getSbIdTer() . "',"
+                . "nombre='" . $this->getSbNombre() . "',"
+                . "apellido1='" . $this->getSbApellido1() . "',"
+                . "apellido2='" . $this->getSbApellido2() . "',"
+                . "tel='" . $this->getSbTel() . "',"
+                . "cel='" . $this->getSbCel() . "',"
+                . "email='" . $this->getSbEmail() . "',"
+                . "fec_mod='" . $dtfecha . "',"
+                . "user_id=" . $user
+                . " where id =" . $this->getNuId();
+
+        conexion::conectar();
+        $result = conexion::query($sql);
+        conexion::desconectar();
+
+        return $result;
+    }
+    
+    public function updateInterventor() {
+
+        $user = getSession('ID');
+        $dtfecha = getFechaHoraActual();
+
+        $sql = "UPDATE tercero  SET "
+                . "t_document_id='" . $this->getSbContracto() . "',"
+                . "id_ter='" . $this->getSbIdTer() . "',"
+                . "nombre='" . $this->getSbNombre() . "',"
+                . "apellido1='" . $this->getSbApellido1() . "',"
+                . "apellido2='" . $this->getSbApellido2() . "',"
+                . "tel='" . $this->getSbTel() . "',"
+                . "cel='" . $this->getSbCel() . "',"
+                . "email='" . $this->getSbEmail() . "',"
                 . "fec_mod='" . $dtfecha . "',"
                 . "user_id=" . $user
                 . " where id =" . $this->getNuId();
@@ -313,8 +414,12 @@ class tercero extends conexion {
 
         $arrInfo = array();
         conexion::conectar();
-        $sql = "SELECT " . $select . " FROM tercero t INNER JOIN t_contratist tc ON t.t_contratist_id = tc.id  INNER JOIN t_clasific tcl ON t.t_clasific_id = tcl.id INNER JOIN estado e on t.estado_id = e.id";
+        $sql = "SELECT " . $select . " FROM tercero t INNER JOIN t_document td ON t.t_document_id = td.id INNER JOIN t_contratist tc ON t.t_contratist_id = tc.id  INNER JOIN t_clasific tcl ON t.t_clasific_id = tcl.id INNER JOIN estado e on t.estado_id = e.id";
        
+        //SELECT td.nombre as nom_document, t.id_ter as id_ter, t.nombre as nom_ter, t.apellido1 as ape1_ter, t.apellido2 as ape2_ter, tc.nombre as t_contratist, tcl.nombre as clasific, e.nombre as est_nom, 
+        
+        
+        
         if (!empty($where)) {
             $sql .= " WHERE " . $where;
         }

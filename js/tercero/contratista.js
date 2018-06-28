@@ -22,6 +22,9 @@ $(document).ready(function () {
         
         if(nuInteg>10){
             msjModal('No puede haber mas de 10 integrantes','AT');
+            $("#divInteg").html("");
+            $("#txtCanInteg").val("");
+            $("#txtCanInteg").focus();
         }else{
             setIntegrants(nuInteg);  
         }
@@ -108,7 +111,7 @@ $(document).ready(function () {
     var sbAction = $("#frmContratista").attr("action");
 
     $.ajax({
-        url: "controller/tercero_c.php",
+        url: sbAction,
         type: 'POST',
         data: formData,
         success: function (data) {
