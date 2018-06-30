@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 20-06-2018 a las 00:07:40
+-- Tiempo de generación: 30-06-2018 a las 16:41:44
 -- Versión del servidor: 5.7.19
 -- Versión de PHP: 5.6.31
 
@@ -401,6 +401,56 @@ INSERT INTO `perfil` (`id`, `nombre`, `estado_id`) VALUES
 (1, 'Administrador', 1),
 (2, 'Coordinador', 1),
 (3, 'Digitador', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tercero`
+--
+
+DROP TABLE IF EXISTS `tercero`;
+CREATE TABLE IF NOT EXISTS `tercero` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `t_tercero` int(1) NOT NULL,
+  `t_document_id` int(11) NOT NULL,
+  `id_ter` varchar(20) DEFAULT NULL,
+  `nombre` varchar(20) DEFAULT NULL,
+  `apellido1` varchar(20) DEFAULT NULL,
+  `apellido2` varchar(20) DEFAULT NULL,
+  `tel` varchar(10) DEFAULT NULL,
+  `cel` varchar(15) DEFAULT NULL,
+  `email` varchar(100) NOT NULL,
+  `t_contratist_id` bigint(20) DEFAULT NULL,
+  `t_clasific_id` bigint(20) DEFAULT NULL,
+  `cant_terc` int(2) DEFAULT NULL,
+  `tercero1_id` varchar(20) DEFAULT NULL,
+  `tercero2_id` varchar(20) DEFAULT NULL,
+  `tercero3_id` varchar(20) DEFAULT NULL,
+  `tercero4_id` varchar(20) DEFAULT NULL,
+  `tercero5_id` varchar(20) DEFAULT NULL,
+  `tercero6_id` varchar(20) DEFAULT NULL,
+  `tercero7_id` varchar(20) DEFAULT NULL,
+  `tercero8_id` varchar(20) DEFAULT NULL,
+  `tercero9_id` varchar(20) DEFAULT NULL,
+  `tercero10_id` varchar(20) DEFAULT NULL,
+  `estado_id` int(2) DEFAULT NULL,
+  `fec_reg` datetime DEFAULT NULL,
+  `fec_mod` datetime DEFAULT NULL,
+  `user_id` bigint(15) DEFAULT NULL,
+  UNIQUE KEY `id` (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `tercero`
+--
+
+INSERT INTO `tercero` (`id`, `t_tercero`, `t_document_id`, `id_ter`, `nombre`, `apellido1`, `apellido2`, `tel`, `cel`, `email`, `t_contratist_id`, `t_clasific_id`, `cant_terc`, `tercero1_id`, `tercero2_id`, `tercero3_id`, `tercero4_id`, `tercero5_id`, `tercero6_id`, `tercero7_id`, `tercero8_id`, `tercero9_id`, `tercero10_id`, `estado_id`, `fec_reg`, `fec_mod`, `user_id`) VALUES
+(1, 1, 2, '1', '2', '3', '4', '5', '6', '7', 1, 1, 0, '-1', '-1', '-1', '-1', '-1', '-1', '-1', '-1', '-1', '-1', 1, '2018-06-27 18:29:34', '2018-06-27 18:29:34', 1144131603),
+(3, 1, 2, '100', 'ROBERTH', 'ROJAS', 'MOSQUERA', '40', '301', 'R0B3R@HOTMAIL.COM', 1, 1, 0, '-1', '-1', '-1', '-1', '-1', '-1', '-1', '-1', '-1', '-1', 1, '2018-06-27 18:30:49', '2018-06-27 18:30:49', 1144131603),
+(4, 1, 1, '5002', 'TELEPACIFICO', '', '', '', '', '', 1, 1, 2, '1', '3', '-1', '-1', '-1', '-1', '-1', '-1', '-1', '-1', 1, '2018-06-27 18:40:57', '2018-06-27 18:40:57', 1144131603),
+(5, 2, 1, '1144-5', 'POSITIVA', 'ltda', 'a', '123', '4564', 'positiva@positva', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2018-06-28 08:50:43', '2018-06-28 08:50:43', 1144131603),
+(6, 2, 2, '4455', 'ALBERT', 'BELTRAN', 'ORDO', '7789', '465512.', 'abo@hotm.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2018-06-28 14:43:16', '2018-06-28 14:43:16', 1144131603),
+(7, 3, 2, '600', 'Andres', 'quintana', 'rivera', '8892', '30125025', 'aq@', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2018-06-28 14:50:04', '2018-06-28 14:50:04', 1144131603);
 
 -- --------------------------------------------------------
 
