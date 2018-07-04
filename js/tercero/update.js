@@ -25,62 +25,9 @@ $(document).ready(function () {
             
             $("#divUpdate").html("");
             $("#divUpdate").append(data);
-            
-            
 
         }
     });
 
-
-    $("#btnIngresar").click(function () {
-
-    var nuIdentificacion = $("#txtId").val();
-        var sbNombre = $("#txtNombre").val();
-        var sbApellido1 = $("#txtApellido1").val();
-        var sbUsuario = $("#txtLogin").val();
-        var nuPerfil = $("#cmbPerfil").val();
-        var nuEstado = $("#cmbEstado").val();
-
-        var arrayInfo = {0: nuIdentificacion + "|#txtId",
-            1: sbNombre + "|#txtNombre",
-            2: sbApellido1 + "|#txtApellido1",
-            3: sbUsuario + "|#txtLogin",
-            4: nuPerfil + "|#cmbPerfil",
-            5: nuEstado + "|#cmbEstado"}
-
-        var blValido = isEmptyFields(arrayInfo);
-
-        //Validar Campos Vacios
-        if (blValido)
-        {
-            update();
-        }
-
-
-    });
 
 });
-
-
-function update() {
-
-    var formData = $("#frmUsuario").serialize();
-    var sbAction = $("#frmUsuario").attr("action");
-
-    $.ajax({
-        url: "controller/usuario_c.php",
-        type: 'POST',
-        data: formData,
-        success: function (data) {
-            if (data) {
-              alert("SE ACTUALIZO CORRECTAMENTE")
-              location.href = "usuarioList";
-            } else {
-                alert("ERROR AL REGISTRAR ");
-            }
-        }
-    });
-}
-;
-
-

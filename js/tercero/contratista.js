@@ -1,48 +1,48 @@
 $(document).ready(function () {
-    
+
     $('#txtDV').hide();
-    isNumber(['#txtId','#txtTel','#txtCel','#txtCanInteg']);
+    isNumber(['#txtId', '#txtTel', '#txtCel', '#txtCanInteg']);
     alfNum(['#txtNombre', '#txtApellido1', '#txtApellido2']);
     maxChar(['#txtCanInteg'], 2);
-     
-    $('#cmbTDocument').change(function (){
-        
-        if($('#cmbTDocument').val()==1){ 
+
+    $('#cmbTDocument').change(function () {
+
+        if ($('#cmbTDocument').val() == 1) {
             $("#spNom").text('RAZON SOCIAL:');
-            $("#txtDV").show();    
-        }else{
+            $("#txtDV").show();
+        } else {
             $("#spNom").text('NOMBRE:');
             $("#txtDV").hide();
-        }    
+        }
     });
 
-    $('#txtCanInteg').keyup(function (){
-        
+    $('#txtCanInteg').keyup(function () {
+
         var nuInteg = $("#txtCanInteg").val();
-        
-        if(nuInteg>10){
-            msjModal('No puede haber mas de 10 integrantes','AT');
+
+        if (nuInteg > 10) {
+            msjModal('No puede haber mas de 10 integrantes', 'AT');
             $("#divInteg").html("");
             $("#txtCanInteg").val("");
             $("#txtCanInteg").focus();
-        }else{
-            setIntegrants(nuInteg);  
+        } else {
+            setIntegrants(nuInteg);
         }
     });
-    
-     //validar formulario 
+
+    //validar formulario 
     $("#btnIngresar").click(function () {
-        
+
         var blValidoInteg = true;
         var nuTDocument = $("#cmbTDocument").val();
         var nuIdentificacion = $("#txtId").val();
-        var nuDv= $("#txtDV").val();
+        var nuDv = $("#txtDV").val();
         var sbNombre = $("#txtNombre").val();
         var nuContratista = $("#cmbTContratista").val();
         var nuClasific = $("#cmbTClasific").val();
         var nuCantInteg = $("#txtCanInteg").val();
         var nuEstado = $("#cmbEstado").val();
-        
+
         var arrayInfo = {0: nuIdentificacion + "|#txtId",
             1: nuTDocument + "|#cmbTDocument",
             2: sbNombre + "|#txtNombre",
@@ -52,60 +52,62 @@ $(document).ready(function () {
             6: nuEstado + "|#cmbEstado"}
 
         var blValido = isEmptyFields(arrayInfo);
-        
-        if(nuDv!=''){
-            $('#txtIdFinal').val(nuIdentificacion+"-"+nuDv);
-        }else{
+
+        if (nuDv != '') {
+            $('#txtIdFinal').val(nuIdentificacion + "-" + nuDv);
+        } else {
             $('#txtIdFinal').val(nuIdentificacion);
         }
-        if(nuCantInteg>0){
-            for(var i=1; i<=nuCantInteg; i++){
-                if($("#cmbInteg"+i).val()==''){
+        if (nuCantInteg > 0) {
+            for (var i = 1; i <= nuCantInteg; i++) {
+                if ($("#cmbInteg" + i).val() == '') {
                     blValidoInteg = false;
                 }
             }
         }
         //Validar Campos Vacios
-        if (blValidoInteg){
-            if (blValido){
+        if (blValidoInteg) {
+            if (blValido) {
                 insert();
             }
-        }else{msjModal('Se Debe Ingresar Toda La Informacion','AT');}
+        } else {
+            msjModal('Se Debe Ingresar Toda La Informacion', 'AT');
+        }
 
     });
-    
-    
- });    
- 
- function setIntegrants(nuInteg){
-     
-    var formData = {txtProcess:2,txtNuInteg:nuInteg};
+
+
+});
+
+function setIntegrants(nuInteg) {
+
+    var formData = {txtProcess: 2, txtNuInteg: nuInteg};
     var sbAction = $("#frmContratista").attr("action");
-     
+
     $.ajax({
         url: sbAction,
         type: 'POST',
         data: formData,
         success: function (data) {
-          
-          $("#divInteg").html("");
-          $("#divInteg").append(data);
-          
-          if(nuInteg>0){
-                for(var i=1; i<=nuInteg; i++){
-                    $("#cmbInteg"+i).chosen({
-                             max_selected_options: 30,
-                             max_shown_results: 30
-                    });    
+
+            $("#divInteg").html("");
+            $("#divInteg").append(data);
+
+            if (nuInteg > 0) {
+                for (var i = 1; i <= nuInteg; i++) {
+                    $("#cmbInteg" + i).chosen({
+                        max_selected_options: 30,
+                        max_shown_results: 30
+                    });
 //    alert("#cmbInteg"+i);
-                  //  setTimeout(function(){},400);
+                    //  setTimeout(function(){},400);
                 }
-          }
+            }
         }
     });
- }
- 
- function insert() {
+}
+
+function insert() {
 
     var formData = $("#frmContratista").serialize();
     var sbAction = $("#frmContratista").attr("action");
@@ -116,12 +118,22 @@ $(document).ready(function () {
         data: formData,
         success: function (data) {
             if (data) {
-                msjModal('Se Creo Correctamente El Contratista','OK');
-                $("#frmContratista")[0].reset();
-                $("#txtDV").hide();
-                $("#divInteg").html("");
+                alert(data);
+                if ($("#txtIdTercero").length) {
+
+                    msjModal('Se Actualizo Correctamente El Contratista', 'OK');
+                    setTimeout(function () {
+                        location.href = "terceroList";
+                    }, 1800);
+
+                } else {
+                    msjModal('Se Creo Correctamente El Contratista', 'OK');
+                    $("#frmContratista")[0].reset();
+                    $("#txtDV").hide();
+                    $("#divInteg").html("");
+                }
             } else {
-                msjModal("Error Al Crear El Contratista",'ER');
+                msjModal("Error Al Crear El Contratista", 'ER');
             }
         }
     });

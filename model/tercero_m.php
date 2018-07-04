@@ -311,7 +311,7 @@ class tercero extends conexion {
         $dtfecha = getFechaHoraActual();
 
         $sql = "UPDATE tercero  SET "
-                . "t_document_id='" . $this->getSbContracto() . "',"
+                . "t_document_id='" . $this->getNuTDocument() . "',"
                 . "id_ter='" . $this->getSbIdTer() . "',"
                 . "nombre='" . $this->getSbNombre() . "',"
                 . "apellido1='" . $this->getSbApellido1() . "',"
@@ -349,7 +349,7 @@ class tercero extends conexion {
         $dtfecha = getFechaHoraActual();
 
         $sql = "UPDATE tercero  SET "
-                . "t_document_id='" . $this->getSbContracto() . "',"
+                . "t_document_id='" . $this->getNuTDocument() . "',"
                 . "id_ter='" . $this->getSbIdTer() . "',"
                 . "nombre='" . $this->getSbNombre() . "',"
                 . "apellido1='" . $this->getSbApellido1() . "',"
@@ -374,7 +374,7 @@ class tercero extends conexion {
         $dtfecha = getFechaHoraActual();
 
         $sql = "UPDATE tercero  SET "
-                . "t_document_id='" . $this->getSbContracto() . "',"
+                . "t_document_id='" . $this->getNuTDocument() . "',"
                 . "id_ter='" . $this->getSbIdTer() . "',"
                 . "nombre='" . $this->getSbNombre() . "',"
                 . "apellido1='" . $this->getSbApellido1() . "',"

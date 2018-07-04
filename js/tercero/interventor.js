@@ -59,10 +59,19 @@ $(document).ready(function () {
         data: formData,
         success: function (data) {
             if (data) {
-                msjModal('Se Creo Correctamente El Interventor','OK');
-                $("#frmInterventor")[0].reset();
-                $("#txtDV").hide();
-                $("#divInteg").html("");
+                
+                if($("#txtIdTercero").length){
+                    
+                    msjModal('Se Actualizo Correctamente el Interventor','OK');
+                      setTimeout(function(){location.href = "terceroList";},1800);
+                    
+              
+                }else{             
+                    msjModal('Se Creo Correctamente El Interventor','OK');
+                    $("#frmInterventor")[0].reset();
+                    $("#txtDV").hide();
+                    $("#divInteg").html("");
+                }
             } else {
                 msjModal("Error Al Crear El Interventor",'ER');
             }

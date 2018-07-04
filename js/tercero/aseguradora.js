@@ -20,7 +20,7 @@ $(document).ready(function () {
      //validar formulario 
     $("#btnIngresar").click(function () {
         
-        var blValidoInteg = true;
+        
         var nuTDocument = $("#cmbTDocument").val();
         var nuIdentificacion = $("#txtId").val();
         var nuDv= $("#txtDV").val();
@@ -61,10 +61,20 @@ $(document).ready(function () {
         data: formData,
         success: function (data) {
             if (data) {
-                msjModal('Se Creo Correctamente La Aseguradora','OK');
-                $("#frmAseguradora")[0].reset();
-                $("#txtDV").hide();
-                $("#divInteg").html("");
+                
+                alert(data);
+                 if($("#txtIdTercero").length){
+                    
+                    msjModal('Se Actualizo Correctamente La Aseguradora','OK');
+                      setTimeout(function(){location.href = "terceroList";},1800);
+                    
+              
+                }else{ 
+                    msjModal('Se Creo Correctamente La Aseguradora','OK');
+                    $("#frmAseguradora")[0].reset();
+                    $("#txtDV").hide();
+                    $("#divInteg").html("");
+                }
             } else {
                 msjModal("Error Al Crear La Aseguradora",'ER');
             }
