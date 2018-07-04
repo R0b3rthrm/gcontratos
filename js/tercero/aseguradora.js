@@ -6,8 +6,10 @@ $(document).ready(function () {
      
     $('#cmbTDocument').change(function (){
         
+        $("#txtId").val('');            
+        
         if($('#cmbTDocument').val()==1){ 
-            $("#spNom").text('RAZON SOCIAL:');
+            $("#spNom").text('RAZON SOCIAL:');            
             $("#txtDV").show();    
         }else{
             $("#spNom").text('NOMBRE:');

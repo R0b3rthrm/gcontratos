@@ -5,7 +5,7 @@ $(document).ready(function () {
     alfNum(['#txtNombre', '#txtApellido1', '#txtApellido2']);
      
     $('#cmbTDocument').change(function (){
-        
+        $("#txtId").val('');  
         if($('#cmbTDocument').val()==1){ 
             $("#spNom").text('RAZON SOCIAL:');
             $("#txtDV").show();    

@@ -7,7 +7,7 @@
 </rigth>
 <div class="container2 ">
     <center>
-        <form action="controller/usuario_c.php" name="frmTerceroList" id= "frmTerceroList" >
+        <form action="controller/tercero_c.php" name="frmTerceroList" id= "frmTerceroList" >
 
 
 
@@ -23,7 +23,6 @@
                         <TH> <label>TIPO DOCUMENTOIDE</label></TH>
                         <TH> <label>IDENTIFICACION</label></TH>
                         <TH> <label>NOMBRE / RAZON SOCIAL</label></TH>
-                        <TH> <label>APELLIDOS </label></TH>
                         <TH> <label>TIPO CONTRATISTA</label></TH>
                         <TH> <label>CLASIFICACION CONTRATISTA</label></TH>
                         <TH> <label>ESTADO</label></TH>

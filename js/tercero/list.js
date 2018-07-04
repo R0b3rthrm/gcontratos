@@ -9,6 +9,8 @@ $(document).ready(function () {
         data: formData,
         success: function (data) {
             if (data) {
+                
+                alert(data);
                 $("#resultado").html("");
                 $("#resultado").append(data);
                 $("#tableList").DataTable({"language": {

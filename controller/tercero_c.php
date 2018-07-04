@@ -4,6 +4,7 @@ require_once("../model/tercero_m.php");
 require_once("../model/tDocument_m.php");
 require_once("../model/tContratist_m.php");
 require_once("../model/tClasific_m.php");
+require_once("../model/estado_m.php");
 require_once("../utils/utils.php");
 
 
@@ -19,7 +20,6 @@ if (isset($_POST['txtIdC'])) {
     $nuProcess = trim($_POST['txtProcess']);
 
     try {
-
         if ($nuProcess == 1) {
 
                 $resultInfo = htmlContratista();
@@ -75,10 +75,34 @@ if (isset($_POST['txtIdC'])) {
             
             $objTercero = new tercero();
             
-            $arrTerceros = $objTercero->getList('t.id_ter');
+            $arrTerceros = $objTercero->getList('t.id,t.t_tercero ,td.nombre as nom_document, t.id_ter as id_ter, t.nombre as nom_ter, t.apellido1 as ape1_ter, t.apellido2 as ape2_ter, tc.nombre as t_contratist, tcl.nombre as clasific, e.nombre as est_nom');
             
-        }else if ($nuProcess == 20) {    
-            $resultInfo = htmlAseguradora();
+            $resultInfo = "";
+            $i = 1;
+            foreach ($arrTerceros as $value) {
+                
+                $idTer = $value['t_tercero'];
+                if($value['t_tercero']==1){$value['t_tercero']='Contratista';}
+                if($value['t_tercero']==2){$value['t_tercero']='Aseguradora';}
+                if($value['t_tercero']==3){$value['t_tercero']='Interventor';}
+                
+                $resultInfo .= '<tr><td>' . $i . '</td>'
+                        . '<td>' . $value['t_tercero'] . '</td>'
+                        . '<td>' . $value['nom_document'] . '</td>'
+                        . '<td>' . $value['id_ter'] . '</td>'
+                        . '<td>' . $value['nom_ter'] . ' ' . $value['ape1_ter'] .' '.$value['ape2_ter']. '</td>'
+                        . '<td>' . $value['t_contratist'] . '</td>'
+                        . '<td>' . $value['clasific'] . '</td>'
+                        . '<td>' . $value['est_nom'] . '</td>'
+                        . '<td><a href="terceroUpdate?id=' . $value['id'] . '-' . $idTer.'" > <IMG id="imgList" src="img/editar.png"/></a></td></tr>';
+                $i++;
+            }
+            
+        }else if ($nuProcess == 20) {
+            
+            $setInfoUpdate = "";
+            if(isset($_POST['txtUpdate'])){$setInfoUpdate = $_POST['txtUpdate'];}
+            $resultInfo = htmlAseguradora($setInfoUpdate);
             
         }else if ($nuProcess == 21) {
             
@@ -97,9 +121,11 @@ if (isset($_POST['txtIdC'])) {
             $resultInfo= $objTercero->saveAseguradora();
             
         }else if ($nuProcess == 30) {
-            $resultInfo = htmlInterventor();
+            
+            $setInfoUpdate = "";
+            if(isset($_POST['txtUpdate'])){$setInfoUpdate = $_POST['txtUpdate'];}
+            $resultInfo = htmlInterventor($setInfoUpdate);
      
-        
         }else if ($nuProcess == 31) {
             
              $objTercero = new tercero();
@@ -116,7 +142,26 @@ if (isset($_POST['txtIdC'])) {
             $objTercero->setNuEstado(trim($_POST['cmbEstado']));
             $resultInfo= $objTercero->saveInterventor();
      
+        }else if ($nuProcess == 32) {
+            
+            $objTercero = new tercero();
+            
+            $objTercero->setNuTDocument(trim($_POST['cmbTDocument']));
+            $objTercero->setSbIdTer(trim($_POST['txtIdFinal']));
+            $objTercero->setSbNombre(trim($_POST['txtNombre']));
+            $objTercero->setSbApellido1(trim($_POST['txtApellido1']));
+            $objTercero->setSbApellido2(trim($_POST['txtApellido2']));
+            $objTercero->setSbTel(trim($_POST['txtTel']));
+            $objTercero->setSbCel(trim($_POST['txtCel']));
+            $objTercero->setSbCel(trim($_POST['txtCel']));
+            $objTercero->setSbEmail(trim($_POST['txtEmail']));
+            $objTercero->setNuEstado(trim($_POST['cmbEstado']));
+            
+            $resultInfo= $objTercero->updateInterventor();
+            
+            
         }
+        
     } catch (Exception $e) {
 
         $sbmsj = 'Excepci�n capturada: ' . $e->getMessage() . "\n";
@@ -261,10 +306,32 @@ function setIntegrates() {
 }
 
 
-function htmlAseguradora() {
-    //function comboBox($objUtils_m,$select,$id, $class = '', $valor ='', $event='', $func = '') {
+function htmlAseguradora($setIdUpdate) {
+    //function comboBox($objUtils_m, $select, $where, $order, $id, $class = '', $valor ='', $event='', $func = '') {
     $objTDocument = new tDocument();
-    $cmbTipoDocument = comboBox($objTDocument, 't.id,t.nombre','','', 'cmbTDocument');
+    $objEstado = new estado();
+    
+    $TDocumento="";$idTer="";$nom="";$ape1="";$ape2="";$tel="";$cel="";$email="";$estado="";
+    $sbProcess =  "<input id='txtProcess' name='txtProcess' value='21' hidden>";
+    
+    if(!empty($setIdUpdate)){
+        $objTercero = new tercero();
+        $objTercero->setNuId($setIdUpdate);
+        $arrInfo = $objTercero->getListId();
+        $TDocumento = $arrInfo['t_document_id'];
+        $idTer = $arrInfo['id_ter'];
+        $nom = $arrInfo['nombre'];
+        $ape1 = $arrInfo['apellido1'];
+        $ape2 = $arrInfo['apellido2'];
+        $tel = $arrInfo['tel'];
+        $cel = $arrInfo['cel'];
+        $email = $arrInfo['email'];
+        $estado = $arrInfo['estado_id'];
+        $sbProcess = "<input id='txtProcess' name='txtProcess' value='22' hidden>";
+        
+    };
+    $cmbTipoDocument = comboBox($objTDocument, 't.id,t.nombre','','', 'cmbTDocument','',$TDocumento);
+    $cmbEstado = comboBox($objEstado, 'id,nombre','','', 'cmbEstado','',$estado);
     
     $html = "
                      <center>
@@ -272,7 +339,8 @@ function htmlAseguradora() {
     <script src='js/tercero/aseguradora.js'></script>
     <h2>ASEGURADORA</h2>
     <form action='controller/tercero_c.php' method='post'  id='frmAseguradora' name = 'frmAseguradora'>
-
+ 
+    ".$sbProcess."
 
     <input id='txtProcess' name='txtProcess' value='21' hidden>
 
@@ -285,7 +353,7 @@ function htmlAseguradora() {
             <span class='input-group-addon' >TIPO DOCUMENTO:</span>
             <div class='6u$ 12u$(xsmall)' name='divTDoc'  id='divTDoc'>".$cmbTipoDocument."</div>
             <span class='input-group-addon' >NUMERO DOCUMENTO  :</span>
-            <input name='txtId' id='txtId' type='text'  />
+            <input name='txtId' id='txtId' type='text' value = '$idTer'   />
             <input name='txtDV' id='txtDV' type='text' placeholder='D. Verificacion'/>
             <input name='txtIdFinal' id='txtIdFinal' type='text' hidden/>
         </div>                
@@ -294,41 +362,34 @@ function htmlAseguradora() {
 
         <div class='input-group input-group-sm'>
             <span id='spNom' class='input-group-addon' >NOMBRE :</span>
-            <input type='text' name='txtNombre' id='txtNombre' class='form-control' placeholder=' - Nombre -'/>        
+            <input type='text' name='txtNombre' id='txtNombre' class='form-control' placeholder=' - Nombre -' value='$nom'/>        
             <span class='input-group-addon' >APELLIDO 1 :</span>
-            <input name='txtApellido1' id='txtApellido1' type='text' class='form-control' placeholder=' - Apellido 1 -'/>
+            <input name='txtApellido1' id='txtApellido1' type='text' class='form-control' placeholder=' - Apellido 1 -' value='$ape1' />
         </div>                
 
         <br/>
 
         <div class='input-group input-group-sm'>
             <span class='input-group-addon' >APELLIDO 2 :</span>
-            <input type='text' name='txtApellido2' id='txtApellido2' class='form-control' placeholder=' - Apellido 2 -'/>          
+            <input type='text' name='txtApellido2' id='txtApellido2' class='form-control' placeholder=' - Apellido 2 -' value='$ape2'/>          
             <span class='input-group-addon' >TELEFONO :</span>
-            <input name='txtTel' id='txtTel' type='text' class='form-control' placeholder=' - Telefono -'/>
+            <input name='txtTel' id='txtTel' type='text' class='form-control' placeholder=' - Telefono -' value='$tel'/>
         </div>
         <br/>
 
         <div class='input-group input-group-sm'>
 
             <span class='input-group-addon' >CELULAR :</span>
-            <input name='txtCel' id='txtCel' type='text' class='form-control' placeholder=' - Celular -'/>
+            <input name='txtCel' id='txtCel' type='text' class='form-control' placeholder=' - Celular -' value='$cel'/>
             <span class='input-group-addon' >EMAIL :</span>
-            <input name='txtEmail' id='txtEmail' type='text' class='form-control' placeholder=' - Email -'/>
+            <input name='txtEmail' id='txtEmail' type='text' class='form-control' placeholder=' - Email -' value='$email'/>
         </div> 
         
         <br/>
       
         <div class='input-group input-group-sm'>
-               <span class='input-group-addon' >ESTADO:</span>
-                <div class='6u$ 12u$(xsmall)' name='divEstado'  id='divEstado'>
-                    <SELECT id='cmbEstado' name='cmbEstado'>
-                        <option value=''>-Seleccionar-</option>
-                        <option value='1'>Activo</option>
-                        <option value='0'>Inactivo</option>
-                    </SELECT>
-                
-                </div>
+            <span class='input-group-addon' >TIPO DOCUMENTO:</span>
+            <div class='6u$ 12u$(xsmall)'>".$cmbEstado."</div>
         </div>
          
         
@@ -346,11 +407,34 @@ function htmlAseguradora() {
     return $html;
 }
 
-function htmlInterventor (){
+function htmlInterventor ($setIdUpdate){
     
+    //function comboBox($objUtils_m, $select, $where, $order, $id, $class = '', $valor ='', $event='', $func = '') {
     $objTDocument = new tDocument();
-    $cmbTipoDocument = comboBox($objTDocument, 't.id,t.nombre','','', 'cmbTDocument');
-     
+    $objEstado = new estado();
+    
+    $TDocumento="";$idTer="";$nom="";$ape1="";$ape2="";$tel="";$cel="";$email="";$estado="";
+    $sbProcess =  "<input id='txtProcess' name='txtProcess' value='31' hidden>";
+    
+    if(!empty($setIdUpdate)){
+        $objTercero = new tercero();
+        $objTercero->setNuId($setIdUpdate);
+        $arrInfo = $objTercero->getListId();
+        $TDocumento = $arrInfo['t_document_id'];
+        $idTer = $arrInfo['id_ter'];
+        $nom = $arrInfo['nombre'];
+        $ape1 = $arrInfo['apellido1'];
+        $ape2 = $arrInfo['apellido2'];
+        $tel = $arrInfo['tel'];
+        $cel = $arrInfo['cel'];
+        $email = $arrInfo['email'];
+        $estado = $arrInfo['estado_id'];
+        $sbProcess = "<input id='txtProcess' name='txtProcess' value='32' hidden>";
+        
+    };
+    $cmbTipoDocument = comboBox($objTDocument, 't.id,t.nombre','','', 'cmbTDocument','',$TDocumento);
+    $cmbEstado = comboBox($objEstado, 'id,nombre','','', 'cmbEstado','',$estado);
+    
     $html = "
                          <center>
     <BR>
@@ -358,8 +442,7 @@ function htmlInterventor (){
     <h2>INTERVENTOR</h2>
     <form action='controller/tercero_c.php' method='post'  id='frmInterventor' name = 'frmInterventor'>
 
-
-    <input id='txtProcess' name='txtProcess' value='31' hidden>
+    ".$sbProcess."
 
     <label id='error'>
     </label>
@@ -370,7 +453,7 @@ function htmlInterventor (){
             <span class='input-group-addon' >TIPO DOCUMENTO:</span>
             <div class='6u$ 12u$(xsmall)' name='divTDoc'  id='divTDoc'>".$cmbTipoDocument."</div>
             <span class='input-group-addon' >NUMERO DOCUMENTO  :</span>
-            <input name='txtId' id='txtId' type='text'  />
+            <input name='txtId' id='txtId' type='text'  value='$idTer'/>
             <input name='txtDV' id='txtDV' type='text' placeholder='D. Verificacion'/>
             <input name='txtIdFinal' id='txtIdFinal' type='text' hidden/>
         </div>                
@@ -379,42 +462,36 @@ function htmlInterventor (){
 
         <div class='input-group input-group-sm'>
             <span id='spNom' class='input-group-addon' >NOMBRE :</span>
-            <input type='text' name='txtNombre' id='txtNombre' class='form-control' placeholder=' - Nombre -'/>        
+            <input type='text' name='txtNombre' id='txtNombre' class='form-control' placeholder=' - Nombre -' value='$nom'/>        
             <span class='input-group-addon' >APELLIDO 1 :</span>
-            <input name='txtApellido1' id='txtApellido1' type='text' class='form-control' placeholder=' - Apellido 1 -'/>
+            <input name='txtApellido1' id='txtApellido1' type='text' class='form-control' placeholder=' - Apellido 1 -' value='$ape1'/>
         </div>                
 
         <br/>
 
         <div class='input-group input-group-sm'>
             <span class='input-group-addon' >APELLIDO 2 :</span>
-            <input type='text' name='txtApellido2' id='txtApellido2' class='form-control' placeholder=' - Apellido 2 -'/>          
+            <input type='text' name='txtApellido2' id='txtApellido2' class='form-control' placeholder=' - Apellido 2 -' value='$ape2'/>          
             <span class='input-group-addon' >TELEFONO :</span>
-            <input name='txtTel' id='txtTel' type='text' class='form-control' placeholder=' - Telefono -'/>
+            <input name='txtTel' id='txtTel' type='text' class='form-control' placeholder=' - Telefono -' value='$tel'/>
         </div>
         <br/>
 
         <div class='input-group input-group-sm'>
 
             <span class='input-group-addon' >CELULAR :</span>
-            <input name='txtCel' id='txtCel' type='text' class='form-control' placeholder=' - Celular -'/>
+            <input name='txtCel' id='txtCel' type='text' class='form-control' placeholder=' - Celular -' value='$cel'/>
             <span class='input-group-addon' >EMAIL :</span>
-            <input name='txtEmail' id='txtEmail' type='text' class='form-control' placeholder=' - Email -'/>
+            <input name='txtEmail' id='txtEmail' type='text' class='form-control' placeholder=' - Email -' value='$email'/>
         </div> 
         
         <br/>
       
         <div class='input-group input-group-sm'>
-               <span class='input-group-addon' >ESTADO:</span>
-                <div class='6u$ 12u$(xsmall)' name='divEstado'  id='divEstado'>
-                    <SELECT id='cmbEstado' name='cmbEstado'>
-                        <option value=''>-Seleccionar-</option>
-                        <option value='1'>Activo</option>
-                        <option value='0'>Inactivo</option>
-                    </SELECT>
-                
-                </div>
+            <span class='input-group-addon' >TIPO DOCUMENTO:</span>
+            <div class='6u$ 12u$(xsmall)'>".$cmbEstado."</div>
         </div>
+        
         <br/>
 
         <input type='button' id='btnIngresar' name='btnIngresar' value='REGISTRAR' class='button ' />

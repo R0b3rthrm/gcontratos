@@ -259,7 +259,7 @@ class tercero extends conexion {
         $user = getSession('ID');
         $dtfecha = getFechaHoraActual();
 
-        $sql = "INSERT INTO tercero (id, t_tercero, t_document_id, id_ter, nombre, apellido1, apellido2, tel, cel, email, estado_id, fec_reg, fec_mod, user_id)  VALUES(0,2,"
+        $sql = "INSERT INTO tercero (id, t_tercero, t_document_id, id_ter, nombre, apellido1, apellido2, tel, cel, email, estado_id,  t_contratist_id, t_clasific_id, fec_reg, fec_mod, user_id)  VALUES(0,2,"
                 . $this->getNuTDocument() . ","
                 . "'" . $this->getSbIdTer() . "',"
                 . "'" . $this->getSbNombre() . "',"
@@ -269,7 +269,7 @@ class tercero extends conexion {
                 . "'" . $this->getSbCel(). "',"
                 . "'" . $this->getSbEmail(). "',"
                 . $this->getNuEstado() . ","
-                . "'$dtfecha','$dtfecha', $user)";
+                . "0,0,'$dtfecha','$dtfecha', $user)";
         
         conexion::conectar();
         $result = conexion::query($sql);
@@ -281,11 +281,11 @@ class tercero extends conexion {
     
     public function saveInterventor() {
         
-       
+        
         $user = getSession('ID');
         $dtfecha = getFechaHoraActual();
-
-        $sql = "INSERT INTO tercero (id, t_tercero, t_document_id, id_ter, nombre, apellido1, apellido2, tel, cel, email, estado_id, fec_reg, fec_mod, user_id)  VALUES(0,3,"
+        
+        $sql = "INSERT INTO tercero (id, t_tercero, t_document_id, id_ter, nombre, apellido1, apellido2, tel, cel, email, estado_id, t_contratist_id, t_clasific_id, fec_reg, fec_mod, user_id)  VALUES(0,3,"
                 . $this->getNuTDocument() . ","
                 . "'" . $this->getSbIdTer() . "',"
                 . "'" . $this->getSbNombre() . "',"
@@ -295,7 +295,7 @@ class tercero extends conexion {
                 . "'" . $this->getSbCel(). "',"
                 . "'" . $this->getSbEmail(). "',"
                 . $this->getNuEstado() . ","
-                . "'$dtfecha','$dtfecha', $user)";
+                . "0,0,'$dtfecha','$dtfecha', $user)";
         
         conexion::conectar();
         $result = conexion::query($sql);
@@ -397,7 +397,7 @@ class tercero extends conexion {
 
         $arrInfo = array();
         conexion::conectar();
-        $sql = "select * from acta  where id = " . $this->getNuId();
+        $sql = "select * from tercero  where id = " . $this->getNuId();
         $result = conexion::query($sql);
 
         while ($row = mysqli_fetch_assoc($result)) {

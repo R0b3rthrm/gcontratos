@@ -3,33 +3,30 @@ $(document).ready(function () {
     var sqlPerfil = "select id, nombre from  perfil where estado_id = 1";
     var sqlEstado = "select id, nombre from  estado  ";
 
-    var usuario_id = returnIdUrl(window.location.href);
-    $("#lblId").text(usuario_id[0]);
-    $("#txtIdUsuario").val(usuario_id[0]);
+    var tercero_id = returnIdUrl(window.location.href);
+    var id = tercero_id[0].split("-");
+    
+    if(id[1]==2){id[1]=20;}
+    if(id[1]==3){id[1]=30;}
+    
+    alert(id[1]);
+//$("#lblId").text(usuario_id[0]);
+    // $("#txtIdUsuario").val(usuario_id[0]);
 
-    var array = {txtIdUsuario: usuario_id[0]};
+    var array = {txtProcess: id[1],txtUpdate:id[0]};
 
     $.ajax({
-        url: "controller/usuario_c.php",
+        url: "controller/tercero_c.php",
         type: 'POST',
         data: array,
         success: function (data) {
-
-            var result = JSON.parse(data);
-
-            $("#txtIdUsuario").attr("id", "txtId");
-            $("#txtId").attr("name", "txtId");
-
-            $("#txtNombre").val(result['nombre']);
-            $("#txtApellido1").val(result['apellido1']);
-            $("#txtApellido2").val(result['apellido2']);
-            $("#txtTel").val(result['telefono']);
-            $("#txtCel").val(result['celular']);
-            $("#txtEmail").val(result['email']);
-            $("#txtLogin").val(result['login']);
-
-            comboBox(sqlPerfil, "cmbPerfil", result['perfil_id'], '#divPerfil');
-            comboBox(sqlEstado, "cmbEstado", result['estado_id'], '#divEstado');
+            
+            alert(data);
+            
+            $("#divUpdate").html("");
+            $("#divUpdate").append(data);
+            
+            
 
         }
     });
