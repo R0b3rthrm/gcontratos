@@ -44,7 +44,6 @@ $(document).ready(function () {
             if(dtIni!=''){$('#dtInicio').focus();}else{$('#dtTerminacion').focus();}
         }
 
-
     });
     
     var id = returnIdUrl(window.location.href);
