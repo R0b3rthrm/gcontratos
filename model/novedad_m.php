@@ -7,7 +7,7 @@ require_once("../utils/utils.php");
 class novedad extends conexion {
     
     private $nuId;
-    private $sbContracto;
+    private $sbContrato;
     private $nuTNoved;
     private $nuValor;
     private $nuPlazo;
@@ -18,8 +18,8 @@ class novedad extends conexion {
         return $this->nuId;
     }
 
-    function getSbContracto() {
-        return $this->sbContracto;
+    function getSbContrato() {
+        return $this->sbContrato;
     }
 
     function getNuTNoved() {
@@ -46,8 +46,8 @@ class novedad extends conexion {
         $this->nuId = $nuId;
     }
 
-    function setSbContracto($sbContracto) {
-        $this->sbContracto = $sbContracto;
+    function setSbContrato($sbContrato) {
+        $this->sbContrato = $sbContrato;
     }
 
     function setNuTNoved($nuTNoved) {
@@ -70,14 +70,14 @@ class novedad extends conexion {
         $this->nuEstado = $nuEstado;
     }
 
-                
+                    
     public function save() {
         $estadoId=1;
         $user = getSession('ID');
         $dtfecha = getFechaHoraActual();
         
         $sql = "INSERT INTO novedad  VALUES(0,"
-                . "'" . $this->getSbContracto() . "',"
+                . "'" . $this->getSbContrato() . "',"
                 .  $this->getNuTNoved(). ","
                 .  $this->getNuValor(). ","
                 .  $this->getNuPlazo(). ","
@@ -98,7 +98,7 @@ class novedad extends conexion {
         $dtfecha = getFechaHoraActual();
         
         $sql = "UPDATE novedad  SET "
-                . "contracto_id='" . $this->getSbContracto(). "',"
+                . "contrato_id='" . $this->getSbContrato(). "',"
                 . "t_noved_id=" . $this->getNuTNoved() . ","
                 . "valor=" . $this->getNuValor() . ","
                 . "plazo=" . $this->getNuPlazo() . ","
@@ -135,7 +135,7 @@ class novedad extends conexion {
 
         $arrInfo = array();
         conexion::conectar();
-        $sql = "SELECT " . $select . " FROM novedad n INNER JOIN contracto c ON n.contracto_id = c.id  INNER JOIN t_noved tn ON n.t_noved_id = tn.id INNER JOIN estado e on n.estado_id = e.id";
+        $sql = "SELECT " . $select . " FROM novedad n INNER JOIN contrato c ON n.contrato_id = c.id  INNER JOIN t_noved tn ON n.t_noved_id = tn.id INNER JOIN estado e on n.estado_id = e.id";
 
         if (!empty($where)) {
             $sql .= " WHERE " . $where;

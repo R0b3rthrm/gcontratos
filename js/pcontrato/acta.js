@@ -21,7 +21,7 @@ $(document).ready(function () {
         if (blValido)
         {
             if ($('#txtPorcentajActa').val() > 100) {
-                msjModal('El Porcentaje debe se menor a 1000','AT');
+                msjModal('El Porcentaje debe se menor a 100','AT');
             } else {
                 insertActa();
             }
@@ -82,7 +82,7 @@ function updateActa(id) {
 
 }
 
-function deleteActa (id,contracto){
+function deleteActa (id,contrato){
     
     
     $.confirm({
@@ -92,7 +92,7 @@ function deleteActa (id,contracto){
         buttons: {
             SI: function () {
             
-                var formData = {txtProcess: 73, txtIdAct: id, txtContracto: contracto}
+                var formData = {txtProcess: 73, txtIdAct: id, txtContrato: contrato}
                 var sbAction = $("#frmActa").attr("action");
                         
                 $.ajax({
@@ -123,47 +123,3 @@ function deleteActa (id,contracto){
     });
     
 }
-/*
- function setContracto(){
- 
- var formData = {txtProcess:1, cmbContract:$("#cmbContract").val()};
- var sbAction = $("#frmPContracto").attr("action");
- 
- $.ajax({
- url: sbAction,
- type: 'POST',
- data: formData,
- success: function (data) {
- if (data) {
- alert(data);
- $("#infoContract").html('');
- $("#infoContract").append(data);
- 
- } else {
- alert("ERROR AL REGISTRAR ");
- }
- }
- });
- 
- }
- 
- function insert() {
- 
- var formData = $("#frmContracto").serialize();
- var sbAction = $("#frmContracto").attr("action");
- 
- $.ajax({
- url: sbAction,
- type: 'POST',
- data: formData,
- success: function (data) {
- if (data) {
- alert("SE REGISTRO CORRECTAMENTE");
- location.href = "contracto";
- } else {
- alert("ERROR AL REGISTRAR ");
- }
- }
- });
- }
- */

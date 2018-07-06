@@ -7,7 +7,7 @@ require_once("../utils/utils.php");
 class interventor extends conexion {
 
     private $nuId;
-    private $sbContracto;
+    private $sbContrato;
     private $nuTIntervt;
     private $nuPlanta;
     private $nuTerceroID;
@@ -19,8 +19,8 @@ class interventor extends conexion {
         return $this->nuId;
     }
 
-    function getSbContracto() {
-        return $this->sbContracto;
+    function getSbContrato() {
+        return $this->sbContrato;
     }
 
     function getNuTIntervt() {
@@ -51,8 +51,8 @@ class interventor extends conexion {
         $this->nuId = $nuId;
     }
 
-    function setSbContracto($sbContracto) {
-        $this->sbContracto = $sbContracto;
+    function setSbContrato($sbContrato) {
+        $this->sbContrato = $sbContrato;
     }
 
     function setNuTIntervt($nuTIntervt) {
@@ -86,7 +86,7 @@ class interventor extends conexion {
         $dtfecha = getFechaHoraActual();
 
         $sql = "INSERT INTO interventor  VALUES(0,"
-                . "'" . $this->getSbContracto(). "',"
+                . "'" . $this->getSbContrato(). "',"
                 . $this->getNuTIntervt() . ","
                 . $this->getNuPlanta() . ","
                 . $this->getNuTerceroID() . ","
@@ -107,7 +107,7 @@ class interventor extends conexion {
         $dtfecha = getFechaHoraActual();
 
         $sql = "UPDATE interventor  SET "
-                . "contracto_id='" . $this->getSbContracto() . "',"
+                . "contrato_id='" . $this->getSbContrato() . "',"
                 . "t_intervt_id=" . $this->getNuTIntervt() . ","
                 . "planta=" . $this->getNuPlanta() . ","
                 . "tercero_id=" . $this->getNuTerceroID() . ","
@@ -147,8 +147,7 @@ class interventor extends conexion {
 
         $arrInfo = array();
         conexion::conectar();
-        $sql = "SELECT " . $select . " FROM interventor i "
-                . " INNER JOIN estado e ON p.estado_id = e.id";
+        $sql = "SELECT " . $select . " FROM interventor i INNER JOIN contrato c ON i.contrato_id = c.id INNER JOIN tercero t ON i.tercero_id = t.id INNER JOIN t_intervt ti ON i.t_intervt_id = ti.id INNER JOIN estado e ON i.estado_id = e.id";
         
         if (!empty($where)) {
             $sql .= " WHERE " . $where;
@@ -177,7 +176,7 @@ class interventor extends conexion {
     public function delete (){
         
         conexion::conectar();
-        $sql="DELETE FROM proyecto WHERE id = ".$this->getNuId();
+        $sql="DELETE FROM interventor WHERE id = ".$this->getNuId();
         $result = conexion::query($sql);
         return $result;
     }

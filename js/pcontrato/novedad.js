@@ -79,7 +79,7 @@ function updateNovedad(id) {
 
 }
 
-function deleteNovedad (id,contracto){    
+function deleteNovedad (id,contrato){    
     $.confirm({
         title: '¡CONFIRMACION!',
         content: 'Desea Eliminar la Novedad?',
@@ -87,7 +87,7 @@ function deleteNovedad (id,contracto){
         buttons: {
             SI: function () {
             
-                var formData = {txtProcess: 83, txtIdNov: id, txtContracto: contracto}
+                var formData = {txtProcess: 83, txtIdNov: id, txtContrato: contrato}
                 var sbAction = $("#frmNovedad").attr("action");
                         
                 $.ajax({
@@ -120,47 +120,3 @@ function deleteNovedad (id,contracto){
     });
     
 }
-/*
- function setContracto(){
- 
- var formData = {txtProcess:1, cmbContract:$("#cmbContract").val()};
- var sbAction = $("#frmPContracto").attr("action");
- 
- $.ajax({
- url: sbAction,
- type: 'POST',
- data: formData,
- success: function (data) {
- if (data) {
- alert(data);
- $("#infoContract").html('');
- $("#infoContract").append(data);
- 
- } else {
- alert("ERROR AL REGISTRAR ");
- }
- }
- });
- 
- }
- 
- function insert() {
- 
- var formData = $("#frmContracto").serialize();
- var sbAction = $("#frmContracto").attr("action");
- 
- $.ajax({
- url: sbAction,
- type: 'POST',
- data: formData,
- success: function (data) {
- if (data) {
- alert("SE REGISTRO CORRECTAMENTE");
- location.href = "contracto";
- } else {
- alert("ERROR AL REGISTRAR ");
- }
- }
- });
- }
- */

@@ -4,15 +4,19 @@ require_once("conexion.php");
 require_once("../utils/SessionPhp.php");
 require_once("../utils/utils.php");
 
-class proyecto extends conexion {
+class poliza extends conexion {
 
     private $nuId;
     private $sbContrato;
-    private $sbCod;
-    private $sbCodAct;
+    private $nuTerceroID;
+    private $sbNumPoliza;
+    private $dtFecExp;
+    private $sbResulucion;
+    private $dtFecApro;
+    private $nuTPoliza;
+    private $nuValor;
     private $dtFecIni;
     private $dtFecFin;
-    private $nuPorcentaje;
     private $nuEstado;
     
     function getNuId() {
@@ -23,12 +27,32 @@ class proyecto extends conexion {
         return $this->sbContrato;
     }
 
-    function getSbCod() {
-        return $this->sbCod;
+    function getNuTerceroID() {
+        return $this->nuTerceroID;
     }
 
-    function getSbCodAct() {
-        return $this->sbCodAct;
+    function getSbNumPoliza() {
+        return $this->sbNumPoliza;
+    }
+
+    function getDtFecExp() {
+        return $this->dtFecExp;
+    }
+
+    function getSbResulucion() {
+        return $this->sbResulucion;
+    }
+
+    function getDtFecApro() {
+        return $this->dtFecApro;
+    }
+
+    function getNuTPoliza() {
+        return $this->nuTPoliza;
+    }
+
+    function getNuValor() {
+        return $this->nuValor;
     }
 
     function getDtFecIni() {
@@ -37,10 +61,6 @@ class proyecto extends conexion {
 
     function getDtFecFin() {
         return $this->dtFecFin;
-    }
-
-    function getNuPorcentaje() {
-        return $this->nuPorcentaje;
     }
 
     function getNuEstado() {
@@ -55,12 +75,32 @@ class proyecto extends conexion {
         $this->sbContrato = $sbContrato;
     }
 
-    function setSbCod($sbCod) {
-        $this->sbCod = $sbCod;
+    function setNuTerceroID($nuTerceroID) {
+        $this->nuTerceroID = $nuTerceroID;
     }
 
-    function setSbCodAct($sbCodAct) {
-        $this->sbCodAct = $sbCodAct;
+    function setSbNumPoliza($sbNumPoliza) {
+        $this->sbNumPoliza = $sbNumPoliza;
+    }
+
+    function setDtFecExp($dtFecExp) {
+        $this->dtFecExp = $dtFecExp;
+    }
+
+    function setSbResulucion($sbResulucion) {
+        $this->sbResulucion = $sbResulucion;
+    }
+
+    function setDtFecApro($dtFecApro) {
+        $this->dtFecApro = $dtFecApro;
+    }
+
+    function setNuTPoliza($nuTPoliza) {
+        $this->nuTPoliza = $nuTPoliza;
+    }
+
+    function setNuValor($nuValor) {
+        $this->nuValor = $nuValor;
     }
 
     function setDtFecIni($dtFecIni) {
@@ -71,26 +111,27 @@ class proyecto extends conexion {
         $this->dtFecFin = $dtFecFin;
     }
 
-    function setNuPorcentaje($nuPorcentaje) {
-        $this->nuPorcentaje = $nuPorcentaje;
-    }
-
     function setNuEstado($nuEstado) {
         $this->nuEstado = $nuEstado;
     }
+
     
-    public function save() {
+        public function save() {
         $estadoId = 1;
         $user = getSession('ID');
         $dtfecha = getFechaHoraActual();
 
-        $sql = "INSERT INTO proyecto  VALUES(0,"
+        $sql = "INSERT INTO poliza  VALUES(0,"
                 . "'" . $this->getSbContrato(). "',"
-                . "'" . $this->getSbCod(). "',"
-                . "'" . $this->getSbCodAct(). "',"
+                . $this->getNuTerceroID() . ","
+                . "'" . $this->getSbNumPoliza(). "',"
+                . "'" . $this->getDtFecExp(). "',"
+                . "'" . $this->getSbResulucion(). "',"
+                . "'" . $this->getDtFecApro(). "',"
+                . $this->getNuTPoliza() . ","
+                . $this->getNuValor() . ","
                 . "'" . $this->getDtFecIni(). "',"
                 . "'" . $this->getDtFecFin(). "',"
-                . $this->getNuPorcentaje() . ","
                 . "$estadoId,'$dtfecha','$dtfecha', $user)";
 
         conexion::conectar();
@@ -105,13 +146,17 @@ class proyecto extends conexion {
         $user = getSession('ID');
         $dtfecha = getFechaHoraActual();
 
-        $sql = "UPDATE proyecto  SET "
+        $sql = "UPDATE poliza  SET "
                 . "contrato_id='" . $this->getSbContrato() . "',"
-                . "cod='" . $this->getSbCod() . "',"
-                . "cod_act='" . $this->getSbCodAct() . "',"
+                . "tercero_id=" . $this->getNuTerceroID() . ","
+                . "num_poliza='" . $this->getSbNumPoliza() . "',"
+                . "fec_exp='" . $this->getDtFecExp() . "',"
+                . "resolucion='" . $this->getSbResulucion() . "',"
+                . "fec_apro='" . $this->getDtFecApro() . "',"
+                . "t_poliza_id=" . $this->getNuTPoliza() . ","
+                . "valor=" . $this->getNuValor() . ","
                 . "fec_ini='" . $this->getDtFecIni() . "',"
-                . "fec_fin='" . $this->getDtFecFin(). "',"
-                . "porcentaje=" . $this->getNuPorcentaje() . ","
+                . "fec_fin='" . $this->getDtFecFin() . "',"
                 . "fec_mod='" . $dtfecha . "',"
                 . "user_id=" . $user
                 . " where id =" . $this->getNuId();
@@ -127,7 +172,7 @@ class proyecto extends conexion {
 
         $arrInfo = array();
         conexion::conectar();
-        $sql = "select * from proyecto where id = " . $this->getNuId();
+        $sql = "select * from poliza where id = " . $this->getNuId();
         $result = conexion::query($sql);
 
         while ($row = mysqli_fetch_assoc($result)) {
@@ -140,11 +185,13 @@ class proyecto extends conexion {
         return $arrInfo;
     }
 
+    
+    ///////////AQUI VOY
     public function getList($select, $where = '', $order = '', $tipoSelect = '') {
 
         $arrInfo = array();
         conexion::conectar();
-        $sql = "SELECT " . $select . " FROM proyecto p INNER JOIN contrato c ON p.contrato_id = c.id INNER JOIN estado e ON p.estado_id = e.id";
+        $sql = "SELECT " . $select . " FROM poliza p INNER JOIN contrato c ON p.contrato_id = c.id INNER JOIN tercero t ON p.tercero_id = t.id INNER JOIN t_poliza tp ON p.t_poliza_id = tp.id INNER JOIN estado e ON p.estado_id = e.id";
         
         if (!empty($where)) {
             $sql .= " WHERE " . $where;
@@ -173,7 +220,7 @@ class proyecto extends conexion {
     public function delete (){
         
         conexion::conectar();
-        $sql="DELETE FROM proyecto WHERE id = ".$this->getNuId();
+        $sql="DELETE FROM poliza WHERE id = ".$this->getNuId();
         $result = conexion::query($sql);
         return $result;
     }

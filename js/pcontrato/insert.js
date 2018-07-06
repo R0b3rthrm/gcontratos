@@ -1,21 +1,31 @@
 $(document).ready(function () {
 
-    var sqlContract = "select id,id, depend_nom from v_contracto where estado_id !=0";
-    //llenar combox
-    comboBox(sqlContract, "cmbContract", '', '#divContract', 'onchange', 'setContrato()', 'select-wrapper');
-       setTimeout(function(){ $("#cmbContract").chosen({
+    var formData = {txtProcess: 1};
+    var sbAction = $("#frmPContrato").attr("action");
+    
+    $.ajax({
+        url: sbAction,
+        type: 'POST',
+        data: formData,
+        success: function (data) {
+                
+                $("#divContrat").html('');
+                $("#divContrat").append(data);
+                $("#cmbContrat").chosen({
                     max_selected_options: 30,
                     max_shown_results: 30
-                });},600);
-    //$("#divContract").click(function(){  ;});   
+                });
+
+        }
+    });
 
 });
 
 
 function setContrato() {
-
-    var formData = {txtProcess: 1, cmbContract: $("#cmbContract").val()};
-    var sbAction = $("#frmPContracto").attr("action");
+    
+    var formData = {txtProcess: 2, cmbContrat: $("#cmbContrat").val()};
+    var sbAction = $("#frmPContrato").attr("action");
 
     $.ajax({
         url: sbAction,
@@ -25,8 +35,8 @@ function setContrato() {
 
             if (data) {
 
-                $("#infoContract").html('');
-                $("#infoContract").append(data);
+                $("#infoContrat").html('');
+                $("#infoContrat").append(data);
              
 
             } else {

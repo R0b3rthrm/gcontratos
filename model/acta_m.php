@@ -7,7 +7,7 @@ require_once("../utils/utils.php");
 class acta extends conexion {
 
     private $nuId;
-    private $sbContracto;
+    private $sbContrato;
     private $nuTAvance;
     private $dtFecha;
     private $nuPorcentaje;
@@ -17,8 +17,8 @@ class acta extends conexion {
         return $this->nuId;
     }
 
-    function getSbContracto() {
-        return $this->sbContracto;
+    function getSbContrato() {
+        return $this->sbContrato;
     }
 
     function getNuTAvance() {
@@ -41,8 +41,8 @@ class acta extends conexion {
         $this->nuId = $nuId;
     }
 
-    function setSbContracto($sbContracto) {
-        $this->sbContracto = $sbContracto;
+    function setSbContrato($sbContrato) {
+        $this->sbContrato = $sbContrato;
     }
 
     function setNuTAvance($nuTAvance) {
@@ -61,13 +61,14 @@ class acta extends conexion {
         $this->nuEstado = $nuEstado;
     }
 
+    
     public function save() {
         $estadoId = 1;
         $user = getSession('ID');
         $dtfecha = getFechaHoraActual();
 
         $sql = "INSERT INTO acta  VALUES(0,"
-                . "'" . $this->getSbContracto() . "',"
+                . "'" . $this->getSbContrato() . "',"
                 . $this->getNuTAvance() . ","
                 . "'" . $this->getDtFecha() . "',"
                 . $this->getNuPorcentaje() . ","
@@ -87,7 +88,7 @@ class acta extends conexion {
         $dtfecha = getFechaHoraActual();
 
         $sql = "UPDATE acta  SET "
-                . "contracto_id='" . $this->getSbContracto() . "',"
+                . "contrato_id='" . $this->getSbContrato() . "',"
                 . "t_avance_id=" . $this->getNuTAvance() . ","
                 . "fecha='" . $this->getDtFecha() . "',"
                 . "porcentaje=" . $this->getNuPorcentaje() . ","
@@ -123,7 +124,7 @@ class acta extends conexion {
 
         $arrInfo = array();
         conexion::conectar();
-        $sql = "SELECT " . $select . " FROM acta a INNER JOIN contracto c ON a.contracto_id = c.id  INNER JOIN t_avance ta ON a.t_avance_id = ta.id INNER JOIN estado e on a.estado_id = e.id";
+        $sql = "SELECT " . $select . " FROM acta a INNER JOIN contrato c ON a.contrato_id = c.id  INNER JOIN t_avance ta ON a.t_avance_id = ta.id INNER JOIN estado e on a.estado_id = e.id";
         
         if (!empty($where)) {
             $sql .= " WHERE " . $where;
