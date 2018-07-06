@@ -23,7 +23,7 @@ if (isset($_POST['txtIdT'])) {
             $resultInfo = $objTContratist->save();
         } elseif ($nuProcess == 2) {
 
-            $arrList = $objTContratist->getList("t.id,t.cod,t.nombre,e.nombre as estado_nom");
+            $arrList = $objTContratist->getList("t.id,t.cod,t.nombre,e.nombre as estado_nom","t.id <> 0");
 
             $resultInfo="";
             $i = 1;

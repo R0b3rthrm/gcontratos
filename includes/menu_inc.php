@@ -12,8 +12,8 @@
             <li>
                 <a href="#" class="icon fa-angle-down">Gestion Contractos</a>
                 <ul>
-                    <li><a href="<?php echo SERVERURL; ?>pcontracto">Proceso Contracto</a></li>
-                    <li><a href="<?php echo SERVERURL; ?>contracto">Contracto</a></li>
+                    <li><a href="<?php echo SERVERURL; ?>pcontrato">Proceso Contracto</a></li>
+                    <li><a href="<?php echo SERVERURL; ?>contrato">Contrato</a></li>
                     <li><a href="<?php echo SERVERURL; ?>tercero">Tercero</a></li>
                 </ul>
             </li>
@@ -30,7 +30,7 @@
                         <ul>
                             <li><a href="<?php echo SERVERURL; ?>tAvance">T. Avance</a></li>
                             <li><a href="<?php echo SERVERURL; ?>tClasific">T. Clasificacion</a></li>
-                            <li><a href="<?php echo SERVERURL; ?>tContract">T. Contracto</a></li>
+                            <li><a href="<?php echo SERVERURL; ?>tContrat">T. Contrato</a></li>
                             <li><a href="<?php echo SERVERURL; ?>tContratist">T. Contratista</a></li>
                             <li><a href="<?php echo SERVERURL; ?>tGasto">T. Gasto</a></li>
                             <li><a href="<?php echo SERVERURL; ?>tIntervt">T. Interventor</a></li>

@@ -1,5 +1,24 @@
 $(document).ready(function () {
 
+    var contrato_id = returnIdUrl(window.location.href);
+    
+    var array = {txtProcess: 1,txtUpdate:contrato_id[0]};
+
+    $.ajax({
+        url: "controller/contrato_c.php",
+        type: 'POST',
+        data: array,
+        success: function (data) {
+            
+            alert(data);
+            
+            $("#divUpdate").html("");
+            $("#divUpdate").append(data);
+
+        }
+    });
+
+
     //Restricciones
     noCopyPaste([ '#txtSegment', '#txtObserv']);
     alfNumPG(['#txtId, #txtResAdjudicacion']);
@@ -9,23 +28,9 @@ $(document).ready(function () {
     maxChar(['#txtObject', '#txtSegment', '#txtObserv'], 256);
     maxChar(['#txtId', '#txtResAdjudicacion', '#txtSeccion', '#txtEje', '#txtEst', '#txtProg'], 50);
     isNumber(['#txtValorIni', '#txtValorAnticp']);
-    var sqlDepend = "select id, nombre from depend where estado_id = 1";
-    var sqlMSelecc = "select id, cod, nombre from  m_selecc where estado_id = 1";
-    var sqlCausal = "select id, cod, nombre from  causal where estado_id = 1";
-    var sqlTContract = "select id, cod, nombre from t_contract where estado_id = 1";
-    var sqlTGasto = "select id, cod, nombre from  t_gasto where estado_id = 1";
-    var sqlTRecurs = "select id, cod, nombre from  t_recurs where estado_id = 1";
-    var sqlTLiquid = "select id, cod, nombre from  t_liquid where estado_id = 1";
-    var sqlFuncion = "select id, cod, nombre from  funcion where estado_id = 1";
-    var sqlContratista = "select id, nombre, apellido1 from contratista where estado_id = 1";
+    setCalendarFrm(['#dtSuscripcion','#dtInicio','#dtTerminacion','#dtAdjudicacion','#dtActSecop','#dtPublicSecop','#dtLiquid'])
     
-    $('#dtSuscripcion').datepicker({format: 'yyyy-mm-dd', autoclose: true});
-    $('#dtInicio').datepicker({format: 'yyyy-mm-dd', autoclose: true});
-    $('#dtTerminacion').datepicker({format: 'yyyy-mm-dd', autoclose: true});
-    $('#dtAdjudicacion').datepicker({format: 'yyyy-mm-dd', autoclose: true});
-    $('#dtActSecop').datepicker({format: 'yyyy-mm-dd', autoclose: true});
-    $('#dtPublicSecop').datepicker({format: 'yyyy-mm-dd', autoclose: true});
-    $('#dtLiquid').datepicker({format: 'yyyy-mm-dd', autoclose: true});
+    
     
      $('#txtPlazoEj').click(function () {
 

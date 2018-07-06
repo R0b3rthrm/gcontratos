@@ -1,16 +1,16 @@
-<script src="js/tContract/list.js"></script>
+<script src="js/tContrat/list.js"></script>
 <br/>
 <rigth>
      &nbsp;&nbsp; 
-    <a href="tContract" class="button special icon fa-download">NUEVO REGISTRO</a>
-    <a href="tContractList" class="button special icon fa-search">LISTADO</a>
+    <a href="tContrat" class="button special icon fa-download">NUEVO REGISTRO</a>
+    <a href="tContratList" class="button special icon fa-search">LISTADO</a>
 </rigth>
 <div class="container ">
     <center>
-        <form action="controller/tContract_c.php" method="post"  id="frmTContract" name = "frmTContract">
+        <form action="controller/tContrat_c.php" method="post"  id="frmTContrat" name = "frmTContrat">
 
             <input id="txtProcess" name="txtProcess" value="2" hidden>
-            <h1>LISTADO TIPO DE CONTRACTO</h1>
+            <h1>LISTADO TIPO DE CONTRATO</h1>
 
             <table id="tableList" name="tableList" align="center">
                 <thead>

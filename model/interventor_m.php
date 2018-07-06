@@ -4,14 +4,15 @@ require_once("conexion.php");
 require_once("../utils/SessionPhp.php");
 require_once("../utils/utils.php");
 
-class novedad extends conexion {
-    
+class interventor extends conexion {
+
     private $nuId;
     private $sbContracto;
-    private $nuTNoved;
-    private $nuValor;
-    private $nuPlazo;
-    private $dtFecha;
+    private $nuTIntervt;
+    private $nuPlanta;
+    private $nuTerceroID;
+    private $sbNumContrat;
+    private $nuPorcentaje;
     private $nuEstado;
     
     function getNuId() {
@@ -22,20 +23,24 @@ class novedad extends conexion {
         return $this->sbContracto;
     }
 
-    function getNuTNoved() {
-        return $this->nuTNoved;
+    function getNuTIntervt() {
+        return $this->nuTIntervt;
     }
 
-    function getNuValor() {
-        return $this->nuValor;
+    function getNuPlanta() {
+        return $this->nuPlanta;
     }
 
-    function getNuPlazo() {
-        return $this->nuPlazo;
+    function getNuTerceroID() {
+        return $this->nuTerceroID;
     }
 
-    function getDtFecha() {
-        return $this->dtFecha;
+    function getSbNumContrat() {
+        return $this->sbNumContrat;
+    }
+
+    function getNuPorcentaje() {
+        return $this->nuPorcentaje;
     }
 
     function getNuEstado() {
@@ -50,60 +55,65 @@ class novedad extends conexion {
         $this->sbContracto = $sbContracto;
     }
 
-    function setNuTNoved($nuTNoved) {
-        $this->nuTNoved = $nuTNoved;
+    function setNuTIntervt($nuTIntervt) {
+        $this->nuTIntervt = $nuTIntervt;
     }
 
-    function setNuValor($nuValor) {
-        $this->nuValor = $nuValor;
+    function setNuPlanta($nuPlanta) {
+        $this->nuPlanta = $nuPlanta;
     }
 
-    function setNuPlazo($nuPlazo) {
-        $this->nuPlazo = $nuPlazo;
+    function setNuTerceroID($nuTerceroID) {
+        $this->nuTerceroID = $nuTerceroID;
     }
 
-    function setDtFecha($dtFecha) {
-        $this->dtFecha = $dtFecha;
+    function setSbNumContrat($sbNumContrat) {
+        $this->sbNumContrat = $sbNumContrat;
+    }
+
+    function setNuPorcentaje($nuPorcentaje) {
+        $this->nuPorcentaje = $nuPorcentaje;
     }
 
     function setNuEstado($nuEstado) {
         $this->nuEstado = $nuEstado;
     }
 
-                
-    public function save() {
-        $estadoId=1;
+    
+        public function save() {
+        $estadoId = 1;
         $user = getSession('ID');
         $dtfecha = getFechaHoraActual();
-        
-        $sql = "INSERT INTO novedad  VALUES(0,"
-                . "'" . $this->getSbContracto() . "',"
-                .  $this->getNuTNoved(). ","
-                .  $this->getNuValor(). ","
-                .  $this->getNuPlazo(). ","
-                . "'" . $this->getDtFecha() . "',"
+
+        $sql = "INSERT INTO interventor  VALUES(0,"
+                . "'" . $this->getSbContracto(). "',"
+                . $this->getNuTIntervt() . ","
+                . $this->getNuPlanta() . ","
+                . $this->getNuTerceroID() . ","
+                . "'" . $this->getSbNumContrat(). "',"
+                . $this->getNuPorcentaje() . ","
                 . "$estadoId,'$dtfecha','$dtfecha', $user)";
 
         conexion::conectar();
         $result = conexion::query($sql);
         conexion::desconectar();
 
-        return $sql;
+        return $result;
     }
 
     public function update() {
 
-        $estadoId=1;
         $user = getSession('ID');
         $dtfecha = getFechaHoraActual();
-        
-        $sql = "UPDATE novedad  SET "
-                . "contracto_id='" . $this->getSbContracto(). "',"
-                . "t_noved_id=" . $this->getNuTNoved() . ","
-                . "valor=" . $this->getNuValor() . ","
-                . "plazo=" . $this->getNuPlazo() . ","
-                . "fecha='" . $this->getDtFecha() . "',"
-                . "fec_mod='" . $dtfecha. "',"
+
+        $sql = "UPDATE interventor  SET "
+                . "contracto_id='" . $this->getSbContracto() . "',"
+                . "t_intervt_id=" . $this->getNuTIntervt() . ","
+                . "planta=" . $this->getNuPlanta() . ","
+                . "tercero_id=" . $this->getNuTerceroID() . ","
+                . "num_contrat='" . $this->getSbNumContrat() . "',"
+                . "porcentaje=" . $this->getNuPorcentaje() . ","
+                . "fec_mod='" . $dtfecha . "',"
                 . "user_id=" . $user
                 . " where id =" . $this->getNuId();
 
@@ -118,7 +128,7 @@ class novedad extends conexion {
 
         $arrInfo = array();
         conexion::conectar();
-        $sql = "select * from novedad  where id = " . $this->getNuId();
+        $sql = "select * from interventor where id = " . $this->getNuId();
         $result = conexion::query($sql);
 
         while ($row = mysqli_fetch_assoc($result)) {
@@ -131,12 +141,15 @@ class novedad extends conexion {
         return $arrInfo;
     }
 
+    
+    ///////////AQUI VOY
     public function getList($select, $where = '', $order = '', $tipoSelect = '') {
 
         $arrInfo = array();
         conexion::conectar();
-        $sql = "SELECT " . $select . " FROM novedad n INNER JOIN contracto c ON n.contracto_id = c.id  INNER JOIN t_noved tn ON n.t_noved_id = tn.id INNER JOIN estado e on n.estado_id = e.id";
-
+        $sql = "SELECT " . $select . " FROM interventor i "
+                . " INNER JOIN estado e ON p.estado_id = e.id";
+        
         if (!empty($where)) {
             $sql .= " WHERE " . $where;
         }
@@ -161,10 +174,10 @@ class novedad extends conexion {
         return $arrInfo;
     }
     
-     public function delete (){
+    public function delete (){
         
         conexion::conectar();
-        $sql="DELETE FROM novedad WHERE id = ".$this->getNuId();
+        $sql="DELETE FROM proyecto WHERE id = ".$this->getNuId();
         $result = conexion::query($sql);
         return $result;
     }

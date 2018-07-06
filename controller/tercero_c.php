@@ -10,8 +10,8 @@ require_once("../utils/utils.php");
 
 if (isset($_POST['txtIdC'])) {
     $resultInfo = array();
-    $objContract->setSbId($_POST['txtIdC']);
-    $resultInfo = $objContract->getListId();
+    $objContrat->setSbId($_POST['txtIdC']);
+    $resultInfo = $objContrat->getListId();
     echo json_encode($resultInfo);
     exit;
 } else {

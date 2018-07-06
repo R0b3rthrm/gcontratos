@@ -9,7 +9,7 @@ $(document).ready(function () {
     var array = {txtIdT: id[0]};
 
     $.ajax({
-        url: "controller/tContract_c.php",
+        url: "controller/tContrat_c.php",
         type: 'POST',
         data: array,
         success: function (data) {
@@ -53,8 +53,8 @@ $(document).ready(function () {
 
 function update() {
 
-    var formData = $("#frmTContract").serialize();
-    var sbAction = $("#frmTContract").attr("action");
+    var formData = $("#frmTContrat").serialize();
+    var sbAction = $("#frmTContrat").attr("action");
 
     $.ajax({
         url: sbAction,
@@ -62,9 +62,11 @@ function update() {
         data: formData,
         success: function (data) {
             if (data) {
-                location.href = "tContractList";
+                 msjModal("Se Actualizo Correctamente", "OK");
+                setTimeout(function(){location.href = "tContratList";},1700);
+                
             } else {
-                alert("ERROR AL REGISTRAR ");
+                msjModal("Error Al Actualizar", "ER");
             }
         }
     });

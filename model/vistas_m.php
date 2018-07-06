@@ -7,9 +7,9 @@ class vistas_m {
         $listWhite = array("login", "inicio", "usuario", "usuarioList", "usuarioUpdate","depend", "dependList", "dependUpdate","tLiquid", "tLiquidList", "tLiquidUpdate",            
             "tRecurs", "tRecursList", "tRecursUpdate","tClasific","tClasificList","tClasificUpdate","tNoved","tNovedList","tNovedUpdate","tAvance","tAvanceList","tAvanceUpdate",
             "tTermin", "tTerminList", "tTerminUpdate","tContratist", "tContratistList", "tContratistUpdate","tIntervt", "tIntervtList", "tIntervtUpdate",
-            "tPoliza", "tPolizaList", "tPolizaUpdate","tGasto", "tGastoList", "tGastoUpdate","tContract", "tContractList", "tContractUpdate","funcion", "funcionList", "funcionUpdate",
-            "causal", "causalList", "causalUpdate","mSelecc", "mSeleccList", "mSeleccUpdate", "contracto", "contractoList", "contractoUpdate", "tercero", "terceroList", "terceroUpdate",
-            "pcontracto", "pcontractoList", "pcontractoUpdate"
+            "tPoliza", "tPolizaList", "tPolizaUpdate","tGasto", "tGastoList", "tGastoUpdate","tContrat", "tContratList", "tContratUpdate","funcion", "funcionList", "funcionUpdate",
+            "causal", "causalList", "causalUpdate","mSelecc", "mSeleccList", "mSeleccUpdate", "contrato", "contratoList", "contratoUpdate", "tercero", "terceroList", "terceroUpdate",
+            "pcontrato", "pcontratoList", "pcontratoUpdate"
             );
 
         if (in_array($views, $listWhite)) {

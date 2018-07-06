@@ -1,16 +1,16 @@
-<script src="js/contracto/list.js"></script>
+<script src="js/contrato/list.js"></script>
 <br/>
 <rigth>
      &nbsp;&nbsp; 
-    <a href="contracto" class="button special icon fa-download">NUEVO REGISTRO</a>
-    <a href="contractoList" class="button special icon fa-search">LISTADO</a>
+    <a href="contrato" class="button special icon fa-download">NUEVO REGISTRO</a>
+    <a href="contratoList" class="button special icon fa-search">LISTADO</a>
 </rigth>
-<div class="container ">
+<div class="container2">
     <center>
-        <form action="controller/contracto_c.php" method="post"  id="frmContracto" name = "frmContracto">
+        <form action="controller/contrato_c.php" method="post"  id="frmContrato" name = "frmContrato">
 
-            <input id="txtProcess" name="txtProcess" value="2" hidden>
-            <h1>LISTADO DE CONTRACTOS</h1>
+            <input id="txtProcess" name="txtProcess" value="3" hidden>
+            <h1>LISTADO DE CONTRATOS</h1>
 
             <table id="tableList" name="tableList" align="center">
                 <thead>

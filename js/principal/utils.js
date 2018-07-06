@@ -22,9 +22,9 @@ function isEmptyFields(array) {
 
         arrInfo = array[x].split("|");
         if (arrInfo[0] == "") {
-            msjModal("Este Campo Es Obligatorio",'AT',arrInfo[1]);
             $(arrInfo[1]).focus();
             blValidate = false;
+            msjModal("Este Campo Es Obligatorio",'AT',arrInfo[1]);
             break;
         }
     }
@@ -42,7 +42,7 @@ function noCopyPaste(arr = []) {
     for (x in arr) {
         $(arr[x]).bind("cut copy paste", function (e) {
             e.preventDefault();
-            alert('EN ESTE CAMPO NO SE PERMITE COPIAR-PEGAR-CORTAR');
+            msjModal('En Este Campo No Se Permite COPIAR-PEGAR-CORTAR','AT');
         });
     }
 
@@ -95,8 +95,8 @@ function returnIdUrl(url) {
 
 
 function alfNumPG(arr = []) {
-
-    for (x in arr) {
+    
+    for (var x in arr) {
         $(arr[x]).keypress(function (tecla) {
             if (!((tecla.charCode > 47 && tecla.charCode < 58) ||
                     (tecla.charCode > 64 && tecla.charCode < 91) ||
@@ -110,7 +110,7 @@ function alfNumPG(arr = []) {
 
 function alfNumPE(arr = []) {
 
-    for (x in arr) {
+    for (var x in arr) {
         $(arr[x]).keypress(function (tecla) {
             if (!((tecla.charCode > 47 && tecla.charCode < 58) ||
                     (tecla.charCode > 64 && tecla.charCode < 91) ||
@@ -124,7 +124,7 @@ function alfNumPE(arr = []) {
 
 function alfNum(arr = []) {
 
-    for (x in arr) {
+    for (var x in arr) {
         $(arr[x]).keypress(function (tecla) {
             if (!((tecla.charCode > 43 && tecla.charCode < 60) ||
                     (tecla.charCode > 64 && tecla.charCode < 91) ||
@@ -139,7 +139,7 @@ function alfNum(arr = []) {
 
 function isNumber(arr = []) {
 
-    for (x in arr) {
+    for (var x in arr) {
         $(arr[x]).keypress(function (tecla) {
             if (!((tecla.charCode > 47 && tecla.charCode < 58) ||
                     tecla.charCode == 46
@@ -151,7 +151,7 @@ function isNumber(arr = []) {
 }
 
 function difDate(dtIni, dtFin) {
-    d = 0;
+    var d = 0;
     dtIni = moment($('#dtInicio').val());
     dtFin = moment($('#dtTerminacion').val());
     d = dtFin.diff(dtIni, 'days');
@@ -160,7 +160,7 @@ function difDate(dtIni, dtFin) {
 
 function noChar(arr = []) {
 
-    for (x in arr) {
+    for (var x in arr) {
         $(arr[x]).keypress(function (tecla) {
             return false;
         });
@@ -169,17 +169,17 @@ function noChar(arr = []) {
 
 function minChar(arr = [], num = 0) {
 
-    blValidate = true;
+    var blValidate = true;
 
-    for (x in arr) {
+    for (var x in arr) {
         //Almacenamos los valores
-        nombre = $(arr[x]).val();
+        var nombre = $(arr[x]).val();
 
         //Comprobamos la longitud de caracteres
-        if (!nombre.length > num) {
-            alert("SON MINIMO " + num + " CARACTERES EN ESTE CAMPO");
+        if (nombre.length < num) {
             $(arr[x]).focus();
             blValidate = false;
+            msjModal("Son Minimo " + num + " Caracteres En Este Campo");
             break;
         }
     }
@@ -188,11 +188,37 @@ function minChar(arr = [], num = 0) {
 }
 
 function maxChar(arr = [], n = 999999999) {
-    for (x in arr) {
+    for (var x in arr) {
         $(arr[x]).attr("maxlength", n);
 }
 }
 
+function setCalendarFrm(arr=[]){
+    
+     for (var x in arr) {
+        $(arr[x]).datepicker({format:'yyyy-mm-dd',autoHide:true, language:'es-ES', offset:5});
+     
+    }
+    
+}
+
+function setTableFrm(arr=[]){
+    
+     for (var x in arr) {
+        $(arr[x]).DataTable({"language": {
+            "lengthMenu": "Mostrar _MENU_ registros por pagina",
+            "info": "Mostrando pagina _PAGE_ de _PAGES_",
+            "infoEmpty": "No hay registros disponibles",
+            "infoFiltered": "(filtrada de _MAX_ registros)",
+            "loadingRecords": "Cargando...",
+            "processing": "Procesando...",
+            "search": "Buscar:",
+            "zeroRecords": "No se encontraron registros coincidentes",
+
+        }});
+    }
+    
+}
 
 function msjModal(_text,_title = '',_focus=''){
     

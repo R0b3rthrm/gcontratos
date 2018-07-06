@@ -2,20 +2,8 @@ $(document).ready(function () {
 
     isNumber(['#txtPorcentajActa']);
     maxChar(['#txtPorcentajActa'], 3);
-    $('#dtFecAct').datepicker({format: 'yyyy-mm-dd', autoclose: true});
-
-    var tableActa =$("#tableListActa").DataTable({"language": {
-            "lengthMenu": "Mostrar _MENU_ registros por pagina",
-            "info": "Mostrando pagina _PAGE_ de _PAGES_",
-            "infoEmpty": "No hay registros disponibles",
-            "infoFiltered": "(filtrada de _MAX_ registros)",
-            "loadingRecords": "Cargando...",
-            "processing": "Procesando...",
-            "search": "Buscar:",
-            "zeroRecords": "No se encontraron registros coincidentes",
-
-        }});
-
+    setCalendarFrm(['#dtFecAct']);
+   
     $("#btnIngresarActa").click(function () {
 
         var nuTAvance = $("#cmbTAvance").val();
@@ -55,15 +43,16 @@ function insertActa() {
         success: function (data) {
            
             if (data) {
+                
+                 msjModal('Se Registro Correctamente el Acta','OK');
                 $("#btnIngresarActa").attr("value", "REGISTRAR")
-                //$("txtProcess").val('71');   
                 $("#frmActa")[0].reset();
                 $("#txtIdAct").val('');
                 $("#tableActa").html('');
                 $("#tableActa").append(data);
 
             } else {
-                alert("ERROR AL REGISTRAR ");
+                msjModal("Error Al Registrar El Acta","ER");
             }
         }
     });
@@ -79,13 +68,14 @@ function updateActa(id) {
         type: 'POST',
         data: formData,
         success: function (data) {
-
             var result = JSON.parse(data);
             $("#txtIdAct").val(id);
             $("#cmbTAvance").val(result['t_avance_id']);
             $("#dtFecAct").val(result['fecha']);
-            $("#txtPorcentajActa").val(result['porcentaje']);
+            //$(selector).attr(atributo, valor)
 
+            $("#txtPorcentajActa").val(result['porcentaje']);
+            
 
         }
     });
@@ -121,8 +111,6 @@ function deleteActa (id,contracto){
                         }else{
                              msjModal('No se pudo Eliminar','ER');
                         }
-                        
-
                     }
                 });
                 

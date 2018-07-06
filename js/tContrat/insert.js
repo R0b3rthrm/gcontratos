@@ -31,8 +31,8 @@ $(document).ready(function () {
 
 function insert() {
 
-    var formData = $("#frmTContract").serialize();
-    var sbAction = $("#frmTContract").attr("action");
+    var formData = $("#frmTContrat").serialize();
+    var sbAction = $("#frmTContrat").attr("action");
 
     $.ajax({
         url: sbAction,
@@ -40,10 +40,10 @@ function insert() {
         data: formData,
         success: function (data) {
             if (data) {
-                alert("SE REGISTRO CORRECTAMENTE");
-                location.href = "tContract";
+                msjModal("Se Registro Correctamente El Tipo De Contrato","OK");
+                $("#frmTContrat")[0].reset();
             } else {
-                alert("ERROR AL REGISTRAR ");
+                msjModal("Error Al Registrar El Tipo De Contrato","ER");
             }
         }
     });

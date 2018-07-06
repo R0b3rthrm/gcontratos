@@ -4,20 +4,20 @@ require_once("conexion.php");
 require_once("../utils/SessionPhp.php");
 require_once("../utils/utils.php");
 
-class contracto extends conexion {
+class contrato extends conexion {
     
     private $sbId;
     private $nuDependId;
     private $sbSeccion;
     private $nuMSeleccId;
     private $nuCausalId;
-    private $nuTContractId;
+    private $nuTContratId;
     private $nuTGastoId;
     private $dtSuscripc;
     private $dtInicio;
     private $dtTermn;
     private $nuPlazoEjec;
-    private $nuContratista;
+    private $nuTerceroId;
     private $sbObjeto;
     private $sbResAdjudic;
     private $dtAdjudicacion;
@@ -42,22 +42,8 @@ class contracto extends conexion {
     private $sbEst;
     private $sbProg;
     
-    
-    function getNuContratista() {
-        return $this->nuContratista;
-    }
-
-    function setNuContratista($nuContratista) {
-        $this->nuContratista = $nuContratista;
-    }
-
-        
     function getSbId() {
         return $this->sbId;
-    }
-
-    function getNuId() {
-        return $this->nuId;
     }
 
     function getNuDependId() {
@@ -76,8 +62,8 @@ class contracto extends conexion {
         return $this->nuCausalId;
     }
 
-    function getNuTContractId() {
-        return $this->nuTContractId;
+    function getNuTContratId() {
+        return $this->nuTContratId;
     }
 
     function getNuTGastoId() {
@@ -98,6 +84,10 @@ class contracto extends conexion {
 
     function getNuPlazoEjec() {
         return $this->nuPlazoEjec;
+    }
+
+    function getNuTerceroId() {
+        return $this->nuTerceroId;
     }
 
     function getSbObjeto() {
@@ -196,7 +186,6 @@ class contracto extends conexion {
         $this->sbId = $sbId;
     }
 
-
     function setNuDependId($nuDependId) {
         $this->nuDependId = $nuDependId;
     }
@@ -213,8 +202,8 @@ class contracto extends conexion {
         $this->nuCausalId = $nuCausalId;
     }
 
-    function setNuTContractId($nuTContractId) {
-        $this->nuTContractId = $nuTContractId;
+    function setNuTContratId($nuTContratId) {
+        $this->nuTContratId = $nuTContratId;
     }
 
     function setNuTGastoId($nuTGastoId) {
@@ -235,6 +224,10 @@ class contracto extends conexion {
 
     function setNuPlazoEjec($nuPlazoEjec) {
         $this->nuPlazoEjec = $nuPlazoEjec;
+    }
+
+    function setNuTerceroId($nuTerceroId) {
+        $this->nuTerceroId = $nuTerceroId;
     }
 
     function setSbObjeto($sbObjeto) {
@@ -330,23 +323,24 @@ class contracto extends conexion {
     }
 
     
+        
     public function save() {          
         $estadoId=1;
         $user = getSession('ID');
         $dtfecha = getFechaHoraActual();
-        $sql = "INSERT INTO contracto VALUES("
+        $sql = "INSERT INTO contrato VALUES("
                 . "'" . $this->getsbId(). "',"
                 . $this->getNuDependId() . ","
                 . "'" . $this->getSbSeccion() . "',"
                 . $this->getNuMSeleccId() . ","
                 . $this->getNuCausalId() . ","
-                . $this->getNuTContractId() . ","
+                . $this->getNuTContratId() . ","
                 . $this->getNuTGastoId() . ","
                 . "'" . $this->getDtSuscripc() . "',"
                 . "'" . $this->getDtInicio() . "',"
                 . "'" . $this->getDtTermn() . "',"
                 . $this->getNuPlazoEjec() . ","
-                . $this->getNuContratista() . ","
+                . $this->getNuTerceroId() . ","
                 . "'" . $this->getSbObjeto() . "',"
                 . "'" . $this->getSbResAdjudic() . "',"
                 . "'" . $this->getDtAdjudicacion() . "',"
@@ -382,18 +376,18 @@ class contracto extends conexion {
 
         $user = getSession('ID');
         $dtfecha = getFechaHoraActual();
-        $sql = "UPDATE contracto SET "
+        $sql = "UPDATE contrato SET "
                 ."depend_id =". $this->getNuDependId() . ","
                 . "seccion='" . $this->getSbSeccion() . "',"
                 . "m_selecc_id=" . $this->getNuMSeleccId() . ","
                 . "causal_id=" . $this->getNuCausalId() . ","
-                . "t_contract_id=" . $this->getNuTContractId() . ","
+                . "t_contrat_id=" . $this->getNuTContratId() . ","
                 . "t_gasto_id=" .$this->getNuTGastoId() . ","
                 . "fec_suscripc='" . $this->getDtSuscripc() . "',"
                 . "fec_ini='" . $this->getDtInicio() . "',"
                 . "fec_termn='" . $this->getDtTermn() . "',"
                 . "plazo_ejecuc=" . $this->getNuPlazoEjec() . ","
-                . "contratista_id=" . $this->getNuContratista() . ","
+                . "tercero_id=" . $this->getNuTerceroId() . ","
                 . "objeto='" . $this->getSbObjeto() . "',"
                 . "res_adjud='" . $this->getSbResAdjudic() . "',"
                 . "fec_adjud='" . $this->getDtAdjudicacion() . "',"
@@ -425,7 +419,7 @@ class contracto extends conexion {
         $result = conexion::query($sql);
         conexion::desconectar();
 
-        return $sql;
+        return $result;
     }
 
     public function getListId($table ="") {
@@ -436,7 +430,7 @@ class contracto extends conexion {
         if($table !=""){
             $sql.=$table;
         }else{
-            $sql.=" contracto ";
+            $sql.=" contrato ";
         }
         $sql.= " where id = '" . $this->getSbId()."'";
         $result = conexion::query($sql);
@@ -457,7 +451,7 @@ class contracto extends conexion {
 
         $arrInfo = array();
         conexion::conectar();
-        $sql = "select " . $select . " from v_contracto order by fec_reg desc";
+        $sql = "select " . $select . " from v_contrato order by fec_reg desc";
         
         if (!empty($where)) {
             $sql .= " WHERE " . $where;

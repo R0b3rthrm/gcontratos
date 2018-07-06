@@ -416,9 +416,7 @@ class tercero extends conexion {
         conexion::conectar();
         $sql = "SELECT " . $select . " FROM tercero t INNER JOIN t_document td ON t.t_document_id = td.id INNER JOIN t_contratist tc ON t.t_contratist_id = tc.id  INNER JOIN t_clasific tcl ON t.t_clasific_id = tcl.id INNER JOIN estado e on t.estado_id = e.id";
        
-        //SELECT td.nombre as nom_document, t.id_ter as id_ter, t.nombre as nom_ter, t.apellido1 as ape1_ter, t.apellido2 as ape2_ter, tc.nombre as t_contratist, tcl.nombre as clasific, e.nombre as est_nom, 
-        
-        
+        //SELECT t.id, t.id_ter, t.apellido1, t.apellido2 estado_id=1 t_tercero=3
         
         if (!empty($where)) {
             $sql .= " WHERE " . $where;

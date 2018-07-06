@@ -3,20 +3,9 @@ $(document).ready(function () {
    
     isNumber(['#txtValor','#txtPlazo']);
     maxChar(['#txtPlazo'], 4);
-    $('#dtFecNov').datepicker({format: 'yyyy-mm-dd', autoclose: true});
-
-    $("#tableListNovedad").DataTable({"language": {
-            "lengthMenu": "Mostrar _MENU_ registros por pagina",
-            "info": "Mostrando pagina _PAGE_ de _PAGES_",
-            "infoEmpty": "No hay registros disponibles",
-            "infoFiltered": "(filtrada de _MAX_ registros)",
-            "loadingRecords": "Cargando...",
-            "processing": "Procesando...",
-            "search": "Buscar:",
-            "zeroRecords": "No se encontraron registros coincidentes",
-
-        }});
-
+    setCalendarFrm(['#dtFecNov']);
+    
+   
     $("#btnIngresar").click(function () {
 
         var nuTNovedad = $("#cmbTNovedad").val();
@@ -52,16 +41,18 @@ function insertNovedad() {
         data: formData,
         success: function (data) {
            
+            alert(data);
             if (data) {
+                
+                msjModal('Se Registro Correctamente La Novedad','OK');
                 $("#btnIngresar").attr("value", "REGISTRAR")
-                //$("txtProcess").val('71');   
                 $("#frmNovedad")[0].reset();
                 $("#txtIdNov").val('');
                 $("#tableNovedad").html('');
                 $("#tableNovedad").append(data);
 
             } else {
-                alert("ERROR AL REGISTRAR ");
+                msjModal("Error Al Registrar La Novedad","ER");
             }
         }
     });

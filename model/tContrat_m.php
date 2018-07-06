@@ -4,7 +4,7 @@ require_once("conexion.php");
 require_once("../utils/SessionPhp.php");
 require_once("../utils/utils.php");
 
-class tContract extends conexion {
+class tContrat extends conexion {
     
     private $nuId;
     private $sbCod;
@@ -46,7 +46,7 @@ class tContract extends conexion {
             
     public function save() {
 
-        $sql = "INSERT INTO t_contract  VALUES(0,"
+        $sql = "INSERT INTO t_contrat  VALUES(0,"
                 . "'" . $this->getSbCod() . "',"
                 . "'" . $this->getSbNombre() . "',"
                 . $this->getNuEstado() . ")";
@@ -60,7 +60,7 @@ class tContract extends conexion {
 
     public function update() {
 
-        $sql = "UPDATE t_contract  SET "
+        $sql = "UPDATE t_contrat  SET "
                 . "cod='" . $this->getSbCod(). "',"
                 . "nombre='" . $this->getSbNombre() . "',"
                 . "estado_id=" . $this->getNuEstado()
@@ -77,7 +77,7 @@ class tContract extends conexion {
 
         $arrInfo = array();
         conexion::conectar();
-        $sql = "select * from t_contract  where id = " . $this->getNuId();
+        $sql = "select * from t_contrat  where id = " . $this->getNuId();
         $result = conexion::query($sql);
 
         while ($row = mysqli_fetch_assoc($result)) {
@@ -94,7 +94,7 @@ class tContract extends conexion {
 
         $arrInfo = array();
         conexion::conectar();
-        $sql = "select " . $select . " from t_contract t inner join estado e on t.estado_id = e.id";
+        $sql = "select " . $select . " from t_contrat t inner join estado e on t.estado_id = e.id";
         
         if (!empty($where)) {
             $sql .= " WHERE " . $where;

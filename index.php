@@ -7,7 +7,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
         <link rel="stylesheet" href="css/datatables.min.css" />
-        <link rel="stylesheet" href="css/datepicker.css" />
+        <link rel="stylesheet" href="css/datepicker.min.css" />
+        <!--<link rel="stylesheet" href="css/datepicker.css" />-->
         <link rel="stylesheet" href="css/bootstrap.min.css" />
         <link rel="stylesheet" href="css/chosen.min.css" />
         <link rel="stylesheet" href="css/jquery-confirm.css" />
@@ -24,8 +25,10 @@
 [if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
         <script src="assets/js/main.js"></script>
         <script type="text/javascript" src="js/principal/utils.js"></script>
-    <script src="js/principal/bootstrap.min.js"></script>	
-        <script src="js/principal/datepicker.js"></script>
+        <script src="js/principal/bootstrap.min.js"></script>	
+        <script src="js/principal/datepicker.min.js"></script>
+        <script src="js/principal/datepicker.es-ES.js"></script>
+        <!--<script src="js/principal/datepicker.js"></script>-->
         <script src="js/principal/datatables.min.js"></script>
         <script src="js/principal/moment.min.js"></script>
         <script src="js/principal/chosen.min.js"></script>

@@ -1,6 +1,8 @@
 <?php
 
 require_once("../model/contracto_m.php");
+require_once("../model/tercero_m.php");
+require_once("../model/tIntervt_m.php");
 require_once("../model/tAvance_m.php");
 require_once("../model/tNoved_m.php");
 require_once("../model/acta_m.php");
@@ -8,14 +10,14 @@ require_once("../model/novedad_m.php");
 require_once("../utils/utils.php");
 $resultInfo;
 $sbmsj = "";
-$objContract = new contracto();
+$objContrat = new contracto();
 
 
 
 if (isset($_POST['txtIdC'])) {
     $resultInfo = array();
-    $objContract->setSbId($_POST['txtIdC']);
-    $resultInfo = $objContract->getListId();
+    $objContrat->setSbId($_POST['txtIdC']);
+    $resultInfo = $objContrat->getListId();
     echo json_encode($resultInfo);
     exit;
 } else {
@@ -26,9 +28,9 @@ if (isset($_POST['txtIdC'])) {
 
         if ($nuProcess == 1) {
 
-            $objContract->setSbId($_POST['cmbContract']);
-            $arrList = $objContract->getListId("v_contracto");
-            $contracto = $objContract->getSbId();
+            $objContrat->setSbId($_POST['cmbContrat']);
+            $arrList = $objContrat->getListId("v_contrato");
+            $contracto = $objContrat->getSbId();
 
             $resultInfo = '<table class="alt">'
                     . '<tr><td >Dependencia: </td><td colspan="3">' . $arrList['depend_nom'] . '</td><td>Seccion: </td><td colspan="3">' . $arrList['seccion'] . '</td></tr>'
@@ -44,13 +46,31 @@ if (isset($_POST['txtIdC'])) {
                 <div class="card">
                     <div class="card-header" >
                         <h5 class="mb-0">
-                            <span  class="text-mutedfont-weight-bold" data-toggle="collapse" data-target="#collapseOne" >
+                            <span  class="text-mutedfont-weight-bold" data-toggle="collapse" data-target="#collapseIntervent" >
+                                INTERVENTOR
+                            </span>
+                        </h5>
+                    </div>
+
+                    <div id="collapseIntervent" class="collapse" >
+                        <div class="card-body">
+                        <br/>
+                            <div class="container2">
+                               ' . htmlIntervent($contracto) . '
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" >
+                        <h5 class="mb-0">
+                            <span  class="text-mutedfont-weight-bold" data-toggle="collapse" data-target="#collapseActa" >
                                 ACTAS
                             </span>
                         </h5>
                     </div>
 
-                    <div id="collapseOne" class="collapse" >
+                    <div id="collapseActa" class="collapse" >
                         <div class="card-body">
                         <br/>
                             <div class="container2">
@@ -60,14 +80,14 @@ if (isset($_POST['txtIdC'])) {
                     </div>
                 </div>
                 <div class="card">
-                    <div class="card-header" id="headingTwo">
+                    <div class="card-header">
                         <h5 class="mb-0">
-                            <span class="text-mutedfont-weight-bold" data-toggle="collapse" data-target="#collapseTwo">
+                            <span class="text-mutedfont-weight-bold" data-toggle="collapse" data-target="#collapseNovedad">
                                 NOVEDADES
                             </span>
                         </h5>
                     </div>
-                    <div id="collapseTwo" class="collapse">
+                    <div id="collapseNovedad" class="collapse">
                         <div class="card-body">
                         <br/>
                           <div class="container2">
@@ -88,6 +108,22 @@ if (isset($_POST['txtIdC'])) {
                         <div class="card-body">
                             <div class="container2">
                                 INFORMACION 3
+                            </div">
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingThree">
+                        <h5 class="mb-0">
+                            <span class="text-mutedfont-weight-bold" data-toggle="collapse" data-target="#collapse4">
+                                Collapsible Group Item #3
+                            </span>
+                        </h5>
+                    </div>
+                    <div id="collapse4" class="collapse" >
+                        <div class="card-body">
+                            <div class="container2">
+                                INFORMACION 4
                             </div">
                         </div>
                     </div>
@@ -189,6 +225,56 @@ if (isset($_POST['txtIdC'])) {
 }
 echo $resultInfo;
 
+function htmlIntervent($contracto) {
+    
+    $objTercero = new tercero();
+    $objTIntervent = new tIntervt();
+   
+    //f$objUtils_m, $select, $where, $order, $id, $class = '', $valor ='', $event='', $func = ''
+    $sbTerceroCmb = comboBox($objTercero, 't.id, t.id_ter, t.apellido1, t.apellido2', 't.estado_id = 1 AND t.t_tercero = 3', 't.nombre','cmbTercero');
+    //$sbAvancesComb = comboBox($objTAvance, 't.id,t.nombre', '','','cmbTAvance');
+
+    $html = "  
+            <script src='js/pcontracto/interventor.js'></script>
+                <form action='controller/pcontracto_c.php' method='post'  id='frmInterventor' name = 'frmInterventor'>
+                    
+                    <input id='txtProcess' name='txtProcess' value='61' hidden>
+                    <input id='txtContracto' name='txtContracto' value='" . $contracto . "' hidden>
+                    <input id='txtIdInterv' name='txtIdInterv' value='' hidden>
+                    
+                    <div class='input-group input-group-sm'>
+                    
+                        <span class='input-group-addon'>T. INTERVENTOR: </span>
+                        <div class='6u$ 12u$(xsmall)'>" . $sbTerceroCmb . "</div> 
+
+                        <span class='input-group-addon'>DE PLANTA:</span>
+                        <select id='cmbPublicSecop' name='cmbPublicSecop'>
+                            <option value''>- Seleccionar -</option>
+                            <option value='0'>No</option>
+                            <option value='1'>Si</option>
+                        </select>              
+
+                        <span class='input-group-addon'>N. CONTRATO:</span>
+                        <input type='text' name='txtNumContrato' id='txtNumContrato' placeholder='  '/>         
+
+                        <span class='input-group-addon'>PORCENTAJE:</span>
+                        <input type='text' name='txtPorcentajIntervent' id='txtPorcentajIntervent' placeholder=' % '/>         
+
+                    </div>                
+                    <br/>
+                    
+                    <input type='button' id='btnIngresarInterventor' name='btnIngresarInterventor' value='REGISTRAR' class='button small'/>&nbsp;&nbsp;
+                    <input type='reset' value='LIMPIAR' class='button small' />
+                    
+                </form>
+                <div id='tableActa'>" . getTableIntervent($contracto) . "</div>
+            ";
+
+
+    return $html;
+    
+}
+
 function htmlActa($contracto) {
 
     $objTAvance = new tAvance();
@@ -239,16 +325,16 @@ function htmlNovedad($contracto) {
     
     $html = "  
             <script src='js/pcontracto/novedad.js'></script>
-                <form action='controller/pcontracto_c.php' method='post'  id='frmNovedad' name = 'frmNovedad'>
+                <form action='controller/pcontracto_c.php' method='post'  id='frmNovedad' name='frmNovedad'>
                     
-                    <input id='txtProcess' name='txtProcess' value='81' hidden>
-                    <input id='txtContracto' name='txtContracto' value='4" . $contracto . "' hidden>
-                    <input id='txtIdNov' name='txtIdNov' value='' hidden
+                    <input id='txtProcess' name='txtProcess' value='81' hidden/>
+                    <input id='txtContracto' name='txtContracto' value='" . $contracto . "' hidden/>
+                    <input id='txtIdNov' name='txtIdNov' value='' hidden/>
                     
                     <div class='input-group input-group-sm'>
                     
                         <span class='input-group-addon'>T. NOVEDAD: </span>
-                        <div class='6u$ 12u$(xsmall)'>" . $sbnNovedComb . "</div> 
+                        <div class='6u$ 12u$(xsmall)' >" . $sbnNovedComb . "</div> 
 
                         <span class='input-group-addon'>VALOR:</span>
                         <input type='text' name='txtValor' id='txtValor'  placeholder=' $$$ '/>            
@@ -315,7 +401,58 @@ function getTableActa($contracto) {
                     </table>	
               <script>
                 $(document).ready(function () {
-                    $("#tableListActa").DataTable();
+                    setTableFrm(["#tableListActa"]);
+                });
+              </script>';
+       
+    }
+
+    return $tableInfo;
+}
+
+function getTableIntervent($contracto) {
+
+    $objActa = new acta();
+
+    $arrList = $objActa->getList("a.id as a_id, ta.cod as ta_cod,ta.nombre as ta_nom, a.fecha as a_fec,a.porcentaje as a_porc", 'a.contracto_id="' . $contracto . '"', 'a.id DESC');
+
+    $tableInfo = "";
+
+    if (count($arrList) > 0) {
+
+        $tableInfo = "  <table id='tableListActa' name='tableListActa' align='center'>
+                        <thead>
+                            <tr>	
+                                <TH> <label>#</label></TH>
+                                <TH> <label>TIPO</label></TH>
+                                <TH> <label>ACTA</label></TH>
+                                <TH> <label>FECHA</label></TH>
+                                <TH> <label>PORCENTAJE</label></TH>
+                                <TH> <label>EDITAR</label></TH>
+                                <TH> <label>ELIMINAR</label></TH>
+
+                            </tr>             
+                        </thead>
+                        <tbody id='tableActa'>";
+
+        $i = 1;
+        foreach ($arrList as $value) {
+            $tableInfo .= "<tr><td>" . $i . "</td>"
+                    . "<td>" . $value["ta_cod"] . "</td>"
+                    . "<td>" . $value["ta_nom"] . "</td>"
+                    . "<td>" . $value["a_fec"] . "</td>"
+                    . "<td>" . $value["a_porc"] . "%</td>"
+                    . "<td><a href='javascript:updateActa( " . $value["a_id"] . ")' > <IMG id='imgList' src='img/editar.png'/></a></td>"
+                    . "<td><a href='javascript:deleteActa(" . $value["a_id"] . "," . '"' . $contracto . '"' . ")'  > <IMG id='imgList' src='img/eliminar.png'/></a></td></tr>";
+            $i++;
+        }
+
+            $tableInfo .= '
+                        </tbody>
+                    </table>	
+              <script>
+                $(document).ready(function () {
+                    setTableFrm(["#tableListActa"]);
                 });
               </script>';
        
@@ -368,7 +505,7 @@ function getTableNovedad($contracto) {
                     </table>	
               <script>
                 $(document).ready(function () {
-                    $("#tableListNovedad").DataTable();
+                    setTableFrm(["#tableListNovedad"]); 
                 });
               </script>';
        
