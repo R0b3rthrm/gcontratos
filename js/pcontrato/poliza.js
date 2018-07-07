@@ -3,7 +3,8 @@ $(document).ready(function () {
     isNumber(['#txtValorPol']);
     alfNum(['#txtNumPoliza', '#txtResolucPol']);
     setCalendarFrm(['#dtFecExpPol', '#txtFecAproPol', '#dtFecIniPol', '#dtFecFinPol']);
-
+    noCopyPaste(['#txtNumPoliza','#txtResolucPol','#txtValorPol']);
+    
     $("#btnIngresarPol").click(function () {
 
         var nuTercero = $("#cmbTerceroPol").val();
@@ -31,8 +32,12 @@ $(document).ready(function () {
 
         //Validar Campos Vacios
         if (blValido)
-        {
-            insertPoliza();
+        {   
+            if(dtFecIni>dtFecFin){
+                msjModal('La Fecha Inicial Debe Ser Menor o Igual a Fecha Final','AT');
+            }else{
+                insezrtPoliza();
+            }
         }
     });
 

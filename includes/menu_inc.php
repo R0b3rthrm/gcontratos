@@ -10,9 +10,9 @@
         <ul>
             <li><a href="<?php echo SERVERURL; ?>inicio">Inicio</a></li>
             <li>
-                <a href="#" class="icon fa-angle-down">Gestion Contractos</a>
+                <a href="#" class="icon fa-angle-down">Gestion Contratos</a>
                 <ul>
-                    <li><a href="<?php echo SERVERURL; ?>pcontrato">Proceso Contracto</a></li>
+                    <li><a href="<?php echo SERVERURL; ?>pcontrato">Proceso Contrato</a></li>
                     <li><a href="<?php echo SERVERURL; ?>contrato">Contrato</a></li>
                     <li><a href="<?php echo SERVERURL; ?>tercero">Tercero</a></li>
                 </ul>

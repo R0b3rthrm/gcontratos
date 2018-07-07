@@ -3,7 +3,7 @@ $(document).ready(function () {
     isNumber(['#txtPorcentajActa']);
     maxChar(['#txtPorcentajActa'], 3);
     setCalendarFrm(['#dtFecAct']);
-   
+    noCopyPaste(['#txtPorcentajActa']);
     $("#btnIngresarActa").click(function () {
 
         var nuTAvance = $("#cmbTAvance").val();
@@ -21,7 +21,7 @@ $(document).ready(function () {
         if (blValido)
         {
             if ($('#txtPorcentajActa').val() > 100) {
-                msjModal('El Porcentaje debe se menor a 100','AT');
+                msjModal('El Porcentaje Debe Ser Menor o Igual 100','AT');
             } else {
                 insertActa();
             }

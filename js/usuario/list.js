@@ -11,17 +11,7 @@ $(document).ready(function () {
             if (data) {
                 $("#resultado").html("");
                 $("#resultado").append(data);
-                $("#tableList").DataTable({"language": {
-                        "lengthMenu": "Mostrar _MENU_ registros por pagina",
-                        "info": "Mostrando pagina _PAGE_ de _PAGES_",
-                        "infoEmpty": "No hay registros disponibles",
-                        "infoFiltered": "(filtrada de _MAX_ registros)",
-                        "loadingRecords": "Cargando...",
-                        "processing": "Procesando...",
-                        "search": "Buscar:",
-                        "zeroRecords": "No se encontraron registros coincidentes",
-
-                    }});
+                setTableFrm(['#tableList']);
             } else {
                 alert("ERROR AL REGISTRAR ");
             }
@@ -32,9 +22,14 @@ $(document).ready(function () {
 
 function resetPass(id) {
 
-    if (confirm('ESTA SEGURO HACER RESET PASS AL USUARIO '+id)) {
-        
-        var array = {txtId: id, txtProcess: 4};
+    $.confirm({
+        title: '¡CONFIRMACION!',
+        content: 'Esta Seguro Hacer Reset Pass al Usuario '+id+'?',
+        type:   'orange',  
+        buttons: {
+            SI: function () {
+            
+                 var array = {txtId: id, txtProcess: 4};
         var sbAction = $("#frmUsuarioList").attr("action");
 
         $.ajax({
@@ -43,14 +38,20 @@ function resetPass(id) {
             data: array,
             success: function (data) {
                 if(data){
-                    alert('SE ACTUALIZO CORRECTAMENTE EL PASS');
+                        msjModal('Se Actualizo Correctamente El Pass','OK');
                 }else{
-                    alert('ERROR AL HACER RESET PASS');
+                        msjModal('Error al Hacer Reset Pass','ER');
                     
                 }
                 
             }
         });
-    }
+                
+            },
+            NO: function () {
+               
+            }
+            
+        }
+    });
 }
-

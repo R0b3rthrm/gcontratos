@@ -125,7 +125,7 @@ if (isset($_POST['txtIdC'])) {
                         . '<td>' . $value['ter_nom'] . ' ' . $value['ter_ape1'] . ' ' . $value['ter_ape2'] . '</td>'
                         . '<td>' . $value['id'] . '</td>'
                         . '<td>' . $value['fec_ini'] . '</td>'
-                        . '<td>' . $value['valor_ini'] . '</td>'
+                        . '<td>$' . $value['valor_ini'] . '</td>'
                         . '<td><a href="contratoUpdate?id=' . $value['id'] . '" > <IMG id="imgList" src="img/editar.png"/></a></td></tr>';
                 $i++;
             }
@@ -432,7 +432,7 @@ function setHtmlContrato($setIdUpdate) {
                         <div class="input-group input-group-sm">
                             <span class="input-group-addon" >F. SUSCRIPCION :</span>
                             <input type="text" name="dtSuscripcion" id="dtSuscripcion" class="form-control" placeholder=" 0000-00-00 " value="' . $fec_sus . '"/ >        
-                            <span class="input-group-addon" >F. INCIO CONTRACT:</span>
+                            <span class="input-group-addon" >F. INCIO CONTRAT:</span>
                             <input name="dtInicio" id="dtInicio" type="text" class="form-control" placeholder=" 0000-00-00 " value="' . $fec_ini . '"/>
                         </div>                
 

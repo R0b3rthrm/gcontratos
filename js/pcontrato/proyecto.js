@@ -4,7 +4,8 @@ $(document).ready(function () {
     alfNum(['#txtCodPro','#txtCodActPro'])
     maxChar(['#txtPorcentajePro'], 3);
     setCalendarFrm(['#dtFecIniPro','#dtFecFinPro']);
-   
+    noCopyPaste(['#txtCodPro','#txtCodActPro','#txtPorcentajePro']);
+    
     $("#btnIngresarPro").click(function () {
 
         var nuCodPro = $("#txtCodPro").val();
@@ -25,10 +26,14 @@ $(document).ready(function () {
         //Validar Campos Vacios
         if (blValido)
         {
-            if ($('#txtPorcentajePro').val() > 100) {
-                msjModal('El Porcentaje debe se menor a 100','AT');
-            } else {
-                insertProyecto();
+            if(dtFecIniPro>dtFecFinPro){
+                msjModal('La Fecha Inicial Debe Ser Menor o Igual a Fecha Final','AT');
+            }else{
+                if ($('#txtPorcentajePro').val() > 100) {
+                    msjModal('El Porcentaje Debe Ser Menor o Igual 100','AT');
+                } else {
+                    insertProyecto();
+                }
             }
         }
     });

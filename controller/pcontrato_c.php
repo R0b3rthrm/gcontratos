@@ -44,7 +44,7 @@ if (isset($_POST['txtIdC'])) {
 
             $resultInfo = '<table class="alt">'
                     . '<tr><td >Dependencia: </td><td colspan="3">' . $arrList['depend_nom'] . '</td><td>Seccion: </td><td colspan="3">' . $arrList['seccion'] . '</td></tr>'
-                    . '<tr><td>Contratista: </td><td colspan="3">' . $arrList['ter_ide'] . ' - ' . $arrList['ter_nom'] . ' ' . $arrList['ter_ape1'] .' ' . $arrList['ter_ape2'] . '</td><td>Valor Inicial: </td><td colspan="3">' . $arrList['valor_ini'] . '</td></tr>'
+                    . '<tr><td>Contratista: </td><td colspan="3">' . $arrList['ter_ide'] . ' - ' . $arrList['ter_nom'] . ' ' . $arrList['ter_ape1'] .' ' . $arrList['ter_ape2'] . '</td><td>Valor Inicial: </td><td colspan="3">$' . $arrList['valor_ini'] . '</td></tr>'
                     . '<tr><td>Modalidad</td><td>' . $arrList['selecc_nom'] . '</td><td>Causal: </td><td>' . $arrList['causal_nom'] . '</td><td>T. Contrato: </td><td>' . $arrList['tcontrat_nom'] . '</td><td >Gasto: </td><td>' . $arrList['tgasto_nom'] . '</td></tr>'
                     . '<tr><td>F. Suscripc: </td><td>' . $arrList['fec_suscripc'] . '</td><td>F. Ini Contract: </td><td>' . $arrList['fec_ini'] . '</td><td>F. Terminacio: </td><td>' . $arrList['fec_termn'] . '</td><td >P. Ejecucion: </td><td>' . $arrList['plazo_ejecuc'] . '</td></tr>'
                     . '<tr><td colspan="8">OBJETO: ' . $arrList['objeto'] . '</td></tr>'
@@ -161,38 +161,6 @@ if (isset($_POST['txtIdC'])) {
                                 ' . htmlNovedad($contrato) . '
                            </div>
                          </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header" id="headingThree">
-                        <h5 class="mb-0">
-                            <span class="text-mutedfont-weight-bold" data-toggle="collapse" data-target="#collapseThree">
-                                Collapsible Group Item #3
-                            </span>
-                        </h5>
-                    </div>
-                    <div id="collapseThree" class="collapse" >
-                        <div class="card-body">
-                            <div class="container2">
-                                INFORMACION 3
-                            </div">
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header" id="headingThree">
-                        <h5 class="mb-0">
-                            <span class="text-mutedfont-weight-bold" data-toggle="collapse" data-target="#collapse4">
-                                Collapsible Group Item #3
-                            </span>
-                        </h5>
-                    </div>
-                    <div id="collapse4" class="collapse" >
-                        <div class="card-body">
-                            <div class="container2">
-                                INFORMACION 4
-                            </div">
-                        </div>
                     </div>
                 </div>
             </div>';
@@ -736,7 +704,7 @@ function getTableProyecto($contrato) {
                     . "<td>" . $value["act_cod"] . "</td>"
                     . "<td>" . $value["fec_ini"] . "</td>"
                     . "<td>" . $value["fec_fin"] . "</td>"
-                    . "<td>" . $value["porcentaje"] . "</td>"
+                    . "<td>" . $value["porcentaje"] . "%</td>"
                     . "<td><a href='javascript:updateProyecto( " . $value["p_id"] . ")' > <IMG id='imgList' src='img/editar.png'/></a></td>"
                     . "<td><a href='javascript:deleteProyecto(" . $value["p_id"] . "," . '"' . $contrato . '"' . ")'  > <IMG id='imgList' src='img/eliminar.png'/></a></td></tr>";
             $i++;
@@ -796,7 +764,7 @@ function getTablePoliza($contrato) {
                     . "<td>" . $value["resoluc"] . "</td>"
                     . "<td>" . $value["fec_apro"] . "</td>"
                     . "<td>" . $value["tpo_nom"] . "</td>"
-                    . "<td>" . $value["valor"] . "</td>"
+                    . "<td>$" . $value["valor"] . "</td>"
                     . "<td>" . $value["fec_ini"] . "</td>"
                     . "<td>" . $value["fec_fin"] . "</td>"
                     . "<td><a href='javascript:updatePoliza( " . $value["p_id"] . ")' > <IMG id='imgList' src='img/editar.png'/></a></td>"
@@ -858,7 +826,7 @@ function getTableIntervent($contrato) {
                     . "<td>" . $value["tin_nom"] . "</td>"
                     . "<td>" . $planta . "</td>"
                     . "<td>" . $value["num_cont"] . "</td>"
-                    . "<td>" . $value["porcentaje"] . "</td>"
+                    . "<td>" . $value["porcentaje"] . "%</td>"
                     . "<td><a href='javascript:updateInterv( " . $value["i_id"] . ")' > <IMG id='imgList' src='img/editar.png'/></a></td>"
                     . "<td><a href='javascript:deleteInterv(" . $value["i_id"] . "," . '"' . $contrato . '"' . ")'  > <IMG id='imgList' src='img/eliminar.png'/></a></td></tr>";
             $i++;
@@ -960,7 +928,7 @@ function getTableNovedad($contrato) {
             $tableInfo .= "<tr><td>" . $i . "</td>"
                     . "<td>" . $value["tn_cod"] . "</td>"
                     . "<td>" . $value["tn_nom"] . "</td>"
-                    . "<td>" . $value["n_val"] . "</td>"
+                    . "<td>$" . $value["n_val"] . "</td>"
                     . "<td>" . $value["n_pla"] . "</td>"
                     . "<td>" . $value["n_fec"] . "</td>"
                     . "<td><a href='javascript:updateNovedad( " . $value["n_id"] . ")' > <IMG id='imgList' src='img/editar.png'/></a></td>"

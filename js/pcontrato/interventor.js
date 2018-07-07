@@ -3,7 +3,7 @@ $(document).ready(function () {
     isNumber(['#txtPorcentajInterv']);
     alfNum(['txtNumContrato']);
     maxChar(['#txtPorcentajInterv'], 3);
-   
+    noCopyPaste(['#txtPorcentajInterv','#txtNumContrato']);
     $("#btnIngresarInterv").click(function () {
 
         var nuTercero = $("#cmbTercero").val();
@@ -25,7 +25,7 @@ $(document).ready(function () {
         if (blValido)
         {
             if ($('#txtPorcentajInterv').val() > 100) {
-                msjModal('El Porcentaje debe se menor a 100','AT');
+                msjModal('El Porcentaje Debe Ser Menor o Igual a 100','AT');
             } else {
                 insertInterv();
             }

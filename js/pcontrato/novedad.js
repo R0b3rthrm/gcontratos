@@ -4,7 +4,7 @@ $(document).ready(function () {
     isNumber(['#txtValor','#txtPlazo']);
     maxChar(['#txtPlazo'], 4);
     setCalendarFrm(['#dtFecNov']);
-    
+    noCopyPaste(['#txtValor','#txtPlazo']);
    
     $("#btnIngresar").click(function () {
 

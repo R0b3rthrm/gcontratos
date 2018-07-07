@@ -6,12 +6,14 @@
     
 if ($sessionLogin == ""){
 	$sbCadena="<script language='javascript'>";
-	$sbCadena.="alert('Usuario No Autenticado')";
+	$sbCadena.="msjModal('Usuario No Autenticado','ER')";
 	$sbCadena.="</script>";
 	echo $sbCadena;
 
 	$sbCadena="<script language='javascript'>";
-	$sbCadena.="location.href ='".SERVERURL."'";
+	$sbCadena.="setTimeout(function () {
+                        location.href ='".SERVERURL."'
+                    }, 1000)";
 	$sbCadena.="</script>";
 	echo $sbCadena;  	
 	}

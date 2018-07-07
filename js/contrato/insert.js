@@ -14,12 +14,12 @@ $(document).ready(function () {
 
     $('#txtPlazoEj').click(function () {
 
-        dtIni = $('#dtInicio').val();
-        dtFin = $('#dtTerminacion').val();
+        var dtIni = $('#dtInicio').val();
+        var dtFin = $('#dtTerminacion').val();
 
         if (dtIni != '' && dtFin != '') {
             if (dtIni > dtFin) {
-                msjModal('Fecha De Terminacion Debe Ser Mayor A La Fecha Inicial', 'AT');
+                msjModal('Fecha De Terminacion Debe Ser Mayor o Igual a La Fecha Inicial', 'AT');
                 $('#dtTerminacion').focus();
             } else {
                 $('#txtPlazoEj').val(difDate(dtIni, dtFin));

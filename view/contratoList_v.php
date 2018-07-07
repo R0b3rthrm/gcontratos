@@ -18,9 +18,9 @@
                         <TH> <label>#</label></TH>
                         <TH> <label>DEPENDENCIA</label></TH>
                         <TH> <label>SECCION</label></TH>
-                        <TH> <label>T. CONTRACTO</label></TH>
+                        <TH> <label>T. CONTRATO</label></TH>
                         <TH> <label>CONTRATISTA</label></TH>
-                        <TH> <label>No CONTRACTO</label></TH>
+                        <TH> <label>No CONTRATO</label></TH>
                         <TH> <label>F. INICIO</label></TH>
                         <TH> <label>VALOR INICIAL</label></TH>
                         <TH> <label>EDITAR</label></TH>

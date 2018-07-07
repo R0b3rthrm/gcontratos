@@ -197,7 +197,7 @@ function setCalendarFrm(arr=[]){
     
      for (var x in arr) {
         $(arr[x]).datepicker({format:'yyyy-mm-dd',autoHide:true, language:'es-ES', offset:5});
-     
+        noCopyPaste([arr[x]]);
     }
     
 }
