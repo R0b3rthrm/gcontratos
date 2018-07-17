@@ -43,11 +43,11 @@ if (isset($_POST['txtIdC'])) {
             $contrato = $objContrat->getSbId();
 
             $resultInfo = '<table class="alt">'
-                    . '<tr><td >Dependencia: </td><td colspan="3">' . $arrList['depend_nom'] . '</td><td>Seccion: </td><td colspan="3">' . $arrList['seccion'] . '</td></tr>'
-                    . '<tr><td>Contratista: </td><td colspan="3">' . $arrList['ter_ide'] . ' - ' . $arrList['ter_nom'] . ' ' . $arrList['ter_ape1'] .' ' . $arrList['ter_ape2'] . '</td><td>Valor Inicial: </td><td colspan="3">$' . $arrList['valor_ini'] . '</td></tr>'
-                    . '<tr><td>Modalidad</td><td>' . $arrList['selecc_nom'] . '</td><td>Causal: </td><td>' . $arrList['causal_nom'] . '</td><td>T. Contrato: </td><td>' . $arrList['tcontrat_nom'] . '</td><td >Gasto: </td><td>' . $arrList['tgasto_nom'] . '</td></tr>'
-                    . '<tr><td>F. Suscripc: </td><td>' . $arrList['fec_suscripc'] . '</td><td>F. Ini Contract: </td><td>' . $arrList['fec_ini'] . '</td><td>F. Terminacio: </td><td>' . $arrList['fec_termn'] . '</td><td >P. Ejecucion: </td><td>' . $arrList['plazo_ejecuc'] . '</td></tr>'
-                    . '<tr><td colspan="8">OBJETO: ' . $arrList['objeto'] . '</td></tr>'
+                    . '<tr><td><b>Dependencia:</b> </th><td colspan="3">' . $arrList['depend_nom'] . '</td><td><b>Seccion: </b></td><td colspan="3">' . $arrList['seccion'] . '</td></tr>'
+                    . '<tr><td><b>Contratista: </b></td><td colspan="3">' . $arrList['ter_ide'] . ' - ' . $arrList['ter_nom'] . ' ' . $arrList['ter_ape1'] .' ' . $arrList['ter_ape2'] . '</td><td> <b>Valor Inicial: </b></td><td colspan="3">$' . $arrList['valor_ini'] . '</td></tr>'
+                    . '<tr><td><b>Modalidad:</b></td><td>' . $arrList['selecc_nom'] . '</td><td><b>Causal: </b></td><td>' . $arrList['causal_nom'] . '</td><td><b>Tipo Contrato:</b></td><td>' . $arrList['tcontrat_nom'] . '</td><td ><b>Gasto:</b> </td><td>' . $arrList['tgasto_nom'] . '</td></tr>'
+                    . '<tr><td><b>Fecha Suscripcion: </b></td><td>' . $arrList['fec_suscripc'] . '</td><td><b>Fecha Inicio:</b> </td><td>' . $arrList['fec_ini'] . '</td><td><b>Fecha Terminacion:</b> </td><td>' . $arrList['fec_termn'] . '</td><td ><b>Plazo:</b> </td><td>' . $arrList['plazo_ejecuc'] . '</td></tr>'
+                    . '<tr><td ><b>Objeto: </b></td><td colspan="7">' . $arrList['objeto'] . '</td></tr>'
                     . '</table>';
 
             //INGRESO EL ACORDION
