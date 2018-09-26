@@ -24,6 +24,7 @@
                     <li><a href="<?php echo SERVERURL; ?>causal">Causal</a></li>
                     <li><a href="<?php echo SERVERURL; ?>depend">Dependencia</a></li>
                     <li><a href="<?php echo SERVERURL; ?>funcion">Funcion</a></li>
+                    <li><a href="<?php echo SERVERURL; ?>proyect">Proyecto</a></li>
                     <li><a href="<?php echo SERVERURL; ?>mSelecc">Modalidad de Seleccion</a></li>
                     <li>
                         <a href="#">Tipos</a>
