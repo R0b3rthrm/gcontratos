@@ -2,6 +2,7 @@
 
 require_once("../model/contrato_m.php");
 require_once("../model/proyecto_m.php");
+require_once("../model/proyect_m.php");
 require_once("../model/tercero_m.php");
 require_once("../model/poliza_m.php");
 require_once("../model/tPoliza_m.php");
@@ -85,7 +86,7 @@ if (isset($_POST['txtIdC'])) {
                         <div class="card-body">
                         <br/>
                             <div class="container2">
-                               DISPONIBILIDAD
+                                ' . htmlDispon($contrato) . '
                             </div>
                         </div>
                     </div>
@@ -169,7 +170,7 @@ if (isset($_POST['txtIdC'])) {
             $objProyecto = new proyecto();
             $contrato = $_POST['txtContrato'];
             $objProyecto->setSbContrato(trim($contrato));
-            $objProyecto->setSbCod(trim($_POST['txtCodPro']));
+            $objProyecto->setNuProyect(trim($_POST['cmbCodPro']));
             $objProyecto->setSbCodAct(trim($_POST['txtCodActPro']));
             $objProyecto->setDtFecIni(trim($_POST['dtFecIniPro']));
             $objProyecto->setDtFecFin(trim($_POST['dtFecFinPro']));
@@ -403,10 +404,12 @@ echo $resultInfo;
 
 function htmlProyect($contrato) {
     
-    $objProyecto = new proyecto();
-    
-   //$sbAvancesComb = comboBox($objTAvance, 't.id,t.nombre', '','','cmbTAvance');
+    $objProyect = new proyect();
+   
+    //f$objUtils_m, $select, $where, $order, $id, $class = '', $valor ='', $event='', $func = ''
+    $sbCodProy = comboBox($objProyect, 'p.id,p.codigo', 'p.estado_id=1','','cmbCodPro','chosen-select');
 
+    
     $html = "  
             <script src='js/pcontrato/proyecto.js'></script>
                 <form action='controller/pcontrato_c.php' method='post'  id='frmProyecto' name = 'frmProyecto'>
@@ -415,10 +418,11 @@ function htmlProyect($contrato) {
                     <input id='txtContracto' name='txtContrato' value='" . $contrato . "' hidden>
                     <input id='txtIdProyecto' name='txtIdProyecto' value='' hidden>
                     
+
                     <div class='input-group input-group-sm'>
                     
                         <span class='input-group-addon'>CODIGO DEL PROYECTO: </span>
-                        <input type='text' name='txtCodPro' id='txtCodPro' placeholder='  '/>         
+                       <div>" . $sbCodProy . "</div>         
                         
                     </div>                
 											
@@ -449,6 +453,65 @@ function htmlProyect($contrato) {
                     
                 </form>
                 <div id='tableProyecto'>". getTableProyecto($contrato). "</div>
+            ";
+
+    return $html;   
+}
+
+function htmlDispon($contrato) {
+    
+    $objContrata = new contrato();
+
+    
+    //comboBox($objUtils_m, $select, $where, $order, $id, $class = '', $valor ='', $event='', $func = '')   
+    $resultInfo = comboBox($objContrata, 'id,id,depend_nom', '','','cmbCodPrueba','','','','',1);
+            
+   
+    $html = "  
+            <script src='js/pcontrato/proyecto.js'></script>
+                <form action='controller/pcontrato_c.php' method='post'  id='frmProyecto' name = 'frmProyecto'>
+                    
+                    <input id='txtProcess' name='txtProcess' value='31' hidden>
+                    <input id='txtContracto' name='txtContrato' value='" . $contrato . "' hidden>
+                    <input id='txtIdProyecto' name='txtIdProyecto' value='' hidden>
+                    
+
+                    <div class='input-group input-group-sm'>
+                    
+                        <span class='input-group-addon'>CODIGO DEL PROYECTO: </span>
+                        <div>" . $resultInfo . "</div>           
+                        
+                    </div>                
+											
+                    <br/>
+                    <div class='input-group input-group-sm'>
+                    
+                        <span class='input-group-addon'>COD ACTIVIDAD: </span>
+                        <input type='text' name='txtCodActPro' id='txtCodActPro' placeholder='  '/>         
+
+
+
+                        <span class='input-group-addon'>F. INICIO ACT:</span>
+                        <input type='text' name='dtFecIniPro' id='dtFecIniPro' placeholder=' 0000-00-00 '/>         
+                                     
+
+                        <span class='input-group-addon'>F. FINAL ACT:</span>
+                        <input type='text' name='dtFecFinPro' id='dtFecFinPro' placeholder=' 0000-00-00 '/>             
+
+                        <span class='input-group-addon'>Porcentaje:</span>
+                        <input type='text' name='txtPorcentajePro' id='txtPorcentajePro' placeholder=' % '/>         
+
+                    </div>                
+                                    
+                    <br/>
+                    btnPrueba
+                    <input type='button' id='btnIngresarPro' name='btnIngresarPro' value='REGISTRAR' class='button small'/>&nbsp;&nbsp;
+                    <input type='reset' value='LIMPIAR' class='button small' />&nbsp;&nbsp;
+                    
+                    <input type='button' id='btnPrueba' name='btnPrueba' value='PRUEBA' class='button small'/>
+
+                </form>
+                <!--<div id='tableProyecto'>". getTableProyecto($contrato). "</div>-->
             ";
 
     return $html;   
@@ -673,7 +736,7 @@ function getTableProyecto($contrato) {
 
     $objProyecto = new proyecto();
 
-    $arrList = $objProyecto->getList("p.id as p_id, p.cod as p_cod, p.cod_act as act_cod, p.fec_ini as fec_ini, p.fec_fin as fec_fin, p.porcentaje as porcentaje ", 'p.contrato_id="' . $contrato . '"', 'p.id DESC');
+    $arrList = $objProyecto->getList("p.id as p_id, pr.codigo as pr_codigo, p.cod_act as act_cod, p.fec_ini as fec_ini, p.fec_fin as fec_fin, p.porcentaje as porcentaje ", 'p.contrato_id="' . $contrato . '"', 'p.id DESC');
 
     $tableInfo = "";
 
@@ -700,7 +763,7 @@ function getTableProyecto($contrato) {
             
             $tableInfo .= "<tr><td>" . $i . "</td>"
 
-                    . "<td>" . $value["p_cod"] . "</td>"
+                    . "<td>" . $value["pr_codigo"] . "</td>"
                     . "<td>" . $value["act_cod"] . "</td>"
                     . "<td>" . $value["fec_ini"] . "</td>"
                     . "<td>" . $value["fec_fin"] . "</td>"

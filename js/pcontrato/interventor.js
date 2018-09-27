@@ -4,6 +4,12 @@ $(document).ready(function () {
     alfNum(['txtNumContrato']);
     maxChar(['#txtPorcentajInterv'], 3);
     noCopyPaste(['#txtPorcentajInterv','#txtNumContrato']);
+    $("#cmbTercero").chosen({
+                    max_selected_options: 30,
+                    max_shown_results: 30,
+                    width: "350px"
+                });
+    
     $("#btnIngresarInterv").click(function () {
 
         var nuTercero = $("#cmbTercero").val();

@@ -6,15 +6,38 @@ $(document).ready(function () {
     setCalendarFrm(['#dtFecIniPro','#dtFecFinPro']);
     noCopyPaste(['#txtCodPro','#txtCodActPro','#txtPorcentajePro']);
     
+    $("#cmbCodPro").chosen({
+                    max_selected_options: 30,
+                    max_shown_results: 30,
+                    width: "350px"
+                });
+    
+    
+    
+    $("#cmbCodPrueba").chosen({
+                    max_selected_options: 30,
+                    max_shown_results: 30,
+                    width: "350px",
+                    max_selected_options: 3,
+                    placeholder:"Elige tus colores favoritos" 
+                });
+    
+                    
+    $("#btnPrueba").click(function () {
+        
+        alert($("#cmbCodPrueba").val());
+    
+    });
+    
     $("#btnIngresarPro").click(function () {
 
-        var nuCodPro = $("#txtCodPro").val();
+        var nuCodPro = $("#cmbCodPro").val();
         var nuCodAct = $("#txtCodActPro").val();
         var dtFecIniPro = $("#dtFecIniPro").val();
         var dtFecFinPro = $("#dtFecFinPro").val();
         var nuPorcentaje = $("#txtPorcentajePro").val();
 
-        var arrayInfo = {0: nuCodPro + "|#txtCodPro",
+        var arrayInfo = {0: nuCodPro + "|#cmbCodPro",
             1: nuCodAct + "|#txtCodActPro",
             2: dtFecIniPro + "|#dtFecIniPro",
             3: dtFecFinPro + "|#dtFecFinPro",
@@ -80,7 +103,7 @@ function updateProyecto(id) {
         success: function (data) {
             var result = JSON.parse(data);
             $("#txtIdProyecto").val(id);     
-            $("#txtCodPro").val(result['cod']);
+            $("#cmbCodPro").val(result['proyect_id']);
             $("#txtCodActPro").val(result['cod_act']);
             $("#dtFecIniPro").val(result['fec_ini']);
             $("#dtFecFinPro").val(result['fec_fin']);

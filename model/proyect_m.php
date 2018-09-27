@@ -89,6 +89,7 @@ class proyect extends conexion {
         if (!empty($where)) {
             $sql .= " WHERE " . $where;
         }
+        
         if (!empty($order)){
             $sql .= " ORDER BY ".$order;
         }

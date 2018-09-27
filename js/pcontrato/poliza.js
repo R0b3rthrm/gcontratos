@@ -5,6 +5,12 @@ $(document).ready(function () {
     setCalendarFrm(['#dtFecExpPol', '#txtFecAproPol', '#dtFecIniPol', '#dtFecFinPol']);
     noCopyPaste(['#txtNumPoliza','#txtResolucPol','#txtValorPol']);
     
+    $("#cmbTerceroPol").chosen({
+                    max_selected_options: 30,
+                    max_shown_results: 30,
+                    width: "350px"
+                });
+    
     $("#btnIngresarPol").click(function () {
 
         var nuTercero = $("#cmbTerceroPol").val();

@@ -8,7 +8,7 @@ class proyecto extends conexion {
 
     private $nuId;
     private $sbContrato;
-    private $sbCod;
+    private $nuProyect;
     private $sbCodAct;
     private $dtFecIni;
     private $dtFecFin;
@@ -23,8 +23,8 @@ class proyecto extends conexion {
         return $this->sbContrato;
     }
 
-    function getSbCod() {
-        return $this->sbCod;
+    function getNuProyect() {
+        return $this->nuProyect;
     }
 
     function getSbCodAct() {
@@ -55,8 +55,8 @@ class proyecto extends conexion {
         $this->sbContrato = $sbContrato;
     }
 
-    function setSbCod($sbCod) {
-        $this->sbCod = $sbCod;
+    function setNuProyect($nuProyect) {
+        $this->nuProyect = $nuProyect;
     }
 
     function setSbCodAct($sbCodAct) {
@@ -78,7 +78,8 @@ class proyecto extends conexion {
     function setNuEstado($nuEstado) {
         $this->nuEstado = $nuEstado;
     }
-    
+
+        
     public function save() {
         $estadoId = 1;
         $user = getSession('ID');
@@ -86,7 +87,7 @@ class proyecto extends conexion {
 
         $sql = "INSERT INTO proyecto  VALUES(0,"
                 . "'" . $this->getSbContrato(). "',"
-                . "'" . $this->getSbCod(). "',"
+                .  $this->getNuProyect(). ","
                 . "'" . $this->getSbCodAct(). "',"
                 . "'" . $this->getDtFecIni(). "',"
                 . "'" . $this->getDtFecFin(). "',"
@@ -107,7 +108,7 @@ class proyecto extends conexion {
 
         $sql = "UPDATE proyecto  SET "
                 . "contrato_id='" . $this->getSbContrato() . "',"
-                . "cod='" . $this->getSbCod() . "',"
+                . "proyect_id='" . $this->getNuProyect() . "',"
                 . "cod_act='" . $this->getSbCodAct() . "',"
                 . "fec_ini='" . $this->getDtFecIni() . "',"
                 . "fec_fin='" . $this->getDtFecFin(). "',"
@@ -144,7 +145,7 @@ class proyecto extends conexion {
 
         $arrInfo = array();
         conexion::conectar();
-        $sql = "SELECT " . $select . " FROM proyecto p INNER JOIN contrato c ON p.contrato_id = c.id INNER JOIN estado e ON p.estado_id = e.id";
+        $sql = "SELECT " . $select . " FROM proyecto p INNER JOIN contrato c ON p.contrato_id = c.id INNER JOIN proyect pr ON p.proyect_id = pr.id INNER JOIN estado e ON p.estado_id = e.id";
         
         if (!empty($where)) {
             $sql .= " WHERE " . $where;

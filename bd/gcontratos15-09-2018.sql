@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 26-09-2018 a las 22:59:31
+-- Tiempo de generación: 15-09-2018 a las 19:28:09
 -- Versión del servidor: 5.7.19
 -- Versión de PHP: 5.6.31
 
@@ -461,29 +461,6 @@ INSERT INTO `poliza` (`id`, `contrato_id`, `tercero_id`, `num_poliza`, `fec_exp`
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `proyect`
---
-
-DROP TABLE IF EXISTS `proyect`;
-CREATE TABLE IF NOT EXISTS `proyect` (
-  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `codigo` varchar(60) DEFAULT NULL,
-  `estado_id` int(2) DEFAULT NULL,
-  UNIQUE KEY `id` (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `proyect`
---
-
-INSERT INTO `proyect` (`id`, `codigo`, `estado_id`) VALUES
-(1, 'PS8088', 1),
-(2, 'PS10000', 1),
-(3, 'PS100', 0);
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `proyecto`
 --
 
@@ -491,7 +468,7 @@ DROP TABLE IF EXISTS `proyecto`;
 CREATE TABLE IF NOT EXISTS `proyecto` (
   `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `contrato_id` varchar(50) DEFAULT NULL,
-  `proyect_id` varchar(15) DEFAULT NULL,
+  `cod` varchar(15) DEFAULT NULL,
   `cod_act` varchar(15) DEFAULT NULL,
   `fec_ini` date DEFAULT NULL,
   `fec_fin` date DEFAULT NULL,
@@ -501,16 +478,15 @@ CREATE TABLE IF NOT EXISTS `proyecto` (
   `fec_mod` timestamp NULL DEFAULT NULL,
   `user_id` bigint(15) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `proyecto`
 --
 
-INSERT INTO `proyecto` (`id`, `contrato_id`, `proyect_id`, `cod_act`, `fec_ini`, `fec_fin`, `porcentaje`, `estado_id`, `fec_reg`, `fec_mod`, `user_id`) VALUES
-(3, '1800000', '2', 'codact-8000', '2018-07-08', '2018-07-08', 78, 1, '2018-07-07 15:06:59', '2018-09-26 21:21:31', 1144131603),
-(2, 'no100', '1', 'ACT-580', '2018-07-05', '2018-07-21', 77, 1, '2018-07-06 23:16:13', '2018-07-06 23:18:34', 1144131603),
-(6, '1800000', '1', 'CCOACT', '2018-08-27', '2018-09-26', 15, 1, '2018-09-26 21:21:56', '2018-09-26 22:05:31', 1144131603);
+INSERT INTO `proyecto` (`id`, `contrato_id`, `cod`, `cod_act`, `fec_ini`, `fec_fin`, `porcentaje`, `estado_id`, `fec_reg`, `fec_mod`, `user_id`) VALUES
+(3, '1800000', 'ps-0555', 'codact-8000', '2018-07-08', '2018-07-08', 77, 1, '2018-07-07 15:06:59', '2018-07-07 15:06:59', 1144131603),
+(2, 'no100', '8989', 'ACT-580', '2018-07-05', '2018-07-21', 77, 1, '2018-07-06 23:16:13', '2018-07-06 23:18:34', 1144131603);
 
 -- --------------------------------------------------------
 

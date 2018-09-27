@@ -158,7 +158,7 @@ function daleteSymbol($string) {
 }
 
     //////////Proceso 1 ==> Equivale al comboBox Sencillo ///////////////////
-function comboBox($objUtils_m, $select, $where, $order, $id, $class = '', $valor ='', $event='', $func = '') {
+function comboBox($objUtils_m, $select, $where, $order, $id, $class = '', $valor ='', $event='', $func = '', $mult ='') {
 
     $arrInfo = $objUtils_m->getList($select,$where,$order,1);
     //obtiene respuesta
@@ -169,6 +169,10 @@ function comboBox($objUtils_m, $select, $where, $order, $id, $class = '', $valor
     if ($class != '') {
         $sbHtml .= " class = '" . $class . "' ";
     }
+    if(!empty($mult)){
+        $sbHtml .= " multiple ";
+    }
+    
     $sbHtml .= ">
 	<option value=''>- Seleccionar -</option>";
 

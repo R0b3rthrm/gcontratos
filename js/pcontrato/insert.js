@@ -24,25 +24,34 @@ $(document).ready(function () {
 
 function setContrato() {
     
-    var formData = {txtProcess: 2, cmbContrat: $("#cmbContrat").val()};
-    var sbAction = $("#frmPContrato").attr("action");
+    
+    if( $("#cmbContrat").val()==""){
+        
+        $("#infoContrat").html('');
+        
+    }else{
+    
+        var formData = {txtProcess: 2, cmbContrat: $("#cmbContrat").val()};
+        var sbAction = $("#frmPContrato").attr("action");
 
-    $.ajax({
-        url: sbAction,
-        type: 'POST',
-        data: formData,
-        success: function (data) {
+        $.ajax({
+            url: sbAction,
+            type: 'POST',
+            data: formData,
+            success: function (data) {
 
-            if (data) {
+                if (data) {
 
-                $("#infoContrat").html('');
-                $("#infoContrat").append(data);
-             
+                    $("#infoContrat").html('');
+                    $("#infoContrat").append(data);
 
-            } else {
-                alert("ERROR AL REGISTRAR ");
+
+                } else {
+                    alert("ERROR AL REGISTRAR ");
+                }
             }
-        }
-    });
+        });
+
+    }
 
 }

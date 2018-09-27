@@ -3790,8 +3790,8 @@
 		#header button,
 		#header .button {
 			background-color: transparent;
-			border-color: #ad0000;
-			color: #ad0000 !important;
+			border-color: #ffffff;
+			color: #ffffff !important;
 		}
 
 			#header input[type="submit"]:hover,
