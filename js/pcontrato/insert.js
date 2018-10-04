@@ -18,7 +18,7 @@ $(document).ready(function () {
 
         }
     });
-
+    
 });
 
 
@@ -47,11 +47,33 @@ function setContrato() {
 
 
                 } else {
-                    alert("ERROR AL REGISTRAR ");
+                    msjModal("Error al Mostrar Informacion del Contrato","ER");
                 }
+                
+                $("#btnInsertPContrat").click(function(){
+
+                    $.ajax({
+                        url: sbAction,
+                        type: 'POST',
+                        data: {txtProcess: 3, cmbContrat: $("#cmbContrat").val()},
+                        success: function (data) {
+
+                            if (data) {
+                                
+                                msjModal("Verificar los Datos Antes de Finalizar el Registro del Contrato","AT");
+                                $("#divContenidoContrat").html('');
+                                $("#divContenidoContrat").append(data);
+
+                            } else {
+                                msjModal("Error al Finalizar el Registro","ER");
+                            }
+
+                            
+                        }
+                    });
+                    
+                });
             }
         });
-
     }
-
 }

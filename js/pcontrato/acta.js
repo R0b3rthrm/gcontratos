@@ -74,8 +74,7 @@ function updateActa(id) {
             $("#dtFecAct").val(result['fecha']);
             //$(selector).attr(atributo, valor)
 
-            $("#txtPorcentajActa").val(result['porcentaje']);
-            
+            $("#txtPorcentajActa").val(result['porcentaje']);      
 
         }
     });
@@ -100,8 +99,6 @@ function deleteActa (id,contrato){
                     type: 'POST',
                     data: formData,
                     success: function (data) {
-                        
-                        alert(data);
                         
                         if(data){
                              msjModal('Se Elminino Correctamente el Acta','OK');

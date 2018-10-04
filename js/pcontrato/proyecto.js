@@ -22,12 +22,6 @@ $(document).ready(function () {
                     placeholder:"Elige tus colores favoritos" 
                 });
     
-                    
-    $("#btnPrueba").click(function () {
-        
-        alert($("#cmbCodPrueba").val());
-    
-    });
     
     $("#btnIngresarPro").click(function () {
 

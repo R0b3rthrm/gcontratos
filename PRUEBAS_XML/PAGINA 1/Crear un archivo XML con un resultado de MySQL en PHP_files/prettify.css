@@ -1,0 +1,143 @@
+/** Themes taken from https://github.com/desandro/neo-vision  **/
+@media screen {
+
+.prettyprint { border: 3px solid #eee }
+
+
+/* Monokai */
+.prettify-monokai .prettyprint { background: #272822 }
+.prettify-monokai .prettyprint,
+.prettify-monokai .pln { color: #FFF }  /* plain text */
+.prettify-monokai .str { color: #E6DB74 }  /* string content */
+.prettify-monokai .kwd { color: #66D9EF }  /* a keyword */
+.prettify-monokai .com { color: #75715E }  /* a comment */
+.prettify-monokai .typ { color: #A6E22C }  /* a type name */
+.prettify-monokai .lit { color: #AE81DD }  /* a literal value */
+.prettify-monokai .pun, .opn, .clo { color: #F92665 } /* punctuation, lisp open bracket, lisp close bracket */
+.prettify-monokai .tag { color: #F92672 }  /* a markup tag name */
+.prettify-monokai .atn { color: #A6E22C }  /* a markup attribute name */
+.prettify-monokai .atv { color: #E6DB74 }  /* a markup attribute value */
+.prettify-monokai .dec, .var { color: #A6E22C }  /* a declaration; a variable name */
+.prettify-monokai .fun { color: #A6E22C }  /* a function name */
+
+
+
+/* Blackboard */
+.prettify-blackboard .prettyprint { background: #0F132B; }
+.prettify-blackboard .prettyprint,
+.prettify-blackboard .pln { color: #F9F9F9; } /* plaintext */
+.prettify-blackboard .pun { color: #F9F9F9; } /* punctuation */
+.prettify-blackboard .str { color: #6ED852; } /* string */
+.prettify-blackboard .kwd { color: #F7E648; } /* keyword */
+.prettify-blackboard .com { color: #BBBBBB; } /* comment */
+.prettify-blackboard .typ { color: #FC781C; } /* type */
+.prettify-blackboard .lit { color: #DAFC57; } /* literal */
+
+
+
+/* Desert scheme ported from vim to google prettify */
+.prettify-desert .prettyprint { background-color: #333 }
+.prettify-desert .nocode { background-color: none; color: #000 }
+.prettify-desert .str { color: #ffa0a0 } /* string  - pink */
+.prettify-desert .kwd { color: #f0e68c; font-weight: bold }
+.prettify-desert .com { color: #87ceeb } /* comment - skyblue */
+.prettify-desert .typ { color: #98fb98 } /* type    - lightgreen */
+.prettify-desert .lit { color: #cd5c5c } /* literal - darkred */
+.prettify-desert .pun { color: #fff }    /* punctuation */
+.prettify-desert .prettyprint,
+.prettify-desert .pln { color: #fff }    /* plaintext */
+.prettify-desert .tag { color: #f0e68c; font-weight: bold } /* html/xml tag    - lightyellow */
+.prettify-desert .atn { color: #bdb76b; font-weight: bold } /* attribute name  - khaki */
+.prettify-desert .atv { color: #ffa0a0 } /* attribute value - pink */
+.prettify-desert .dec { color: #98fb98 } /* decimal         - lightgreen */
+
+/* Specify class=linenums on a pre to get line numbering */
+.prettify-desert ol.linenums { margin-top: 0; margin-bottom: 0; color: #AEAEAE } /* IE indents via margin-left */
+.prettify-desert li.L0,
+.prettify-desert li.L1,
+.prettify-desert li.L2,
+.prettify-desert li.L3,
+.prettify-desert li.L5,
+.prettify-desert li.L6,
+.prettify-desert li.L7,
+.prettify-desert li.L8 { list-style-type: none }
+/* Alternate shading for lines */
+.prettify-desert li.L1,
+.prettify-desert li.L3,
+.prettify-desert li.L5,
+.prettify-desert li.L7,
+.prettify-desert li.L9 { }
+
+
+
+/* IDLE */
+.prettify-idle .str { color: #007E10; } /* string */
+.prettify-idle .kwd { color: #FF5600; } /* keyword */
+.prettify-idle .com { color: #919191; } /* comment */
+.prettify-idle .typ { color: #A535AE; } /* type */
+.prettify-idle .lit { color: #21439C; } /* literal */
+.prettify-idle .pun { color: #000; } /* punctuation */
+.prettify-idle .prettyprint,
+.prettify-idle .pln { color: #000; } /* plaintext */
+
+
+
+/* Katydid - made for Neo Vision */
+.prettify-katydid .prettyprint { background: #20282C; }
+.prettify-katydid .str { color: #2C5; background: hsla( 120, 100%, 70%, 0.05); text-shadow: 0 1px black; border-radius: 0.3em; } /* string */
+.prettify-katydid .kwd { color: #F84; } /* keyword */
+.prettify-katydid .com { color: #469; font-style: italic; background: hsla( 0, 0%, 0%, 0.07); }  /* comment */
+.prettify-katydid .typ { color: yellow; outline: 1px solid hsla( 60, 100%, 50%, 0.15); } /* type: JS constructors */
+.prettify-katydid .lit { color: #FC6; } /* literal: numbers, CSS values */
+.prettify-katydid .pun { color: #FCD; } /* punctuation */
+.prettify-katydid .prettyprint,
+.prettify-katydid .pln { color: #F8F8F8; } /* plain text */
+
+
+
+/* Primavera - made for Neo Vision */
+.prettify-primavera .str { color: #1A6; background: hsla( 120, 100%, 50%, 0.05); border-radius: 0.3em; } /* string */
+.prettify-primavera .kwd { color: #D50; } /* keyword */
+.prettify-primavera .com { color: #D9B; font-style: italic; }  /* comment */
+.prettify-primavera .typ { color: #F0D; font-weight: bold; } /* type: JS constructors */
+.prettify-primavera .lit { color: #48E; } /* literal: numbers, CSS values */
+.prettify-primavera .pun { color: #963; } /* punctuation */
+.prettify-primavera .prettyprint,
+.prettify-primavera .pln { color: #755; } /* plain text */
+
+
+}
+
+
+
+/* Use higher contrast and text-weight for printable form. */
+@media print, projection {
+  .str { color: #060 }
+  .kwd { color: #006; font-weight: bold }
+  .com { color: #600; font-style: italic }
+  .typ { color: #404; font-weight: bold }
+  .lit { color: #044 }
+  .pun, .opn, .clo { color: #440 }
+  .tag { color: #006; font-weight: bold }
+  .atn { color: #404 }
+  .atv { color: #060 }
+}
+
+
+
+/* Specify class=linenums on a pre to get line numbering */
+ol.linenums { margin-top: 0; margin-bottom: 0 } /* IE indents via margin-left */
+li.L0,
+li.L1,
+li.L2,
+li.L3,
+li.L5,
+li.L6,
+li.L7,
+li.L8 { list-style-type: none }
+/* Alternate shading for lines */
+li.L1,
+li.L3,
+li.L5,
+li.L7,
+li.L9 { background: #eee }

@@ -1,0 +1,2065 @@
+<!DOCTYPE html>
+<!-- saved from url=(0073)http://carlitoxenlaweb.blogspot.com/2013/03/guardar-crear-xml-en-php.html -->
+<html class="v2" dir="ltr" xmlns="http://www.w3.org/1999/xhtml" xmlns:b="http://www.google.com/2005/gml/b" xmlns:data="http://www.google.com/2005/gml/data" xmlns:expr="http://www.google.com/2005/gml/expr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="./Guardar _ Crear XML en PHP - Carlitox en la Web_files/2727757643-css_bundle_v2.css" rel="stylesheet" type="text/css">
+<!-- [ Meta Tag SEO ] -->
+
+<meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+<meta content="blogger" name="generator">
+
+<link href="http://www.blogger.com/openid-server.g" rel="openid.server">
+<link href="http://carlitoxenlaweb.blogspot.com/" rel="openid.delegate">
+<link href="http://carlitoxenlaweb.blogspot.com/2013/03/guardar-crear-xml-en-php.html" rel="canonical">
+<title>Guardar / Crear XML en PHP - Carlitox en la Web</title>
+<meta content="" name="description">
+<meta content="Guardar / Crear XML en PHP, Carlitox en la Web: Guardar / Crear XML en PHP, Carlitox en la Web" name="keywords">
+<link href="http://carlitoxenlaweb.blogspot.com/feeds/posts/default" rel="alternate" title="Carlitox en la Web - Atom" type="application/atom+xml">
+<link href="http://carlitoxenlaweb.blogspot.com/feeds/posts/default?alt=rss" rel="alternate" title="Carlitox en la Web - RSS" type="application/rss+xml">
+<link href="http://www.blogger.com/feeds/8283392410523373579/posts/default" rel="alternate" title="Carlitox en la Web - Atom" type="application/atom+xml">
+<link href="https://3.bp.blogspot.com/-k0jgz84ah7Q/UTTakN1JiZI/AAAAAAAADx0/_MaRYfyezxM/s72-c/php-xml-480x480.jpg" rel="image_src">
+<meta content="https://3.bp.blogspot.com/-k0jgz84ah7Q/UTTakN1JiZI/AAAAAAAADx0/_MaRYfyezxM/s72-c/php-xml-480x480.jpg" property="og:image">
+<link href="http://carlitoxenlaweb.blogspot.com/favicon.ico" rel="icon" type="image/x-icon">
+<link href="https://plus.google.com/109673919871351675013/posts" rel="publisher">
+<link href="https://plus.google.com/109673919871351675013/about" rel="author">
+<link href="https://plus.google.com/109673919871351675013" rel="me">
+<meta content="yBwNfjFvkGkburBsnZg60Y_kdZR3MXBzcs1RrMMGRD4" name="google-site-verification">
+<!-- <meta content='xxxxx' name='msvalidate.01'/> <meta content='xxxxx' name='alexaVerifyID'/> -->
+<meta content="Carlos Martinez" name="Author">
+<meta content="general" name="rating">
+<meta content="VE-V" name="geo.region">
+<meta content="Venezuela" name="geo.country">
+<meta content="Maracaibo" name="geo.placename">
+<meta content="10.654451;-71.714795" name="geo.position">
+<meta content="10.654451, -71.714795" name="ICBM">
+<meta content="en_US" property="og:locale">
+<meta content="en_GB" property="og:locale:alternate">
+<meta content="id_ID" property="og:locale:alternate">
+<!-- [ Social Media meta tag ] -->
+<!-- <meta content='xxxxx' property='fb:app_id'/> <meta content='xxxxx' property='fb:admins'/> <meta content='xxxxx' name='twitter:site'/> <meta content='xxxxx' name='twitter:creator'/> -->
+<!-- [ CSS ] -->
+<link href="./Guardar _ Crear XML en PHP - Carlitox en la Web_files/1535467126-widget_css_2_bundle.css" rel="stylesheet" type="text/css">
+<link href="./Guardar _ Crear XML en PHP - Carlitox en la Web_files/css" rel="stylesheet" type="text/css">
+<link href="./Guardar _ Crear XML en PHP - Carlitox en la Web_files/font-awesome.min.css" rel="stylesheet">
+
+<style type="text/css">
+<!-- /*
+<style id='page-skin-1' type='text/css'><!--
+/*
+Theme Name       : Revoltify
+Theme Type       : Minima Colored 3
+Theme Published  : 13 January 2015
+Theme Base Color : White
+Theme Designer   : Arlina Design
+Designer URL     : http://arlinadesign.blogspot.com
+Theme License    : This free Blogger template is licensed under the Creative Commons Attribution 3.0 License, which permits both personal and commercial use.
+However, to satisfy the &#39;attribution&#39; clause of the license, you are required to keep the footer links intact which provides due credit to its authors. For more specific details about the license, you may visit the URL below:
+http://creativecommons.org/licenses/by/3.0/
+*/
+/* CSS Reset */
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}
+/* CSS HTML5 */
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block;}body{line-height:1;display:block;}*{margin:0;padding:0;}html{display:block;}ol,ul{list-style:none;}blockquote,q{quotes:none;}blockquote:before,blockquote:after,q:before,q:after{background:transparent;}table{border-collapse:collapse;border-spacing:0;}
+/* CSS Framework */
+.navbar,.post-feeds,.feed-links{display:none;}
+.section,.widget{margin:0 0 0 0;padding:0 0 0 0;}
+strong,b{font-weight:bold;padding: 0 0.25em;-webkit-transition: color 0.2s;transition: color 0.2s;}
+strong,b:hover{left:-0.1em;content: '[';-webkit-transform: translateX(-100%);transform: translateX(-100%);}
+cite,em,i{font-style:italic;}
+a:link{color:#00ACC1;text-decoration:none;outline:none;transition:all 0.25s;}
+a:visited{color:#006064;text-decoration:none;}
+a:link:hover{color:#00838F;text-decoration:none;}
+a:visited:hover{color:#00838F;text-decoration:none;}
+a img{border:none;border-width:0;outline:none;}
+img{max-width:100%;vertical-align:middle;border:0;}
+abbr,acronym{border-bottom:1px dotted;cursor:help;}
+sup,sub{vertical-align:baseline;position:relative;top:-.4em;font-size:86%;}
+sub{top:.4em;}small{font-size:86%;}
+kbd {display:inline-block;border:1px solid #ccc;border-radius:4px;padding:0.1em 0.5em;margin:0 0.2em;box-shadow:0 1px 0px rgba(0,0,0,0.2), 0 0 0 2px #fff inset;background-color:#f7f7f7;}
+mark{background-color:#ffce00;color:#182025;}
+p,blockquote,pre,table,figure,hr,form,ol,ul,dl{margin:1.5em 0;}
+hr{height:1px;border:none;background-color:#444;}
+/* CSS Blog Heading */
+h1,h2,h3,h4,h5,h6{font-weight:700;line-height:normal;margin:0 0 0.6em;}
+h1{font-size:200%}
+h2{font-size:180%}
+h3{font-size:160%}
+h4{font-size:140%}
+h5{font-size:120%}
+h6{font-size:100%}
+/* CSS Form */
+input,button,select,textarea{font-size:100%;line-height:normal;vertical-align:baseline;}
+textarea{display:block;box-sizing:border-box;}
+pre,code{font-family:'Open Sans';color:#444;}
+pre{white-space:pre;word-wrap:normal;overflow:auto;}
+blockquote{margin-left:0;font-style:italic;position:relative;font-size:14px;padding:0px;
+padding-left:60px;margin:40px 0px;border:0px;font-weight:400;}
+blockquote:before {font-family:FontAwesome;font-style:normal;text-align:center;font-size:20px;
+line-height:20px;content:"\f10d";color:#fff;background:#aaa;padding:10px;position:absolute;
+top:0px;left:0px;}
+*:focus {outline:0!important;}
+/* CSS List */
+ul,dl{margin:.5em 0em .5em 3em}
+ol{list-style:decimal outside}
+ul{list-style:disc outside}
+li{margin:.5em 0}
+dt{font-weight:bold}
+dd{margin:0 0 .5em 2em}
+/* CSS List Custom */
+.post ul li span{position:relative;display:block;margin:0;padding:5px 8px;margin-bottom:10px;text-decoration:none;transition:all .3s ease-out;}
+ol {counter-reset:li;list-style: none;font:15px 'Open Sans', 'lucida sans';
+padding:0;margin-bottom:4em;text-shadow: 0 1px 0 rgba(255,255,255,.5);}
+ol ol {margin: 0 0 0 2em;}
+.post ol li{position:relative;display:block;padding:.4em .4em .4em .8em;
+margin:.5em 0 .5em 2.5em;background:#fff;color:#666;text-decoration:none;
+transition:all .3s ease-out;}
+.post ol li:before {content:counter(li);counter-increment:li;position:absolute;left:-2.5em;
+top:50%;margin-top:-1em;height:2em;width:2em;line-height:2em;text-align:center;}
+/* CSS Post Table */
+.post-body table th, .post-body table td, .post-body table caption{border:none;padding:10px 12px;text-align:left;vertical-align:top;}
+.post-body th:nth-child(1){background:#f0f0f0;color:#333;}
+.post-body th:nth-child(2){background:#f5f5f5;}
+.post-body th:nth-child(3){background:#f9f9f9;}
+.post-body th:nth-child(4){background:#f0f0f0;}
+.post-body th:nth-child(5){background:#f5f5f5;}
+.post-body table td:nth-child(1) {background:#00acd6;color:#fff;}
+.post-body table td:nth-child(2) {background:#444;color:#fff;}
+.post-body table td:nth-child(3) {background:#555;color:#fff;}
+.post-body table td:nth-child(4) {background:#666;color:#fff;}
+.post-body table td:nth-child(5) {background:#444;color:#fff;}
+.post-body table.tr-caption-container {border:none;}
+.post-body th{font-weight:700;}
+.post-body table caption{border:none;font-style:italic;}
+.post-body td, .post-body th{vertical-align:top;text-align:left;font-size:13px;padding:3px 5px;border:none;}
+.post-body th{background:#f9f9f9;}
+.post-body table.tr-caption-container td {padding:12px;background:#2e3138;color:#b0b1b8;
+font-family:'Roboto';font-size:13px;text-decoration:blink;border:1px solid #464a54;}
+.post-body table.tr-caption-container, .post-body table.tr-caption-container img, .post-body img {max-width:100%;height:auto;}
+.post-body td.tr-caption {color:#878888;font-size:80%;padding:0px 8px 8px !important;}
+img {max-width:100%;height:auto;border:none;}
+table {max-width:97%;width:100%;margin:1.5em auto;}
+table.section-columns td.first.columns-cell{border-left:none}
+table.section-columns{border:none;table-layout:fixed;width:100%;position:relative}
+table.columns-2 td.columns-cell{width:50%}
+table.columns-3 td.columns-cell{width:33.33%}
+table.columns-4 td.columns-cell{width:25%}
+table.section-columns td.columns-cell{vertical-align:top}
+table.tr-caption-container{padding:4px;margin-bottom:.5em}
+td.tr-caption{font-size:80%}
+.widget ul {padding:0;}
+/* CSS Post Layout */
+body {background:#f5f5f5 none repeat scroll top left;margin:0 0 0 0;margin:0 0 0 0;padding:0 0 0 0;color:#444;font-family:'Open Sans';font-size:13px;font-weight:400;text-align:left;}
+body#layout #outer-wrapper, body#layout .post-inner, body#layout .sidebar, body#layout .sidebar2 {padding:0 0 0 0;}
+body#layout .top-tab-widget-menu ul {display:none;}
+body#layout #wrapper, body#layout .post-inner, body#layout .sidebar-inner {padding:0 0 0 0;}
+body#layout .tably {float:left;width:79px;}
+body#layout .header-wrapper {margin-top:0;}
+body#layout #navigation {float:left;width:100%;}
+body#layout .tably {float:left;width:100%;}
+body#layout #header-wrapper {min-height:0px;width:100%;}
+body#layout #header {width:30%;}
+body#layout #header-right {width:70%;}
+.clear {clear:both;}
+.clear:after {visibility:hidden;display:block;font-size:0;content:" ";clear:both;
+height:0;}
+#navbar-iframe {display:none!important;}
+header,nav,section,aside,article,footer {display:block;}
+form.searchform {margin:0;}
+body#layout #tably-1, body#layout #tably-2, body#layout #tably-3 {width:33.3%;float:left;}
+/* CSS Global Wrapper */
+#outer-wrapper {max-width:1100px;margin:0 auto;padding:0;overflow:hidden;}
+#post-wrapper {float:left;width:70%;margin:0 0 10px;}
+.post-inner {padding:15px 15px 0 0;}
+#header-wrapper {margin:20px;overflow:hidden;}
+#header {float:left;width:100%;max-width:257px;}
+.header-right {float:right;padding:0;overflow:hidden;margin:0;width:100%;
+max-width:728px;}
+#sidebar-wrapper {float:right;width:30%;margin:0 auto;}
+.sidebar-inner {padding:15px 0;}
+#footer-wrapper {text-align:left;overflow:hidden;margin:15px;}
+.footer {padding-bottom:.2em;}
+.footer-bottom {min-height:40px;}
+#footx1,#footx2,#footx3 {margin:0 .2%}
+#footer-widgetfix .footer-widget {width:30.2%;float:left;margin-left:20px;}
+#footer-widgetfix {max-width:1100px;overflow:hidden;margin:0 auto;}
+#footer-wrapper .widget-content {text-align:left;margin:20px 0 15px;}
+#footer-wrapper .widget-content li {margin-left:-14px;}
+#footer-wrapper .widget li {margin:5px 0 0 0;padding:5px 0 0 15px;display:block;}
+.ads-in-post{display:none}
+.post-body .ads-in-post{display:inline-block;line-height:0}
+.ads-post{margin:15px auto;line-height:0}
+
+--></style>
+<style id="template-skin-1" type="text/css"><!--
+/* CSS Body Layout */
+#layout ul {display:none;}
+#layout,#layout .widget-content,#layout .add_widget {border:none;}
+body#layout .add_widget {border:1px solid #ddd;}
+#layout .add_widget a {color:#444;}
+#layout:before {content:'Revoltify';text-transform:uppercase;font-size:20px;color:#999;
+margin:0 0 20px 0;display:inline-block;font-weight:700;font-family:sans-serif;}
+#layout #HTML900 .widget-content{background-color:#00BCD4!important}
+#layout #HTML900 .layout-title{color:#fff!important;font-size:15px;text-transform:uppercase;line-height:37px;height:37px;font-weight:700}
+#layout #HTML900 .editlink{color:#fff!important;border:1px solid #eee;height:33px;line-height:33px;padding:0 15px;font-weight:700;background-color:#555}
+#layout #header-wrapper{min-height:0px;width:100%;margin:10px 0 0 0;}
+#layout #footer-wrapper{padding:20px 0;overflow:visible;background:#f9f9f9;border-top:1px solid #ccc;}
+#layout #footer-wrapper .add_widget {background-color:#00BCD4;border:none;}
+#layout #footer-wrapper .add_widget a {color:#fff;}
+#layout #footer-wrapper .footer-column{width:33.33%;float:left}
+#layout #footer-wrapper #column1,#layout #footer-wrapper #column2{margin:0}
+#layout #footer-wrapper:before {content:'Footer Wrapper';text-transform:uppercase;font-size:16px;color:#aaa;margin:0 0 20px 0;display:inline-block;font-weight:700;font-family:sans-serif;}
+#layout div#post-wrapper:before {content:'Post Wrapper';text-transform:uppercase;font-size:16px;color:#aaa;margin:0 0 20px 0;display:inline-block;font-weight:700;font-family:sans-serif;}
+#layout #main-wrapper{width:70%;float:left}
+#layout #sidebar-wrapper{width:30%;left:0;padding:0;float:right}
+#layout #sidebar-wrapper:before {content:'Sidebar Wrapper';text-transform:uppercase;font-size:16px;color:#aaa;margin:0 0 20px 0;display:inline-block;font-weight:700;font-family:sans-serif;}
+#layout .draggable-widget .widget-wrap2 {background:#c1cfd9;}
+#layout #banner,#layout #banner2 {background-color:#444;padding:20px 0!important;margin-bottom:20px;}
+#layout #banner:before,#layout #banner2:before{content:'Ad Slot 970x90';font-size:13px;color:#fff;margin-bottom:20px;padding-bottom:5px;display:inline-block;font-weight:400;font-family:sans-serif}
+#layout #banner .widget,#layout #banner2 .widget{width:80%;margin:5px auto!important;overflow:hidden;float:none}
+#layout #banner .add_widget,#layout #banner2 .add_widget{width:80%;margin:5px auto!important;overflow:hidden;float:none}
+--></style>
+<style type="text/css">
+/* CSS Outer Wrapper */
+#outer-wrapper {background:#fff;max-width:1100px;margin:0 auto;padding:20px;overflow:hidden;border-right:1px solid #ddd;border-left:1px solid #ddd;}
+
+/* CSS Content Wrapper */
+#content-wrapper {background-color:#fff;margin:10px auto;padding:0 20px;
+word-wrap:break-word;}
+
+/* CSS Header Wrapper */
+.bg1{background:rgba(0,0,0,0.5) url('//sites.google.com/site/carlossk8d/Home/back1.png');}
+.bg2{background:rgba(0,0,0,0.5) url('//sites.google.com/site/carlossk8d/Home/back2.jpg') fixed;}
+.bg3{background:rgba(0,0,0,0.5) url('//sites.google.com/site/carlossk8d/Home/back3.jpg') fixed;}
+#header-wrapper {margin:20px 20px 0 20px;padding:0;overflow:hidden;background-size:cover;background-blend-mode:overlay;max-width:1100px;min-height:300px;}
+#Header1 {min-height:300px;}
+#header-inner {position:absolute;top:30%;bottom:0;}
+#header {float:left;min-width:257px;padding:0 30px;background:rgba(0,0,0,0.5);height:100%;
+min-height:300px;padding:0 30px;}
+#header h1, #header p {font-family:'Open Sans';font-size:300%;font-weight:700;color:#fff;text-transform:uppercase;}
+#header a {color:#fff;text-decoration:none;transition:all 0.3s ease-out;}
+#header a:hover {color:#00BCD4;}
+#header .description {font-family:'Open Sans';font-size:100%;font-weight:400;color:#eee;text-transform:none;}
+.header img {display:block;}
+.header-right {float:right;padding:0;overflow:hidden;margin:0;width:100%;
+max-width:728px;}
+.header-right img {display:block;}
+
+/* CSS Main Menu */
+nav {display:block;background:#00BCD4;margin:0 20px;}
+.menu {display:block;margin:0;}
+.menu li {display:inline-block;position:relative;margin:0;}
+.menu li a {font-family:'Open Sans';text-transform:uppercase;font-size:14px;font-weight:700;text-decoration:none;padding:20px 15px;display:block;color:#fff;transition:all 0.3s ease-out;}
+.menu li a:hover,.menu li:hover > a {background:#00ACC1;color:#fff;}
+.menu ul {display:none;margin:0;padding:0;width:100%;min-width:160px;position:absolute;left:0px;background:#fff;z-index:99;transition:initial;}
+.menu ul li {display:block;float:none;margin:0;padding:0;}
+.menu ul li a {font-size:12px;font-weight:700;display:block;background:#222;color:#999;border-top:1px solid #333;border-bottom:1px solid #111;transition:all 0.3s ease-out;}
+.menu ul li a:hover,.menu ul li:hover > a {background:#252525;color:#fff;}
+.menu li:hover > ul {display:block;}
+.menu ul ul {left:160px;top:0px;display:none;transition:initial;}
+.menu li > ul ul:hover {display:block;}
+.responsive-menu {display:none;padding:20px 15px;background:#fafafa;
+text-transform:uppercase;font-weight:400;font-family:'Open Sans';}
+.responsive-menu:hover {background:#f5f5f5;color:#00BCD4;text-decoration:none;}
+.responsive-menu a {color:#aaa;}
+.responsive-menu a:hover {color:#00BCD4;}
+.menu li a.homer {margin-left:20px;}
+
+/* CSS Fixed Search Button */
+.menu li.searchbutton {background:transparent;margin:0;padding:0 20px;display:inline-block;text-transform:Capitalize;height:55px;line-height:55px;cursor:pointer;z-index:93;float:right;margin-right:20px;transition:all 600ms cubic-bezier(0.23,1,0.32,1);}
+.menu li.searchbutton.active {background:transparent;}
+.menu li.searchbutton:after {content:"\f002";font-family:FontAwesome;font-style:normal;font-weight:normal;text-decoration:none;position:relative;font-size:16px;color:#fff;}
+#search {z-index:99;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.9);opacity:0;
+visibility:hidden;transform:scale(1.2);transition:all 600ms cubic-bezier(0.23,1,0.32,1);}
+#search.active {opacity:1;visibility:visible;transform:scale(1);z-index:100;margin:0;}
+#search .input {position:absolute;top:0;left:0;right:0;bottom:0;width:95%;height:100px;
+margin:auto;max-width:1100px;}
+#search .input .search {float:left;width:calc(100% - 100px);height:100px;padding:0;
+margin:0;border:0;outline:0;background:transparent;font-family: 'Open Sans', sans-serif;font-size:60px;color:rgba(255,255,255,0.5);font-weight:700;line-height:100px;text-indent:50px;transition:all .3s ease-out;}
+#search .input .submit {cursor:pointer;float:left;width:100px;height:100px;padding:0;margin:0;
+border:0;outline:0;background:transparent;font-size:60px;color:rgba(255,255,255,0.5);text-align:center;line-height:100px;transition:all .3s ease-out;}
+#search .input .search:focus,#search .input .submit:hover {color:rgba(255,255,255,0.8);}
+#search #close {cursor:pointer;position:absolute;top:30px;right:30px;width:50px;height:50px;
+padding:0;margin:0;border:0;outline:0;background:transparent;font-size:30px;color:rgba(255,255,255,0.5);text-align:center;line-height:50px;}
+
+/* CSS Post Wrapper */
+#post-wrapper {background:transparent;color:#444;float:left;width:70%;margin:0 0 10px;}
+.post-inner {padding:15px 15px 0 0;}
+.breadcrumbs {background:#fff;font-size:100%;height:45px;overflow:hidden;padding:0;box-shadow:0 0 0 1px #ddd;}
+.breadcrumbs > span {padding:0;}
+.breadcrumbs > span:last-child {background:#fff;color:#aaa;border-right:none;font-family:'Open Sans';font-size:13px;font-weight:300;padding:10px;line-height:30px;}
+.breadcrumbs a {background:#fff;color:#aaa;font-family:'Open Sans';font-size:13px;
+font-weight:normal;line-height:45px;}
+.breadcrumbs span a {color:#aaa;padding:10px;margin-left:5px;}
+.breadcrumbs span:first-child  a{background:#fff;color:#aaa;margin-left:10px;}
+.breadcrumbs span a:hover {background:#f9f9f9;color:#444;}
+.breadcrumbs a:hover {background:#f9f9f9;color:#444;}
+.post {background:#fff;margin:0 0 15px;padding:15px;box-shadow:0 0 0 1px #ddd;}
+.post-body {line-height:1.6em;color:#444;margin-top:15px;margin-right:0;font-size:14px;}
+.post-body img {max-width:95%;margin:0 auto;height:auto;}
+h3.post-title, h2.post-title, h1.post-title {font-family:'Open Sans',sans-serif;font-size:20px;font-weight:700;text-align:center;border-bottom:double #eee;
+padding:20px;}
+h3.post-title a, h2.post-title a, h1.post-title a, h2.post-title, h1.post-title {color:#666;}
+h3.post-title a:hover, h2.post-title a:hover, h1.post-title a:hover {color:#00BCD4!important;}
+.post-info {background:transparent;margin-top:5px;margin-bottom:5px;color:#fff;font-size:11px;}
+.post-info a {display:inline;background:transparent;color:#333;padding:4px 6px 4px 6px;transition:all .3s ease-out;}
+.post-info a:hover {color:#00BCD4;}
+.author-info, .time-info, .comment-info, .label-info, .review-info {
+margin-right:8px!important;display:inline;color:#333;}
+.timestamp-link abbr {border-bottom:none;}
+.halaman{padding:0;background:#f9f9f9;border:1px solid #ddd;}
+.halaman-kiri{width:50%;float:left;margin:0;text-align:left;color:#00BCD4;transition:all .3s ease-out;}
+.halaman-kanan{width:50%;float:right;margin:0;text-align:right;color:#00BCD4;transition:all .3s ease-out}
+.halaman-kanan:hover .pager-title-left,.halaman-kiri:hover .pager-title-left{color:#444!important;}
+.halaman-kiri a,.halaman-kanan a{color:#444;}
+.halaman-kanan a:hover,.halaman-kiri a:hover{color:#00BCD4!important;}
+.halaman-kiri a,.halaman-kanan a,.current-pageleft,.current-pageright{font-size:14px;font-family: 'Open Sans',Helvetica,Arial,sans-serif;font-weight:300;background:none;text-decoration:none}
+.current-pageleft{padding:0 0 0 15px;}
+.current-pageright{padding:0 15px 0 0;}
+.pager-title-left{font-family: 'Open Sans',sans-serif;font-size:22px;font-weight:700;text-transform:uppercase;transition:all .3s ease-out}
+.isihalaman-kiri{margin:0}
+.isihalaman-kanan{margin:5px 10px 10px}
+#blog-pager-newer-link{float:left;padding:0 0 0 15px;}
+#blog-pager-older-link{float:right;padding:0 15px 0 0;}
+.blog-pager,#blog-pager{clear:both;text-align:center}
+.feed-links{clear:both;line-height:2.5em}
+span.post-author.vcard {visibility:hidden;width:0;height:0;}
+.post-header, .post-footer {line-height:initial;width:0;height:0;}
+
+/* CSS Mag Section */
+.widget-item-control{display:none!important}
+.box-title{margin-bottom:15px;border-bottom:1px solid #ddd!important;background:#fff;}
+.box-title h2{padding:10px 20px 5px 10px;background-color:#4d6268;display:inline-block}
+.box-title h2 a{color:#fff;font-weight:700;font-size:16px;text-transform:uppercase;display:block}
+.box-title h2 a:before{content:'\f09e';font-family:fontawesome;font-size:16px;vertical-align:middle;font-weight:400;margin-right:10px;background:#f47664;color:#fff;padding:13px 15px;}
+.recent-date:before{content:'\f073';font-family:fontawesome;color:#bbb}
+.recent-date{color:#999;font-weight:400;font-size:12px}
+.recent-author:before{content:'\f007';font-family:fontawesome;color:#bbb}
+.recent-author{color:#999;font-weight:400;font-size:12px}
+.recent-title{font-family:'Open Sans',sans-serif;font-size:15px;font-weight:400;}
+.recent-title a:hover{text-decoration:none;color:#f47664}
+.recent-block .recent-thumb{width:100%;height:150px;display:block}
+.recent-block ul li{float:left;width:33%;display:inline-block;position:relative;padding:0;margin-right:.3%;margin-bottom:2px}
+.recent-block .recent-title a{font-weight:700;margin-bottom:5px;display:inline-block}
+.recpost .arl-tmb{float:left;margin-right:10px}
+.recpost .post-panel{margin-left:70px}
+.recent-date:before{margin-right:10px}
+.recent-author:before{margin-right:10px}
+.recent-author{margin-left:10px}
+.item .post-heading{-webkit-border-radius:2px 2px 0 0;border-radius:2px 2px 0 0}
+.index article{padding:0 0 0 20px}
+.tagstitle{float:left;margin:0 10px 0 0}
+.authorLeft{float:left;margin-right:20px}
+.authorContent .authorSocial{float:right}
+.sidebar .LinkList li:before,.footer .LinkList li:before,.sidebar .PageList li:before,.footer .PageList li:before{display:inline-block;font-family:FontAwesome;font-style:normal;font-weight:400;line-height:1;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+.item-icon{margin:0 0 10px;float:none;width:38px;height:38px;display:inline-block;line-height:38px;text-align:center;vertical-align:middle;background-color:#a3a3a3;color:#fff;font-size:18px;border-radius:2px;transition:.8s}
+.item-count{display:block;color:#5f5f5f;font-weight:normal;font-size:14px;line-height:20px}
+.item-text{display:block;color:#9d9d9d;font-size:12px;line-height:18px}
+.authorDetails h2{float:left}
+.authorDetails span{float:right}
+
+/* CSS Image Lightbox */
+#jquery-overlay{position:absolute;top:0;left:0;z-index:100;width:100%;height:500px;}
+#jquery-lightbox{position:absolute;top:0;left:0;width:100%;z-index:100;text-align:center;line-height:0}
+#jquery-lightbox a,#jquery-lightbox a:hover{border:none;}
+#jquery-lightbox a img{border:none;}
+#lightbox-container-image-box{position:relative;background-color:#fff;width:250px;height:250px;margin:0 auto;max-width:100%!important;}
+#lightbox-container-image{padding:10px;}
+#lightbox-loading{display:none!important;}
+#lightbox-nav{position:absolute;top:25%;left:0;height:100%;width:100%;z-index:10}
+#lightbox-container-image-box > #lightbox-nav{left:0;transition:All 0.2s ease;}
+#lightbox-nav a{outline:none}
+#lightbox-nav-btnPrev,#lightbox-nav-btnNext{width:49%;height:100%;display:block;transition:All 0.2s ease;}
+#lightbox-nav-btnPrev{left:10%;float:left;transition:All 0.2s ease;}
+#lightbox-nav-btnNext{right:10%;float:right;transition:All 0.2s ease;}
+#lightbox-container-image-data-box{font-size:10px;font-family: 'Open Sans',Helvetica,sans-serif;background-color:#fff;margin:0 auto;line-height:1.4em;overflow:hidden;max-width:100%!important;padding:0 10px;}
+#lightbox-container-image-data{padding:0 10px;color:#818d99}
+#lightbox-container-image-data #lightbox-image-details{width:70%;float:left;text-align:left}
+#lightbox-image-details-caption{font-weight:normal}
+#lightbox-image-details-currentNumber{display:block;clear:left;padding-bottom:1.0em}
+#lightbox-secNav-btnClose{width:66px;float:right;padding-bottom:0.7em}
+
+/* CSS Comments */
+#comments{background:#f9f9f9;clear:both;margin:20px auto 0;line-height:1em;padding:20px;border:1px solid #ddd;}
+#comments h3{background:#00BCD4;display:inline;line-height:20px;margin-bottom:20px;margin-top:0;font-family:'Open Sans',sans-serif;font-size:14px;position:absolute;color:#fff;font-weight:700;text-transform:uppercase;padding:10px 20px 10px 50px;border:1px solid #ddd;}
+#comments h3:before {font-family:fontawesome;content:"\f086";margin-right:10px;font-size:20px;padding:10px 15px;position:absolute;left:0;top:0;}
+#comments .click-comment{background:#00BCD4;color:#fff;float:right;text-decoration:none;display:inline;line-height:20px;
+margin-bottom:20px;margin-top:0;font-family:'Open Sans',sans-serif;font-size:14px;
+font-weight:700;text-transform:uppercase;padding:10px 20px;border:1px solid #ddd;}
+#comments .click-comment:hover{background:#fff;color:#00BCD4;}
+.comment_avatar_wrap{border-radius:10%;width:46px;height:46px;border:none;background:none;text-align:center;padding:0;overflow:hidden;}
+#comments .comment_avatar {border-radius:10%;width:46px;height:46px;max-width:46px;max-height:46px;background:#fff;padding:4px;text-align:center;position:absolute;top:0;left:0;overflow:hidden;border:1px solid #ddd}
+#comments .comment_admin .comment_avatar{border-radius:10%;width:46px;height:46px;max-width:46px;max-height:46px;padding:4px;text-align:center;position:absolute;top:0;left:0;overflow:hidden;}
+#comments .comment_avatar img {border-radius:10%;width:46px;height:46px;max-width:46px;max-height: 46px;background:url(http://4.bp.blogspot.com/-hLqBXiTrm0Q/VJ7pie2jM3I/AAAAAAAABwI/aHQypgTLHu8/s1600/avatwisted.png) no-repeat;overflow:hidden;}
+.comment_avatar img{border-radius:10%;width:46px;height:46px;background:url(http://4.bp.blogspot.com/-hLqBXiTrm0Q/VJ7pie2jM3I/AAAAAAAABwI/aHQypgTLHu8/s1600/avatwisted.png) no-repeat;overflow:hidden;}
+.comment_name a{font-family:'Open Sans',sans-serif;font-weight:700;font-size:15px;padding:5px 0;color:#333;text-decoration:none}
+.comment_child .comment_name a{color:#333;}
+.comment_child .comment_name a:hover {color:#00BCD4;}
+.comment_admin .comment_name{background:#fff;padding:0 20px 0 65px;left:5px;top:10px;display:inline;font-weight:700;font-size:16px;font-family:'Open Sans',sans-serif;text-decoration:none;border-radius:3px;}
+.comment_admin .comment_date{left:10px;font-weight:700;font-size:11px;}
+.comment_name{font-size:16px;background:#fff;font-family:'Open Sans',sans-serif;font-weight:700;padding:0 20px 0 65px;position:absolute;left:5px;top:10px;display:inline;line-height:35px;border-radius:3px;/*border:1px solid #ddd;*/transition:all .3s ease-out;}
+.comment_name:hover,.comment_name a:hover,.comment_admin .comment_name a:hover,.comment_admin .comment_name:hover{color:#00BCD4;}
+.comment_service{position:absolute;top:35px;right:0;}
+.item-control {display:block;}
+.comment_date a{font-size:11px;font-weight:400;text-transform:none;text-decoration:initial;
+color:#aaa!important;text-align:center;padding:1px 6px;opacity:0.9;transition:all .3s ease-out;}
+.comment_date a:hover{color:#00BCD4!important;}
+.comment-delete{position:absolute;display:inline-block;top:-1px;right:50px;
+color:#aaa!important;text-align:center;font-family:'Open Sans';font-size:11px;padding:2px 6px;opacity:0.9;transition:all .3s ease-out;}
+.comment-delete:hover{color:#00BCD4!important;}
+.comment_body{margin:20px 0;padding:0;position:relative;}
+.comment_body p{line-height:1.6em;color:#444;font-size:14px;font-family:'Open Sans',Helvetica,Arial,sans-serif;word-wrap:break-word;background:#fff;padding:30px 20px;box-shadow:0 0 0 1px #ddd;position:relative;margin-top:25px;border-radius:3px;transition:all .3s ease-out;}
+.comment_body p:before, .comment_body p:after {bottom:100%;left:5%;border:solid transparent;
+content:" ";height:0;width:0;position:absolute;pointer-events:none;}
+.comment_body p:after {border-color:rgba(255,255,255,0);border-bottom-color:#fff;
+border-width:8px;margin-left:-8px;}
+.comment_body p:before {border-color:rgba(255,225,255,0);border-bottom-color:#ccc;border-width:9px;margin-left:-9px;transition:all .3s ease-out;}
+.comment_child .comment_body p{color:#444;}
+.comment_body p img{vertical-align:middle;margin:0 5px;}
+.comment_body p:hover{box-shadow:0 0 0 1px #bbb;}
+.comment_body p:hover:before {border-bottom-color:#aaa;}
+.comment_inner{padding-bottom:5px;margin:5px 0}
+.comment_child .comment_wrap{padding-left:7%}
+.comment_child .comment_body{margin-top:-15px;}
+.comment_reply{display:inline-block;background:#00BCD4;color:#fff!important;text-align:center;
+font-family:'Open Sans';font-size:11px;margin:0;padding:4px 6px 6px 6px;opacity:0.9;border-radius:2px;border:1px solid rgba(0,0,0,0.1);box-shadow: inset 0 1px 0 rgba(255,255,255,0.5),inset 0 20px 20px rgba(255,255,255,0.2);text-shadow: 0 -1px 0 rgba(0,0,0,0.3), 0 1px 0 rgba(255,255,255,0.2);}
+.comment_reply:hover{text-decoration:none!important;color:#fff!important;box-shadow:inset 0 1px 0 rgba(255,255,255,0.5), inset 0 -20px 20px rgba(200,200,200,0.1);}
+.comment-form{width:100%;max-width:100%;margin-bottom:10px;padding:0;}
+.comment_form a{text-decoration:none;text-transform:uppercase;font-weight:700;font-family:Arial,Helvetica,sans-serif;font-size:15px;color:#444}
+#comment-editor{width:103%!important;background:url('https://4.bp.blogspot.com/-e_Wtf_ywgZ0/WuNBaMq_mfI/AAAAAAAAMeI/T6x2BnbDd3YerKll1mcU-mcx8VC0iReogCLcBGAs/s1600/chatstack_logo_preloader.gif') no-repeat 50% 25%;position:relative;margin-left:-8px;margin-top:-15px}
+.comment-form p{position:relative;background:#fff;color:#333;font-size:14px;font-family:'Open Sans',Helvetica,Arial,sans-serif;line-height:1.5em;margin-bottom:20px;padding:15px;border:1px solid #ddd;border-bottom:2px solid #ccc;transition:all .3s ease-out;}
+.comment-form p:hover{border-bottom-color:#00BCD4;}
+.comment-form p:after, .comment-form p:before {top:100%;left:10%;border:solid transparent;
+content:" ";height:0;width:0;position:absolute;pointer-events:none;}
+.comment-form p:after {border-color:rgba(68,68,68,0);border-top-color:#fff;border-width:12px;
+margin-left:-12px;}
+.comment-form p:before {border-color:rgba(221,221,221,0);border-top-color:#ccc;border-width:14px;margin-left:-14px;transition:all .3s ease-out;}
+.comment-form p:hover:before{border-top-color:#00BCD4;}
+.comment_reply_form{padding:0 0 0 7%}
+.comment_reply_form .comment-form{width:100%}
+.comment_emo_list .item{float:left;text-align:center;height:40px;width:41px;margin:0 0 10px;}
+.comment_emo_list span{display:block;font-weight:400;font-size:11px;letter-spacing:1px;color:#444}
+.comment_youtube{max-width:100%!important;width:400px;height:225px;display:block;margin:auto}
+.comment_img{max-width:100%!important}
+#respond{overflow:hidden;padding-left:10px;clear:both}
+.unneeded-paging-control,.comment_author_flag{display:none}
+.comment_admin .comment_author_flag {display:inline-block;font-family:'Open Sans';font-size:10px;color:#aaa;text-align:center;position:absolute;right:-50%;top:35%;line-height:normal;}
+.comment_child .comment_admin .comment_author_flag {color:#aaa;}
+.spammer-detected{font-size:14px!important;color:#fff!important;background:#5cb0d8!important;margin:25px;
+display:inline-block;padding:10px 15px!important;}
+.deleted-comment{display:block;color:#fff;word-wrap:break-word;background:#a9b1b7;margin-top:10px;padding:10px;font-size:14px; font-family:'Open Sans',Helvetica,Arial,sans-serif;}
+iframe{border:none;overflow:hidden}
+.paging-control-container{text-align:center;margin:0 0 0 25%;}
+.paging-control-container a{text-align:center;margin:0 auto;background:#444;padding:5px 10px;
+color:#fff;transition:all .3s ease-out}
+.paging-control-container a:hover{background:#e6ae48;color:#fff;}
+.comment_header {padding:0;}
+.comment_child .comment_header {padding:0;}
+#konversi-box, #hide-konversi,#emo-box,#hide-emo {display:none}
+#konversi-box {width:100%;color:#eee;background:none;line-height:1.6em;margin-bottom:20px;padding:0;text-align:left;}
+.checkbox{font:11px Tahoma,Verdana,Arial,Sans-Serif;line-height:1.6em;color:#eee;}
+#codes{border:none;width:100%;height:200px;display:block;background-color:#333;color:#aaa;font:normal 12px 'Courier New',Monospace;margin:7px 0 10px;padding:8px;box-shadow:inset 0 0 0 1px #ddd;transition:all 0.5s linear;}
+#codes:focus{background-color:#303030;color:#aaa;border:none;outline:none;transition:all 0.3s linear;}
+.button-group{float:right;text-align:left;margin:0 auto}
+button,button[disabled]:active{border:none;font-size:12px;font-family:'Open Sans';font-weight:400;padding:4px 10px;text-decoration:none;background:#eee;color:#aaa;display:inline-block;transition:initial;cursor:pointer;border:0;}
+button:hover{background:#aaa;color:#fff;}
+button:active{background:#aaa;color:#fff;}
+button[disabled],button[disabled]:active{color:#fff;cursor:default}
+#opt1,#opt2,#opt3,#opt4,#opt5{display:inline-block;vertical-align:middle;border:none;outline:none;margin:0 10px 0 0}
+.small-button a,.small-button1 a {font-size:12px;font-family:'Open Sans';cursor:pointer;font-weight:700;margin:10px 5px 5px 0;text-decoration:none;text-transform:none;text-shadow:none;display:inline-block;color:#fff;padding:4px 10px;cursor:pointer;border:1px solid rgba(0,0,0,0.1);box-shadow: inset 0 1px 0 rgba(255,255,255,0.3),inset 0 20px 20px rgba(255,255,255,0.2);border-radius:2px;text-shadow: 0 -1px 0 rgba(0,0,0,0.3), 0 1px 0 rgba(255,255,255,0.2);transition: all 0.3s ease-out;}
+.small-button a {background-color:#333;transition: all 0.3s ease-out;}
+.small-button1 a {background-color:#00BCD4;transition: all 0.3s ease-out;}
+.small-button:hover a,.small-button1:hover a{color:#fff;display:inline-block;box-shadow:inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -20px 20px rgba(200,200,200,0.1);}
+span.small-button,span.small-button1 {text-align:left;display:inline-block;}
+
+/* CSS Syntax Highlighter */
+pre {padding:35px 10px 10px 10px;margin:.5em 0;white-space:pre;word-wrap:break-word;overflow:auto;position:relative;max-height:500px;box-shadow:0 0 0 1px #ddd;border-radius:3px;}
+pre::before {font-size:13px;content:attr(title);position:absolute;top:0;background-color:transparent;padding:6px 10px 7px 10px;left:0;right:0;color:#333;display:block;margin:0 0 15px 0;font-weight:700;box-shadow:0 0 3px #ccc;}
+pre::after {content:"Double click to selection";padding:2px 10px;width:auto;height:auto;position:absolute;right:8px;top:4px;font-size:12px;color:#aaa;line-height:20px;transition:all 0.3s ease-in-out;}
+pre:hover::after {opacity:0;top:-8px;visibility:visible;}
+code {font-family:Consolas,Monaco,'Andale Mono','Courier New',Courier,Monospace;line-height:16px;color:#aaa;background-color:transparent;
+padding:1px 2px;font-size:12px;}
+pre code {display:block;background:none;border:none;color:#aaa;direction:ltr;
+text-align:left;word-spacing:normal;padding:10px;font-weight:bold;}
+code .token.punctuation {color:#bbb;}
+pre code .token.punctuation {color:#777;}
+code .token.comment,code .token.prolog,code .token.doctype,code .token.cdata {color:#aaa;}
+code .namespace {opacity:.8;}
+code .token.property,code .token.tag,code .token.boolean,code .token.number {color:#d75046;}
+code .token.selector,code .token.attr-name,code .token.string {color:#88a9ad;}
+pre code .token.selector,pre code .token.attr-name {color:#00a1d6;}
+pre code .token.string {color:#6fb401;}
+code .token.entity,code .token.url,pre .language-css .token.string,pre .style .token.string {color:#5ac954;}
+code .token.operator {color:#1887dd;}
+code .token.atrule,code .token.attr-value {color:#009999;}
+pre code .token.atrule,pre code .token.attr-value {color:#1baeb0;}
+code .token.keyword {color:#e13200;font-style:italic;}
+code .token.comment {font-style:italic;}
+code .token.regex {color:#ccc;}
+code .token.important {font-weight:bold;}
+code .token.entity {cursor:help;}
+pre mark {background-color:#ea4f4e!important;color:#fff!important;padding:2px;border-radius:2px;}
+code mark {background-color:#ea4f4e!important;color:#fff!important;padding:2px;border-radius:2px;}
+pre code mark {background-color:#ea4f4e!important;color:#fff!important;padding:2px;border-radius:2px;}
+.comments pre {padding:10px 10px 15px 10px;background:#333;border-radius:3px;box-shadow:inset 0 0 5px rgba(0,0,0,0.2);text-shadow:0 -1px 0 rgba(0,0,0,0.3);}
+.comments pre::before {content:'Code';font-size:10px;font-weight:700;position:relative;top:0;background-color:#363636;padding:2px 8px;left:0;right:0;color:#fff;text-transform:uppercase;display:inline-block;margin:0 0 10px 0;border:none;border-radius:2px;border:1px solid #2a2a2a;box-shadow:inset 0 1px 0 rgba(255,255,255,0.2),inset 0 20px 20px rgba(255,255,255,0.1);text-shadow: 0 -1px 0 rgba(0,0,0,0.3);}
+.comments pre::after {font-size:11px;}
+.comments pre code {color:#aaa;}
+.comments pre.line-numbers {padding-left:10px;}
+pre.line-numbers {position:relative;padding-left:3.0em;counter-reset:linenumber;}
+pre.line-numbers > code {position:relative;}
+.line-numbers .line-numbers-rows {height:100%;position:absolute;top:0;font-size:100%;left:-3.5em;width:3.5em;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;padding:10px 0 0 0;background:#00acd6;}
+.line-numbers-rows > span {display:block;counter-increment:linenumber;}
+.line-numbers-rows > span:before {content:counter(linenumber);color:#fff;display:block;
+padding-right:0.8em;text-align:right;transition:350ms;}
+pre[data-codetype="CSSku"]:before,pre[data-codetype="HTMLku"]:before,
+pre[data-codetype="JavaScriptku"]:before,pre[data-codetype="JQueryku"]:before{background-color:#fff;}
+
+/* CSS Shortcodes */
+.button{float:left;list-style:none;text-align:center;width:95%;margin:10px;
+padding:2px;font-size:14px;clear:both;}
+.button ul {margin:0;padding:0}
+.button li{display:inline;margin:5px;padding:0;list-style:none;}
+.demo,.download {padding:8px 12px!important;color:#fff!important;font-weight:700;font-size:14px;font-family:'Open Sans',sans-serif;text-align:center;text-transform:uppercase;letter-spacing:0.5px;border:1px solid rgba(0,0,0,0.1);box-shadow: inset 0 1px 0 rgba(255,255,255,0.4),inset 0 20px 20px rgba(255,255,255,0.2);border-radius:2px;text-shadow:0 -1px 0 rgba(0,0,0,0.3), 0 1px 0 rgba(255,255,255,0.2);transition:all 0.3s ease-out;}
+.demo {background-color:#333;}
+.download {background-color:#00BCD4;}
+.demo:hover,.download:hover {color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,0.5), inset 0 -20px 20px rgba(200,200,200,0.1);}
+.demo:before {content:'\f135';display:inline-block;vertical-align:top;margin-right:10px;width:16px;height:16px;line-height:24px;font-family:fontawesome;transition:all 0.5s ease-out;}
+.download:before {content:'\f019';display:inline-block;vertical-align:top;margin-right:10px;width:16px;height:16px;line-height:24px;font-family:fontawesome;transition:all 0.5s ease-out;}
+.first-letter{float:left;color:#00BCD4;font-size:75px;line-height:60px;padding-top:4px;padding-right:8px;padding-left:3px;font-family:Georgia}
+.widget .post-body ul,.widget .post-body ol{line-height:1.5;font-weight:400}
+.widget .post-body li{padding:0;line-height:1.5}
+.alert-message{position:relative;display:block;background-color:#fafafa;padding:20px;margin:20px 0;-webkit-border-radius:2px;-moz-border-radius:2px;border-radius:2px;color:#333;border:1px solid}
+.alert-message p{margin:0!important;padding:0;line-height:22px;font-size:13px;color:#333}
+.alert-message span{font-size:14px!important}
+.alert-message i{font-size:22px;text-align:left;display:inline-block;
+position:absolute;right:0;top:0;padding:20px;opacity:0.8;}
+.alert-message.success{background-color:#f1f9f7;border-color:#e0f1e9;color:#1d9d74}
+.alert-message.success a,.alert-message.success span{color:#1d9d74}
+.alert-message.alert{background-color:#DAEFFF;border-color:#8ED2FF;color:#378FFF}
+.alert-message.alert a,.alert-message.alert span{color:#378FFF}
+.alert-message.warning{background-color:#fcf8e3;border-color:#faebcc;color:#8a6d3b}
+.alert-message.warning a,.alert-message.warning span{color:#8a6d3b}
+.alert-message.error{background-color:#FFD7D2;border-color:#FF9494;color:#F55D5D}
+.alert-message.error a,.alert-message.error span{color:#F55D5D}
+.fa-check-circle:before{content:"\f058"}
+.fa-info-circle:before{content:"\f05a"}
+.fa-exclamation-triangle:before{content:"\f071"}
+.fa-exclamation-circle:before{content:"\f06a"}
+#flippy {text-align:center;}
+#flippy button {margin:10px auto;cursor:pointer;font-weight:700;font-size:14px;font-family:'Open Sans',sans-serif;background-color:#00BCD4;color:#fff!important;padding:8px 12px!important;text-transform:uppercase;border:1px solid rgba(0,0,0,0.1);box-shadow: inset 0 1px 0 rgba(255,255,255,0.4),inset 0 20px 20px rgba(255,255,255,0.2);border-radius:2px;text-shadow:0 -1px 0 rgba(0,0,0,0.3), 0 1px 0 rgba(255,255,255,0.2);transition:all 0.3s ease-out;}
+#flippy button:hover, #flippy button:focus {outline:none;color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,0.5), inset 0 -20px 20px rgba(200,200,200,0.1);}
+#flippanel {padding:1px;text-align:left;background:#f9f9f9;border:1px solid #ddd;}
+#flippanel {padding:24px;display:none;}
+#flippanel img {background:#f1f1f1;margin:10px auto;}
+
+/* CSS Widget */
+.widget ul {line-height:1.4em;}
+.profile-img{display:inline;opacity:1;margin:0 6px 3px 0;}
+.rich-snippet {padding:10px;margin:15px 0 0;border:3px solid #eee;font-size:12px;}
+#Attribution1 {height:0px;visibility:hidden;display:none}
+
+/* CSS Sidebar Wrapper */
+#sidebar-wrapper {background:transparent;float:right;width:30%;margin:0 auto;}
+.sidebar-inner {padding:15px 0;}
+.sidebar h2, .sidebar2 h2, .tably h2 {font-family:'Open Sans';font-size:15px;font-weight:700;color:#333;padding:10px 0;text-transform:uppercase;display:block;border-bottom:2px solid #eee;transition:All 0.4s ease-out;}
+.sidebar h2:hover, .sidebar2 h2:hover, .tably h2:hover {border-bottom-color:#00BCD4;}
+.sidebar .widget,.sidebar2 .widget {background:#fff;margin:0 0 15px;}
+.sidebar ul, .sidebar ol,.sidebar2 ul, .sidebar2 ol {list-style-type:none;margin:0 0 0 0;padding:10px;padding-top:0;}
+.sidebar li,.sidebar2 li {margin:5px 0;padding:0 0 0 0;}
+.sidebar h2 span,.sidebar2 h2 span {padding:6px 12px;border:1px solid #ddd;display:inline;
+background:#fff;vertical-align:middle;}
+.recomments li .avatarImg{float:left;margin:0 10px 0 0;position:relative;overflow:hidden;padding:0}
+.recomments li img.rc-img {float:left;margin:0 10px 0 0;position:relative;overflow:hidden;
+padding:0;width:45px;height:45px;background-size:cover;}
+.recomments li{background:none!important;clear:both;list-style:none;word-break:break-all;display:block;overflow:hidden;padding:10px 0!important;margin:0!important;}
+.recomments li span{color:#333;display:block;font-family:'Open Sans';font-size:13px;font-weight:400;text-transform:lowercase;}
+.avatarcomments{width:45px;height:45px}
+.recomments a{color:#444;position:relative;font-size:14px;font-size:13px;text-transform:uppercase;display:block;overflow:hidden}
+.recomments{list-style:none;padding:0}
+.recomments li:first-child > a:before {content:"new";font-size:10px;font-weight:400;padding:0 4px;border-radius:2px;color:#fff;background:#00BCD4;display:inline-block;position:absolute;right:0;top:0;}
+#sidebar-wrapper .recpost li{overflow:hidden;border-bottom:1px solid #eee;padding:10px 0}
+.recpost li:first-child{padding-top:0}
+.recpost li:last-child{border-bottom:none}
+.recpost .arl-tmb{display:block;width:60px;height:60px;}
+.recpost .rcp-title{font-family:'Open Sans';font-size:14px;font-weight:400;margin:0 0 6px 0;}
+.recpost .rcp-title a{color:#333;font-weight:700;font-size:14px}
+.recpost .rcp-title a:hover{color:#00BCD4;text-decoration:none}
+
+/* CSS Social Network Sidebar */
+#social_networks{text-align:center;display:block;margin:15px auto;clear:both;}
+#social_networks ul {display:block;margin:0 auto;padding:0;list-style:none;}
+#social_networks li{text-align:center;display:inline-block;margin:0 5px;width:42px;
+height:42px;border-radius:2px;transition:All 0.6s ease-out;}
+#social_networks li:hover{color:#eee;cursor:pointer;}
+#social_networks li:hover a{color:#fff;}
+#social_networks li a{display:inline-block;color:#eee;line-height:42px;font-size:16px;transition:All 0.3s ease-out;}
+#social_networks li a:hover{color:#fff;}
+#social_networks li a span{display:none;}
+#social_networks li.facebook,#social_networks li.twitter,#social_networks li.youtube,#social_networks li.googleplus,#social_networks li.pinterest{text-align:center;background:#444;cursor:pointer;transition:all 0.6s ease-out;}
+#social_networks li a.facebook:hover,#social_networks li a.twitter:hover,#social_networks li a.youtube:hover,#social_networks li a.googleplus:hover,#social_networks li a.pinterest:hover{color:#fff;}
+#social_networks li.facebook:hover,#social_networks li.twitter:hover,#social_networks li.youtube:hover,#social_networks li.googleplus:hover,#social_networks li.pinterest:hover{background:#00BCD4;color:#fff;}
+
+/* CSS Subscribe Box */
+#subscribe-box {width:auto;height:auto;background-color:#fff;box-shadow:0 0 0 3px #f6f6f6;}
+#subscribe-box p {font-family:'Open Sans';font-size:13px;color:#333;line-height:20px;padding:10px 20px 0 20px;margin:0;text-align:center;}
+#subscribe-box .emailfield {padding:0px 20px 10px;}
+#subscribe-box .emailfield input {background:#f5f5f5;color:#aaa;padding:10px;margin-top:10px;font-size:13px;font-family:'Open Sans';width:91%;border:0;border-radius:3px;box-shadow:inset 0 0 3px rgba(0,0,0,0.1);transition:all 0.4s ease-out;}
+#subscribe-box .emailfield input:focus {outline:none;border:none;color:#444;box-shadow:inset 0 0 3px rgba(0,0,0,0.2);}
+#subscribe-box .emailfield .submitbutton {background:#8c949d;color:#fff!important;text-transform:uppercase;font-weight:bold;outline:none;width:99%;cursor:pointer;border-radius:3px;border:none;transition:all 0.4s ease-out;}
+#subscribe-box .emailfield .submitbutton:hover, #subscribe-box .emailfield .submitbutton:active {background:#7e858d;outline:none;color:#fff;}
+
+/* CSS Custom Stats */
+#sidebar .Stats img {display:none!important;background-image:none;}
+#sidebar .Stats .counter-wrapper {width:92%;text-align:right;margin:10px;line-height:35px;color:#333;font-family:'Open Sans',sans-serif;font-weight:700;font-size:16px;}
+#sidebar .Stats .counter-wrapper:after {content:"Page Views";font-family:'Open Sans',Arial, sans-serif;float:left;text-align:left;font-size:13px;font-weight:700;color:#333;}
+#sidebar .counts {display:inline-block;width:92%;margin:10px;font-size:13px;line-height:35px;color:#333;font-weight:700;}
+#sidebar .counts .count {display:inline-block;font-size:16px;height:30px;
+vertical-align:top;direction:ltr;float:right;color:#333;font-family:'Open Sans', sans-serif;font-weight:700!important;}
+#sidebar .counts:hover .titles:before {color:#333!important;border-radius:2px;border-color:rgba(255,255,255,0.1);}
+#sidebar .counter-wrapper.text-counter-wrapper:before,#sidebar .counts:before {display:inline-block;font-size:13px;font-family:FontAwesome;font-style:normal;font-weight:normal;margin:0 10px 0 10px;float:left;width:10px;text-align:center;}
+#sidebar .counter-wrapper.text-counter-wrapper:before,#sidebar .counts:before {
+display:block;background-color:#00BCD4;color:#fff;width:35px;height:35px;font-size:18px;line-height:35px;border-radius:2px;margin:0px 8px 0 0;}
+.counter-wrapper.text-counter-wrapper:before {content:"\f0e7";color:#fff;}
+#sidebar .counts.postx:before {content:"\f09e";}
+#Stats1_content {width:auto;height:auto;background-color:#fff;}
+
+/* CSS Tabs */
+.tabs, .tably {margin:0 0;}
+.tabs .tably {padding:0 0;}
+.tabs-menu {padding:0 0;margin:0;margin-bottom:0;}
+.tabs-menu li {margin-bottom:0;margin-top:0;font-size:14px;font-family:'Open Sans';font-weight:700;text-transform:uppercase;height:37px;line-height:37px;width:33.3%;list-style:none;text-align:center;display:inline-block;padding:3px 0;background:#fff;color:#333;cursor:pointer;position:relative;
+transition:all 0.1s linear;}
+.tabs-menu li:hover {opacity:0.9;background:#fff;color:#00BCD4;}
+.tabs-menu .active-tab {background:#fff;color:#00BCD4;}
+.tabs-menu .active-tab:hover {opacity:0.9;background:#fff;color:#333;}
+.tabs-content {padding:10px;background:#fff;border-top:none;margin-bottom:15px;}
+.tabs-content .sidebar li {margin:0 0;padding:0 0 0 0;}
+.tabs-content .widget li {background:#fff;color:#333;float:none!important;}
+.tabs-content .widget ul {background:#fff;color:#333;overflow:visible;}
+.tabs-content .Label li {background:#fff!important;color:#333;float:left;padding:5px;margin-left:3px;text-align:left;width:44%;transition:.3s linear;}
+.tabs-content .Label li:hover {background:transparent;color:#00BCD4;}
+.tabs-content .Label li a {color:#333!important;transition:.3s linear;}
+.tabs-content .Label li a:hover {color:#00BCD4;transition:.3s linear;}
+.tabs-content .Label ul li a {color:#333!important;}
+
+/* CSS Popular Post */
+.PopularPosts ul,.PopularPosts li,.PopularPosts li img,.PopularPosts li a,
+.PopularPosts li a img {margin:0;padding:0;list-style:none;border:none;
+background:none;outline:none;}
+.PopularPosts ul {margin:0;list-style:none;color:#333;}
+.PopularPosts ul li img {display:block;margin-right:10px;padding:0;width:60px;height:60px;float:left;transition:all 0.3s ease-out;}
+.PopularPosts ul li img:hover {background:#fff;opacity:0.9;}
+.PopularPosts ul li {background-color:#fff;margin:2px;padding:0;position:relative;transition:all 0.3s ease-out;}
+.PopularPosts ul li:first-child {border-top:none;}
+.PopularPosts ul li:last-child {border-bottom:none;}
+.PopularPosts ul li a:hover {color:#00BCD4!important;}
+.PopularPosts ul li .item-title a, .PopularPosts ul li a {font-weight:400;color:#333;text-decoration:none;font-size:14px;font-weight:700;font-family:'Open Sans';transition:all 0.3s ease-out;}
+.PopularPosts ul li .item-title a:hover, .PopularPosts ul li a:hover {color:#00BCD4;}
+.PopularPosts ul li:before {display:none;list-style:none;}
+.PopularPosts ul li:first-child > a:before {content:"hot";font-size:10px;font-weight:400;padding:0 4px;border-radius:2px;color:#fff;background:#00BCD4;display:inline-block;position:absolute;right:0;top:0;}
+.PopularPosts .item-thumbnail {margin:0 0 0 0;}
+.PopularPosts .item-snippet {font-size:11px;color:#333;font-weight:400;}
+.profile-img{display:inline;opacity:1;margin:0 6px 3px 0;}
+.PopularPosts .item-title {padding-bottom:.2em;padding:0 5px;}
+
+/* CSS Footer Wrapper */
+#footer-wrapper {text-align:left;overflow:hidden;background:#333;margin:15px;padding:15px 0 0 0;margin-top:20px;border-top:2px solid #ddd;}
+#footer-widgetfix .footer-widget {width:30.2%;float:left;margin-left:20px;padding-top:10px;padding-bottom:15px;}
+#footer-widgetfix {max-width:1100px;overflow:hidden;margin:0 auto;}
+#footer-wrapper h2 {font-family:'Open Sans';font-size:15px;font-weight:700;color:#f9f9f9;padding:10px 0;text-transform:uppercase;display:block;border-bottom:2px solid #444;}
+#footer-wrapper .widget-content {text-align:left;font-family:'Open Sans',Helvetica;
+margin:20px 0 15px;color:#f9f9f9;}
+#footer-wrapper .widget-content li {margin-left:-14px;color:#f9f9f9}
+#footer-wrapper .widget li {margin:5px 0 0 0;padding:5px 0 0 0;display:block;}
+.footer li a {padding-top:0;padding-right:0;line-height:2em;font-size:13px;
+font-weight:400;font-family:'Open Sans',Helvetica;color:#f9f9f9;margin:0}
+.footer li a:hover {color:#fff;}
+#footerfix {overflow:hidden;background:#00BCD4;padding:12px 5px;margin:15px 0 0 0;}
+.cpleft {float:left;margin:10px;color:#fff;font-size:13px;font-family:'Open Sans';font-weight:700;}
+#cpright {float:right;margin:10px;color:#fff;font-size:0.1px;font-family:'Open Sans';font-weight:700;}
+.cpleft a,#cpright a {color:#fff;text-decoration:none;}
+.cpleft a:hover,#cpright a:hover {color:#006064;text-decoration:none;}
+.footer {font-weight:400;padding-bottom:.2em;}
+.footer-bottom {min-height:40px;}
+#footx1,#footx2,#footx3 {margin:0 .2%}
+.footer {font-weight:400;padding-bottom:.2em;}
+.footer-bottom .recpost li{overflow:hidden;padding:10px 0}
+.footer-bottom .recpost li:first-child{padding-top:0}
+.footer-bottom .recpost li:last-child{border-bottom:none}
+.footer-bottom .recpost .arl-tmb{display:block;width:60px;height:60px;}
+.footer-bottom .recpost .rcp-title{font-family:'Open Sans';font-size:15px;font-weight:400;margin:0 0 8px 0;padding:0;}
+.footer-bottom .recpost .rcp-title a{color:#f9f9f9;font-weight:400;font-size:14px}
+.footer-bottom .recpost .rcp-title a:hover{color:#fff;text-decoration:none}
+
+/* CSS Contact */
+#ContactForm1,#ContactForm1 br{display:none;}
+#ContactForm1_contact-form-name, #ContactForm1_contact-form-email{
+width:50%;height:auto;margin:5px auto;padding:10px;background:#f9f9f9;color:#666;border:1px solid #ededed;border-radius:3px;transition:all 0.5s ease-out;}
+#ContactForm1_contact-form-email-message{width:450px;height:175px;margin:5px 0;padding:10px;background:#f9f9f9;color:#666;font-family:'Open Sans',sans-serif;border:1px solid #ededed;border-radius:3px;transition:all 0.5s ease-out;}
+#ContactForm1_contact-form-name:focus, #ContactForm1_contact-form-email:focus, #ContactForm1_contact-form-email-message:focus{outline:none;border:1px solid #b7bfc5;border-bottom-color:#00BCD4;}
+#ContactForm1_contact-form-submit {font-family:'Open Sans';float:left;background:#00acd6;color:#fff;margin:10px auto;vertical-align:middle;cursor:pointer;padding:10px 18px!important;font-weight:700;font-size:14px;text-align:center;text-transform:uppercase;letter-spacing:0.5px;border:1px solid rgba(0,0,0,0.1);box-shadow: inset 0 1px 0 rgba(255,255,255,0.5),inset 0 20px 20px rgba(255,255,255,0.2);border-radius:2px;text-shadow: 0 -1px 0 rgba(0,0,0,0.3), 0 1px 0 rgba(255,255,255,0.2);transition:all 0.4s ease-out;}
+#ContactForm1_contact-form-submit:hover {color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,0.5), inset 0 -20px 20px rgba(200,200,200,0.1);}
+#ContactForm1_contact-form-error-message, #ContactForm1_contact-form-success-message{
+width:450px;margin-top:35px;}
+
+/* CSS label */
+.label-size-1,.label-size-2,.label-size-3,.label-size-4,.label-size-5 {
+font-size:100%;opacity:1}
+.cloud-label-widget-content{text-align:left;padding:10px;}
+.label-size {background:#fff;display:block;float:left;margin:0 5px 5px 0;
+color:#666;font-size:11px;transition:.8s linear;}
+.label-size a,.label-size span{display:inline-block;color:#666;padding:8px 10px;
+font-weight:400;}
+.label-size:hover {background:#00BCD4;}
+.label-size a:hover {color:#fff!important;}
+.label-count {white-space:nowrap;padding-right:3px;margin-left:-3px;
+background:#e25756;color:#fff;transition:all .3s ease-out;}
+.label-count:hover {background:#00BCD4;color:#fff;}
+.label-size {line-height:1.2}
+#sidebar-wrapper .Label li {background:#fff;color:#666;float:left;padding:10px 5px;margin-left:3px;text-align:left;width:95%;border-bottom:1px solid #eee;transition:all .3s ease-out;}
+#sidebar-wrapper .Label li:hover {background:#fff;color:#00BCD4;}
+#sidebar-wrapper .Label li:before {content:"\f105";font-family:FontAwesome;
+font-style:normal;font-weight:normal;text-decoration:inherit;padding-right:4px;
+color:#666;transition:all .3s ease-out;}
+#sidebar-wrapper .Label li:hover:before {padding-right:4px;color:#00BCD4;}
+#sidebar-wrapper .Label li a {color:#666;transition:all .3s ease-out;}
+#sidebar-wrapper .Label li a:hover {color:#00BCD4;}
+#sidebar-wrapper .label-size{background:#fff;display:block;float:left;margin:0 5px 5px 0;font-size:11px;border:double #ddd;transition:all .3s ease-out;}
+#sidebar-wrapper .label-size a {display:inline-block;color:#666;padding:8px 10px;
+font-weight:400;transition:all .3s ease-out;}
+#sidebar-wrapper .label-size a:hover {background:#00BCD4;color:#fff;}
+#sidebar-wrapper .Label li:before {content:"\f105";font-family:FontAwesome;
+font-style:normal;font-weight:normal;text-decoration:inherit;padding-right:4px;
+color:#666;transition:all .3s ease-out;}
+#sidebar-wrapper .Label li:hover:before {margin:0 0 0 5px;color:#00BCD4;}
+#sidebar-wrapper .label-size:hover{background:#00BCD4;color:#fff;border-color:#fdfdfd;}
+#sidebar-wrapper .Label li span{float:right;background-color:#999;color:#fff;line-height:1.2;margin:0;padding:4px 6px;text-align:center;font-size:12px;transition:all .3s ease-out;}
+#sidebar-wrapper .Label li span:hover{background-color:#00BCD4;color:#fff}
+#footer-wrapper .label-size{background:#444;color:#fff;display:block;float:left;margin:0 5px 5px 0;font-size:12px;transition:all .3s ease-out;}
+#footer-wrapper .label-size a {display:inline-block;color:#fff;padding:8px 10px;
+font-weight:400;transition:all .3s ease-out;}
+#footer-wrapper .label-size a:hover {background:#00BCD4;color:#fff;}
+#footer-wrapper .label-size a:before {content:"\f02b";font-family:FontAwesome;
+font-style:normal;font-weight:normal;text-decoration:none;padding-right:4px;
+color:#fff;transition:all .3s ease-out;}
+#footer-wrapper .label-size a:hover:before {content:"\f061";font-family:FontAwesome;
+font-style:normal;font-weight:normal;text-decoration:none;color:#fff;}
+#footer-wrapper .label-size:hover, #footer-wrapper-inner .label-size:hover{background:#00BCD4;color:#fff;}
+#footer-wrapper .label-count {white-space:nowrap;padding:3px;
+background:#333;color:#fff!important;transition:all .3s ease-out;}
+#footer-wrapper .Label li {background:transparent;float:left;padding:10px 5px;margin:0;text-align:left;width:45%;transition:all .3s ease-out;}
+#footer-wrapper .Label li:hover {color:#00BCD4;}
+#footer-wrapper .Label li a {color:#aaa;transition:all .3s ease-out;}
+#footer-wrapper .Label li a:hover {color:#00BCD4;}
+#footer-wrapper .Label li span{float:right;color:#aaa;margin:0;padding:4px 6px;text-align:center;font-size:12px;font-weight:400;transition:all .3s ease-out;}
+#footer-wrapper .Label li span:hover{color:#00BCD4}
+
+/* CSS Ads */
+.banner,.banner2 {margin:0 auto;text-align:center;overflow:hidden;}
+.banner .widget,.banner2 .widget {width:100%;max-width:100%;margin:0 auto;background:transparent;text-align:center;overflow:hidden;padding-top:15px;padding-bottom:15px;}
+.banner img, .banner iframe,.banner2 img, .banner2 iframe{display:block;margin:0 auto;text-align:center;}
+.kotak_iklan {text-align:center;margin:0 auto;transition:all 1s ease-out;}
+.kotak_iklan .sidebar .widget-content,.kotak_iklan .sidebar2 .widget-content{padding:0;border:0;}
+.kotak_iklan .sidebar .widget {margin-bottom:0;padding:0;}
+.kotak_iklan img {background:#f9f9f9;text-align:center;margin:0px 5px 5px 0px;padding:5px;border:1px solid transparent!important;transition: all 0.6s ease-out;}
+.kotak_iklan  img:hover {background:#fff;border:1px solid #ddd;}
+.kotak_iklan2 {text-align:center;margin:0 auto;transition:all 1s ease-out;}
+.kotak_iklan2 .sidebar .widget-content,.kotak_iklan2 .sidebar2 .widget-content{padding:0;background:#f9f9f9;box-shadow:0 1px 2px 0 rgba(0,0,0,0.1);border:0;}
+.kotak_iklan2 .sidebar .widget,.kotak_iklan2 .sidebar2 .widget {margin-bottom:0;padding:0;}
+.kotak_iklan2  img {text-align:center;transition:all 1s ease-out;}
+.kotak_iklan2  img:hover {transition:all .5s ease-out;}
+
+/* CSS Fixed Inner */
+.status-msg-wrap {font-size:120%;font-weight:700;width:100%;margin:20px auto;}
+.status-msg-body {padding:20px 2%;width:96%;}
+.status-msg-border {border:1px solid #d8dde1;opacity:1;width:auto;}
+.status-msg-bg {background-color:#fff;}
+.status-msg-hidden {padding:20px 2%;}
+#ArchiveList ul li:before {content:""!important;padding-right:0px!important;}
+.rich-snippet {padding:10px;margin:15px 0 0;border:3px solid #eee;font-size:12px;}
+.Profile img {margin:0 15px 15px 0;width:104px;height:104px;}
+a.profile-name-link.g-profile,a.profile-link {color:#333;}
+.profile-textblock {color:#333;}
+.quickedit{display:none;visibility:hidden}
+#ArchiveList a.post-count-link, #ArchiveList a.post-count-link:link, #ArchiveList a.post-count-link:visited {text-decoration:none;font-size:13px;font-weight:700;font-family:'Open Sans';}
+span.post-count {font-size:11px;font-weight:700;}
+.BlogArchive #ArchiveList ul.posts li {font-size:12px;}
+
+/* CSS Page Navigation */
+.pagenav {background-color:#f9f9f9;clear:both;margin:-5px 0 10px;margin-top:10px;padding:15px;text-align:left;font-size:13px;font-family:'Open Sans';font-weight:700;box-shadow:0 0 0 1px #ddd;}
+.pagenav span,.pagenav a {padding:6px 12px;display:inline-block;background-color:#555;
+color:#fff;margin-left:4px;margin-right:4px;border-radius:2px;transition:all 0.3s ease-out;}
+.pagenav .pages {background-color:#f9f9f9;color:#999;font-weight:400;text-transform:uppercase;
+font-size:11px;}
+.pagenav a:hover {background-color:#444;color:#fff;}
+.pagenav .current {background-color:#00BCD4;color:#fff;}
+
+/* CSS Sitemap */
+#tabbed-toc {width:100%;margin:0 auto;background-color:#222;overflow:hidden;position:relative;color:#333}
+#tabbed-toc .loading {display:block;padding:5px 10px;font-family:'Open Sans',Sans-Serif;font-weight:400;font-size:10px;color:#fff;}
+#tabbed-toc ul,#tabbed-toc ol,#tabbed-toc li {margin:0;padding:0;list-style:none}
+#tabbed-toc .toc-tabs {width:25%;float:left}
+#tabbed-toc .toc-tabs li a {display:block;font-family:'Open Sans',Sans-Serif;font-weight:400;font-size:10px;height:31px;overflow:hidden;text-overflow:ellipsis;color:#ddd;text-transform:uppercase;text-decoration:none;padding:6px 12px;cursor:pointer;}
+#tabbed-toc .toc-tabs li a:hover {background-color:#333;color:#fff}
+#tabbed-toc .toc-tabs li a.active-tab {background-color:#a9b1b7;color:#fff;position:relative;z-index:5;margin:0 -1px 0 0}
+#tabbed-toc .toc-content,#tabbed-toc .divider-layer {width:75%;float:right;background-color:#fff;border-left:5px solid #a9b1b7;box-sizing:border-box}
+#tabbed-toc .divider-layer {float:none;display:block;position:absolute;top:0;right:0;
+bottom:0;}
+#tabbed-toc .panel {position:relative;z-index:5;font-family:'Open Sans',Sans-Serif;font-weight:400;font-size:10px;}
+#tabbed-toc .panel li a {display:block;position:relative;font-weight:700;font-size:11px;
+color:#333;line-height:30px;height:30px;padding:6px 12px;text-decoration:none;outline:none;
+overflow:hidden}
+#tabbed-toc .panel li a em {background:#efa666;color:#fff!important;padding:2px 4px;border-radius:3px;font-style:normal;}
+#tabbed-toc .panel li time {display:block;font-style:italic;font-weight:400;font-size:10px;
+color:#666;float:right}
+#tabbed-toc .panel li .summary {display:block;padding:10px 12px;font-style:italic;
+border-bottom:4px solid #275827;overflow:hidden}
+#tabbed-toc .panel li .summary img.thumbnail {float:left;display:block;margin:0 8px 0 0;
+padding:4px;width:72px;height:72px;border:1px solid #dcdcdc;background-color:#fafafa}
+#tabbed-toc .panel li:nth-child(even) {background-color:#f0f0f0;font-size:10px;
+color:#fff}
+#tabbed-toc .panel li:nth-child(odd) {background-color:#f9f9f9;font-size:10px;
+color:#fff}
+#tabbed-toc .panel li a:hover,#tabbed-toc .panel li a:focus,#tabbed-toc .panel li a:hover time,#tabbed-toc .panel li.bold a {background-color:#333;color:#fff;outline:none}
+#tabbed-toc .panel li.bold a:hover,#tabbed-toc .panel li.bold a:hover time {background-color:#444;}
+
+/* CSS Back To Top */
+#BackToTop {z-index:90;position:fixed;right:25px;bottom:-80px;overflow:hidden;display:none;
+background:rgba(0,0,0,0.1);color:#fff;padding:9px 15px;font-size:28px;-webkit-transform: translateZ(0);box-shadow:inset 0 0 0 1px transparent;transition:all .5s ease-out;}
+#BackToTop:hover {background:#333;color:#fff;}
+
+/* CSS Global Responsive */
+@media screen and (max-width:1066px) {
+#outer-wrapper {margin:0 auto;}
+.header-right {float:right;padding:0;overflow:hidden;margin:0;max-width:640px!important;}
+.header-right img {display:block;}}
+
+@media screen and (max-width:960px) {
+#outer-wrapper {margin:0 auto;border:none;box-shadow:none;}
+#header h1,#header p,#header,.header-right,#header .description{margin:0 auto;width:100%;float:none;text-align:center;}
+#header {margin:20px auto;}
+.header-right img, .header-right iframe{margin:0 auto;max-width:100%;}
+#header-wrapper{padding:0 10px;}
+.header-wrapper2 {padding:0}
+#footer-widgetfix {width:100%;overflow:hidden;}
+#footer-widgetfix .footer-widget {width:46%;float:left;margin-left:20px;}
+#header-inner {left:0;right:0;}}
+
+@media only screen and (max-width:768px){
+#post-wrapper, #sidebar-wrapper,#footer-col1,#footer-col2,#footer-col3 {width:100%;max-width:100%}
+#header {background:none;}
+.post-body img {max-width:90%;}
+.img-thumbnail {margin:0 10px 0 0;}
+.sidebar-inner, .post-inner {padding:15px 0 0px;}
+.cpleft,#cpright {float:none;text-align:center;margin:10px auto;}}
+
+@media (min-width:768px) and (max-width:979px) {
+.mainWrap {width:768px;}
+.menu ul {top:37px;}
+.menu li a {font-size:12px;}}
+
+@media (max-width:767px) {
+.mainWrap {width:auto;padding:50px 20px;}
+.menu {display:none;}
+.responsive-menu {display:block;}
+nav {margin:0;background:none;}
+.menu li {display:block;margin:0;}
+.menu li a {background:#fff;color:#333;}
+.menu ul {visibility:hidden;opacity:0;top:0;left:0;width:100%;transform:initial;box-shadow:initial;margin-left:30%;width:70%;}
+.menu li:hover > ul {visibility:visible;opacity:1;position:relative;transform:initial;}
+.menu ul ul {left: 0;transform:initial;}
+.menu li>ul ul:hover {transform:initial;}
+.menu li a.homer {background:#fff;color:#333;margin-left:initial;}}
+
+@media only screen and (min-width:640px){
+#menu {display:block;}}
+
+@media only screen and (max-width:640px){
+#header h1,#header p,#header,.header-right,#header .description{margin:0 auto;width:100%;float:none;text-align:center;}
+.header-right{float:none;margin:0 auto;text-align:center;}
+.header-right img, .header-right iframe{float:none;margin:0 auto;text-align:center;}
+#header-wrapper{padding:0;margin:20px 0 0 0;min-height:150px;}
+#header {min-width:initial;background:none;margin:20px auto;min-height:150px;padding:0 5px;}
+#Header1 {min-height:150px;}
+#header-inner {top:25%;}
+#BackToTop {bottom:0;padding:7px 13px;font-size:22px;}
+#footer-widgetfix {width:100%;overflow:hidden;}
+#footer-widgetfix .footer-widget {width:92%;float:left;margin-left:20px;}
+.pagenav .pages {display:none;}}
+
+@media only screen and (min-width:640px){
+#menu {display:block;}}
+
+@media only screen and (max-width:480px){
+#outer-wrapper {margin:0 auto;}
+.header-right{float:none;margin:0 auto;text-align:center;}
+.header-right img, .header-right iframe{float:none;margin:0 auto;text-align:center;}
+.post {margin:0 0 8px;padding:8px;}
+h2.post-title, h1.post-title {font-size:16px;}
+.img-thumbnail, .img-thumbnail img {width:120px;height:90px;}
+.img-thumbnail {margin:0 8px 0 0;}
+.comments .comment-block, .comments .comments-content .inline-thread {
+padding:10px !important;}
+.comment .comment-thread.inline-thread .comment {margin: 0 0 0 0 !important;}
+#related_posts {margin:20px 20px 20px 0;padding:0;}
+.post-info {font-size:12px;}
+#feedContainer li {width:100%;}
+.authorLeft{float:none;width:120px;margin:0 auto}
+.authorDetails{text-align:center}
+.authorDetails h2{float:none}
+.authorDetails span{float:none}
+.articleAuthor .authorContent p{text-align:center}
+#social_networks li {margin:0 1px auto;width:32px;height:32px;float:left;}
+#social_networks li a {line-height:32px;}}
+
+@media screen and (max-width:320px){
+.header-right{float:none;margin:0 auto;text-align:center;}
+.header-right img, .header-right iframe{float:none;margin:0 auto;text-align:center;}
+.post {padding:6px;}
+.img-thumbnail, .img-thumbnail img {width:100px;height:80px;}}
+</style>
+<style type="text/css">
+.post img{background:#fafafa;height:auto;max-width:95%;border:0;}
+h3.post-title, h2.post-title, h1.post-title {margin-top:-10px;}
+
+/* CSS Related Posts and Email Subscribe */
+#subs-and-redat {margin:0;padding:15px;background:#f2fbd8;border-radius:3px;box-shadow:0 0 0 1px #cdd5b7;}
+.kotakleft {background:none;width:44%;margin:0;padding:20px 0;display:block;float:left}
+#related-post h4{font-family:'Open Sans', Arial, sans-serif;font-size:20px;font-weight:700;text-transform:uppercase;color:#949a7f;margin:0 0 15px;margin-top:-15px;}
+#related-post li {line-height:1.8em;margin:0;padding:5px 0;}
+#related-post ul {list-style:none;margin:0;padding:0;}
+#related-post a {font-size:14px;color:#333;}
+#related-post a:hover {color:#555;}
+#subscribe-css {margin:0;padding:0;float:right;display:block;position:relative;}
+.subscribe-wrapper {background:#444;width:260px;height:200px;color:#fff;font-size:14px;font-family:'Open Sans';line-height:20px;padding:40px 20px 10px 20px;text-align:center;border-radius:3px;}
+.subscribe-wrapper p {margin:0;margin-bottom:30px;}
+.subscribe-form {clear:both;display:block;margin:10px 0;overflow:hidden;}
+form.subscribe-form {clear:both;display:block;margin:10px 0 0;width:auto;overflow:hidden;}
+.subscribe-css-email-field {background:#333 url(http://3.bp.blogspot.com/-b2pmxkhM8Is/VLQQ4PPCMMI/AAAAAAAAHO4/AGzYheKVaqs/s1600/sprites.png) no-repeat 1px -27px;color:#fff;margin:0 0 15px;padding:12px 40px;width:100%;border:none;}
+.subscribe-css-email-button {background:#00BCD4;color:#fff;cursor:pointer;font-weight:700;
+padding:10px;text-transform:none;width:100%;border:none;font-size:17px;transition:all .5s ease-in;border-radius:3px;transition:all 0.3s ease-out;}
+.subscribe-css-email-button:hover {background:#00ACC1;color:#fff;}
+
+/* CSS Share Button */
+.sharepost{overflow:hidden;text-align:center;margin-bottom:20px;margin-top:20px;padding:10px 0;}
+.sharepost li{float:left;margin:0 1%;width:18%;padding:0;list-style:none;position:relative;box-shadow:4px 4px 0 -1px #e3e3e3;}
+.sharepost li a{padding:6px 0 6px 35px;color:#fff;display:block;border-radius:2px;}
+.sharepost li a:hover{color:#fff;}
+.sharepost li .twitter{background-color:#85c5f5;}
+.sharepost li .facebook{background-color:#6381c0;}
+.sharepost li .gplus{background-color:#ed6d5d;}
+.sharepost li .pinterest{background-color:#e44d52;}
+.sharepost li .linkedin{background-color:#2c9ad8;}
+.sharepost li .twitter:hover,.sharepost li .facebook:hover,.sharepost li .gplus:hover,
+.sharepost li .pinterest:hover,.sharepost li .linkedin:hover{color:#fff;}
+.sharepost li:last-child{margin-right:0}
+.sharepost li .fa:before{position:absolute;top:0;left:0;display:inline-block;padding:6.5px 12px;font-family:fontawesome;text-align:center;background:#f5f5f5;color:#aaa;line-height:20px;}
+
+/* CSS Item Responsive */
+@media only screen and (max-width:640px){
+#related-post li {float:left;list-style:none;overflow:hidden;width:90%;}}
+
+@media screen and (max-width:420px) {
+.sharepost li{width:100%}}
+
+@media only screen and (max-width:320px){
+h3.post-title:before,h1.post-title:before,h3.post-title:after,h1.post-title:after,h3.post-title:after,h1.post-title:after,#comments .click-comment {visibility:hidden;}
+#comments .comment_avatar {width:20px;height:20px;max-width:20px;max-height:20px;background:#fcfcfc;padding:0;text-align:center;position:absolute;top:5px;right:5px;opacity:1;}
+#comments .comment_admin .comment_avatar{width:20px;height:20px;max-width:20px;max-height:20px;padding:4px 4px 19px;text-align:center;position:absolute;top:0;right:0;opacity:1;}
+#comments .comment_avatar img {width:20px;height:20px;max-width:20px;max-height: 20px;background:#f9f9f9;}
+.comment_avatar img{width:20px;height:20px;background:#f9f9f9;}}
+
+@media print {
+body{padding:0}
+#post-wrapper{width:100%;margin:0 auto;}
+.post {background:#fff;margin:0 0 15px;padding:15px;box-shadow:none;border:none;}
+h1.post-title {border-bottom:none;}
+.post blockquote{background:transparent;color:#666;border:none;}
+nav,.sharepost,#BackToTop,#search,.breadcrumbs,.halaman,#blog-pager,.banner,#banner,.banner2,#banner2,#sidebar-wrapper,#subs-and-redat,#comments,#footer-wrapper,#header-wrapper,div#banner,div#banner2{opacity:0;display:none;visibility:hidden;width:0;height:0;}
+.status-msg-border{border:none;}
+.Stats .blind-plate{border-top:none;}}
+</style>
+<script type="text/javascript" async="" src="./Guardar _ Crear XML en PHP - Carlitox en la Web_files/analytics.js.descarga"></script><script async="" src="./Guardar _ Crear XML en PHP - Carlitox en la Web_files/gtm.js.descarga"></script><script src="./Guardar _ Crear XML en PHP - Carlitox en la Web_files/cb=gapi.loaded_2" async=""></script><script src="./Guardar _ Crear XML en PHP - Carlitox en la Web_files/cb=gapi(2).loaded_1" async=""></script><script src="./Guardar _ Crear XML en PHP - Carlitox en la Web_files/cb=gapi(3).loaded_0" async=""></script><script src="./Guardar _ Crear XML en PHP - Carlitox en la Web_files/jquery.min.js.descarga"></script>
+<script type="text/javascript">
+$(function() {
+$(".tabs-1").mtabs();
+$("#header-wrapper").addClass("bg"+((Math.random() * 3 | 0) + 1));
+});
+</script>
+<link href="./Guardar _ Crear XML en PHP - Carlitox en la Web_files/authorization.css" media="all" onload="if(media!=&#39;all&#39;)media=&#39;all&#39;" rel="stylesheet"><noscript><link href='https://www.blogger.com/dyn-css/authorization.css?targetBlogID=8283392410523373579&amp;zx=a50ea700-1b69-4c83-a2ed-e669a739de88' rel='stylesheet'/></noscript>
+
+<script type="text/javascript" src="./Guardar _ Crear XML en PHP - Carlitox en la Web_files/PHP"></script><script type="text/javascript" src="./Guardar _ Crear XML en PHP - Carlitox en la Web_files/f.txt"></script><script type="text/javascript" src="./Guardar _ Crear XML en PHP - Carlitox en la Web_files/PHP(1)"></script><script async="" src="./Guardar _ Crear XML en PHP - Carlitox en la Web_files/lazy.min.js.descarga"></script><style>.gc-bubbleDefault{background-color:transparent !important;text-align:left;padding:0 !important;margin:0 !important;border:0 !important;table-layout:auto !important}.gc-reset{background-color:transparent !important;border:0 !important;padding:0 !important;margin:0 !important;text-align:left}.pls-bubbleTop{border-bottom:1px solid #ccc !important}.pls-topTail,.pls-vertShimLeft,.pls-contentLeft{background-image:url(//ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/border_3.gif) !important}.pls-topTail{background-repeat:repeat-x !important;background-position:bottom !important}.pls-vertShim{background-color:#fff !important;text-align:right}.tbl-grey .pls-vertShim{background-color:#f5f5f5 !important}.pls-vertShimLeft{background-repeat:repeat-y !important;background-position:right !important;height:4px}.pls-vertShimRight{height:4px}.pls-confirm-container .pls-vertShim{background-color:#fff3c2 !important}.pls-contentWrap{background-color:#fff !important;position:relative !important;vertical-align:top}.pls-contentLeft{background-repeat:repeat-y;background-position:right;vertical-align:top}.pls-dropRight{background-image:url(//ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/bubbleDropR_3.png) !important;background-repeat:repeat-y !important;vertical-align:top}.pls-vert,.pls-tailleft,.pls-dropTR .pls-dropBR,.pls-dropBL,.pls-vert img{vertical-align:top}.pls-dropBottom{background-image:url(//ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/bubbleDropB_3.png) !important;background-repeat:repeat-x !important;width:100%;vertical-align:top}.pls-topLeft{background:inherit !important;text-align:right;vertical-align:bottom}.pls-topRight{background:inherit !important;text-align:left;vertical-align:bottom}.pls-bottomLeft{background:inherit !important;text-align:right}.pls-bottomRight{background:inherit !important;text-align:left;vertical-align:top}.pls-tailtop,.pls-tailright,.pls-tailbottom,.pls-tailleft{display:none;position:relative}.pls-tailbottom,.pls-tailtop,.pls-tailright,.pls-tailleft,.pls-dropTR,.pls-dropBR,.pls-dropBL{background-image:url(//ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/bubbleSprite_3.png) !important;background-repeat:no-repeat}.tbl-grey .pls-tailbottom,.tbl-grey .pls-tailtop,.tbl-grey .pls-tailright,.tbl-grey .pls-tailleft,.tbl-grey .pls-dropTR,.tbl-grey .pls-dropBR,.tbl-grey .pls-dropBL{background-image:url(//ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/bubbleSprite-grey.png) !important}.pls-tailbottom{background-position:-23px 0}.pls-confirm-container .pls-tailbottom{background-position:-23px -10px}.pls-tailtop{background-position:-19px -20px}.pls-tailright{background-position:0 0}.pls-tailleft{background-position:-10px 0}.pls-tailtop{vertical-align:top}.gc-bubbleDefault td{line-height:0;font-size:0}.pls-topLeft img,.pls-topRight img,.pls-tailbottom{vertical-align:bottom}.pls-bottomLeft img,.bubbleDropTR,.pls-dropBottomL img,.pls-dropBottom img,.pls-dropBottomR img,.pls-bottomLeft{vertical-align:top}.pls-dropTR{background-position:0 -22px}.pls-dropBR{background-position:0 -27px}.pls-dropBL{background-position:0 -16px}.pls-spacertop,.pls-spacerright,.pls-spacerbottom,.pls-spacerleft{position:static !important}.pls-spinner{bottom:0;position:absolute;left:0;margin:auto;right:0;top:0} </style></head>
+<body>
+<form action="http://carlitoxenlaweb.blogspot.com/search" id="search" method="get">
+<div class="input">
+<input class="search" name="q" onblur="if(this.value==&#39;&#39;)this.value=this.defaultValue;" onfocus="if(this.value==this.defaultValue)this.value=&#39;&#39;;" type="text" value="Escribe aquí...">
+<button class="submit fa fa-search" type="submit" value=""></button>
+</div>
+<button class="fa fa-times" id="close" type="reset" value=""></button>
+</form>
+<div id="outer-wrapper">
+<div id="header-wrapper" class="bg3">
+<div class="header section section" id="header"><div class="widget Header" data-version="1" id="Header1">
+<div id="header-inner">
+<div class="titlewrapper">
+<h1 class="title">
+<a href="http://carlitoxenlaweb.blogspot.com/">Carlitox en la Web</a>
+</h1>
+</div>
+<div class="descriptionwrapper">
+<p class="description"><span>Un blog de Tecnología, Programación y Algo mas...</span></p>
+</div>
+</div>
+</div></div>
+<div class="header-right section no-items section" id="header-right"></div>
+</div>
+<div class="clear"></div>
+<nav>
+<a class="responsive-menu" href="http://carlitoxenlaweb.blogspot.com/2013/03/guardar-crear-xml-en-php.html#" id="resp-menu"><i class="fa fa-reorder"></i> Menu</a>
+<ul class="menu">
+<li><a class="homer" href="http://carlitoxenlaweb.blogspot.com/">Inicio</a></li>
+<li><a href="http://carlitoxenlaweb.blogspot.com/p/trabajos.html">Trabajos</a></li>
+<li><a href="http://carlitoxenlaweb.blogspot.com/2009/05/navegadores-webs.html">Navegadores</a></li>
+<li><a href="http://carlitoxenlaweb.blogspot.com/p/ejemplos-en-java.html">Ejemplos JAVA</a></li>
+<li><a href="http://www.carlitoxenlaweb.com/">Contacto</a></li>
+<li><a href="http://carlitoxenlaweb.blogspot.com/p/acerca-de.html">Acerca de</a></li>
+<li class="searchbutton"></li>
+</ul>
+</nav>
+<div class="clear"></div>
+<div id="content-wrapper">
+<div class="banner section no-items section" id="banner"></div>
+<div class="clear"></div>
+<div id="post-wrapper">
+<div class="post-inner">
+<div class="main section" id="main"><div class="widget HTML" data-version="1" id="HTML900">
+<div class="ads-in-post">
+</div>
+</div><div class="widget Blog" data-version="1" id="Blog1">
+<div class="breadcrumbs"><span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="http://carlitoxenlaweb.blogspot.com/" itemprop="url"><span itemprop="title"><i class="fa fa-home fa-lg"></i></span></a></span>
+<span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="http://carlitoxenlaweb.blogspot.com/search/label/HTML-XML?&amp;max-results=5" itemprop="url"><span itemprop="title"><i class="fa fa-tag"></i>
+HTML-XML</span></a></span>
+<span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="http://carlitoxenlaweb.blogspot.com/search/label/PHP?&amp;max-results=5" itemprop="url"><span itemprop="title"><i class="fa fa-tag"></i>
+PHP</span></a></span>
+<span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="http://carlitoxenlaweb.blogspot.com/search/label/Programacion?&amp;max-results=5" itemprop="url"><span itemprop="title"><i class="fa fa-tag"></i>
+Programacion</span></a></span>
+<span><i class="fa fa-file-text-o"></i>
+Guardar / Crear XML en PHP</span>
+</div>
+<div class="blog-posts hfeed">
+<!--Can't find substitution for tag [defaultAdStart]-->
+
+          <div class="date-outer">
+        
+
+          <div class="date-posts">
+        
+<div class="post-outer">
+<article class="post hentry">
+<a content="https://3.bp.blogspot.com/-k0jgz84ah7Q/UTTakN1JiZI/AAAAAAAADx0/_MaRYfyezxM/s200/php-xml-480x480.jpg"></a>
+<h3 class="post-title entry-title">
+Guardar / Crear XML en PHP
+</h3>
+<div class="post-info">
+<span class="author-info">
+<i class="fa fa-user"></i>
+<span class="vcard">
+<span class="fn">
+<a class="g-profile" href="https://plus.google.com/109673919871351675013" rel="author" title="author profile" data-gapiscan="true" data-onload="true" data-gapiattached="true">
+<span>Carlos Martinez</span>
+</a>
+</span>
+</span>
+</span>
+</div>
+<div class="post-header">
+<div class="post-header-line-1"></div>
+<span class="post-author vcard" itemscope="itemscope" itemtype="http://schema.org/Person">
+<span class="fn author">
+<a href="https://plus.google.com/109673919871351675013" rel="author" title="author profile">
+<span itemprop="name">Carlos Martinez</span>
+</a>
+</span>
+</span>
+</div>
+<div class="post-body entry-content" id="post-body-6163171198060302592">
+<div dir="ltr" style="text-align: left;" trbidi="on">
+<a href="http://3.bp.blogspot.com/-k0jgz84ah7Q/UTTakN1JiZI/AAAAAAAADx0/_MaRYfyezxM/s1600/php-xml-480x480.jpg" imageanchor="1" style="clear: right; float: right; margin-bottom: 1em; margin-left: 1em;"><img border="0" height="100" src="./Guardar _ Crear XML en PHP - Carlitox en la Web_files/php-xml-480x480.jpg" width="100"></a>
+&nbsp;&nbsp; Como lo prometido es deuda, de hoy en adelante actualizaré mas a menudo el blog, y para ello comenzaré con una entrada que había dejado algo pendiente. Hace poco explicaba <a href="http://carlitoxenlaweb.blogspot.com/2012/08/leer-archivos-xml-en-php.html">como leer archivos XML en PHP</a>, sin embargo nunca explique como guardarlos (crearlos), para ello solo hace falta unas líneas de código.<br>
+<br>
+&nbsp;&nbsp; Asumiendo que sabemos la estructura básica de un XML, tomaré como referencia el <a href="http://carlitoxenlaweb.blogspot.com/2012/08/leer-archivos-xml-en-php.html">ejemplo anterior</a>, lo primero es declarar el XML:<br>
+<div><div id="highlighter_972102" class="syntaxhighlighter  php"><div class="toolbar"><span><a href="http://carlitoxenlaweb.blogspot.com/2013/03/guardar-crear-xml-en-php.html#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="php variable">$xml</code> <code class="php plain">= </code><code class="php keyword">new</code> <code class="php plain">DomDocument(</code><code class="php string">'1.0'</code><code class="php plain">, </code><code class="php string">'UTF-8'</code><code class="php plain">);</code></div></div></td></tr></tbody></table></div></div>
+&nbsp;&nbsp; Podemos utilizar otras codificaciones, pero a <u><b>modo de ejemplo seguiremos con utf-8</b></u>. Luego de esto creamos el nodo principal o raíz:<br>
+<div><div id="highlighter_75554" class="syntaxhighlighter  php"><div class="toolbar"><span><a href="http://carlitoxenlaweb.blogspot.com/2013/03/guardar-crear-xml-en-php.html#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="php variable">$raiz</code> <code class="php plain">= </code><code class="php variable">$xml</code><code class="php plain">-&gt;createElement(</code><code class="php string">'raiz'</code><code class="php plain">);</code></div><div class="line number2 index1 alt1"><code class="php variable">$raiz</code> <code class="php plain">= </code><code class="php variable">$xml</code><code class="php plain">-&gt;appendChild(</code><code class="php variable">$raiz</code><code class="php plain">);</code></div></div></td></tr></tbody></table></div></div>
+&nbsp;&nbsp; Ahora solo nos queda rellenar dicho nodo con los sub-nodos consecuentes:<br>
+<div><div id="highlighter_994508" class="syntaxhighlighter  php"><div class="toolbar"><span><a href="http://carlitoxenlaweb.blogspot.com/2013/03/guardar-crear-xml-en-php.html#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="php variable">$nodo</code> <code class="php plain">= </code><code class="php variable">$xml</code><code class="php plain">-&gt;createElement(</code><code class="php string">'libro'</code><code class="php plain">);</code></div><div class="line number2 index1 alt1"><code class="php variable">$nodo</code> <code class="php plain">= </code><code class="php variable">$raiz</code><code class="php plain">-&gt;appendChild(</code><code class="php variable">$nodo</code><code class="php plain">);</code></div></div></td></tr></tbody></table></div></div>
+&nbsp;&nbsp; Como vemos, la forma de agregar nodos es básica y aplica para sub-nodos, por ejemplo:<br>
+<div><div id="highlighter_173041" class="syntaxhighlighter  php"><div class="toolbar"><span><a href="http://carlitoxenlaweb.blogspot.com/2013/03/guardar-crear-xml-en-php.html#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="php variable">$subnodo</code> <code class="php plain">= </code><code class="php variable">$xml</code><code class="php plain">-&gt;createElement(</code><code class="php string">'item'</code><code class="php plain">,</code><code class="php string">'texto dentro del item'</code><code class="php plain">);</code></div><div class="line number2 index1 alt1"><code class="php variable">$subnodo</code> <code class="php plain">= </code><code class="php variable">$nodo</code><code class="php plain">-&gt;appendChild(</code><code class="php variable">$subnodo</code><code class="php plain">);</code></div></div></td></tr></tbody></table></div></div>
+&nbsp;&nbsp; Una vez hecho esto nuestro código esta listo, solo falta volcarlo a un archivo físico:<br>
+<div><div id="highlighter_347002" class="syntaxhighlighter  php"><div class="toolbar"><span><a href="http://carlitoxenlaweb.blogspot.com/2013/03/guardar-crear-xml-en-php.html#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="php variable">$xml</code><code class="php plain">-&gt;formatOutput = true;</code></div><div class="line number2 index1 alt1"><code class="php variable">$xml</code><code class="php plain">-&gt;saveXML();</code></div><div class="line number3 index2 alt2"><code class="php variable">$xml</code><code class="php plain">-&gt;save(</code><code class="php string">'ruta/archivo.xml'</code><code class="php plain">);</code></div></div></td></tr></tbody></table></div></div>
+&nbsp;&nbsp; Aunque en esta parte podemos variar un poco, si queremos mostrar el XML tal cual como fue creado solo hace falta guardar la salida en una variable y utilizar la función <b><span style="color: #0b5394;">htmlentities</span> ($<span style="color: #cc0000;"> xml </span> )</b>:<br>
+<div><div id="highlighter_170640" class="syntaxhighlighter  php"><div class="toolbar"><span><a href="http://carlitoxenlaweb.blogspot.com/2013/03/guardar-crear-xml-en-php.html#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="php variable">$el_xml</code> <code class="php plain">= </code><code class="php variable">$xml</code><code class="php plain">-&gt;saveXML();</code></div><div class="line number2 index1 alt1"><code class="php functions">echo</code> <code class="php plain">htmlentities(</code><code class="php variable">$el_xml</code><code class="php plain">);</code></div></div></td></tr></tbody></table></div></div>
+&nbsp;&nbsp; Y si queremos no solo guardarlo, sino mostrarlo una vez finalice el proceso, podemos combinar ambas cosas y tener algo como esto:<br>
+<div><div id="highlighter_631539" class="syntaxhighlighter  php"><div class="toolbar"><span><a href="http://carlitoxenlaweb.blogspot.com/2013/03/guardar-crear-xml-en-php.html#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div><div class="line number18 index17 alt1">18</div><div class="line number19 index18 alt2">19</div><div class="line number20 index19 alt1">20</div><div class="line number21 index20 alt2">21</div><div class="line number22 index21 alt1">22</div><div class="line number23 index22 alt2">23</div><div class="line number24 index23 alt1">24</div><div class="line number25 index24 alt2">25</div><div class="line number26 index25 alt1">26</div><div class="line number27 index26 alt2">27</div><div class="line number28 index27 alt1">28</div><div class="line number29 index28 alt2">29</div><div class="line number30 index29 alt1">30</div><div class="line number31 index30 alt2">31</div><div class="line number32 index31 alt1">32</div><div class="line number33 index32 alt2">33</div><div class="line number34 index33 alt1">34</div><div class="line number35 index34 alt2">35</div><div class="line number36 index35 alt1">36</div><div class="line number37 index36 alt2">37</div><div class="line number38 index37 alt1">38</div><div class="line number39 index38 alt2">39</div><div class="line number40 index39 alt1">40</div><div class="line number41 index40 alt2">41</div><div class="line number42 index41 alt1">42</div><div class="line number43 index42 alt2">43</div><div class="line number44 index43 alt1">44</div><div class="line number45 index44 alt2">45</div><div class="line number46 index45 alt1">46</div><div class="line number47 index46 alt2">47</div><div class="line number48 index47 alt1">48</div><div class="line number49 index48 alt2">49</div><div class="line number50 index49 alt1">50</div><div class="line number51 index50 alt2">51</div><div class="line number52 index51 alt1">52</div><div class="line number53 index52 alt2">53</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="php plain">&lt;?php</code></div><div class="line number2 index1 alt1"><code class="php spaces">&nbsp;&nbsp;</code><code class="php plain">crear(); </code><code class="php comments">//Creamos el archivo</code></div><div class="line number3 index2 alt2"><code class="php spaces">&nbsp;&nbsp;</code><code class="php plain">leer();&nbsp; </code><code class="php comments">//Luego lo leemos</code></div><div class="line number4 index3 alt1">&nbsp;</div><div class="line number5 index4 alt2"><code class="php spaces">&nbsp;&nbsp;</code><code class="php comments">//Para crear el archivo</code></div><div class="line number6 index5 alt1"><code class="php spaces">&nbsp;&nbsp;</code><code class="php keyword">function</code> <code class="php plain">crear(){</code></div><div class="line number7 index6 alt2"><code class="php spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="php variable">$xml</code> <code class="php plain">= </code><code class="php keyword">new</code> <code class="php plain">DomDocument(</code><code class="php string">'1.0'</code><code class="php plain">, </code><code class="php string">'UTF-8'</code><code class="php plain">);</code></div><div class="line number8 index7 alt1">&nbsp;</div><div class="line number9 index8 alt2"><code class="php spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="php variable">$biblioteca</code> <code class="php plain">= </code><code class="php variable">$xml</code><code class="php plain">-&gt;createElement(</code><code class="php string">'biblioteca'</code><code class="php plain">);</code></div><div class="line number10 index9 alt1"><code class="php spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="php variable">$biblioteca</code> <code class="php plain">= </code><code class="php variable">$xml</code><code class="php plain">-&gt;appendChild(</code><code class="php variable">$biblioteca</code><code class="php plain">);</code></div><div class="line number11 index10 alt2">&nbsp;</div><div class="line number12 index11 alt1"><code class="php spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="php variable">$libro</code> <code class="php plain">= </code><code class="php variable">$xml</code><code class="php plain">-&gt;createElement(</code><code class="php string">'libro'</code><code class="php plain">);</code></div><div class="line number13 index12 alt2"><code class="php spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="php variable">$libro</code> <code class="php plain">= </code><code class="php variable">$biblioteca</code><code class="php plain">-&gt;appendChild(</code><code class="php variable">$libro</code><code class="php plain">);</code></div><div class="line number14 index13 alt1"><code class="php spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code>&nbsp;</div><div class="line number15 index14 alt2"><code class="php spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="php comments">// Agregar un atributo al libro</code></div><div class="line number16 index15 alt1"><code class="php spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="php variable">$libro</code><code class="php plain">-&gt;setAttribute(</code><code class="php string">'seccion'</code><code class="php plain">, </code><code class="php string">'favoritos'</code><code class="php plain">);</code></div><div class="line number17 index16 alt2">&nbsp;</div><div class="line number18 index17 alt1"><code class="php spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="php variable">$autor</code> <code class="php plain">= </code><code class="php variable">$xml</code><code class="php plain">-&gt;createElement(</code><code class="php string">'autor'</code><code class="php plain">,</code><code class="php string">'Paulo Coelho'</code><code class="php plain">);</code></div><div class="line number19 index18 alt2"><code class="php spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="php variable">$autor</code> <code class="php plain">= </code><code class="php variable">$libro</code><code class="php plain">-&gt;appendChild(</code><code class="php variable">$autor</code><code class="php plain">);</code></div><div class="line number20 index19 alt1">&nbsp;</div><div class="line number21 index20 alt2"><code class="php spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="php variable">$titulo</code> <code class="php plain">= </code><code class="php variable">$xml</code><code class="php plain">-&gt;createElement(</code><code class="php string">'titulo'</code><code class="php plain">,</code><code class="php string">'El Alquimista'</code><code class="php plain">);</code></div><div class="line number22 index21 alt1"><code class="php spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="php variable">$titulo</code> <code class="php plain">= </code><code class="php variable">$libro</code><code class="php plain">-&gt;appendChild(</code><code class="php variable">$titulo</code><code class="php plain">);</code></div><div class="line number23 index22 alt2">&nbsp;</div><div class="line number24 index23 alt1"><code class="php spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="php variable">$anio</code> <code class="php plain">= </code><code class="php variable">$xml</code><code class="php plain">-&gt;createElement(</code><code class="php string">'anio'</code><code class="php plain">,</code><code class="php string">'1988'</code><code class="php plain">);</code></div><div class="line number25 index24 alt2"><code class="php spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="php variable">$anio</code> <code class="php plain">= </code><code class="php variable">$libro</code><code class="php plain">-&gt;appendChild(</code><code class="php variable">$anio</code><code class="php plain">);</code></div><div class="line number26 index25 alt1">&nbsp;</div><div class="line number27 index26 alt2"><code class="php spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="php variable">$editorial</code> <code class="php plain">= </code><code class="php variable">$xml</code><code class="php plain">-&gt;createElement(</code><code class="php string">'editorial'</code><code class="php plain">,</code><code class="php string">'Maxico D.F. - Editorial Grijalbo'</code><code class="php plain">);</code></div><div class="line number28 index27 alt1"><code class="php spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="php variable">$editorial</code> <code class="php plain">= </code><code class="php variable">$libro</code><code class="php plain">-&gt;appendChild(</code><code class="php variable">$editorial</code><code class="php plain">);</code></div><div class="line number29 index28 alt2">&nbsp;</div><div class="line number30 index29 alt1"><code class="php spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="php variable">$xml</code><code class="php plain">-&gt;formatOutput = true;</code></div><div class="line number31 index30 alt2"><code class="php spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="php variable">$el_xml</code> <code class="php plain">= </code><code class="php variable">$xml</code><code class="php plain">-&gt;saveXML();</code></div><div class="line number32 index31 alt1"><code class="php spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="php variable">$xml</code><code class="php plain">-&gt;save(</code><code class="php string">'libros.xml'</code><code class="php plain">);</code></div><div class="line number33 index32 alt2">&nbsp;</div><div class="line number34 index33 alt1"><code class="php spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="php comments">//Mostramos el XML puro</code></div><div class="line number35 index34 alt2"><code class="php spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="php functions">echo</code> <code class="php string">"&lt;p&gt;&lt;b&gt;El XML ha sido creado.... Mostrando en texto plano:&lt;/b&gt;&lt;/p&gt;"</code><code class="php plain">.</code></div><div class="line number36 index35 alt1"><code class="php spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="php plain">htmlentities(</code><code class="php variable">$el_xml</code><code class="php plain">).</code><code class="php string">"&lt;br/&gt;&lt;hr&gt;"</code><code class="php plain">;</code></div><div class="line number37 index36 alt2"><code class="php spaces">&nbsp;&nbsp;</code><code class="php plain">}</code></div><div class="line number38 index37 alt1">&nbsp;</div><div class="line number39 index38 alt2"><code class="php spaces">&nbsp;&nbsp;</code><code class="php comments">//Para leerlo</code></div><div class="line number40 index39 alt1"><code class="php spaces">&nbsp;&nbsp;</code><code class="php keyword">function</code> <code class="php plain">leer(){</code></div><div class="line number41 index40 alt2"><code class="php spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="php functions">echo</code> <code class="php string">"&lt;p&gt;&lt;b&gt;Ahora mostrandolo con estilo&lt;/b&gt;&lt;/p&gt;"</code><code class="php plain">;</code></div><div class="line number42 index41 alt1"><code class="php spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="php variable">$xml</code> <code class="php plain">= simplexml_load_file(</code><code class="php string">'libros.xml'</code><code class="php plain">);</code></div><div class="line number43 index42 alt2"><code class="php spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="php variable">$salida</code> <code class="php plain">=</code><code class="php string">""</code><code class="php plain">;</code></div><div class="line number44 index43 alt1"><code class="php spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="php keyword">foreach</code><code class="php plain">(</code><code class="php variable">$xml</code><code class="php plain">-&gt;libro </code><code class="php keyword">as</code> <code class="php variable">$item</code><code class="php plain">){</code></div><div class="line number45 index44 alt2"><code class="php spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="php variable">$salida</code> <code class="php plain">.=</code></div><div class="line number46 index45 alt1"><code class="php spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="php string">"&lt;b&gt;Autor:&lt;/b&gt; "</code> <code class="php plain">. </code><code class="php variable">$item</code><code class="php plain">-&gt;autor . </code><code class="php string">"&lt;br/&gt;"</code><code class="php plain">.</code></div><div class="line number47 index46 alt2"><code class="php spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="php string">"&lt;b&gt;Título:&lt;/b&gt; "</code> <code class="php plain">. </code><code class="php variable">$item</code><code class="php plain">-&gt;titulo . </code><code class="php string">"&lt;br/&gt;"</code><code class="php plain">.</code></div><div class="line number48 index47 alt1"><code class="php spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="php string">"&lt;b&gt;Ano:&lt;/b&gt; "</code> <code class="php plain">. </code><code class="php variable">$item</code><code class="php plain">-&gt;anio . </code><code class="php string">"&lt;br/&gt;"</code><code class="php plain">.</code></div><div class="line number49 index48 alt2"><code class="php spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="php string">"&lt;b&gt;Editorial:&lt;/b&gt; "</code> <code class="php plain">. </code><code class="php variable">$item</code><code class="php plain">-&gt;editorial . </code><code class="php string">"&lt;br/&gt;&lt;hr/&gt;"</code><code class="php plain">;</code></div><div class="line number50 index49 alt1"><code class="php spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="php plain">}</code></div><div class="line number51 index50 alt2"><code class="php spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="php functions">echo</code> <code class="php variable">$salida</code><code class="php plain">;</code></div><div class="line number52 index51 alt1"><code class="php spaces">&nbsp;&nbsp;</code><code class="php plain">}</code></div><div class="line number53 index52 alt2"><code class="php plain">?&gt;</code></div></div></td></tr></tbody></table></div></div>
+</div>
+<div style="clear: both;"></div>
+<div class="sharepost">
+<ul>
+<li><a class="twitter" href="http://twitter.com/share?url=http://carlitoxenlaweb.blogspot.com/2013/03/guardar-crear-xml-en-php.html" rel="nofollow" target="_blank" title="Twitter Tweet"><i class="fa fa-twitter"></i>Tweet</a></li>
+<li><a class="facebook" href="http://www.facebook.com/sharer.php?u=http://carlitoxenlaweb.blogspot.com/2013/03/guardar-crear-xml-en-php.html" rel="nofollow" target="_blank" title="Facebook Share"><i class="fa fa-facebook"></i>Share</a></li>
+<li><a class="gplus" href="http://plus.google.com/share?url=http://carlitoxenlaweb.blogspot.com/2013/03/guardar-crear-xml-en-php.html" rel="nofollow" target="_blank" title="Google Plus Share"><i class="fa fa-google-plus"></i>Share</a></li>
+<li><a class="linkedin" href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http://carlitoxenlaweb.blogspot.com/2013/03/guardar-crear-xml-en-php.html&amp;title=Guardar%20/%20Crear%20XML%20en%20PHP&amp;summary=" target="_blank"><i class="fa fa-linkedin"></i>Share</a></li>
+<li><a class="pinterest" href="http://pinterest.com/pin/create/button/?url=http://carlitoxenlaweb.blogspot.com/2013/03/guardar-crear-xml-en-php.html&amp;media=https://3.bp.blogspot.com/-k0jgz84ah7Q/UTTakN1JiZI/AAAAAAAADx0/_MaRYfyezxM/s72-c/php-xml-480x480.jpg&amp;description=%20+%20data:post.title" target="_blank"><i class="fa fa-pinterest"></i>Share</a></li>
+</ul>
+</div>
+<div style="clear:both"></div>
+<div id="subs-and-redat">
+<div class="kotakleft">
+<div class="related-post" id="related-post"><h4>Relacionados</h4><ul class="related-post-style-1"><li><a title="Manipulando clases en PHP" href="http://carlitoxenlaweb.blogspot.com/2013/05/manipulando-clases-en-php.html">Manipulando clases en PHP</a></li><li><a title="Guardar / Crear XML en PHP" href="http://carlitoxenlaweb.blogspot.com/2013/03/guardar-crear-xml-en-php.html">Guardar / Crear XML en PHP</a></li><li><a title="Utilizando el API de Twitter con JavaScript" href="http://carlitoxenlaweb.blogspot.com/2013/09/utilizando-el-api-de-twitter-con.html">Utilizando el API de Twitter con JavaScript</a></li><li><a title="Generar XML a partir de SQL utilizando PHP" href="http://carlitoxenlaweb.blogspot.com/2013/04/generar-xml-partir-de-sql-utilizando-php.html">Generar XML a partir de SQL utilizando PHP</a></li><li><a title="Menu Activo con PHP" href="http://carlitoxenlaweb.blogspot.com/2010/12/menu-activo-con-php.html">Menu Activo con PHP</a></li></ul><span style="display:block;clear:both;"></span></div>
+<script type="text/javascript">
+  var labelArray = [
+          "HTML-XML",
+      
+          "PHP",
+      
+          "Programacion"
+      ];
+  var relatedPostConfig = {
+      homePage: "http://carlitoxenlaweb.blogspot.com/",
+      widgetTitle: "<h4>Relacionados</h4>",
+      numPosts: 5,
+      titleLength: "auto",
+      containerId: "related-post",
+      newTabLink: false,
+      widgetStyle: 1,
+      callBack: function() {}
+  };
+</script>
+<script src="./Guardar _ Crear XML en PHP - Carlitox en la Web_files/Related-post.js.descarga" type="text/javascript"></script>
+<div style="clear: both;"></div>
+</div>
+<div id="subscribe-css">
+<div class="subscribe-wrapper">
+<p>Recibe notificaciones por correo</p>
+<div class="subscribe-form">
+<form action="http://feedburner.google.com/fb/a/mailverify?uri=Revoltify" class="subscribe-form" method="post" onsubmit="window.open (&#39;http://feedburner.google.com/fb/a/mailverify?uri=Revoltify&#39;, &#39;popupwindow&#39;, &#39;scrollbars=yes,width=550,height=520&#39;);return true" target="popupwindow">
+<input name="uri" type="hidden" value="Revoltify"><input name="loc" type="hidden" value="en_US"><input autocomplete="off" class="subscribe-css-email-field" name="email" placeholder="Ingresa tu email"><input class="subscribe-css-email-button" title="" type="submit" value="Suscribirse"></form>
+</div>
+</div>
+</div>
+<div style="clear: both;"></div>
+</div>
+<div style="clear:both;"></div>
+</div>
+</article>
+<div class="halaman">
+<div class="blog-pager" id="blog-pager">
+<div class="halaman-kiri">
+<div class="isihalaman-kiri">
+<span id="blog-pager-newer-link">
+<span class="pager-title-left">Siguiente</span><br>
+<a class="blog-pager-newer-link" href="http://carlitoxenlaweb.blogspot.com/2013/03/crear-archivo-excel-en-java.html" id="Blog1_blog-pager-newer-link" title="Entrada más reciente">
+Crear archivo excel en Java
+</a>
+</span>
+</div>
+</div>
+<div class="halaman-kanan">
+<div class="isihalaman-kanan">
+<span id="blog-pager-older-link">
+<span class="pager-title-left">Anterior</span><br>
+<a class="blog-pager-older-link" href="http://carlitoxenlaweb.blogspot.com/2012/12/manipulando-pdfs-con-itext.html" id="Blog1_blog-pager-older-link" title="Entrada antigua">
+Manipulando PDFs con iText
+</a>
+</span>
+</div>
+</div>
+</div>
+<div style="clear: both;"></div>
+</div>
+<div class="comments" id="comments">
+<h3>
+10
+Comentarios
+</h3>
+<a class="click-comment" href="http://carlitoxenlaweb.blogspot.com/2013/03/guardar-crear-xml-en-php.html#comment-form" title="Comentarios">Escribir Comentario</a>
+<div class="clear"></div>
+<div id="comment_block">
+<div class="blog-admin pid-35561700" data-level="0" id="c2070894097662083007">
+
+                            <div class="comment_inner">
+      
+<div class="comment_body">
+<div class="comment_header">
+<div class="comment_avatar_wrap">
+</div>
+<div class="clear"></div>
+</div>
+<div class="comment_name">
+<a href="https://www.blogger.com/profile/11570498681956786585" rel="nofollow" target="_blank" title="Ricardo Cruz">Ricardo Cruz</a>
+<div class="comment_author_flag">AUTOR</div>
+</div>
+<span class="comment_service">
+<span class="comment_date"><a href="http://carlitoxenlaweb.blogspot.com/2013/03/guardar-crear-xml-en-php.html?showComment=1442782694563#c2070894097662083007" rel="nofollow" title="comment permalink">
+20 de septiembre de 2015, 16:58
+</a></span>
+<span class="item-control blog-admin pid-35561700">
+<a class="comment-delete" href="http://www.blogger.com/delete-comment.g?blogID=8283392410523373579&amp;postID=2070894097662083007" title="delete comment">delete</a>
+</span>
+</span>
+<p>Excelente información. Me serviría mucho para un sistema de ventas :) Gracias</p>
+<a class="comment_reply" href="http://carlitoxenlaweb.blogspot.com/2013/03/guardar-crear-xml-en-php.html#r_c2070894097662083007" id="rc2070894097662083007" onclick="javascript:Display_Reply_Form(this)" title="Responder Comentario">Responder</a>
+<div class="clear"></div>
+<div class="comment_avatar">
+<img alt="avatar" src="./Guardar _ Crear XML en PHP - Carlitox en la Web_files/unnamed(1).png" title="Ricardo Cruz">
+</div>
+</div>
+<div class="clear"></div>
+     </div>
+     <div class="clear"></div>
+<div class="comment_child"></div>
+<div class="comment_reply_form" id="r_f_c2070894097662083007"></div>
+</div>
+<div class="blog-admin pid-35561700" data-level="0" id="c373541668293209084">
+
+                            <div class="comment_inner">
+      
+<div class="comment_body">
+<div class="comment_header">
+<div class="comment_avatar_wrap">
+</div>
+<div class="clear"></div>
+</div>
+<div class="comment_name">
+<a href="https://www.blogger.com/profile/11570498681956786585" rel="nofollow" target="_blank" title="Ricardo Cruz">Ricardo Cruz</a>
+<div class="comment_author_flag">AUTOR</div>
+</div>
+<span class="comment_service">
+<span class="comment_date"><a href="http://carlitoxenlaweb.blogspot.com/2013/03/guardar-crear-xml-en-php.html?showComment=1444315889755#c373541668293209084" rel="nofollow" title="comment permalink">
+8 de octubre de 2015, 10:51
+</a></span>
+<span class="item-control blog-admin pid-35561700">
+<a class="comment-delete" href="http://www.blogger.com/delete-comment.g?blogID=8283392410523373579&amp;postID=373541668293209084" title="delete comment">delete</a>
+</span>
+</span>
+<p>Muchas gracias por la información</p>
+<a class="comment_reply" href="http://carlitoxenlaweb.blogspot.com/2013/03/guardar-crear-xml-en-php.html#r_c373541668293209084" id="rc373541668293209084" onclick="javascript:Display_Reply_Form(this)" title="Responder Comentario">Responder</a>
+<div class="clear"></div>
+<div class="comment_avatar">
+<img alt="avatar" src="./Guardar _ Crear XML en PHP - Carlitox en la Web_files/unnamed(1).png" title="Ricardo Cruz">
+</div>
+</div>
+<div class="clear"></div>
+     </div>
+     <div class="clear"></div>
+<div class="comment_child"></div>
+<div class="comment_reply_form" id="r_f_c373541668293209084"></div>
+</div>
+<div class="blog-admin pid-2053297330" data-level="0" id="c8514103455784750574">
+
+                            <div class="comment_inner">
+      
+<div class="comment_body">
+<div class="comment_header">
+<div class="comment_avatar_wrap">
+</div>
+<div class="clear"></div>
+</div>
+<div class="comment_name">
+<a href="https://www.blogger.com/profile/17869026358268790351" rel="nofollow" target="_blank" title="Adry jordison">Adry jordison</a>
+<div class="comment_author_flag">AUTOR</div>
+</div>
+<span class="comment_service">
+<span class="comment_date"><a href="http://carlitoxenlaweb.blogspot.com/2013/03/guardar-crear-xml-en-php.html?showComment=1454517850626#c8514103455784750574" rel="nofollow" title="comment permalink">
+3 de febrero de 2016, 12:44
+</a></span>
+<span class="item-control blog-admin pid-2053297330">
+<a class="comment-delete" href="http://www.blogger.com/delete-comment.g?blogID=8283392410523373579&amp;postID=8514103455784750574" title="delete comment">delete</a>
+</span>
+</span>
+<p>con jquery no podría hacerse en vez de DOM?</p>
+<a class="comment_reply" href="http://carlitoxenlaweb.blogspot.com/2013/03/guardar-crear-xml-en-php.html#r_c8514103455784750574" id="rc8514103455784750574" onclick="javascript:Display_Reply_Form(this)" title="Responder Comentario">Responder</a>
+<div class="clear"></div>
+<div class="comment_avatar">
+<img alt="avatar" src="./Guardar _ Crear XML en PHP - Carlitox en la Web_files/photo.jpg" title="Adry jordison">
+</div>
+</div>
+<div class="clear"></div>
+     </div>
+     <div class="clear"></div>
+<div class="comment_child"><div class="comment_wrap" id="c3994130622026437745" level="NaN">
+
+       <div class="comment_inner comment_admin">
+       
+<div class="comment_body">
+<div class="comment_header">
+<div class="comment_avatar_wrap">
+</div>
+<div class="clear"></div>
+</div>
+<div class="comment_name">
+<a href="https://www.blogger.com/profile/11261048200870306436" rel="nofollow" target="_blank" title="Carlos Martinez">Carlos Martinez</a>
+<div class="comment_author_flag">AUTOR</div>
+</div>
+<span class="comment_service">
+<span class="comment_date"><a href="http://carlitoxenlaweb.blogspot.com/2013/03/guardar-crear-xml-en-php.html?showComment=1456938414022#c3994130622026437745" rel="nofollow" title="comment permalink">
+2 de marzo de 2016, 13:06
+</a></span>
+<span class="item-control blog-admin pid-2076244402">
+<a class="comment-delete" href="http://www.blogger.com/delete-comment.g?blogID=8283392410523373579&amp;postID=3994130622026437745" title="delete comment">delete</a>
+</span>
+</span>
+<p>Si, pudieras leerlo con jQuery sin problemas, es solo un ejemplo utilizando PHP.</p>
+<a class="comment_reply" href="http://carlitoxenlaweb.blogspot.com/2013/03/guardar-crear-xml-en-php.html#r_c3994130622026437745" id="rc3994130622026437745" onclick="javascript:Display_Reply_Form(this)" title="Responder Comentario">Responder</a>
+<div class="clear"></div>
+<div class="comment_avatar">
+<img alt="avatar" src="./Guardar _ Crear XML en PHP - Carlitox en la Web_files/photo(1).jpg" title="Carlos Martinez">
+</div>
+</div>
+<div class="clear"></div>
+     </div>
+     <div class="clear"></div>
+<div class="comment_child"></div>
+<div class="comment_reply_form" id="r_f_c3994130622026437745"></div>
+</div></div>
+<div class="comment_reply_form" id="r_f_c8514103455784750574"></div>
+</div>
+
+<div class="blog-admin pid-957457410" data-level="0" id="c8043083886082736712">
+
+                            <div class="comment_inner">
+      
+<div class="comment_body">
+<div class="comment_header">
+<div class="comment_avatar_wrap">
+</div>
+<div class="clear"></div>
+</div>
+<div class="comment_name">
+<a href="https://www.blogger.com/profile/05450263358890497225" rel="nofollow" target="_blank" title="Andres Condo">Andres Condo</a>
+<div class="comment_author_flag">AUTOR</div>
+</div>
+<span class="comment_service">
+<span class="comment_date"><a href="http://carlitoxenlaweb.blogspot.com/2013/03/guardar-crear-xml-en-php.html?showComment=1472828011029#c8043083886082736712" rel="nofollow" title="comment permalink">
+2 de septiembre de 2016, 10:53
+</a></span>
+<span class="item-control blog-admin pid-957457410">
+<a class="comment-delete" href="http://www.blogger.com/delete-comment.g?blogID=8283392410523373579&amp;postID=8043083886082736712" title="delete comment">delete</a>
+</span>
+</span>
+<p>Buen aporte, pero como seria de ponerle atributos a las etiquetas ejemplo  e probado con esto $xml-&gt;writeAttribute('version', '1.0'); pero me da error.</p>
+<a class="comment_reply" href="http://carlitoxenlaweb.blogspot.com/2013/03/guardar-crear-xml-en-php.html#r_c8043083886082736712" id="rc8043083886082736712" onclick="javascript:Display_Reply_Form(this)" title="Responder Comentario">Responder</a>
+<div class="clear"></div>
+<div class="comment_avatar">
+<img alt="avatar" src="./Guardar _ Crear XML en PHP - Carlitox en la Web_files/photo(2).jpg" title="Andres Condo">
+</div>
+</div>
+<div class="clear"></div>
+     </div>
+     <div class="clear"></div>
+<div class="comment_child"><div class="comment_wrap" id="c8816277913975650435" level="NaN">
+
+       <div class="comment_inner comment_admin">
+       
+<div class="comment_body">
+<div class="comment_header">
+<div class="comment_avatar_wrap">
+</div>
+<div class="clear"></div>
+</div>
+<div class="comment_name">
+<a href="https://www.blogger.com/profile/11261048200870306436" rel="nofollow" target="_blank" title="Carlos Martinez">Carlos Martinez</a>
+<div class="comment_author_flag">AUTOR</div>
+</div>
+<span class="comment_service">
+<span class="comment_date"><a href="http://carlitoxenlaweb.blogspot.com/2013/03/guardar-crear-xml-en-php.html?showComment=1473284058068#c8816277913975650435" rel="nofollow" title="comment permalink">
+7 de septiembre de 2016, 17:34
+</a></span>
+<span class="item-control blog-admin pid-2076244402">
+<a class="comment-delete" href="http://www.blogger.com/delete-comment.g?blogID=8283392410523373579&amp;postID=8816277913975650435" title="delete comment">delete</a>
+</span>
+</span>
+<p>Siguiendo con el ejemplo coloca justo después de agregar el libro a la biblioteca (append) lo siguiente: $libro-&gt;setAttribute('seccion', 'favoritos');... Igual ya he modificado el post, gracias por el comentario!</p>
+<a class="comment_reply" href="http://carlitoxenlaweb.blogspot.com/2013/03/guardar-crear-xml-en-php.html#r_c8816277913975650435" id="rc8816277913975650435" onclick="javascript:Display_Reply_Form(this)" title="Responder Comentario">Responder</a>
+<div class="clear"></div>
+<div class="comment_avatar">
+<img alt="avatar" src="./Guardar _ Crear XML en PHP - Carlitox en la Web_files/photo(1).jpg" title="Carlos Martinez">
+</div>
+</div>
+<div class="clear"></div>
+     </div>
+     <div class="clear"></div>
+<div class="comment_child"></div>
+<div class="comment_reply_form" id="r_f_c8816277913975650435"></div>
+</div></div>
+<div class="comment_reply_form" id="r_f_c8043083886082736712"></div>
+</div>
+
+<div class="blog-admin pid-1309048649" data-level="0" id="c9198185528495240234">
+
+                            <div class="comment_inner">
+      
+<div class="comment_body">
+<div class="comment_header">
+<div class="comment_avatar_wrap">
+</div>
+<div class="clear"></div>
+</div>
+<div class="comment_name">
+<a href="https://www.blogger.com/profile/05775114419827797980" rel="nofollow" target="_blank" title="Fernando Rodriguez">Fernando Rodriguez</a>
+<div class="comment_author_flag">AUTOR</div>
+</div>
+<span class="comment_service">
+<span class="comment_date"><a href="http://carlitoxenlaweb.blogspot.com/2013/03/guardar-crear-xml-en-php.html?showComment=1496260715520#c9198185528495240234" rel="nofollow" title="comment permalink">
+31 de mayo de 2017, 15:58
+</a></span>
+<span class="item-control blog-admin pid-1309048649">
+<a class="comment-delete" href="http://www.blogger.com/delete-comment.g?blogID=8283392410523373579&amp;postID=9198185528495240234" title="delete comment">delete</a>
+</span>
+</span>
+<p>Me ha servido el codigo tal cual esta. Gracias por el aporte</p>
+<a class="comment_reply" href="http://carlitoxenlaweb.blogspot.com/2013/03/guardar-crear-xml-en-php.html#r_c9198185528495240234" id="rc9198185528495240234" onclick="javascript:Display_Reply_Form(this)" title="Responder Comentario">Responder</a>
+<div class="clear"></div>
+<div class="comment_avatar">
+<img alt="avatar" src="./Guardar _ Crear XML en PHP - Carlitox en la Web_files/unnamed(1).png" title="Fernando Rodriguez">
+</div>
+</div>
+<div class="clear"></div>
+     </div>
+     <div class="clear"></div>
+<div class="comment_child"></div>
+<div class="comment_reply_form" id="r_f_c9198185528495240234"></div>
+</div>
+<div class="blog-admin pid-46738010" data-level="0" id="c8578441368551707577">
+
+                            <div class="comment_inner">
+      
+<div class="comment_body">
+<div class="comment_header">
+<div class="comment_avatar_wrap">
+</div>
+<div class="clear"></div>
+</div>
+<div class="comment_name">
+<a href="https://www.blogger.com/profile/15373507689339204451" rel="nofollow" target="_blank" title="Bryan Rios">Bryan Rios</a>
+<div class="comment_author_flag">AUTOR</div>
+</div>
+<span class="comment_service">
+<span class="comment_date"><a href="http://carlitoxenlaweb.blogspot.com/2013/03/guardar-crear-xml-en-php.html?showComment=1504821416575#c8578441368551707577" rel="nofollow" title="comment permalink">
+7 de septiembre de 2017, 17:56
+</a></span>
+<span class="item-control blog-admin pid-46738010">
+<a class="comment-delete" href="http://www.blogger.com/delete-comment.g?blogID=8283392410523373579&amp;postID=8578441368551707577" title="delete comment">delete</a>
+</span>
+</span>
+<p>gracias buen tutorial</p>
+<a class="comment_reply" href="http://carlitoxenlaweb.blogspot.com/2013/03/guardar-crear-xml-en-php.html#r_c8578441368551707577" id="rc8578441368551707577" onclick="javascript:Display_Reply_Form(this)" title="Responder Comentario">Responder</a>
+<div class="clear"></div>
+<div class="comment_avatar">
+<img alt="avatar" src="./Guardar _ Crear XML en PHP - Carlitox en la Web_files/photo(3).jpg" title="Bryan Rios">
+</div>
+</div>
+<div class="clear"></div>
+     </div>
+     <div class="clear"></div>
+<div class="comment_child"></div>
+<div class="comment_reply_form" id="r_f_c8578441368551707577"></div>
+</div>
+<div class="blog-admin pid-1224522506" data-level="0" id="c8311981174651612088">
+
+                            <div class="comment_inner">
+      
+<div class="comment_body">
+<div class="comment_header">
+<div class="comment_avatar_wrap">
+</div>
+<div class="clear"></div>
+</div>
+<div class="comment_name">
+<a href="https://www.blogger.com/profile/08573776382771149784" rel="nofollow" target="_blank" title="sdsds">sdsds</a>
+<div class="comment_author_flag">AUTOR</div>
+</div>
+<span class="comment_service">
+<span class="comment_date"><a href="http://carlitoxenlaweb.blogspot.com/2013/03/guardar-crear-xml-en-php.html?showComment=1526516659629#c8311981174651612088" rel="nofollow" title="comment permalink">
+16 de mayo de 2018, 20:24
+</a></span>
+<span class="item-control blog-admin pid-1224522506">
+<a class="comment-delete" href="http://www.blogger.com/delete-comment.g?blogID=8283392410523373579&amp;postID=8311981174651612088" title="delete comment">delete</a>
+</span>
+</span>
+<p>el atributo standalone="no" de xml como lo puedo ingresar ?</p>
+<a class="comment_reply" href="http://carlitoxenlaweb.blogspot.com/2013/03/guardar-crear-xml-en-php.html#r_c8311981174651612088" id="rc8311981174651612088" onclick="javascript:Display_Reply_Form(this)" title="Responder Comentario">Responder</a>
+<div class="clear"></div>
+<div class="comment_avatar">
+<img alt="avatar" src="./Guardar _ Crear XML en PHP - Carlitox en la Web_files/unnamed(1).png" title="sdsds">
+</div>
+</div>
+<div class="clear"></div>
+     </div>
+     <div class="clear"></div>
+<div class="comment_child"></div>
+<div class="comment_reply_form" id="r_f_c8311981174651612088"></div>
+</div>
+<div class="blog-admin pid-309113415" data-level="0" id="c8644973188471841794">
+
+                            <div class="comment_inner">
+      
+<div class="comment_body">
+<div class="comment_header">
+<div class="comment_avatar_wrap">
+</div>
+<div class="clear"></div>
+</div>
+<div class="comment_name">
+<a href="http://www.carlitoxenlaweb.com/" rel="nofollow" target="_blank" title="Carlos Martinez">Carlos Martinez</a>
+<div class="comment_author_flag">AUTOR</div>
+</div>
+<span class="comment_service">
+<span class="comment_date"><a href="http://carlitoxenlaweb.blogspot.com/2013/03/guardar-crear-xml-en-php.html?showComment=1527623578245#c8644973188471841794" rel="nofollow" title="comment permalink">
+29 de mayo de 2018, 15:52
+</a></span>
+<span class="item-control blog-admin pid-309113415">
+<a class="comment-delete" href="http://www.blogger.com/delete-comment.g?blogID=8283392410523373579&amp;postID=8644973188471841794" title="delete comment">delete</a>
+</span>
+</span>
+<p>Debido a que es una propiedad lo puedes setear de la siguiente forma:<br>$xml-&gt;xmlStandalone = false;</p>
+<a class="comment_reply" href="http://carlitoxenlaweb.blogspot.com/2013/03/guardar-crear-xml-en-php.html#r_c8644973188471841794" id="rc8644973188471841794" onclick="javascript:Display_Reply_Form(this)" title="Responder Comentario">Responder</a>
+<div class="clear"></div>
+<div class="comment_avatar">
+<img alt="avatar" src="./Guardar _ Crear XML en PHP - Carlitox en la Web_files/blank(1).gif" title="Carlos Martinez">
+</div>
+</div>
+<div class="clear"></div>
+     </div>
+     <div class="clear"></div>
+<div class="comment_child"></div>
+<div class="comment_reply_form" id="r_f_c8644973188471841794"></div>
+</div>
+</div>
+<div class="clear"></div>
+<div class="clear"></div>
+<div class="comment_form" id="comment-form">
+<div class="comment-form">
+<div id="form-wrapper">
+<div id="threaded-comment-form">
+<p>Lamentablemente hay muchos usuarios en la red que han llegado al blog para escribir obscenidades, así que la moderación se hace necesaria. Recuerda utilizar un lenguaje correcto y espera a que sea aprobado.<br><br>Si necesitas publicar código haz click en "Conversión" para hacerlo legible.<br>
+<span class="small-button">
+<span id="show-konversi"><a class="konversi-button" href="javascript:void(0)" onclick="document.getElementById(&#39;konversi-box&#39;).style.display=&#39;inline-block&#39;;document.getElementById(&#39;hide-konversi&#39;).style.display=&#39;inline-block&#39;;document.getElementById(&#39;show-konversi&#39;).style.display=&#39;none&#39;" title="Mostrar Caja de Código">Conversión</a></span><span id="hide-konversi"><a class="konversi-button" href="javascript:void(0)" onclick="document.getElementById(&#39;konversi-box&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;hide-konversi&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;show-konversi&#39;).style.display=&#39;inline-block&#39;" title="Ocultar Caja de Código">Conversión</a></span>
+</span>
+</p>
+<div id="konversi-box">
+<textarea id="codes" placeholder="Escribe/pega el código y luego haz click en &#39;Codificar&#39;" spellcheck="false"></textarea>
+<span class="button-group">
+<button id="cvrt" onclick="cdConvert();this.disabled = true;">Codificar</button>
+<button onclick="cdClear();">Limpiar</button>
+</span>
+<span class="checkbox">
+<input checked="" id="opt1" type="checkbox">
+<input id="opt2" type="checkbox">
+<input id="opt3" type="checkbox">
+<input checked="" id="opt4" type="checkbox">
+<input checked="" id="opt5" type="checkbox"></span>
+</div>
+<div id="emo-box">
+<div class="comment_emo_list"></div>
+</div>
+<a href="http://www.blogger.com/comment-iframe.g?blogID=8283392410523373579&amp;postID=6163171198060302592&amp;blogspotRpcToken=6453992" id="comment-editor-src" title="comment editor"></a>
+<iframe class="blogger-iframe-colorize blogger-comment-from-post" height="194px" id="comment-editor" name="comment-editor" src="./Guardar _ Crear XML en PHP - Carlitox en la Web_files/comment-iframe.html" data-resized="true"></iframe>
+</div>
+</div>
+<!--Can't find substitution for tag [post.friendConnectJs]-->
+<script src="./Guardar _ Crear XML en PHP - Carlitox en la Web_files/2567313873-comment_from_post_iframe.js.descarga" type="text/javascript"></script>
+<script type="text/javascript">
+      BLOG_CMT_createIframe('https://www.blogger.com/rpc_relay.html', '0');
+    </script>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+       //<![CDATA[
+       if (typeof(jQuery) == 'undefined') {
+ //output the script (load it from google api)
+ document.write("<scr" + "ipt type=\"text/javascript\" src=\"http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js\"></scr" + "ipt>");
+}
+       //]]>
+       </script>
+<script async="async" src="./Guardar _ Crear XML en PHP - Carlitox en la Web_files/comments.js.descarga" type="text/javascript"></script>
+<script type="text/javascript">
+      
+         
+         var Items = [{'id': '2070894097662083007', 'body': 'Excelente información. Me serviría mucho para un sistema de ventas :) Gracias', 'timestamp': '1442782694563', 'permalink': 'http://carlitoxenlaweb.blogspot.com/2013/03/guardar-crear-xml-en-php.html?showComment\x3d1442782694563#c2070894097662083007', 'author': {'name': 'Ricardo Cruz', 'avatarUrl': '//lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA\x3ds35', 'profileUrl': 'https://www.blogger.com/profile/11570498681956786585'}, 'displayTime': '20 de septiembre de 2015, 16:58', 'deleteclass': 'item-control blog-admin pid-35561700'}, {'id': '373541668293209084', 'body': 'Muchas gracias por la información', 'timestamp': '1444315889755', 'permalink': 'http://carlitoxenlaweb.blogspot.com/2013/03/guardar-crear-xml-en-php.html?showComment\x3d1444315889755#c373541668293209084', 'author': {'name': 'Ricardo Cruz', 'avatarUrl': '//lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA\x3ds35', 'profileUrl': 'https://www.blogger.com/profile/11570498681956786585'}, 'displayTime': '8 de octubre de 2015, 10:51', 'deleteclass': 'item-control blog-admin pid-35561700'}, {'id': '8514103455784750574', 'body': 'con jquery no podría hacerse en vez de DOM?', 'timestamp': '1454517850626', 'permalink': 'http://carlitoxenlaweb.blogspot.com/2013/03/guardar-crear-xml-en-php.html?showComment\x3d1454517850626#c8514103455784750574', 'author': {'name': 'Adry jordison', 'avatarUrl': '//lh4.googleusercontent.com/-LbnzEQwRB4E/AAAAAAAAAAI/AAAAAAAAAHs/KPVIIeXf-1g/s35-c/photo.jpg', 'profileUrl': 'https://www.blogger.com/profile/17869026358268790351'}, 'displayTime': '3 de febrero de 2016, 12:44', 'deleteclass': 'item-control blog-admin pid-2053297330'}, {'id': '3994130622026437745', 'parentId': '8514103455784750574', 'body': 'Si, pudieras leerlo con jQuery sin problemas, es solo un ejemplo utilizando PHP.', 'timestamp': '1456938414022', 'permalink': 'http://carlitoxenlaweb.blogspot.com/2013/03/guardar-crear-xml-en-php.html?showComment\x3d1456938414022#c3994130622026437745', 'author': {'name': 'Carlos Martinez', 'avatarUrl': '//lh3.googleusercontent.com/-7ORWDTchYpE/AAAAAAAAAAI/AAAAAAAAFZc/LYmdjDmql4k/s35-c/photo.jpg', 'profileUrl': 'https://www.blogger.com/profile/11261048200870306436'}, 'displayTime': '2 de marzo de 2016, 13:06', 'deleteclass': 'item-control blog-admin pid-2076244402'}, {'id': '8043083886082736712', 'body': 'Buen aporte, pero como seria de ponerle atributos a las etiquetas ejemplo  e probado con esto $xml-\x26gt;writeAttribute(\x26#39;version\x26#39;, \x26#39;1.0\x26#39;); pero me da error.', 'timestamp': '1472828011029', 'permalink': 'http://carlitoxenlaweb.blogspot.com/2013/03/guardar-crear-xml-en-php.html?showComment\x3d1472828011029#c8043083886082736712', 'author': {'name': 'Andres Condo', 'avatarUrl': '//lh3.googleusercontent.com/-7mZcRgQsJZU/AAAAAAAAAAI/AAAAAAAAACo/lskuFvq2iQQ/s35-c/photo.jpg', 'profileUrl': 'https://www.blogger.com/profile/05450263358890497225'}, 'displayTime': '2 de septiembre de 2016, 10:53', 'deleteclass': 'item-control blog-admin pid-957457410'}, {'id': '8816277913975650435', 'parentId': '8043083886082736712', 'body': 'Siguiendo con el ejemplo coloca justo después de agregar el libro a la biblioteca (append) lo siguiente: $libro-\x26gt;setAttribute(\x26#39;seccion\x26#39;, \x26#39;favoritos\x26#39;);... Igual ya he modificado el post, gracias por el comentario!', 'timestamp': '1473284058068', 'permalink': 'http://carlitoxenlaweb.blogspot.com/2013/03/guardar-crear-xml-en-php.html?showComment\x3d1473284058068#c8816277913975650435', 'author': {'name': 'Carlos Martinez', 'avatarUrl': '//lh3.googleusercontent.com/-7ORWDTchYpE/AAAAAAAAAAI/AAAAAAAAFZc/LYmdjDmql4k/s35-c/photo.jpg', 'profileUrl': 'https://www.blogger.com/profile/11261048200870306436'}, 'displayTime': '7 de septiembre de 2016, 17:34', 'deleteclass': 'item-control blog-admin pid-2076244402'}, {'id': '9198185528495240234', 'body': 'Me ha servido el codigo tal cual esta. Gracias por el aporte', 'timestamp': '1496260715520', 'permalink': 'http://carlitoxenlaweb.blogspot.com/2013/03/guardar-crear-xml-en-php.html?showComment\x3d1496260715520#c9198185528495240234', 'author': {'name': 'Fernando Rodriguez', 'avatarUrl': '//lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA\x3ds35', 'profileUrl': 'https://www.blogger.com/profile/05775114419827797980'}, 'displayTime': '31 de mayo de 2017, 15:58', 'deleteclass': 'item-control blog-admin pid-1309048649'}, {'id': '8578441368551707577', 'body': 'gracias buen tutorial', 'timestamp': '1504821416575', 'permalink': 'http://carlitoxenlaweb.blogspot.com/2013/03/guardar-crear-xml-en-php.html?showComment\x3d1504821416575#c8578441368551707577', 'author': {'name': 'Bryan Rios', 'avatarUrl': '//lh3.googleusercontent.com/-4iOm0YYYOuc/AAAAAAAAAAI/AAAAAAAAAeg/3GtAgh3dXC8/s35-c/photo.jpg', 'profileUrl': 'https://www.blogger.com/profile/15373507689339204451'}, 'displayTime': '7 de septiembre de 2017, 17:56', 'deleteclass': 'item-control blog-admin pid-46738010'}, {'id': '8311981174651612088', 'body': 'el atributo standalone\x3d\x26quot;no\x26quot; de xml como lo puedo ingresar ?', 'timestamp': '1526516659629', 'permalink': 'http://carlitoxenlaweb.blogspot.com/2013/03/guardar-crear-xml-en-php.html?showComment\x3d1526516659629#c8311981174651612088', 'author': {'name': 'sdsds', 'avatarUrl': '//lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA\x3ds35', 'profileUrl': 'https://www.blogger.com/profile/08573776382771149784'}, 'displayTime': '16 de mayo de 2018, 20:24', 'deleteclass': 'item-control blog-admin pid-1224522506'}, {'id': '8644973188471841794', 'body': 'Debido a que es una propiedad lo puedes setear de la siguiente forma:\x3cbr /\x3e$xml-\x26gt;xmlStandalone \x3d false;', 'timestamp': '1527623578245', 'permalink': 'http://carlitoxenlaweb.blogspot.com/2013/03/guardar-crear-xml-en-php.html?showComment\x3d1527623578245#c8644973188471841794', 'author': {'name': 'Carlos Martinez', 'avatarUrl': '//img1.blogblog.com/img/blank.gif', 'profileUrl': 'http://www.carlitoxenlaweb.com/'}, 'displayTime': '29 de mayo de 2018, 15:52', 'deleteclass': 'item-control blog-admin pid-309113415'}];
+         var Msgs = {'loadMore': 'Cargar más...', 'loading': 'Cargando...', 'loaded': 'Ya no hay más', 'addComment': 'Añadir comentario', 'reply': 'Responder', 'delete': 'Eliminar'};
+         var Config = {'blogId': '8283392410523373579', 'postId': '6163171198060302592', 'feed': 'http://carlitoxenlaweb.blogspot.com/feeds/6163171198060302592/comments/default', 'authorName': 'Carlos Martinez', 'authorUrl': 'https://www.blogger.com/profile/11261048200870306436', 'baseUri': 'https://www.blogger.com', 'maxThreadDepth': 2};
+        
+       //<![CDATA[
+       //Global setting
+        Config.maxThreadDepth = 3;//Kedalaman tingkat threaded comment
+        Display_Emo = false;//Tampilkan emoticon? ketik "false" untuk menyembunyikan
+        Replace_Youtube_Link = false;//Embed video YouTube, ketik "false" untuk mendisable
+        Replace_Image_Link = false;//Auto replace link image,  ketik "false" untuk mendisable.
+        Replace_Force_Tag = false;//Auto replace virtual tag contoh: [pre] menjadi <pre>, dan [/pre] menjadi </pre>, apabila salah menulis, tidak akan berfungsi
+        Replace_Image_Ext = ['JPG', 'GIF', 'PNG', 'BMP'];//(support: jpg, gif, png, bmp),hanya berfungsi apabila Replace_Image_Link=true
+      
+        //Pengaturan Emoticon
+        Emo_List = [
+        ':)'  ,'http://4.bp.blogspot.com/-YrmTHhfMtFU/VJNbpDMHzgI/AAAAAAAAH8c/g3dJ1Q-QTrc/s1600/smile.png',
+        ':('  ,'http://4.bp.blogspot.com/-RDtah-TXteU/VJNblptXyEI/AAAAAAAAH70/GGZg4MMUVxA/s1600/sad.png',
+        ' =('  ,'http://1.bp.blogspot.com/-dzENpgankUY/VJNbcfrM59I/AAAAAAAAH6A/UC7FJQwT-9E/s1600/disappointed.png',
+        '^_^'  ,'http://2.bp.blogspot.com/-eeLWBWx7zaI/VJNbnR-JhoI/AAAAAAAAH8E/4vUZ3j_GoEg/s1600/shy.png',
+        ' :D'  ,'http://2.bp.blogspot.com/-rvM5sSYqd2k/VJNbjkemjyI/AAAAAAAAH7k/QcT_8JETczs/s1600/noprob.png',
+        '=D'  ,'http://1.bp.blogspot.com/-DB0TS3jw6n8/VJNbgab1A_I/AAAAAAAAH7I/4Cr8aYd6AmU/s1600/happy.png',
+        '=)D' ,'http://1.bp.blogspot.com/-mz0Rl1l5ZYw/VJNbm0HqcDI/AAAAAAAAH8I/yu8XBAQmYOI/s1600/shit.png',
+        '|o|'  ,'http://3.bp.blogspot.com/-i5w-i1jFe0U/VJNbaQxedgI/AAAAAAAAH5o/z7LK9qxEebs/s1600/clap.png',
+        '@@,'  ,'http://2.bp.blogspot.com/-lbZ9iDF66F8/VJNbqSG8yNI/AAAAAAAAH9A/bnAQmQrrrZo/s1600/surprise.png',
+        ' ;)'  ,'http://1.bp.blogspot.com/-Q--_b4-u1ZY/VJNbrI3A3LI/AAAAAAAAH8w/xshqjz4f3cs/s1600/trope.png',
+        ':-bd'  ,'http://3.bp.blogspot.com/-_lM3w2ZD7K8/VJNbiIf2PII/AAAAAAAAH7g/U5qLOVDZg8c/s1600/like.png',
+        ':-d'  ,'http://4.bp.blogspot.com/-EdvYpWDdZPI/VJNbc2J75FI/AAAAAAAAH6I/kcpuLO7TXFg/s1600/dislike.png',
+        ' :p'  ,'http://4.bp.blogspot.com/-Y2KF1cqsEiQ/VJNbolnNw1I/AAAAAAAAH8Y/mzpdmmt9lp4/s1600/sigh.png',
+        ':ng'  ,'http://2.bp.blogspot.com/-A_W5lI-_J8I/VJNbi2oXwjI/AAAAAAAAH7c/wlxM7CETbhI/s1600/love.png',   
+        ];
+      
+                             
+                                //Config Force tag list, define all in lower case
+                                Force_Tag = [
+                                    '[pre]','<pre>',
+                                    '[/pre]','</pre>',
+                                    '<pre class="brush: plain; title: ; notranslate" title="">','&lt;code&gt;',
+                                    '</pre>','</code>'
+                                ];
+    
+eval(function(p,a,c,k,e,r){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)r[e(c)]=k[c]||e(c);k=[function(e){return r[e]}];e=function(){return'\\w+'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('3 o=\'.1c\';3 1b=$(\'#O-19\').G(\'A\');u 1l(F){3 1j=\' \\n\\r\\t\\f\\1D\\1G\\1F\\1E\\2l\\2k\\2i\\2f\\2c\\26\\25\\23\\1Y\\1S\\1N\\1L\\1H\\2v\\1M\\2p\\24\\22\\1R\';E(3 i=0;i<F.5;i++){9(1j.d(F.1Q(i))!=-1){F=F.b(0,i);11}}z F}$(\'#1P .1i p\').j(u(y,7){9(1J){3 l=\'1v://13.V.W/1y?v=\';3 8=7.d(l);D(8!=-1){1d=7.b(8);J=1l(1d);3 X=J.d(\'&\');3 N=\'\';9(X==-1){N=J.b(l.5)}Y{N=J.b(l.5,X)}3 1r=\'<1u B="1T" A="1v://13.V.W/1U/\'+N+\'?1V=1" 1W="0" 2w></1u>\';7=7.b(0,8)+1r+7.b(8+J.5);8=7.d(l);9(8==-1){l=\'1Z://13.V.W/1y?v=\';8=7.d(l)}}}9(21){3 Z=\'\';3 s=7;E(3 i=0;i<1w.5;i++){3 l=\'.\'+1w[i];3 m=s.C();3 8=m.d(l);D(8!=-1){k=s.b(0,8+l.5);m=k.C();3 q=\'2h://\';3 w=m.d(q);3 I=\'\';D(w!=-1){I=q.M();k=k.b(w+q.5);m=k.C();w=m.d(q)}q=\'2n://\';m=k.C();w=m.d(q);D(w!=-1){I=q.M();k=k.b(w+q.5);m=k.C();w=m.d(q)}9(I==\'\'||k.5<6){11}k=I+k;Z+=s.b(0,8+l.5-k.5)+\'<10 A="\'+k+\'" B="2r"/>\';s=s.b(8+l.5);m=s.C();8=m.d(l)}}7=Z+s}9(1A){3 5=x.5;9(5%2==1){5--}E(3 i=0;i<5;i+=2){3 S=\'<10 A="\'+x[i+1]+\'" B="1B"/>\';8=7.d(x[i]);D(8!=-1){7=7.b(0,8)+S+7.b(8+x[i].5);8=7.d(x[i])}}}9(1I){3 5=R.5;9(5%2==1){5--}E(3 i=0;i<5;i+=2){D(1){3 s=7.M();8=s.d(R[i]);9(8!=-1){7=7.b(0,8)+R[i+1]+7.b(8+R[i].5)}Y{11}}}}z 7});$(\'.1K\').j(u(y,7){9(1A){3 5=x.5;9(5%2==1){5--}3 12=\'\';E(3 i=0;i<5;i+=2){3 1e=\'<1f>\'+x[i]+\'</1f>\';3 S=\'<10 A="\'+x[i+1]+\'" B="1B"/>\';12+=\'<Q B="1O">\'+S+1e+\'</Q>\'}z 12}});$(\'.1g .1i p\').j(u(i,h){T=h.M();y=T.d(\'@<a U="#c\');9(y!=-1){14=T.d(\'</a>\',y);9(14!=-1){h=h.b(0,y)+h.b(14+4)}}z h});u 1k(g){r=g.d(\'c\');9(r!=-1)g=g.b(r+1);z g}u 1m(g){g=\'&1X=\'+g+\'#%1n\';1o=1b.20(/#%1n/,g);z 1o}u 1p(){j=$(o).j();$(o).j(\'\');o=\'.1c\';$(o).j(j);$(\'#O-19\').G(\'A\',1b)}u 1q(e){g=$(e).G(\'15\');g=1k(g);j=$(o).j();9(o==\'.1c\'){1s=\'<a U="#1t" 27="1p()">\'+28.29+\'</a><a 2a="1t"/>\';$(o).j(1s)}Y{$(o).j(\'\')}o=\'#2b\'+g;$(o).j(j);$(\'#O-19\').G(\'A\',1m(g))}16=2d.2e.U;17=\'#O-2g\';18=16.d(17);9(18!=-1){1x=16.b(18+17.5);1q(\'#2j\'+1x)}E(3 i=0;i<P.5;i++){9(\'1z\'2m P[i]){3 g=P[i].1z;3 1a=2o($(\'#c\'+g+\':L\').G(\'1C\'));$(\'#c\'+g+\' .2q:L\').j(u(y,7){3 H=P[i].15;9(1a>=2s.2t){$(\'#c\'+H+\':L .2u\').1h()}3 K=$(\'#c\'+H+\':L\').j();K=\'<Q B="1g" 15="c\'+H+\'" 1C="\'+(1a+1)+\'">\'+K+\'</Q>\';$(\'#c\'+H).1h();z(7+K)})}}',62,157,'|||var||length||oldhtml|check_index|if||substring||indexOf|||par_id|||html|img_src|search_key|upper_html||Cur_Cform_Hdr||http_search||temp_html||function||find_http|Emo_List|index|return|src|class|toUpperCase|while|for|str|attr|child_id|save_http|yt_link|child_html|first|toLowerCase|yt_code|comment|Items|div|Force_Tag|img_html|temp|href|youtube|com|yt_code_index|else|save_html|img|break|newhtml|www|index_tail|id|cur_url|search_formid|search_index|editor|par_level|Cur_Cform_Url|comment_form|ht|img_code|span|comment_wrap|remove|comment_body|whitespace|Valid_Par_Id|trim|Cform_Ins_ParID|7B|n_cform_url|Reset_Comment_Form|Display_Reply_Form|yt_video|reset_html|origin_cform|iframe|http|Replace_Image_Ext|ret_id|watch|parentId|Display_Emo|comment_emo|level|x5b|x7d|x7c|x5d|u2008|Replace_Force_Tag|Replace_Youtube_Link|comment_emo_list|u2007|u200a|u2006|item|comment_block|charAt|u3000|u2005|comment_youtube|embed|autohide|frameborder|parentID|u2004|https|replace|Replace_Image_Link|u2029|u2003|u2028|u2002|u2001|onclick|Msgs|addComment|name|r_f_c|u2000|window|location|xa0|form_|HTTP|x0b|rc|x3e|x3c|in|HTTPS|parseInt|u200b|comment_child|comment_img|Config|maxThreadDepth|comment_reply|u2009|allowfullscreen'.split('|'),0,{}))   
+var avatar=$("#comments");
+avatar.find('.comment_avatar img').each(function() {
+        var ava = $(this).attr('src');
+        $(this).show().attr('src', ava.replace(/\/s[0-9]+(\-c)?\//,"/s100-c/"));
+});      
+    //]]>
+</script>
+</div>
+
+        </div></div>
+      
+<!--Can't find substitution for tag [adEnd]-->
+</div>
+<div class="clear"></div>
+<div class="post-feeds">
+<div class="feed-links">
+Suscribirse a:
+<a class="feed-link" href="http://carlitoxenlaweb.blogspot.com/feeds/6163171198060302592/comments/default" target="_blank" type="application/atom+xml">Enviar comentarios (Atom)</a>
+</div>
+</div>
+<script type="text/javascript">window.___gcfg = {'lang': 'es'};</script>
+</div></div>
+<div class="main2 section no-items section" id="main2"></div>
+</div>
+<div class="clear"></div>
+</div>
+<aside id="sidebar-wrapper">
+<div class="sidebar-inner">
+<div class="clear"></div>
+<div id="social_networks">
+<ul>
+<li class="sorting-01 facebook" title="Sígueme en Facebook"><a href="http://www.facebook.com/pages/Carlitox-en-la-Web/208868882506891" target="_blank"><i class="fa fa-facebook"></i><span class="inv"></span></a></li>
+<li class="sorting-02 youtube" title="Sígueme en Youtube"><a href="http://youtube.com/carlossk8d" target="_blank"><i class="fa fa-youtube"></i><span class="inv"></span></a></li>
+<li class="sorting-03 twitter" title="Sígueme en Twitter"><a href="http://twitter.com/carlitoxenlaweb" target="_blank"><i class="fa fa-twitter"></i><span class="inv"></span></a></li>
+<li class="sorting-04 pinterest" title="Sígueme en Pinterest"><a href="http://carlitoxenlaweb.blogspot.com/2013/03/guardar-crear-xml-en-php.html#" target="_blank"><i class="fa fa-pinterest"></i><span class="inv"></span></a></li>
+<li class="sorting-05 googleplus" title="Sígueme en Google+"><a href="https://plus.google.com/u/0/109673919871351675013/posts" target="_blank"><i class="fa fa-google-plus"></i><span class="inv"></span></a></li>
+</ul>
+</div>
+<div class="clear"></div>
+<div class="tabs tabs-1"><div class="tabs"><ul class="tabs-menu"><li class="tab-1 active-tab"><span>Etiquetas</span></li><li class="tab-2"><span>Popular</span></li><li class="tab-3"><span>Comentarios</span></li></ul>
+<div class="tabs-content"><div class="tably tably-1 section section" id="tably-1" style="display: block;"><div class="widget Label" data-version="1" id="Label3">
+<h2 style="display: none;">Etiquetas</h2>
+<div class="widget-content cloud-label-widget-content">
+<span class="label-size label-size-3">
+<a dir="ltr" href="http://carlitoxenlaweb.blogspot.com/search/label/Animaciones">Animaciones</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://carlitoxenlaweb.blogspot.com/search/label/Antivirus">Antivirus</a>
+</span>
+<span class="label-size label-size-4">
+<a dir="ltr" href="http://carlitoxenlaweb.blogspot.com/search/label/Aplicaciones">Aplicaciones</a>
+</span>
+<span class="label-size label-size-3">
+<a dir="ltr" href="http://carlitoxenlaweb.blogspot.com/search/label/Base%20de%20Datos">Base de Datos</a>
+</span>
+<span class="label-size label-size-3">
+<a dir="ltr" href="http://carlitoxenlaweb.blogspot.com/search/label/Blogger">Blogger</a>
+</span>
+<span class="label-size label-size-3">
+<a dir="ltr" href="http://carlitoxenlaweb.blogspot.com/search/label/CSS">CSS</a>
+</span>
+<span class="label-size label-size-3">
+<a dir="ltr" href="http://carlitoxenlaweb.blogspot.com/search/label/Desarrollo%20Web">Desarrollo Web</a>
+</span>
+<span class="label-size label-size-3">
+<a dir="ltr" href="http://carlitoxenlaweb.blogspot.com/search/label/Efectos">Efectos</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://carlitoxenlaweb.blogspot.com/search/label/Frameworks">Frameworks</a>
+</span>
+<span class="label-size label-size-3">
+<a dir="ltr" href="http://carlitoxenlaweb.blogspot.com/search/label/Hardware">Hardware</a>
+</span>
+<span class="label-size label-size-3">
+<a dir="ltr" href="http://carlitoxenlaweb.blogspot.com/search/label/HTML-XML">HTML-XML</a>
+</span>
+<span class="label-size label-size-3">
+<a dir="ltr" href="http://carlitoxenlaweb.blogspot.com/search/label/Humor">Humor</a>
+</span>
+<span class="label-size label-size-3">
+<a dir="ltr" href="http://carlitoxenlaweb.blogspot.com/search/label/IMPORTANTES">IMPORTANTES</a>
+</span>
+<span class="label-size label-size-5">
+<a dir="ltr" href="http://carlitoxenlaweb.blogspot.com/search/label/Java">Java</a>
+</span>
+<span class="label-size label-size-4">
+<a dir="ltr" href="http://carlitoxenlaweb.blogspot.com/search/label/JavaScript">JavaScript</a>
+</span>
+<span class="label-size label-size-3">
+<a dir="ltr" href="http://carlitoxenlaweb.blogspot.com/search/label/jQuery">jQuery</a>
+</span>
+<span class="label-size label-size-3">
+<a dir="ltr" href="http://carlitoxenlaweb.blogspot.com/search/label/Juegos">Juegos</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://carlitoxenlaweb.blogspot.com/search/label/Lenguaje%20C">Lenguaje C</a>
+</span>
+<span class="label-size label-size-3">
+<a dir="ltr" href="http://carlitoxenlaweb.blogspot.com/search/label/Linux">Linux</a>
+</span>
+<span class="label-size label-size-3">
+<a dir="ltr" href="http://carlitoxenlaweb.blogspot.com/search/label/Microsoft">Microsoft</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://carlitoxenlaweb.blogspot.com/search/label/Multimedia">Multimedia</a>
+</span>
+<span class="label-size label-size-3">
+<a dir="ltr" href="http://carlitoxenlaweb.blogspot.com/search/label/MySQL">MySQL</a>
+</span>
+<span class="label-size label-size-3">
+<a dir="ltr" href="http://carlitoxenlaweb.blogspot.com/search/label/Navegadores">Navegadores</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://carlitoxenlaweb.blogspot.com/search/label/NodeJS">NodeJS</a>
+</span>
+<span class="label-size label-size-3">
+<a dir="ltr" href="http://carlitoxenlaweb.blogspot.com/search/label/PHP">PHP</a>
+</span>
+<span class="label-size label-size-5">
+<a dir="ltr" href="http://carlitoxenlaweb.blogspot.com/search/label/Programacion">Programacion</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://carlitoxenlaweb.blogspot.com/search/label/Ruby">Ruby</a>
+</span>
+<span class="label-size label-size-3">
+<a dir="ltr" href="http://carlitoxenlaweb.blogspot.com/search/label/Sabias%20que...">Sabias que...</a>
+</span>
+<span class="label-size label-size-3">
+<a dir="ltr" href="http://carlitoxenlaweb.blogspot.com/search/label/Seguridad">Seguridad</a>
+</span>
+<span class="label-size label-size-3">
+<a dir="ltr" href="http://carlitoxenlaweb.blogspot.com/search/label/Servidores">Servidores</a>
+</span>
+<span class="label-size label-size-3">
+<a dir="ltr" href="http://carlitoxenlaweb.blogspot.com/search/label/Tecnologia">Tecnologia</a>
+</span>
+<span class="label-size label-size-4">
+<a dir="ltr" href="http://carlitoxenlaweb.blogspot.com/search/label/Trucos%20y%20Tips">Trucos y Tips</a>
+</span>
+<span class="label-size label-size-3">
+<a dir="ltr" href="http://carlitoxenlaweb.blogspot.com/search/label/Ubuntu">Ubuntu</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://carlitoxenlaweb.blogspot.com/search/label/Videos">Videos</a>
+</span>
+</div>
+</div></div><div class="tably tably-2 section section" id="tably-2" style="display: none;"><div class="widget PopularPosts" data-version="1" id="PopularPosts1">
+<h2 style="display: none;">Popular</h2>
+<div class="widget-content popular-posts">
+<ul>
+<li>
+<div class="item-content">
+<div class="item-thumbnail">
+<a href="http://carlitoxenlaweb.blogspot.com/2012/08/mostrar-imagen-cargando-con-javascript.html" target="_blank">
+<img alt="Mostrar imagen &quot;Cargando&quot; con JavaScript" height="72" src="./Guardar _ Crear XML en PHP - Carlitox en la Web_files/cargando.gif" title="Mostrar imagen &quot;Cargando&quot; con JavaScript" width="72">
+</a>
+</div>
+<div class="item-title"><a href="http://carlitoxenlaweb.blogspot.com/2012/08/mostrar-imagen-cargando-con-javascript.html" title="Mostrar imagen &quot;Cargando&quot; con JavaScript">Mostrar imagen "Cargando" con JavaScript</a></div>
+<div class="item-snippet">   &nbsp; &nbsp;Hace mucho que tengo (no solo en mi blog) una imagen de carga, donde se muestra un GIF cargando una barra y esta desaparece al termina...</div>
+</div>
+<div style="clear: both;"></div>
+</li>
+<li>
+<div class="item-content">
+<div class="item-thumbnail">
+<a href="http://carlitoxenlaweb.blogspot.com/2010/05/jtable-y-su-modelo.html" target="_blank">
+<img alt="jTable y su &quot;Modelo&quot;" height="72" src="./Guardar _ Crear XML en PHP - Carlitox en la Web_files/modelo.png" title="jTable y su &quot;Modelo&quot;" width="72">
+</a>
+</div>
+<div class="item-title"><a href="http://carlitoxenlaweb.blogspot.com/2010/05/jtable-y-su-modelo.html" title="jTable y su &quot;Modelo&quot;">jTable y su "Modelo"</a></div>
+<div class="item-snippet">&nbsp; &nbsp;Continuando con las tablas en Java, vamos a ver como crear las tablas y manejarlas, en la entrada de " Tablas Swing " explico u...</div>
+</div>
+<div style="clear: both;"></div>
+</li>
+<li>
+<div class="item-content">
+<div class="item-thumbnail">
+<a href="http://carlitoxenlaweb.blogspot.com/2012/08/cambiar-fondo-con-botones-javajlabel.html" target="_blank">
+<img alt="Cambiar fondo con botones (JAVA/JLabel)" height="72" src="./Guardar _ Crear XML en PHP - Carlitox en la Web_files/Fondo A.gif" title="Cambiar fondo con botones (JAVA/JLabel)" width="72">
+</a>
+</div>
+<div class="item-title"><a href="http://carlitoxenlaweb.blogspot.com/2012/08/cambiar-fondo-con-botones-javajlabel.html" title="Cambiar fondo con botones (JAVA/JLabel)">Cambiar fondo con botones (JAVA/JLabel)</a></div>
+<div class="item-snippet"> &nbsp; &nbsp;Hace algún tiempo publique como hacer para colocar un fondo en Java, utilizando JLabel, JPanel o JDesktopPane, todo explicado en estas e...</div>
+</div>
+<div style="clear: both;"></div>
+</li>
+<li>
+<div class="item-content">
+<div class="item-thumbnail">
+<a href="http://carlitoxenlaweb.blogspot.com/2012/12/manipulando-pdfs-con-itext.html" target="_blank">
+<img alt="Manipulando PDFs con iText" height="72" src="./Guardar _ Crear XML en PHP - Carlitox en la Web_files/7091.gif" title="Manipulando PDFs con iText" width="72">
+</a>
+</div>
+<div class="item-title"><a href="http://carlitoxenlaweb.blogspot.com/2012/12/manipulando-pdfs-con-itext.html" title="Manipulando PDFs con iText">Manipulando PDFs con iText</a></div>
+<div class="item-snippet">   &nbsp;&nbsp; Hace algún tiempo alguien me habia comentado como concatenar los reportes generados con iReport , pero esto no es posible a menos que ...</div>
+</div>
+<div style="clear: both;"></div>
+</li>
+<li>
+<div class="item-content">
+<div class="item-title"><a href="http://carlitoxenlaweb.blogspot.com/2009/12/llenar-combobox-con-mysql.html" title="Llenar JComboBox con MySQL">Llenar JComboBox con MySQL</a></div>
+<div class="item-snippet">&nbsp; &nbsp;Hacer esto es muy fácil, es como llenar una tabla solo que en vez de rellenar un modelo de tabla rellenamos el ComboBox, para recordar co...</div>
+</div>
+<div style="clear: both;"></div>
+</li>
+</ul>
+</div>
+</div></div><div class="tably tably-3 section section" id="tably-3" style="display: none;"><div class="widget HTML" data-version="1" id="HTML97">
+<h2 class="title" style="display: none;">Comentarios</h2>
+<div class="widget-content"><ul class="recomments"><li><div class="avatarImg avatarcomments"><img class="avatarcomments" src="./Guardar _ Crear XML en PHP - Carlitox en la Web_files/blank(2).gif"></div><a href="http://carlitoxenlaweb.blogspot.com/2013/03/guardar-crear-xml-en-php.html?showComment=1527623578245#c8644973188471841794">Carlos Martinez</a><span>"Debido a que es una propiedad lo puedes setear de la siguiente forma:$..."</span></li><li><div class="avatarImg avatarcomments"><img class="avatarcomments" src="./Guardar _ Crear XML en PHP - Carlitox en la Web_files/b16-rounded.gif"></div><a href="http://carlitoxenlaweb.blogspot.com/2013/03/guardar-crear-xml-en-php.html?showComment=1526516659629#c8311981174651612088">sdsds</a><span>"el atributo standalone="no" de xml como lo puedo ingresar ?"</span></li><li><div class="avatarImg avatarcomments"><img class="avatarcomments" src="./Guardar _ Crear XML en PHP - Carlitox en la Web_files/photo(4).jpg"></div><a href="http://carlitoxenlaweb.blogspot.com/2010/11/la-clase-bigdecimal.html?showComment=1526441564832#c1856595918935875318">Adrian Guadalupe Cervera Kuk</a><span>"Explica mejor lo de los modos de redondeo, porque así pareciera que tr..."</span></li><li><div class="avatarImg avatarcomments"><img class="avatarcomments" src="./Guardar _ Crear XML en PHP - Carlitox en la Web_files/photo(5).jpg"></div><a href="http://carlitoxenlaweb.blogspot.com/2010/10/graficos-en-ireport.html?showComment=1524842149203#c1401268385924402992">Carlos Martinez</a><span>"Revisa el comentario anterior, creo que encontrarás la respuesta... Saludos!"</span></li><li><div class="avatarImg avatarcomments"><img class="avatarcomments" src="./Guardar _ Crear XML en PHP - Carlitox en la Web_files/photo(5).jpg"></div><a href="http://carlitoxenlaweb.blogspot.com/2012/08/mostrar-imagen-cargando-con-javascript.html?showComment=1524841912614#c5202189814820898255">Carlos Martinez</a><span>"Página hija? Si quieres utilizarlo en todas las páginas simplemente in..."</span></li></ul><div class="clear"></div></div>
+</div></div></div>
+
+
+</div></div>
+<div class="clear"></div>
+<div class="sidebar section section" id="sidebar"><div class="widget HTML" data-version="1" id="HTML98">
+<h2 class="title">Suscribete Aquí...</h2>
+<div class="widget-content">
+<div id="subscribe-box">
+                 <p>Recibe las entradas por correo</p>
+             <div class="emailfield">
+              <form action="http://feedburner.google.com/fb/a/mailverify" method="post" onsubmit="window.open(&#39;http://feedburner.google.com/fb/a/mailverify?uri=carlitoxenlaweb&#39;, &#39;popupwindow&#39;, &#39;scrollbars=yes,width=550,height=520&#39;);return true" target="popupwindow">
+               <input type="text" name="name" onblur="if (this.value == &quot;&quot;) {this.value = &quot;Nombre&quot;;}" onfocus="if (this.value == &quot;Nombre&quot;) {this.value = &quot;&quot;;}" value="Nombre">
+               <input type="text" name="email" onblur="if (this.value == &quot;&quot;) {this.value = &quot;Correo&quot;;}" onfocus="if (this.value == &quot;Correo&quot;) {this.value = &quot;&quot;;}" value="Correo">     
+<input name="uri" type="hidden" value="carlitoxenlaweb">
+<input name="loc" type="hidden" value="es_ES">
+                <input class="submitbutton" type="submit" value="Suscribirse">
+
+              </form>
+             </div>
+</div>
+</div>
+</div><div class="widget ContactForm" data-version="1" id="ContactForm1">
+<h2 class="title">Formulir Kontak</h2>
+<div class="contact-form-widget">
+<div class="form">
+<form name="contact-form">
+<p></p>
+Nombre
+<br>
+<input class="contact-form-name" id="ContactForm1_contact-form-name" name="name" size="30" type="text" value="">
+<p></p>
+Correo electrónico
+<span style="font-weight: bolder;">*</span>
+<br>
+<input class="contact-form-email" id="ContactForm1_contact-form-email" name="email" size="30" type="text" value="">
+<p></p>
+Mensaje
+<span style="font-weight: bolder;">*</span>
+<br>
+<textarea class="contact-form-email-message" cols="25" id="ContactForm1_contact-form-email-message" name="email-message" rows="5"></textarea>
+<p></p>
+<input class="contact-form-button contact-form-button-submit" id="ContactForm1_contact-form-submit" type="button" value="Enviar">
+<p></p>
+<div style="text-align: center; max-width: 222px; width: 100%">
+<p class="contact-form-error-message" id="ContactForm1_contact-form-error-message"></p>
+<p class="contact-form-success-message" id="ContactForm1_contact-form-success-message"></p>
+</div>
+</form>
+</div>
+</div>
+</div></div>
+</div>
+</aside>
+</div>
+<div class="clear"></div>
+<div class="banner2 section no-items section" id="banner2"></div>
+<div class="clear"></div>
+<footer id="footer-wrapper">
+<div class="footer-bottom">
+<div id="footer-widgetfix">
+<div class="footer-widget" id="footx1">
+<div class="footer no-items section" id="footer1"></div>
+</div>
+<div class="footer-widget" id="footx2">
+<div class="footer no-items section" id="footer2"></div>
+</div>
+<div class="footer-widget" id="footx3">
+<div class="footer no-items section" id="footer3"></div>
+</div>
+</div>
+</div>
+<div id="footerfix">
+<div class="cpleft">
+Copyright © 2015 <a href="http://carlitoxenlaweb.blogspot.com/">Carlitox en la Web</a> Todos los derechos reservados
+</div>
+<div id="cpright">Created by <a href="http://arlinadesign.blogspot.com/">Arlina Design</a></div>
+</div>
+</footer>
+</div>
+<div class="clear"></div>
+<div style="display:none">
+<div class="navbar section" id="navbar"><div class="widget Navbar" data-version="1" id="Navbar1"><script type="text/javascript">
+    function setAttributeOnload(object, attribute, val) {
+      if(window.addEventListener) {
+        window.addEventListener('load',
+          function(){ object[attribute] = val; }, false);
+      } else {
+        window.attachEvent('onload', function(){ object[attribute] = val; });
+      }
+    }
+  </script>
+<div id="navbar-iframe-container"><iframe ng-non-bindable="" frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="" tabindex="0" vspace="0" width="100%" id="navbar-iframe" name="navbar-iframe" src="./Guardar _ Crear XML en PHP - Carlitox en la Web_files/navbar.html"></iframe></div>
+<script type="text/javascript" src="./Guardar _ Crear XML en PHP - Carlitox en la Web_files/plusone.js.descarga" gapi_processed="true"></script>
+<script type="text/javascript">
+      gapi.load("gapi.iframes:gapi.iframes.style.bubble", function() {
+        if (gapi.iframes && gapi.iframes.getContext) {
+          gapi.iframes.getContext().openChild({
+              url: 'https://www.blogger.com/navbar.g?targetBlogID\x3d8283392410523373579\x26blogName\x3dCarlitox+en+la+Web\x26publishMode\x3dPUBLISH_MODE_BLOGSPOT\x26navbarType\x3dLIGHT\x26layoutType\x3dLAYOUTS\x26searchRoot\x3dhttps://carlitoxenlaweb.blogspot.com/search\x26blogLocale\x3des\x26v\x3d2\x26homepageUrl\x3dhttp://carlitoxenlaweb.blogspot.com/\x26targetPostID\x3d6163171198060302592\x26blogPostOrPageUrl\x3dhttp://carlitoxenlaweb.blogspot.com/2013/03/guardar-crear-xml-en-php.html\x26vt\x3d-3472665745095113637',
+              where: document.getElementById("navbar-iframe-container"),
+              id: "navbar-iframe"
+          });
+        }
+      });
+    </script><script type="text/javascript">
+(function() {
+var script = document.createElement('script');
+script.type = 'text/javascript';
+script.src = '//pagead2.googlesyndication.com/pagead/js/google_top_exp.js';
+var head = document.getElementsByTagName('head')[0];
+if (head) {
+head.appendChild(script);
+}})();
+</script>
+</div></div>
+</div>
+<!-- <b:include data='blog' name='google-analytics'/> -->
+<script type="text/javascript">
+jQuery(document).ready(function(e){var t=e("#BackToTop");e(window).scroll(function(){e(this).scrollTop()>=200?t.show(10).animate({bottom:"25px"},10):t.animate({bottom:"-80px"},10)});t.click(function(t){t.preventDefault();e("html,body").animate({scrollTop:0},400)})})
+</script>
+<a href="http://carlitoxenlaweb.blogspot.com/2013/03/guardar-crear-xml-en-php.html#" id="BackToTop" style="bottom: 25px; display: inline-block;"><i class="fa fa-angle-up"></i></a>
+<script src="./Guardar _ Crear XML en PHP - Carlitox en la Web_files/view-image.js.descarga" type="text/javascript"></script>
+<script type="text/javascript">
+//Pager
+$(document).ready(function(){
+var olderLink = $("a.blog-pager-older-link").attr("href");
+$("a.blog-pager-older-link").load(olderLink+" .post-title:first", function() {
+var olderLinkTitle = $("a.blog-pager-older-link").text();
+$("a.blog-pager-older-link").text(olderLinkTitle);//rgt
+});
+var newerLink = $("a.blog-pager-newer-link").attr("href");
+$("a.blog-pager-newer-link").load(newerLink+" .post-title:first", function() {
+var newerLinkTitle = $("a.blog-pager-newer-link:first").text();
+$("a.blog-pager-newer-link").text(newerLinkTitle);
+});
+});
+
+//Spoiler
+$(document).ready(function() {
+    $("#flippy").click(function() {
+        $("#flippanel").slideToggle("normal");
+    });
+});
+</script>
+<script src="./Guardar _ Crear XML en PHP - Carlitox en la Web_files/prism.js.descarga" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+//Search
+$(function(){$(".searchbutton").on("click",function(){$("#search").addClass("active").find(".search").focus()});$("#search").on("click",function(){$(this).find(".search").focus()});$("#close").on("click",function(){$("#search").removeClass("active")})})
+
+// Mag Layout
+$(".widget-content").each(function(){var e=$(this).text();if(e.match("recentcomments")){$.ajax({url:"/feeds/comments/default?alt=json-in-script&max-results=5",type:"get",dataType:"jsonp",success:function(e){var t="";var n='<ul class="recomments">';for(var r=0;r<e.feed.entry.length;r++){if(r==e.feed.entry.length)break;for(var i=0;i<e.feed.entry[r].link.length;i++){if(e.feed.entry[r].link[i].rel=="alternate"){t=e.feed.entry[r].link[i].href;break}}if("content"in e.feed.entry[r]){var s=e.feed.entry[r].content.$t}else if("summary"in b_rc){var s=e.feed.entry[r].summary.$t}else var s="";var o=/<\S[^>]*>/g;s=s.replace(o,"");if(s.length>90){s=""+s.substring(0,70)+"..."}var u=e.feed.entry[r].title.$t;var a=e.feed.entry[r].author[0].name.$t;var f=e.feed.entry[r].author[0].gd$image.src;if(f.match("http://img1.blogblog.com/img/blank.gif")){var l='<img class="rc-img" src="http://img1.blogblog.com/img/anon36.png"/>'}else{if(f.match("http://img2.blogblog.com/img/b16-rounded.gif")){var l='<img class="rc-img" src="http://img1.blogblog.com/img/anon36.png"/>'}else{var l='<div class="avatarImg avatarcomments"><img class="avatarcomments" src="'+f+'"/></div>'}}n+="<li>"+l+'<a href="'+t+'">'+a+'</a><span>"'+s+'"</span></li>'}n+='</ul><div class="clear"/>';$(".widget-content").each(function(){if($(this).text().match("recentcomments")){$(this).html(n);$("p.trans").each(function(){var e=$(this).text();var t=$(this).attr("data-tran");$("#pages-wrapper *").replaceText(e,t)})}})}})}if(e.match("randomposts")){$.ajax({url:"/feeds/posts/default?alt=json-in-script",type:"get",dataType:"jsonp",success:function(e){var t=e.feed.entry.length;var n=0;var r=t-5;var i=Math.floor(Math.random()*(r-n+1))+n;$.ajax({url:"/feeds/posts/default?alt=json-in-script&start-index="+i+"&max-results=5",type:"get",dataType:"jsonp",success:function(e){var t="";var n='<ul class="recpost">';for(var r=0;r<e.feed.entry.length;r++){for(var i=0;i<e.feed.entry[r].link.length;i++){if(e.feed.entry[r].link[i].rel=="alternate"){t=e.feed.entry[r].link[i].href;break}}var s=e.feed.entry[r].title.$t;var o=e.feed.entry[r].author[0].name.$t;var u=e.feed.entry[r].published.$t.substring(0,10);var a=e.feed.entry[r].category[0].term;var f=e.feed.entry[r].content.$t;var l=$("<div>").html(f);var c=l.find("img:first").attr("src");var h=e.feed.entry[r].media$thumbnail.url;if(c===undefined){var p='<a class="arl-tmb" href="'+t+'" style="background:url('+h+') no-repeat center center;background-size: cover"/>'}else{var p='<a class="arl-tmb" href="'+t+'" style="background:url('+c+') no-repeat center center;background-size: cover"/>'}n+="<li>"+p+'<div class="post-panel"><h3 class="rcp-title"><a href="'+t+'">'+s+'</a></h3><span class="recent-date">'+u+'</span><span class="recent-author">'+o+"</span></div></li>"}n+='</ul><div class="clear"/>';$(".widget-content").each(function(){if($(this).text().match("randomposts")){$(this).html(n);$(this).find(".arl-tmb").each(function(){$(this).attr("style",function(e,t){return t.replace("/default.jpg","/mqdefault.jpg")}).attr("style",function(e,t){return t.replace("s72-c","s1600")})});$("p.trans").each(function(){var e=$(this).text();var t=$(this).attr("data-tran");$("#pages-wrapper *").replaceText(e,t)})}})}})}})}if(e.match("recentposts")){$.ajax({url:"/feeds/posts/default?alt=json-in-script",type:"get",dataType:"jsonp",success:function(e){$.ajax({url:"/feeds/posts/default?alt=json-in-script&max-results=5",type:"get",dataType:"jsonp",success:function(e){var t="";var n='<ul class="recpost">';for(var r=0;r<e.feed.entry.length;r++){for(var i=0;i<e.feed.entry[r].link.length;i++){if(e.feed.entry[r].link[i].rel=="alternate"){t=e.feed.entry[r].link[i].href;break}}var s=e.feed.entry[r].title.$t;var o=e.feed.entry[r].author[0].name.$t;var u=e.feed.entry[r].published.$t.substring(0,10);var a=e.feed.entry[r].category[0].term;var f=e.feed.entry[r].content.$t;var l=$("<div>").html(f);var c=l.find("img:first").attr("src");var h=e.feed.entry[r].media$thumbnail.url;if(c===undefined){var p='<a class="arl-tmb" href="'+t+'" style="background:url('+h+') no-repeat center center;background-size: cover"/>'}else{var p='<a class="arl-tmb" href="'+t+'" style="background:url('+c+') no-repeat center center;background-size: cover"/>'}n+="<li>"+p+'<div class="post-panel"><h3 class="rcp-title"><a href="'+t+'">'+s+'</a></h3><span class="recent-date">'+u+'</span><span class="recent-author">'+o+"</span></div></li>"}n+='</ul><div class="clear"/>';$(".widget-content").each(function(){if($(this).text().match("recentposts")){$(this).html(n);$(this).find(".arl-tmb").each(function(){$(this).attr("style",function(e,t){return t.replace("/default.jpg","/mqdefault.jpg")}).attr("style",function(e,t){return t.replace("s72-c","s1600")})});$("p.trans").each(function(){var e=$(this).text();var t=$(this).attr("data-tran");$("#pages-wrapper *").replaceText(e,t)})}})}})}})}})
+
+//Main Menu
+$(document).ready(function(){var e=$("#resp-menu");var t=$(".menu");$(e).on("click",function(e){e.preventDefault();t.slideToggle()});$(window).resize(function(){var e=$(window).width();if(e>767&&t.is(":hidden")){t.removeAttr("style")}})})
+
+//Ads Post
+$(document).ready(function(){var e="[post_ad]";var t=$(".ads-in-post");$(".post *").replaceText(e,'<div class="ads-post"/>');$(".ads-post").append(t);var n=$(".post-body .ads-in-post").width();$(".post-body .ads-post").width(n)});
+
+// Deal with it
+var _0x1dd6=["\x6A\x51\x75\x65\x72\x79","\x75\x73\x65\x20\x73\x74\x72\x69\x63\x74","\x69\x6E\x69\x74","\x63\x75\x72\x72\x65\x6E\x74\x5F\x74\x61\x62","\x6F\x70\x74\x69\x6F\x6E\x73","\x74\x61\x62\x73","\x24\x65\x6C\x65\x6D\x65\x6E\x74","\x65\x6C\x65\x6D\x65\x6E\x74","\x63\x68\x69\x6C\x64\x72\x65\x6E","\x64\x65\x66\x61\x75\x6C\x74\x73","\x6D\x74\x61\x62\x73","\x66\x6E","\x65\x78\x74\x65\x6E\x64","\x70\x72\x6F\x74\x6F\x74\x79\x70\x65","\x6C\x65\x6E\x67\x74\x68","\x62\x75\x69\x6C\x64\x54\x61\x62\x4D\x65\x6E\x75","\x62\x75\x69\x6C\x64","\x74\x61\x62\x5F\x74\x65\x78\x74\x5F\x65\x6C","\x63\x6F\x6E\x74\x61\x69\x6E\x65\x72\x5F\x63\x6C\x61\x73\x73","\x6F\x6E\x52\x65\x61\x64\x79","\x69\x73\x46\x75\x6E\x63\x74\x69\x6F\x6E","\x70\x75\x73\x68","\x74\x61\x62\x5F\x6E\x61\x6D\x65\x73","\x74\x65\x78\x74","\x68\x69\x64\x65","\x3A\x66\x69\x72\x73\x74","\x66\x69\x6C\x74\x65\x72","\x66\x69\x6E\x64","\x65\x61\x63\x68","\x3C\x64\x69\x76\x20\x63\x6C\x61\x73\x73\x3D\x22","\x74\x61\x62\x73\x5F\x63\x6F\x6E\x74\x61\x69\x6E\x65\x72\x5F\x63\x6C\x61\x73\x73","\x22\x20\x2F\x3E","\x77\x72\x61\x70\x41\x6C\x6C","\x24\x77\x72\x61\x70\x70\x65\x72","\x2E","\x77\x72\x61\x70\x49\x6E\x6E\x65\x72","\x63\x61\x6C\x6C","\x74\x61\x62\x73\x6D\x65\x6E\x75\x5F\x65\x6C","\x3C","\x20\x63\x6C\x61\x73\x73\x3D\x22","\x74\x61\x62\x73\x6D\x65\x6E\x75\x5F\x63\x6C\x61\x73\x73","\x22\x3E","","\x72\x65\x70\x6C\x61\x63\x65","\x74\x61\x62\x73\x6D\x65\x6E\x75\x5F\x74\x61\x62","\x74\x6D\x70\x6C","\x63\x6C\x69\x63\x6B","\x74\x72\x69\x67\x67\x65\x72","\x69\x6E\x64\x65\x78","\x70\x72\x65\x76\x65\x6E\x74\x44\x65\x66\x61\x75\x6C\x74","\x73\x68\x6F\x77","\x6F\x6E","\x24\x74\x61\x62\x73\x5F\x6D\x65\x6E\x75","\x3C\x2F","\x3E","\x70\x72\x65\x70\x65\x6E\x64\x54\x6F","\x74\x6F\x4C\x6F\x77\x65\x72\x43\x61\x73\x65","\x6E\x6F\x64\x65\x4E\x61\x6D\x65","\x61\x63\x74\x69\x76\x65\x5F\x74\x61\x62\x5F\x63\x6C\x61\x73\x73","\x6F\x6E\x54\x61\x62\x53\x65\x6C\x65\x63\x74","\x61\x64\x64\x43\x6C\x61\x73\x73","\x3A\x65\x71\x28","\x29","\x72\x65\x6D\x6F\x76\x65\x43\x6C\x61\x73\x73","\x72\x65\x6D\x6F\x76\x65\x44\x61\x74\x61","\x73\x74\x79\x6C\x65","\x72\x65\x6D\x6F\x76\x65\x41\x74\x74\x72","\x75\x6E\x77\x72\x61\x70","\x72\x65\x6D\x6F\x76\x65","\x64\x61\x74\x61","\x6F\x62\x6A\x65\x63\x74","\x73\x74\x72\x69\x6E\x67","\x74\x61\x62\x73\x2D\x63\x6F\x6E\x74\x65\x6E\x74","\x61\x63\x74\x69\x76\x65\x2D\x74\x61\x62","\x68\x31\x2C\x20\x68\x32\x2C\x20\x68\x33\x2C\x20\x68\x34\x2C\x20\x68\x35\x2C\x20\x68\x36","\x74\x61\x62\x73\x2D\x6D\x65\x6E\x75","\x75\x6C","\x3C\x6C\x69\x20\x63\x6C\x61\x73\x73\x3D\x22\x74\x61\x62\x2D\x7B\x30\x7D\x22\x3E\x3C\x73\x70\x61\x6E\x3E\x7B\x31\x7D\x3C\x2F\x73\x70\x61\x6E\x3E\x3C\x2F\x6C\x69\x3E","\x43\x72\x65\x61\x74\x65\x64\x20\x62\x79\x20\x3C\x61\x20\x68\x72\x65\x66\x3D\x22\x68\x74\x74\x70\x3A\x2F\x2F\x61\x72\x6C\x69\x6E\x61\x64\x65\x73\x69\x67\x6E\x2E\x62\x6C\x6F\x67\x73\x70\x6F\x74\x2E\x63\x6F\x6D\x22\x3E\x41\x72\x6C\x69\x6E\x61\x20\x44\x65\x73\x69\x67\x6E\x3C\x2F\x61\x3E","\x68\x74\x6D\x6C","\x23\x63\x70\x72\x69\x67\x68\x74","\x23\x63\x70\x72\x69\x67\x68\x74\x3A\x76\x69\x73\x69\x62\x6C\x65","\x68\x72\x65\x66","\x6C\x6F\x63\x61\x74\x69\x6F\x6E","\x68\x74\x74\x70\x3A\x2F\x2F\x61\x72\x6C\x69\x6E\x61\x64\x65\x73\x69\x67\x6E\x2E\x62\x6C\x6F\x67\x73\x70\x6F\x74\x2E\x63\x6F\x6D","\x72\x65\x61\x64\x79"];!function(_0x9749x1){_0x1dd6[1];var _0x9749x2=function(_0x9749x2,_0x9749x3){var _0x9749x4=this;_0x9749x4[_0x1dd6[7]]=_0x9749x2,_0x9749x4[_0x1dd6[6]]=_0x9749x1(_0x9749x2),_0x9749x4[_0x1dd6[5]]=_0x9749x4[_0x1dd6[6]][_0x1dd6[8]](),_0x9749x4[_0x1dd6[4]]=_0x9749x1[_0x1dd6[12]]({},_0x9749x1[_0x1dd6[11]][_0x1dd6[10]][_0x1dd6[9]],_0x9749x3),_0x9749x4[_0x1dd6[3]]=0,_0x9749x4[_0x1dd6[2]]();};_0x9749x2[_0x1dd6[13]]={init:function(){var _0x9749x1=this;_0x9749x1[_0x1dd6[5]][_0x1dd6[14]]&&(_0x9749x1[_0x1dd6[16]](),_0x9749x1[_0x1dd6[15]]());},build:function(){var _0x9749x2=this,_0x9749x3=_0x9749x2[_0x1dd6[4]],_0x9749x4=_0x9749x3[_0x1dd6[17]],_0x9749x5=_0x9749x3[_0x1dd6[18]];_0x9749x2[_0x1dd6[22]]=[],_0x9749x2[_0x1dd6[33]]=_0x9749x2[_0x1dd6[6]][_0x1dd6[35]](_0x1dd6[29]+_0x9749x5+_0x1dd6[31])[_0x1dd6[27]](_0x1dd6[34]+_0x9749x5),_0x9749x2[_0x1dd6[5]][_0x1dd6[32]](_0x1dd6[29]+_0x9749x3[_0x1dd6[30]]+_0x1dd6[31]),_0x9749x2[_0x1dd6[5]][_0x1dd6[28]](function(_0x9749x3,_0x9749x5){var _0x9749x6,_0x9749x7=_0x9749x1(_0x9749x5),_0x9749x8=_0x9749x4;_0x9749x6=_0x9749x7[_0x1dd6[27]](_0x9749x8)[_0x1dd6[26]](_0x1dd6[25])[_0x1dd6[24]]()[_0x1dd6[23]](),_0x9749x2[_0x1dd6[22]][_0x1dd6[21]](_0x9749x6);}),_0x9749x1[_0x1dd6[20]](_0x9749x3[_0x1dd6[19]])&&_0x9749x3[_0x1dd6[19]][_0x1dd6[36]](_0x9749x2[_0x1dd6[7]]);},buildTabMenu:function(){for(var _0x9749x2,_0x9749x3=this,_0x9749x4=_0x9749x3[_0x1dd6[4]],_0x9749x5=_0x9749x4[_0x1dd6[37]],_0x9749x6=_0x9749x3[_0x1dd6[22]],_0x9749x7=_0x1dd6[38]+_0x9749x5+_0x1dd6[39]+_0x9749x4[_0x1dd6[40]]+_0x1dd6[41],_0x9749x8=0,_0x9749x9=_0x9749x6[_0x1dd6[14]],_0x9749xa=function(){var _0x9749x1=arguments;return _0x9749x4[_0x1dd6[45]][_0x1dd6[44]][_0x1dd6[43]](/\{[0-9]\}/g,function(_0x9749x2){var _0x9749x3=Number(_0x9749x2[_0x1dd6[43]](/\D/g,_0x1dd6[42]));return _0x9749x1[_0x9749x3]||_0x1dd6[42];});};_0x9749x9>_0x9749x8;_0x9749x8++){_0x9749x7+=_0x9749xa(_0x9749x8+1,_0x9749x6[_0x9749x8])};_0x9749x7+=_0x1dd6[53]+_0x9749x5+_0x1dd6[54],_0x9749x3[_0x1dd6[52]]=_0x9749x1(_0x9749x7)[_0x1dd6[55]](_0x9749x3.$wrapper),_0x9749x2=_0x9749x3[_0x1dd6[52]][_0x1dd6[27]](_0x1dd6[25])[0][_0x1dd6[57]][_0x1dd6[56]](),_0x9749x3[_0x1dd6[52]][_0x1dd6[51]](_0x1dd6[46],_0x9749x2,function(_0x9749x2){var _0x9749x4=_0x9749x1(this),_0x9749x5=_0x9749x4[_0x1dd6[48]]();_0x9749x3[_0x1dd6[50]](_0x9749x5),_0x9749x2[_0x1dd6[49]]();})[_0x1dd6[27]](_0x1dd6[25])[_0x1dd6[47]](_0x1dd6[46]);},show:function(_0x9749x2){var _0x9749x3=this,_0x9749x4=_0x9749x3[_0x1dd6[4]],_0x9749x5=_0x9749x4[_0x1dd6[58]];_0x9749x3[_0x1dd6[5]][_0x1dd6[24]]()[_0x1dd6[26]](_0x1dd6[61]+_0x9749x2+_0x1dd6[62])[_0x1dd6[50]](),_0x9749x3[_0x1dd6[52]][_0x1dd6[8]]()[_0x1dd6[63]](_0x9749x5)[_0x1dd6[26]](_0x1dd6[61]+_0x9749x2+_0x1dd6[62])[_0x1dd6[60]](_0x9749x5),_0x9749x1[_0x1dd6[20]](_0x9749x4[_0x1dd6[59]])&&_0x9749x2!==_0x9749x3[_0x1dd6[3]]&&_0x9749x4[_0x1dd6[59]][_0x1dd6[36]](_0x9749x3[_0x1dd6[7]],_0x9749x2),_0x9749x3[_0x1dd6[3]]=_0x9749x2;},destroy:function(){var _0x9749x1=this,_0x9749x2=_0x9749x1[_0x1dd6[4]][_0x1dd6[17]];_0x9749x1[_0x1dd6[52]][_0x1dd6[68]](),_0x9749x1[_0x1dd6[5]][_0x1dd6[67]]()[_0x1dd6[67]](),_0x9749x1[_0x1dd6[5]][_0x1dd6[66]](_0x1dd6[65]),_0x9749x1[_0x1dd6[5]][_0x1dd6[8]](_0x9749x2+_0x1dd6[25])[_0x1dd6[66]](_0x1dd6[65]),_0x9749x1[_0x1dd6[6]][_0x1dd6[64]](_0x1dd6[10]);}},_0x9749x1[_0x1dd6[11]][_0x1dd6[10]]=function(_0x9749x3,_0x9749x4){return this[_0x1dd6[28]](function(){var _0x9749x5,_0x9749x6=_0x9749x1(this),_0x9749x7=_0x9749x6[_0x1dd6[69]](_0x1dd6[10]);_0x9749x5=_0x1dd6[70]== typeof _0x9749x3&&_0x9749x3,_0x9749x7||_0x9749x6[_0x1dd6[69]](_0x1dd6[10],_0x9749x7= new _0x9749x2(this,_0x9749x5)),_0x1dd6[71]== typeof _0x9749x3&&_0x9749x7[_0x9749x3](_0x9749x4);})},_0x9749x1[_0x1dd6[11]][_0x1dd6[10]][_0x1dd6[9]]={container_class:_0x1dd6[5],tabs_container_class:_0x1dd6[72],active_tab_class:_0x1dd6[73],tab_text_el:_0x1dd6[74],tabsmenu_class:_0x1dd6[75],tabsmenu_el:_0x1dd6[76],tmpl:{tabsmenu_tab:_0x1dd6[77]},onTabSelect:null};}(window[_0x1dd6[0]],window,document);$(document)[_0x1dd6[85]](function(){$(_0x1dd6[80])[_0x1dd6[79]](_0x1dd6[78]);setInterval(function(){if(!$(_0x1dd6[81])[_0x1dd6[14]]){window[_0x1dd6[83]][_0x1dd6[82]]=_0x1dd6[84]}},3000);});
+//]]>
+</script>
+<script type="text/javascript">
+//Pre Auto Selection
+$('i[rel="pre"]').replaceWith(function() {
+    return $('<pre><code>' + $(this).html() + '</code></pre>');
+});
+var pres = document.getElementsByTagName("pre");
+for (var i = 0; i < pres.length; i++) {
+  pres[i].addEventListener("dblclick", function () {
+    var selection = getSelection();
+    var range = document.createRange();
+    range.selectNodeContents(this);
+    selection.removeAllRanges();
+    selection.addRange(range);
+  }, false);
+}
+
+//Pre Line Number
+/*$('pre').attr('class', 'line-numbers');
+Prism.hooks.add("after-highlight",function(e){var t=e.element.parentNode;if(!t||!/pre/i.test(t.nodeName)||t.className.indexOf("line-numbers")===-1){return}var n=1+e.code.split("\n").length;var r;lines=new Array(n);lines=lines.join("<span></span>");r=document.createElement("span");r.className="line-numbers-rows";r.innerHTML=lines;if(t.hasAttribute("data-start")){t.style.counterReset="linenumber "+(parseInt(t.getAttribute("data-start"),10)-1)}e.element.appendChild(r)})*/
+</script>
+<script type="text/javascript">
+//<![CDATA[
+//Block Link Comments
+function blockLinks(e,t){var n=document.getElementById(e),r=n.getElementsByTagName(t);for(var i=0;i<r.length;i++){if(r[i].innerHTML.indexOf("</a>")!==-1){r[i].innerHTML="Se han eliminado los <span style='background-color:rgba(255,255,255,0.3);color:#fff;padding:4px 8px;border-radius:3px'><b>enlaces directos</b></span> en este comentario";r[i].className="spammer-detected"}}}//blockLinks("comment_block","p");
+
+//Pre Comments Box
+function cdClear(){var e=document.getElementById("codes");e.value="";e.focus();document.getElementById("cvrt").disabled=false}function cdConvert(){var e=document.getElementById("codes"),t=e.value,n=document.getElementById("opt1"),r=document.getElementById("opt2"),i=document.getElementById("opt3"),s=document.getElementById("opt4"),o=document.getElementById("opt5");t=t.replace(/\t/g,"    ");if(n.checked)t=t.replace(/&/g,"&");if(r.checked)t=t.replace(/'/g,"&#039;");if(i.checked)t=t.replace(/"/g,"&quot;");if(s.checked)t=t.replace(/</g,"&lt;");if(o.checked)t=t.replace(/>/g,"&gt;");if(t.lastIndexOf("\n")!=-1||t.length>40){t=t.replace(/^/,'<i rel="pre">')}else{t=t.replace(/^/,'<i rel="code">')}t=t.replace(/$/,"</i>");e.value=t;e.focus();e.select()};
+//]]>
+</script>
+<!-- SYNTAX HIGHLIGHTER -->
+<link href="./Guardar _ Crear XML en PHP - Carlitox en la Web_files/shCore.css" rel="stylesheet" type="text/css">
+<link href="./Guardar _ Crear XML en PHP - Carlitox en la Web_files/shThemeDefault.css" rel="stylesheet" type="text/css">
+<script src="./Guardar _ Crear XML en PHP - Carlitox en la Web_files/shCore.js.descarga" type="text/javascript"></script>
+<script src="./Guardar _ Crear XML en PHP - Carlitox en la Web_files/shBrushCpp.js.descarga" type="text/javascript"></script>
+<script src="./Guardar _ Crear XML en PHP - Carlitox en la Web_files/shBrushCss.js.descarga" type="text/javascript"></script>
+<script src="./Guardar _ Crear XML en PHP - Carlitox en la Web_files/shBrushJava.js.descarga" type="text/javascript"></script>
+<script src="./Guardar _ Crear XML en PHP - Carlitox en la Web_files/shBrushJScript.js.descarga" type="text/javascript"></script>
+<script src="./Guardar _ Crear XML en PHP - Carlitox en la Web_files/shBrushPhp.js.descarga" type="text/javascript"></script>
+<script src="./Guardar _ Crear XML en PHP - Carlitox en la Web_files/shBrushRuby.js.descarga" type="text/javascript"></script>
+<script src="./Guardar _ Crear XML en PHP - Carlitox en la Web_files/shBrushSql.js.descarga" type="text/javascript"></script>
+<script src="./Guardar _ Crear XML en PHP - Carlitox en la Web_files/shBrushXml.js.descarga" type="text/javascript"></script>
+<script language="javascript">SyntaxHighlighter.all();</script>
+<!-- Analytics -->
+<noscript><iframe height='0' src='//www.googletagmanager.com/ns.html?id=GTM-KXPJHT' style='display:none;visibility:hidden' width='0'></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-KXPJHT');</script>
+<!-- End Analytics -->
+
+<script type="text/javascript" src="./Guardar _ Crear XML en PHP - Carlitox en la Web_files/1859629982-widgets.js.descarga"></script>
+<script type="text/javascript">
+window['__wavt'] = 'AOuZoY6BzipzMQo2vRa1e5rAzmDZ49dKmA:1538238330733';_WidgetManager._Init('//www.blogger.com/rearrange?blogID\x3d8283392410523373579','//carlitoxenlaweb.blogspot.com/2013/03/guardar-crear-xml-en-php.html','8283392410523373579');
+_WidgetManager._SetDataContext([{'name': 'blog', 'data': {'blogId': '8283392410523373579', 'title': 'Carlitox en la Web', 'url': 'http://carlitoxenlaweb.blogspot.com/2013/03/guardar-crear-xml-en-php.html', 'canonicalUrl': 'http://carlitoxenlaweb.blogspot.com/2013/03/guardar-crear-xml-en-php.html', 'homepageUrl': 'http://carlitoxenlaweb.blogspot.com/', 'searchUrl': 'http://carlitoxenlaweb.blogspot.com/search', 'canonicalHomepageUrl': 'http://carlitoxenlaweb.blogspot.com/', 'blogspotFaviconUrl': 'http://carlitoxenlaweb.blogspot.com/favicon.ico', 'bloggerUrl': 'https://www.blogger.com', 'hasCustomDomain': false, 'httpsEnabled': true, 'enabledCommentProfileImages': true, 'gPlusViewType': 'FILTERED_POSTMOD', 'adultContent': false, 'analyticsAccountNumber': 'UA-40770972-1', 'encoding': 'UTF-8', 'locale': 'es', 'localeUnderscoreDelimited': 'es', 'languageDirection': 'ltr', 'isPrivate': false, 'isMobile': false, 'isMobileRequest': false, 'mobileClass': '', 'isPrivateBlog': false, 'feedLinks': '\x3clink rel\x3d\x22alternate\x22 type\x3d\x22application/atom+xml\x22 title\x3d\x22Carlitox en la Web - Atom\x22 href\x3d\x22http://carlitoxenlaweb.blogspot.com/feeds/posts/default\x22 /\x3e\n\x3clink rel\x3d\x22alternate\x22 type\x3d\x22application/rss+xml\x22 title\x3d\x22Carlitox en la Web - RSS\x22 href\x3d\x22http://carlitoxenlaweb.blogspot.com/feeds/posts/default?alt\x3drss\x22 /\x3e\n\x3clink rel\x3d\x22service.post\x22 type\x3d\x22application/atom+xml\x22 title\x3d\x22Carlitox en la Web - Atom\x22 href\x3d\x22https://www.blogger.com/feeds/8283392410523373579/posts/default\x22 /\x3e\n\n\x3clink rel\x3d\x22alternate\x22 type\x3d\x22application/atom+xml\x22 title\x3d\x22Carlitox en la Web - Atom\x22 href\x3d\x22http://carlitoxenlaweb.blogspot.com/feeds/6163171198060302592/comments/default\x22 /\x3e\n', 'meTag': '', 'googleProfileUrl': 'https://plus.google.com/109673919871351675013', 'adsenseClientId': 'ca-pub-9612883478709952', 'adsenseHostId': 'ca-host-pub-1556223355139109', 'adsenseHasAds': false, 'ieCssRetrofitLinks': '\x3c!--[if IE]\x3e\x3cscript type\x3d\x22text/javascript\x22 src\x3d\x22https://www.blogger.com/static/v1/jsbin/3762807459-ieretrofit.js\x22\x3e\x3c/script\x3e\n\x3c![endif]--\x3e', 'view': '', 'dynamicViewsCommentsSrc': '//www.blogblog.com/dynamicviews/4224c15c4e7c9321/js/comments.js', 'dynamicViewsScriptSrc': '//www.blogblog.com/dynamicviews/cc2bdf97485f4b41', 'plusOneApiSrc': 'https://apis.google.com/js/plusone.js', 'sharing': {'platforms': [{'name': 'Obtener enlace', 'key': 'link', 'shareMessage': 'Obtener enlace', 'target': ''}, {'name': 'Facebook', 'key': 'facebook', 'shareMessage': 'Compartir en Facebook', 'target': 'facebook'}, {'name': 'Escribe un blog', 'key': 'blogThis', 'shareMessage': 'Escribe un blog', 'target': 'blog'}, {'name': 'Twitter', 'key': 'twitter', 'shareMessage': 'Compartir en Twitter', 'target': 'twitter'}, {'name': 'Pinterest', 'key': 'pinterest', 'shareMessage': 'Compartir en Pinterest', 'target': 'pinterest'}, {'name': 'Google+', 'key': 'googlePlus', 'shareMessage': 'Compartir en Google+', 'target': 'googleplus'}, {'name': 'Correo electrónico', 'key': 'email', 'shareMessage': 'Correo electrónico', 'target': 'email'}], 'googlePlusShareButtonWidth': 300, 'googlePlusBootstrap': '\x3cscript type\x3d\x22text/javascript\x22\x3ewindow.___gcfg \x3d {\x27lang\x27: \x27es\x27};\x3c/script\x3e'}, 'hasCustomJumpLinkMessage': false, 'jumpLinkMessage': 'Leer más', 'pageType': 'item', 'postId': '6163171198060302592', 'postImageThumbnailUrl': 'https://3.bp.blogspot.com/-k0jgz84ah7Q/UTTakN1JiZI/AAAAAAAADx0/_MaRYfyezxM/s72-c/php-xml-480x480.jpg', 'postImageUrl': 'https://3.bp.blogspot.com/-k0jgz84ah7Q/UTTakN1JiZI/AAAAAAAADx0/_MaRYfyezxM/s200/php-xml-480x480.jpg', 'pageName': 'Guardar / Crear XML en PHP', 'pageTitle': 'Carlitox en la Web: Guardar / Crear XML en PHP', 'metaDescription': ''}}, {'name': 'features', 'data': {'cmt_anon_warn': 'false', 'sharing_get_link_dialog': 'true', 'sharing_native': 'false'}}, {'name': 'messages', 'data': {'edit': 'Editar', 'linkCopiedToClipboard': 'El enlace se ha copiado en el Portapapeles.', 'ok': 'Aceptar', 'postLink': 'Enlace de la entrada'}}, {'name': 'template', 'data': {'name': 'custom', 'localizedName': 'Personalizado', 'isResponsive': false, 'isAlternateRendering': false, 'isCustom': true}}, {'name': 'view', 'data': {'classic': {'name': 'classic', 'url': '?view\x3dclassic'}, 'flipcard': {'name': 'flipcard', 'url': '?view\x3dflipcard'}, 'magazine': {'name': 'magazine', 'url': '?view\x3dmagazine'}, 'mosaic': {'name': 'mosaic', 'url': '?view\x3dmosaic'}, 'sidebar': {'name': 'sidebar', 'url': '?view\x3dsidebar'}, 'snapshot': {'name': 'snapshot', 'url': '?view\x3dsnapshot'}, 'timeslide': {'name': 'timeslide', 'url': '?view\x3dtimeslide'}, 'isMobile': false, 'title': 'Guardar / Crear XML en PHP', 'description': 'Blog de tecnologia, programacion, java, aplicaciones, redes sociales, web services, computacion e informatica.....', 'featuredImage': 'https://3.bp.blogspot.com/-k0jgz84ah7Q/UTTakN1JiZI/AAAAAAAADx0/_MaRYfyezxM/s200/php-xml-480x480.jpg', 'url': 'http://carlitoxenlaweb.blogspot.com/2013/03/guardar-crear-xml-en-php.html', 'type': 'item', 'isSingleItem': true, 'isMultipleItems': false, 'isError': false, 'isPage': false, 'isPost': true, 'isHomepage': false, 'isArchive': false, 'isLabelSearch': false, 'postId': 6163171198060302592}}]);
+_WidgetManager._RegisterWidget('_HeaderView', new _WidgetInfo('Header1', 'header', null, document.getElementById('Header1'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_HTMLView', new _WidgetInfo('HTML900', 'main', null, document.getElementById('HTML900'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_BlogView', new _WidgetInfo('Blog1', 'main', null, document.getElementById('Blog1'), {'cmtInteractionsEnabled': false, 'useNgc': false, 'lightboxEnabled': true, 'lightboxModuleUrl': 'https://www.blogger.com/static/v1/jsbin/384354429-lbx__es.js', 'lightboxCssUrl': 'https://www.blogger.com/static/v1/v-css/368954415-lightbox_bundle.css'}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_LabelView', new _WidgetInfo('Label3', 'tably-1', null, document.getElementById('Label3'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_PopularPostsView', new _WidgetInfo('PopularPosts1', 'tably-2', null, document.getElementById('PopularPosts1'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_HTMLView', new _WidgetInfo('HTML97', 'tably-3', null, document.getElementById('HTML97'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_HTMLView', new _WidgetInfo('HTML98', 'sidebar', null, document.getElementById('HTML98'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_ContactFormView', new _WidgetInfo('ContactForm1', 'sidebar', null, document.getElementById('ContactForm1'), {'contactFormMessageSendingMsg': 'Enviando...', 'contactFormMessageSentMsg': 'Se ha enviado tu mensaje.', 'contactFormMessageNotSentMsg': 'No se ha podido enviar el mensaje. Vuelve a intentarlo dentro de un rato.', 'contactFormInvalidEmailMsg': 'Tienes que escribir una dirección de correo electrónico válida.', 'contactFormEmptyMessageMsg': 'No puedes dejar en blanco el cuerpo del mensaje.', 'title': 'Formulir Kontak', 'blogId': '8283392410523373579', 'contactFormNameMsg': 'Nombre', 'contactFormEmailMsg': 'Correo electrónico', 'contactFormMessageMsg': 'Mensaje', 'contactFormSendMsg': 'Enviar', 'submitUrl': 'https://www.blogger.com/contact-form.do'}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_NavbarView', new _WidgetInfo('Navbar1', 'navbar', null, document.getElementById('Navbar1'), {}, 'displayModeFull'));
+</script>
+
+<link type="text/css" rel="stylesheet" href="./Guardar _ Crear XML en PHP - Carlitox en la Web_files/368954415-lightbox_bundle.css"><script type="text/javascript" src="./Guardar _ Crear XML en PHP - Carlitox en la Web_files/384354429-lbx__es.js.descarga"></script></body></html>

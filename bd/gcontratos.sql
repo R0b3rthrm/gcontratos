@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 26-09-2018 a las 22:59:31
+-- Tiempo de generación: 01-10-2018 a las 23:21:52
 -- Versión del servidor: 5.7.19
 -- Versión de PHP: 5.6.31
 
@@ -84,6 +84,38 @@ INSERT INTO `causal` (`id`, `cod`, `nombre`, `estado_id`) VALUES
 (2, '17_1184', 'Estatuto de Contratacion', 1),
 (3, '18_1185', 'Estatuto de Contratacion', 1),
 (0, '', '', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `compro`
+--
+
+DROP TABLE IF EXISTS `compro`;
+CREATE TABLE IF NOT EXISTS `compro` (
+  `id` bigint(50) NOT NULL,
+  `codigo` varchar(50) DEFAULT NULL,
+  `valor` bigint(20) DEFAULT NULL,
+  `fecha` date DEFAULT NULL,
+  `estado_id` int(2) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `compro`
+--
+
+INSERT INTO `compro` (`id`, `codigo`, `valor`, `fecha`, `estado_id`) VALUES
+(1, 'CP10', 500, '2018-01-05', 2),
+(2, 'CP20', 600, '2018-03-05', 1),
+(3, 'CP30', 300, '2018-02-05', 2),
+(4, 'CP40', 400, '2018-08-05', 2),
+(5, 'CP50', 800, '2018-08-01', 1),
+(6, 'CP60', 100, '2018-06-06', 1),
+(7, 'CP70', 600, '2018-03-03', 1),
+(8, 'CP80', 200, '2018-02-02', 2),
+(9, 'CP90', 300, '2018-04-04', 2),
+(10, 'CP100', 400, '2018-03-05', 2);
 
 -- --------------------------------------------------------
 
@@ -203,6 +235,65 @@ INSERT INTO `depend` (`id`, `nombre`, `estado_id`) VALUES
 (36, 'Instituto de Inv. Psicologia', 1),
 (37, 'Sede Pac', 1),
 (38, 'Recursos Humanos', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `dispon`
+--
+
+DROP TABLE IF EXISTS `dispon`;
+CREATE TABLE IF NOT EXISTS `dispon` (
+  `id` bigint(50) NOT NULL,
+  `codigo` varchar(50) DEFAULT NULL,
+  `valor` bigint(20) DEFAULT NULL,
+  `fecha` date DEFAULT NULL,
+  `valgas` bigint(20) DEFAULT NULL,
+  `estado_id` int(2) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `dispon`
+--
+
+INSERT INTO `dispon` (`id`, `codigo`, `valor`, `fecha`, `valgas`, `estado_id`) VALUES
+(1, 'DP1000', 1000, '2018-02-02', 1000, 2),
+(2, 'DP2000', 800, '2018-10-01', 0, 1),
+(3, 'DP3000', 700, '2018-02-01', 0, 1),
+(4, 'DP4000', 1000, '2018-03-03', 400, 1),
+(5, 'DP5000', 700, '2018-02-03', 700, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `disponibilidad`
+--
+
+DROP TABLE IF EXISTS `disponibilidad`;
+CREATE TABLE IF NOT EXISTS `disponibilidad` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `contrato_id` varchar(50) DEFAULT NULL,
+  `dispon_id` bigint(50) DEFAULT NULL,
+  `compro_id` bigint(50) DEFAULT NULL,
+  `estado_id` int(2) DEFAULT NULL,
+  `fec_reg` timestamp NULL DEFAULT NULL,
+  `fec_mod` timestamp NULL DEFAULT NULL,
+  `user_id` bigint(15) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `disponibilidad`
+--
+
+INSERT INTO `disponibilidad` (`id`, `contrato_id`, `dispon_id`, `compro_id`, `estado_id`, `fec_reg`, `fec_mod`, `user_id`) VALUES
+(1, 'no100', 1, 1, 1, '2018-10-01 23:15:17', '2018-10-01 23:15:17', 1144131603),
+(2, 'no100', 1, 3, 1, '2018-10-01 23:16:05', '2018-10-01 23:16:05', 1144131603),
+(3, 'no200', 1, 8, 1, '2018-10-01 23:17:35', '2018-10-01 23:17:35', 1144131603),
+(4, 'no100', 5, 4, 1, '2018-10-01 23:19:12', '2018-10-01 23:19:12', 1144131603),
+(5, 'no100', 5, 9, 1, '2018-10-01 23:19:12', '2018-10-01 23:19:12', 1144131603),
+(6, '1800000', 4, 10, 1, '2018-10-01 23:21:01', '2018-10-01 23:21:01', 1144131603);
 
 -- --------------------------------------------------------
 
@@ -510,7 +601,7 @@ CREATE TABLE IF NOT EXISTS `proyecto` (
 INSERT INTO `proyecto` (`id`, `contrato_id`, `proyect_id`, `cod_act`, `fec_ini`, `fec_fin`, `porcentaje`, `estado_id`, `fec_reg`, `fec_mod`, `user_id`) VALUES
 (3, '1800000', '2', 'codact-8000', '2018-07-08', '2018-07-08', 78, 1, '2018-07-07 15:06:59', '2018-09-26 21:21:31', 1144131603),
 (2, 'no100', '1', 'ACT-580', '2018-07-05', '2018-07-21', 77, 1, '2018-07-06 23:16:13', '2018-07-06 23:18:34', 1144131603),
-(6, '1800000', '1', 'CCOACT', '2018-08-27', '2018-09-26', 15, 1, '2018-09-26 21:21:56', '2018-09-26 22:05:31', 1144131603);
+(6, '1800000', '1', 'CCOACT', '2018-08-27', '2018-09-26', 15, 1, '2018-09-26 21:21:56', '2018-10-01 20:00:23', 1144131603);
 
 -- --------------------------------------------------------
 

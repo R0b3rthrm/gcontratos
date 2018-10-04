@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<!-- saved from url=(0098)http://www.cristalab.com/tutoriales/crear-un-archivo-xml-con-un-resultado-de-mysql-en-php-c68404l/ -->
+<html class=" js cssgradients csstransitions fontface" lang="es" xmlns:fb="//facebook.com"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"><script async="" src="./Crear un archivo XML con un resultado de MySQL en PHP_files/prettify.js.descarga"></script>
+	
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<title>Crear un archivo XML con un resultado de MySQL en PHP</title>
+	<meta name="description" content="En este tip les mostraré una función para que puedan pasar cualquier resultado de MySQL a un archivo XML.Funcionaría de la siguiente forma:// forma si">
+	<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+		<link rel="author" href="https://plus.google.com/117187622244109791326">
+		
+	<meta name="author" content="Team Cristalab">
+<meta name="author URL" content="http://www.cristalab.com/humans.txt">
+
+<meta name="GOOGLEBOT" content="NOODP">
+<meta name="googlebot" content="noodp">
+
+<link rel="alternate" title="Cristalab RSS" href="http://feeds.cristalab.com/clab" type="application/rss+xml">
+<link rel="search" type="application/opensearchdescription+xml" title="Cristalab" href="http://www.cristalab.com/opensearch.xml">
+
+<link rel="stylesheet" href="./Crear un archivo XML con un resultado de MySQL en PHP_files/clab.css">
+<link rel="stylesheet" href="./Crear un archivo XML con un resultado de MySQL en PHP_files/babyblue.css" type="text/css">
+<link rel="stylesheet" href="./Crear un archivo XML con un resultado de MySQL en PHP_files/prettify.css">
+
+<link rel="shortcut icon" href="http://www.cristalab.com/favicon.ico" type="image/x-icon">
+<script src="./Crear un archivo XML con un resultado de MySQL en PHP_files/cb=gapi.loaded_1" async=""></script><script src="./Crear un archivo XML con un resultado de MySQL en PHP_files/cb=gapi(1).loaded_0" async=""></script><script src="./Crear un archivo XML con un resultado de MySQL en PHP_files/f(5).txt"></script><script src="./Crear un archivo XML con un resultado de MySQL en PHP_files/ca-pub-3899061929163427.js.descarga"></script><script type="text/javascript" async="" src="./Crear un archivo XML con un resultado de MySQL en PHP_files/plusone.js.descarga" gapi_processed="true"></script><script id="facebook-jssdk" src="./Crear un archivo XML con un resultado de MySQL en PHP_files/all.js.descarga"></script><script type="text/javascript" async="" src="./Crear un archivo XML con un resultado de MySQL en PHP_files/ga.js.descarga"></script><script src="./Crear un archivo XML con un resultado de MySQL en PHP_files/modernizr-2.0.6.min.js.descarga"></script>
+
+<script src="./Crear un archivo XML con un resultado de MySQL en PHP_files/jquery.min.js.descarga"></script>
+<script>window.jQuery || document.write('<script src="http://www.cristalab.com/js/jquery-1.7.1.min.js">\x3C/script>')</script>
+
+
+<script type="text/javascript" src="./Crear un archivo XML con un resultado de MySQL en PHP_files/AC_RunActiveContent.js.descarga"></script>
+
+<meta property="og:title" content="Crear un archivo XML con un resultado de MySQL en PHP">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://www.cristalab.com/tutoriales/crear-un-archivo-xml-con-un-resultado-de-mysql-en-php-c68404l/">
+<meta property="og:image" content="http://www.cristalab.com/images/cache/microavatar.png">
+<meta property="og:site_name" content="Cristalab">
+<meta property="fb:admins" content="569992847">
+<meta property="og:description" content="En este tip les mostraré una función para que puedan pasar cualquier resultado de MySQL a un archivo XML.Funcionaría de la siguiente forma:// forma si">
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-76863-1']);
+  _gaq.push(['_setCustomVar', 1, 'Usuario', 'Invitado', 2]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>	<link rel="preload" href="./Crear un archivo XML con un resultado de MySQL en PHP_files/f(6).txt" as="script"><script type="text/javascript" src="./Crear un archivo XML con un resultado de MySQL en PHP_files/f(6).txt"></script><link rel="preload" href="./Crear un archivo XML con un resultado de MySQL en PHP_files/f(7).txt" as="script"><script type="text/javascript" src="./Crear un archivo XML con un resultado de MySQL en PHP_files/f(7).txt"></script><script type="text/javascript" charset="utf-8" async="" src="./Crear un archivo XML con un resultado de MySQL en PHP_files/button.3ebb4253c7cb2cc3c9eaac42044fc82c.js.descarga"></script><style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}.fb_link img{border:none}@keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_reset .fb_dialog_legacy{overflow:visible}.fb_dialog_advanced{padding:10px;border-radius:8px}.fb_dialog_content{background:#fff;color:#333}.fb_dialog_close_icon{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_loader{background-color:#f5f6f7;border:1px solid #606060;font-size:24px;padding:20px}.fb_dialog_top_left,.fb_dialog_top_right,.fb_dialog_bottom_left,.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}.fb_dialog_top_left{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}.fb_dialog_top_right{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}.fb_dialog_bottom_left{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}.fb_dialog_bottom_right{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}.fb_dialog_vert_left,.fb_dialog_vert_right,.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}.fb_dialog_vert_left,.fb_dialog_vert_right{width:10px;height:100%}.fb_dialog_vert_left{margin-left:-10px}.fb_dialog_vert_right{right:0;margin-right:-10px}.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{width:100%;height:10px}.fb_dialog_horiz_top{margin-top:-10px}.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{-webkit-transform:none;height:100%;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{width:auto;height:auto;min-height:initial;min-width:initial;background:none}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100%}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{color:#fff;display:block;padding-top:20px;clear:both;font-size:18px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;bottom:0;left:0;right:0;top:0;width:100%;min-height:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:-webkit-sticky;top:0}.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#4966A6), color-stop(.5, #355492), to(#2A4887));border:1px solid #29487d;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset, rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #555;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #555;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/t-wz8gw1xG1.png);background-repeat:no-repeat;background-position:50% 50%;height:24px;width:24px}@keyframes rotateSpinner{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_hide_iframes iframe{position:relative;left:-10000px}.fb_iframe_widget_loader{position:relative;display:inline-block}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}.fb_iframe_widget_loader .FB_Loader{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50%;z-index:4}
+.fb_customer_chat_bounce_in_v2{animation-duration:300ms;animation-name:fb_bounce_in_v2;transition-timing-function:ease-in}.fb_customer_chat_bounce_out_v2{animation-duration:300ms;animation-name:fb_bounce_out_v2;transition-timing-function:ease-in}.fb_customer_chat_bounce_in_v2_mobile_chat_started{animation-duration:300ms;animation-name:fb_bounce_in_v2_mobile_chat_started;transition-timing-function:ease-in}.fb_customer_chat_bounce_out_v2_mobile_chat_started{animation-duration:300ms;animation-name:fb_bounce_out_v2_mobile_chat_started;transition-timing-function:ease-in}.fb_customer_chat_bubble_pop_in{animation-duration:250ms;animation-name:fb_customer_chat_bubble_bounce_in_animation}.fb_customer_chat_bubble_animated_no_badge{box-shadow:0 3px 12px rgba(0, 0, 0, .15);transition:box-shadow 150ms linear}.fb_customer_chat_bubble_animated_no_badge:hover{box-shadow:0 5px 24px rgba(0, 0, 0, .3)}.fb_customer_chat_bubble_animated_with_badge{box-shadow:-5px 4px 14px rgba(0, 0, 0, .15);transition:box-shadow 150ms linear}.fb_customer_chat_bubble_animated_with_badge:hover{box-shadow:-5px 8px 24px rgba(0, 0, 0, .2)}.fb_invisible_flow{display:inherit;height:0;overflow-x:hidden;width:0}.fb_mobile_overlay_active{background-color:#fff;height:100%;overflow:hidden;position:fixed;visibility:hidden;width:100%}@keyframes fb_bounce_in_v2{0%{opacity:0;transform:scale(0, 0);transform-origin:bottom right}50%{transform:scale(1.03, 1.03);transform-origin:bottom right}100%{opacity:1;transform:scale(1, 1);transform-origin:bottom right}}@keyframes fb_bounce_in_v2_mobile_chat_started{0%{opacity:0;top:20px}100%{opacity:1;top:0}}@keyframes fb_bounce_out_v2{0%{opacity:1;transform:scale(1, 1);transform-origin:bottom right}100%{opacity:0;transform:scale(0, 0);transform-origin:bottom right}}@keyframes fb_bounce_out_v2_mobile_chat_started{0%{opacity:1;top:0}100%{opacity:0;top:20px}}@keyframes fb_customer_chat_bubble_bounce_in_animation{0%{bottom:6pt;opacity:0;transform:scale(0, 0);transform-origin:center}70%{bottom:18pt;opacity:1;transform:scale(1.2, 1.2)}100%{transform:scale(1, 1)}}</style></head>
+
+<body class="clab-1 blog vertutorial prettify-primavera">
+	
+	<div id="wrap">
+		<p id="logo">
+			<a href="http://www.cristalab.com/"><img src="./Crear un archivo XML con un resultado de MySQL en PHP_files/logo.png" width="131" height="131" alt="Cristalab"></a>
+		</p>
+		<p id="tagline"><em>Comunidad de diseño web y desarrollo en internet online</em></p>
+		<header id="header">
+			<div id="franja-azul">
+				<nav id="nav" class="nav">
+						<ul>
+							<li id="nav-foros"><a href="http://foros.cristalab.com/">Foros</a></li>
+							<li id="nav-blog"><a href="http://www.cristalab.com/blog/">Blog</a></li>
+							<li id="nav-tutoriales"><a href="http://www.cristalab.com/tutoriales/">Tutoriales</a></li>
+							<li id="nav-cursos"><a href="https://platzi.com/cursos/">Cursos</a></li>
+							<li id="nav-videotutoriales"><a href="http://www.cristalab.com/videotutoriales/">Videotutoriales</a></li>
+							<li id="nav-comic"><a href="http://www.cristalab.com/comic/">Comic</a></li>
+						</ul>
+				</nav>
+			</div>
+			<hr class="hidden">
+
+			<div id="franja-naranja">
+				<nav id="subnav" class="nav">
+					<ul>
+						<li id="nav-publicar"><a href="http://foros.cristalab.com/posting.php?mode=newtopic&amp;f=20">Publica un tutorial</a></li>
+						<li id="nav-faq"><a href="http://www.cristalab.com/blog/6/faq-preguntas-frecuentes-de-cristalab">¿Qué es Cristalab?</a></li>
+						<li id="nav-tags"><a href="http://www.cristalab.com/tags/">Tags</a></li>
+						<li id="nav-ejemplos"><a href="http://www.cristalab.com/ejemplos/">Ejemplos</a></li> 
+						<!-- <li id="nav-contacto"><a href="mailto:webmaster@cristalab.com">Cont&aacute;ctanos</a></li>  -->
+						<li id="nav-anime"><a href="http://www.cristalab.com/anime/">Anime</a></li> 
+						<li id="nav-suscribete" class="rss"><a href="http://feeds.cristalab.com/clab">&nbsp;</a></li> 
+					</ul>
+				</nav>
+			</div>	
+		</header>
+		
+		<hr class="hidden">
+
+		<div id="top">
+			<form action="http://www.cristalab.com/buscar/" id="cse-search-box" accept-charset="utf-8"> 
+					<input type="hidden" name="cx" value="partner-pub-3899061929163427:7152351524">
+					<input type="hidden" name="cof" value="FORID:10">
+					<input type="hidden" name="ie" value="utf-8">
+					<input type="text" name="q" size="55" id="busqueda" maxlength="512" placeholder="Búsqueda personalizada" style="border: 1px solid rgb(126, 157, 185); padding: 2px; background: url(&quot;https://www.google.com/cse/static/images/1x/googlelogo_lightgrey_46x16dp.png&quot;) left center no-repeat rgb(255, 255, 255); text-indent: 48px;">
+					<button type="submit" name="sa" value="Buscar" tabindex="-1">Buscar</button>
+			<input name="siteurl" type="hidden" value="www.cristalab.com/tutoriales/crear-un-archivo-xml-con-un-resultado-de-mysql-en-php-c68404l/"><input name="ref" type="hidden" value="www.google.com.co/"><input name="ss" type="hidden" value=""><input name="siteurl" type="hidden" value="www.cristalab.com/tutoriales/crear-un-archivo-xml-con-un-resultado-de-mysql-en-php-c68404l/"><input name="ref" type="hidden" value="www.google.com.co/"><input name="ss" type="hidden" value=""></form>
+			<script type="text/javascript" src="./Crear un archivo XML con un resultado de MySQL en PHP_files/f(8).txt"></script>
+
+			<hr class="hidden">
+
+			<div id="login-container"> 
+	<div class="login-desktop">
+		<form id="login" method="post" action="http://foros.cristalab.com/login.php">
+			
+			<span class="container">
+				<span class="forgot">
+					<a href="http://foros.cristalab.com/profile.php?mode=sendpassword">
+						¿Olvidaste tu usuario o clave?
+					</a>
+				</span>
+
+				<a class="back">«</a>
+				
+				<span class="fields">
+					<input type="text" name="username" placeholder="Usuario"> 
+					
+					<input type="password" name="password" placeholder="Contraseña"> 
+				</span>
+				
+				<label class="remember"><input type="checkbox" name="autologin" checked=""> Recordarme</label>
+							</span>
+						<input type="hidden" name="redirect" value="goto//tutoriales/crear-un-archivo-xml-con-un-resultado-de-mysql-en-php-c68404l/">
+			
+			<button type="submit" name="login" value="Entrar">Entrar</button>
+		</form>
+
+		<hr class="hidden">
+
+		<div id="register-container">
+			<a id="register-link" href="http://foros.cristalab.com/profile.php?mode=register">registrate</a>
+		
+			<form id="register" method="post" action="http://foros.cristalab.com/profile.php?mode=register&amp;agreed=true">
+				<input type="hidden" id="password_confirm" name="password_confirm">
+				<input type="hidden" name="cf4ca0a9710071c8526ac" value="cca0a9710071">
+				<input type="hidden" name="sid" value="160f7bd99440e1f6e5732a69ea5a53fc">
+				<input type="hidden" name="mode" value="register">
+				<input type="hidden" name="agreed" value="true">
+
+				<p>
+					<label for="register-username">Nombre de usuario</label>
+					<input type="text" id="register-username" name="r71c8526ac176ea4b1">
+					<span class="error-container"></span>
+				</p>
+
+				<p>
+					<label for="register_email">Email</label>
+					<input type="text" id="register_email" name="email">
+					<span class="error-container"></span>
+				</p>
+				
+				<p>
+					<label for="new_password">Contraseña deseada</label>
+					<input type="password" id="new_password" name="new_password">
+					<span class="error-container"></span>
+				</p>
+				
+				<p class="terms">
+					<label>
+						<input type="checkbox" name="terms" checked="">
+						Aceptas los <a href="http://foros.cristalab.com/profile.php?mode=register" target="_blank">terminos</a>
+					</label>
+					<span class="error-container"></span>
+				</p>
+				
+				<p>
+					<button type="submit">Registrate</button>
+					<a class="close" tabindex="0">Cerrar</a>
+				</p>
+			</form>
+		</div>
+	</div>
+	<div class="login-responsive">
+		<a href="http://foros.cristalab.com/login.php">Entra</a> o <a href="http://foros.cristalab.com/profile.php?mode=register">Registrate</a>
+	</div>
+</div>		</div><!-- #top -->
+
+				<!-- <div style="text-align: center;"><a href="http://www.cristalab.com/seo" target="_blank" onClick="_gaq.push(['_trackEvent', '1212BOGSEO', '1212BOGSEO', 'click']);"><img src="http://www.cristalab.com/images/banners/1212BOGSEO.png" border="0" alt="Cursos y talleres de tecnolog&iacute;a y web" title="Da click para leer el temario y los detalles del curso" /></a></div> -->
+		
+				
+		<div id="buscar_foro">
+			<!--<form method="get" action="http://www.cristalab.com/buscar.php">
+				<input name="q" type="text" />
+				<button name="buscar">Buscar</button>
+			</form> -->
+			
+			<form action="http://www.cristalab.com/buscar/" id="cse-search-box">
+			  <div>
+				<input type="hidden" name="cx" value="partner-pub-3899061929163427:7152351524">
+				<input type="hidden" name="cof" value="FORID:10">
+				<input type="hidden" name="ie" value="UTF-8">
+				<input id="buscar_foro_q" type="text" name="q" size="80" maxlength="512" required="" placeholder="¿Qué quieres buscar?">
+				<button type="submit" name="sa" value="Buscar">Buscar</button>
+			  </div>
+			</form>
+			<script type="text/javascript" src="./Crear un archivo XML con un resultado de MySQL en PHP_files/f(8).txt"></script>
+		</div>
+
+		<!-- <div style="padding: 1em; background: #FFF7A3; margin: 0 auto;" >
+			<strong>HOY: En streaming, gratis</strong> <a href="https://platzi.com/conf/">PlatziConf Online</a>
+		</div> --><nav id="breadcrumb" class="wrapper">
+	<ul>
+		<li><a href="http://www.cristalab.com/tutoriales/">Tutoriales</a></li>
+		<li>Crear un archivo XML con un resultado de MySQL en PHP</li>
+	</ul>
+</nav>
+
+<hr class="hidden">
+
+<div id="content-sidebar-wrapper" class="wrapper">
+	<section id="content">
+
+		<article class="hentry article blog">
+			<h1 class="entry-title">Crear un archivo XML con un resultado de MySQL en PHP</h1>
+			
+			<div class="post-info">
+				<div id="autor">
+					<img class="post-author-gravatar" src="./Crear un archivo XML con un resultado de MySQL en PHP_files/microavatar.png" width="50" height="50" alt="">
+					<span class="post-author">Por <a href="http://www.reweb.com.ar/" class="autor" rel="nofollow">joarobles</a></span>
+					<span class="post-date">el 09 de Febrero de 2009</span>
+					<span class="post-views">con 51,477 visitas</span>
+					<br><br>
+					<span>
+						<a class="post-author-link" href="http://www.cristalab.com/tutoriales/3-php-mysql-y-servidor/">PHP, MySQL y Servidor</a>
+						<a class="post-author-link" href="http://www.cristalab.com/usuario/60698-joarobles">Otros tutoriales por joarobles.</a>
+					</span>
+				</div>
+				<div id="social">
+	<div class="fb-like fb_iframe_widget" data-width="450" data-layout="box_count" data-show-faces="true" data-send="false" fb-xfbml-state="rendered" fb-iframe-plugin-query="app_id=&amp;container_width=0&amp;href=http%3A%2F%2Fwww.cristalab.com%2Ftutoriales%2Fcrear-un-archivo-xml-con-un-resultado-de-mysql-en-php-c68404l%2F&amp;layout=box_count&amp;locale=en_US&amp;sdk=joey&amp;send=false&amp;show_faces=true&amp;width=450"><span style="vertical-align: bottom; width: 51px; height: 40px;"><iframe name="f22f7e33345411c" width="450px" height="1000px" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" title="fb:like Facebook Social Plugin" src="./Crear un archivo XML con un resultado de MySQL en PHP_files/like.html" style="border: none; visibility: visible; width: 51px; height: 40px;" class=""></iframe></span></div>
+	<iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" class="twitter-share-button twitter-share-button-rendered twitter-tweet-button" style="position: static; visibility: visible; width: 70px; height: 20px;" title="Twitter Tweet Button" src="./Crear un archivo XML con un resultado de MySQL en PHP_files/tweet_button.a11d275af20b525d994d187f4d6ccc58.es.html"></iframe>
+	<div id="___plusone_0" style="text-indent: 0px; margin: 0px; padding: 0px; background: transparent; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 50px; height: 24px;"><iframe ng-non-bindable="" frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 50px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 24px;" tabindex="0" vspace="0" width="100%" id="I0_1538236393021" name="I0_1538236393021" src="./Crear un archivo XML con un resultado de MySQL en PHP_files/fastbutton.html" data-gapiattached="true" title="G+"></iframe></div>
+</div>
+
+
+<div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe name="fb_xdm_frame_https" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" id="fb_xdm_frame_https" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" src="./Crear un archivo XML con un resultado de MySQL en PHP_files/mp2v3DK3INU.html" style="border: none;"></iframe></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div></div></div></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<script src="./Crear un archivo XML con un resultado de MySQL en PHP_files/widgets.js.descarga"></script>
+<script type="text/javascript">
+  window.___gcfg = {lang: 'es'};
+
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>			</div>
+
+			<div class="entry-content">
+				
+				
+				<p> En este <a class="arti_link" href="http://www.cristalab.com/tips/">tip</a> les mostraré una función para que puedan pasar cualquier resultado de <a class="arti_link" href="http://www.cristalab.com/tips/tags/mysql">MySQL</a> a un archivo <a class="arti_link" href="http://www.cristalab.com/tips/tags/xml">XML</a>.<br><br>Funcionaría de la siguiente forma:<br><br></p><p class="datos_bloque"><strong>Código :</strong></p><pre class="prettyprint lang-as" data-lang="as">// forma simplificada
+$resultado = mysql_query('SELECT * FROM tabla');
+
+header ('Content-type: text/xml');
+echo mysql_XML($resultado);
+
+// se puede personalizar el nombre del documento y de cada item asi:
+echo mysql_XML($resultado, 'nombre del documento', 'nombre de cada item');
+</pre><br><br>la funcion es la siguiente:<br><p class="datos_bloque"><strong>Código :</strong></p><pre class="prettyprint lang-as" data-lang="as">/*
+ * Funcion para transformar un resultado de mysql en un archivo XML
+ **/
+function mysql_XML($resultado, $nombreDoc='resultados', $nombreItem='item') {
+&nbsp; &nbsp;$campo = array();
+&nbsp; &nbsp;
+&nbsp; &nbsp;// llenamos el array de nombres de campos
+&nbsp; &nbsp;for ($i=0; $i&lt;mysql_num_fields($resultado); $i++)
+&nbsp; &nbsp;&nbsp; &nbsp;$campo[$i] = mysql_field_name($resultado, $i);
+&nbsp; &nbsp;
+&nbsp; &nbsp;// creamos el documento XML&nbsp; &nbsp;
+&nbsp; &nbsp;$dom = new DOMDocument('1.0', 'UTF-8');
+&nbsp; &nbsp;$doc = $dom-&gt;appendChild($dom-&gt;createElement($nombreDoc));
+&nbsp; &nbsp;
+&nbsp; &nbsp;// recorremos el resultado
+&nbsp; &nbsp;for ($i=0; $i&lt;mysql_num_rows($resultado); $i++) {
+&nbsp; &nbsp;&nbsp; &nbsp;
+&nbsp; &nbsp;&nbsp; &nbsp;// creamos el item
+&nbsp; &nbsp;&nbsp; &nbsp;$nodo = $doc-&gt;appendChild($dom-&gt;createElement($nombreItem));
+&nbsp; &nbsp;&nbsp; &nbsp;
+&nbsp; &nbsp;&nbsp; &nbsp;// agregamos los campos que corresponden
+&nbsp; &nbsp;&nbsp; &nbsp;for ($b=0; $b&lt;count($campo); $b++) {
+&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;$campoTexto = $nodo-&gt;appendChild($dom-&gt;createElement($campo[$b]));
+&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;$campoTexto-&gt;appendChild($dom-&gt;createTextNode(mysql_result($resultado, $i, $b)));
+&nbsp; &nbsp;&nbsp; &nbsp;}
+&nbsp; &nbsp;}
+&nbsp; &nbsp;
+&nbsp; &nbsp;// retornamos el archivo XML como cadena de texto
+&nbsp; &nbsp;$dom-&gt;formatOutput = true; 
+&nbsp; &nbsp;return $dom-&gt;saveXML();&nbsp; &nbsp; 
+}
+</pre><br><br>Si quieren pueden <a class="arti_link" href="http://www.cristalab.com/images/tips/php/mysqlxml/mysqlAXML-1.0.zip">descargar el archivo</a> con la función listo para ser importado.<br><br>Saludos!<p></p>
+				<p><em><strong>¿Sabes SQL? ¿No-SQL?</strong> Aprende MySQL, PostgreSQL, MongoDB, Redis y más con el <a href="http://goo.gl/vxfdw1"><strong>Curso Profesional de Bases de Datos</strong></a> que empieza el martes, en vivo.</em></p>
+
+							</div>
+
+			<div class="post-meta">
+				<p class="post-comments post-label"><a href="http://www.cristalab.com/tutoriales/crear-un-archivo-xml-con-un-resultado-de-mysql-en-php-c68404l/#comment-form">Envia un comentario (51)</a></p>
+			</div>
+		</article>
+	</section>
+</div><!-- #content-sidebar-wrapper -->
+
+<hr class="hidden">
+
+<nav class="widget widget-list widget-horizontal-list">
+	<ul class="clearfix">
+					<li>
+				<a href="http://www.cristalab.com/tutoriales/listar-resultados-de-una-busqueda-con-php-mysql-para-ajax-c63242l/">
+				<img src="./Crear un archivo XML con un resultado de MySQL en PHP_files/microavatar.png" width="36" height="36">
+				<strong>Listar resultados de una búsqueda con PHP + MySQL para AJAX</strong>
+				</a>
+			</li>
+						<li>
+				<a href="http://www.cristalab.com/tutoriales/como-crear-un-feed-rss-con-mysql-y-php-c82325l/">
+				<img src="./Crear un archivo XML con un resultado de MySQL en PHP_files/ca828145df3068dfbc1125139dec9f08.jpg" width="36" height="36">
+				<strong>Cómo crear un feed RSS con MySQL y PHP</strong>
+				</a>
+			</li>
+						<li>
+				<a href="http://www.cristalab.com/tutoriales/muro-parecido-a-facebook-en-php-mysql-y-jquery-c100234l/">
+				<img src="./Crear un archivo XML con un resultado de MySQL en PHP_files/151f4255a30e8c7860c07eaa8ea8c8e0.jpg" width="36" height="36">
+				<strong>Muro parecido a Facebook en PHP, MySQL y JQuery</strong>
+				</a>
+			</li>
+				</ul>
+</nav>
+
+<hr class="hidden">
+
+	<div style="text-align: center; margin: 25px 0;" class="adsense">
+		<script type="text/javascript">
+			<!--
+				google_ad_client = "ca-pub-3899061929163427";
+				/* CL Post_bottom arriba */
+				google_ad_slot = "4083332590";
+				google_ad_width = 728;
+				google_ad_height = 90;
+			//-->
+		</script>
+		<script type="text/javascript" src="./Crear un archivo XML con un resultado de MySQL en PHP_files/f(9).txt"></script><ins id="aswift_0_expand" style="display:inline-table;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:728px;background-color:transparent;"><ins id="aswift_0_anchor" style="display:block;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:728px;background-color:transparent;"><iframe width="728" height="90" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;width:728px;height:90px;" src="./Crear un archivo XML con un resultado de MySQL en PHP_files/saved_resource(1).html"></iframe></ins></ins>
+	</div>
+
+	<hr class="hidden">
+
+	<section id="comments"><div class="pagination pagination-js" style="visibility: visible;"><div id="pagingprev" style="visibility: visible;">«<span class="prev">Anterior</span></div><div id="pagingmid"><div id="pagesbox"><span>1</span> <span>2</span> <span class="current">3</span> </div></div><div id="pagingnext" style="visibility: hidden;"><span class="next">Siguiente</span>»</div></div>
+		<ul id="comments-list"><li class="comment c51-51"><span class="comment-order">51</span>
+						<p class="comment-meta">
+														
+							Por seo							el 20 de Junio de 2018						</p>
+
+						<div class="comment-content">
+							&lt;a class="arti_link" href="http://draaz.ir"&gt;&#1587;&#1574;&#1608;&lt;/a&gt;&#1587;&#1575;&#1740;&#1578; &#1576;&#1607; &#1589;&#1608;&#1585;&#1578; &#1578;&#1582;&#1589;&#1589;&#1740;						</div>
+					</li></ul>
+	<div class="pagination pagination-js" style="visibility: visible;"><div id="pagingprev" style="visibility: visible;">«<span class="prev">Anterior</span></div><div id="pagingmid"><div id="pagesbox"><span>1</span> <span>2</span> <span class="current">3</span> </div></div><div id="pagingnext" style="visibility: hidden;"><span class="next">Siguiente</span>»</div></div></section><!-- #comments -->
+
+	<hr class="hidden">
+
+
+
+<div id="publicar-comentario"></div>
+<div id="comments-form-container">
+
+		<section id="comments-form" class="widget ">
+		<h2 class="widget-title">Publica tu comentario</h2>
+		<div class="widget-content">
+
+							<aside>
+					<p>Sé respetuoso. Sé detallado.</p>
+					<p>No escribas con mayusculas ni como si fuera un SMS.</p>
+					<p>Insultos, trolls y spammers son siempre eliminados.</p>
+					<p><strong>[b]</strong>negrita<strong>[/b]</strong><br>
+					<strong>[img]</strong>http://url/imagen.jpg<strong>[/img]</strong><br>
+					<strong>[url=direccion]</strong>tu enlace<strong>[/url]</strong></p>
+				</aside>
+
+				<form action="http://www.cristalab.com/data/posting.php" method="post" id="comment-form">
+				
+											<p>
+							<label for="u0071c8526ac176e">Tu nombre:</label>
+							<input type="text" name="u0071c8526ac176e" id="u0071c8526ac176e" placeholder="Escribe tu nombre o nick">
+						</p>
+					
+					<p>
+						<label for="m71c8526ac176ea4b1">Tu comentario:</label>
+						<textarea type="text" name="m0a9710071c8526ac176e" id="m71c8526ac176ea4b1" placeholder="Cuentanos en detalle lo quieras opinar"></textarea>
+					</p>
+
+					<input type="hidden" name="mode" value="reply">
+					<input type="hidden" name="post" value="Enviar">
+					<input type="hidden" name="sid" value="160f7bd99440e1f6e5732a69ea5a53fc">
+					<input type="hidden" name="t" value="68404">
+					<input type="hidden" name="notify" value="0">
+					<input type="hidden" name="username" value="Anonymous-blog">
+					<input type="hidden" name="desdeblog" value="1">
+					<input type="hidden" name="url" value="/tutoriales/crear-un-archivo-xml-con-un-resultado-de-mysql-en-php-c68404l/">
+
+					<button type="submit" name="publicarboton" value="Publicar">Publicar</button>
+				</form>
+				
+				<form id="envioauxiliar" action="http://www.cristalab.com/tutoriales/crear-un-archivo-xml-con-un-resultado-de-mysql-en-php-c68404l/#ultimo" method="post">
+					<input type="hidden" name="u0071c8526ac176e" value="u0071c8526ac176e">
+				</form>
+
+				<script type="text/javascript">
+					var spamId = 'm71c8526ac176ea4b1';
+					var spamElem = document.getElementById(spamId);
+					spamElem.name = spamElem.name.slice(0, spamElem.name.length-1);
+				</script>
+
+			
+		</div>
+	</section><!-- #comments-form -->
+
+			<section id="comments-register" class="widget">
+			<h2 class="widget-title">o puedes...</h2>
+			<div class="widget-content">
+				<p>¿Estás registrado en Cristalab y quieres<br> publicar tu URL y avatar?</p>
+				<p><a href="http://foros.cristalab.com/login.php" class="login button">Inicia sesión</a></p>
+				<p class="comments-register">¿No estás registrado aún pero quieres hacerlo antes de publicar tu comentario?</p>
+				<p><a href="http://foros.cristalab.com/profile.php?mode=register" class="register button">Registrate</a></p>
+			</div>
+		</section>
+	</div>
+
+		<nav id="nav-footer">
+			<ul>
+				<li><a href="http://www.cristalab.com/blog/">Blog</a></li>
+				<li><a href="http://foros.cristalab.com/">Foros</a></li>
+				<li><a href="http://www.cristalab.com/tutoriales/">Tutoriales</a></li>
+				<li><a href="http://www.cristalab.com/tutoriales/0-flash-basico/">Tutoriales de Flash</a></li>
+				<li><a href="http://www.cristalab.com/ejemplos/">Ejemplos .fla</a></li>
+				<li><a href="http://www.cristalab.com/anime/">Anime</a></li>
+				<li><a href="http://www.cristalab.com/videotutoriales/">Videotutoriales</a></li>
+				<li><a href="https://platzi.com/cursos/">Cursos</a></li>
+				<li><a href="http://www.cristalab.com/flash/">Curso de Flash</a></li>
+				<li><a href="http://www.cristalab.com/curso-html/">Curso de HTML</a></li>
+				<li><a class="last" href="http://www.cristalab.com/tags/">Tags</a></li>
+			</ul>
+		</nav>
+	</div><!-- #wrap -->
+	<script type="text/javascript" src="./Crear un archivo XML con un resultado de MySQL en PHP_files/jquery.validate.min.js.descarga"></script>
+<script type="text/javascript" src="./Crear un archivo XML con un resultado de MySQL en PHP_files/swfobject.js.descarga"></script>
+
+<script type="text/javascript">var notifications = {"total":[]}</script>
+<script defer="" src="./Crear un archivo XML con un resultado de MySQL en PHP_files/html5.clab.js.descarga"></script>
+
+<!--[if lte IE 7 ]>
+	<script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+	<script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+<![endif]-->	<!-- @freddier -->
+
+<iframe id="google_osd_static_frame_9727055868656" name="google_osd_static_frame" style="display: none; width: 0px; height: 0px;" src="./Crear un archivo XML con un resultado de MySQL en PHP_files/saved_resource(2).html"></iframe><iframe name="oauth2relay1022532430" id="oauth2relay1022532430" src="./Crear un archivo XML con un resultado de MySQL en PHP_files/postmessageRelay.html" tabindex="-1" aria-hidden="true" style="width: 1px; height: 1px; position: absolute; top: -100px;"></iframe><iframe scrolling="no" frameborder="0" allowtransparency="true" src="./Crear un archivo XML con un resultado de MySQL en PHP_files/widget_iframe.a11d275af20b525d994d187f4d6ccc58.html" title="Twitter settings iframe" style="display: none;"></iframe><iframe id="rufous-sandbox" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" style="position: absolute; visibility: hidden; display: none; width: 0px; height: 0px; padding: 0px; border: none;" title="Twitter analytics iframe" src="./Crear un archivo XML con un resultado de MySQL en PHP_files/saved_resource(3).html"></iframe></body></html>

@@ -451,7 +451,7 @@ class contrato extends conexion {
 
         $arrInfo = array();
         conexion::conectar();
-        $sql = "select " . $select . " from v_contrato order by fec_reg desc";
+        $sql = "select " . $select . " from v_contrato ";
         
         if (!empty($where)) {
             $sql .= " WHERE " . $where;
@@ -475,6 +475,17 @@ class contrato extends conexion {
         mysqli_free_result($result);
         conexion::desconectar();
         return $arrInfo;
+    }
+    
+    public function updateId($update, $where) {
+
+        $sql = "UPDATE contrato SET ".$update." WHERE ".$where;
+
+        conexion::conectar();
+        $result = conexion::query($sql);
+        conexion::desconectar();
+
+        return $result;
     }
 
 }
